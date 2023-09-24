@@ -720,7 +720,7 @@ const TEXT_JOIN_MUTATOR_MIXIN = {
     // Add new inputs.
     for (let i = 0; i < this.itemCount_; i++) {
       if (!this.getInput('ADD' + i)) {
-        const input = this.appendValueInput('ADD' + i).setAlign(Align.RIGHT);
+        const input = this.appendValueInput('ADD' + i).setAlign(Blockly.inputs.Align.RIGHT);
         if (i === 0) {
           input.appendField(Msg['TEXT_JOIN_TITLE_CREATEWITH']);
         }

@@ -460,7 +460,7 @@ blocks['procedures_defreturn'] = {
         .appendField(nameField, 'NAME')
         .appendField('', 'PARAMS');
     this.appendValueInput('RETURN')
-        .setAlign(Align.RIGHT)
+        .setAlign(Blockly.inputs.Align.RIGHT)
         .appendField(Blockly.Msg['PROCEDURES_DEFRETURN_RETURN']);
     this.setMutator(new Blockly.icons.MutatorIcon(['procedures_mutatorarg'], this));
     if ((this.workspace.options.comments ||
@@ -768,7 +768,7 @@ const PROCEDURE_CALL_COMMON = {
         // Add new input.
         const newField = new FieldLabel(this.arguments_[i]);
         const input = this.appendValueInput('ARG' + i)
-                          .setAlign(Align.RIGHT)
+                          .setAlign(Blockly.inputs.Align.RIGHT)
                           .appendField(newField, 'ARGNAME' + i);
         input.init();
       }
