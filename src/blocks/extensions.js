@@ -1,6 +1,5 @@
 import * as Blockly from 'blockly/core';
 const xmlUtils = Blockly.utils.xml;
-const Mutator = Blockly.Mu;
 /**
  * @mixin
  * @package
@@ -339,4 +338,14 @@ const CONTROLS_IF_TOOLTIP_EXTENSION = function() {
 	}.bind(this));
 };
 
-export {TEXT_QUOTES_EXTENSION, APPEND_STATEMENT_INPUT_STACK, CONTROLS_IF_MUTATOR_MIXIN, CONTROLS_IF_TOOLTIP_EXTENSION};
+/**
+ * Tooltips for the 'controls_whileUntil' block, keyed by MODE value.
+ * @see {Extensions#buildTooltipForDropdown}
+ * @readonly
+ */
+const WHILE_UNTIL_TOOLTIPS = {
+	'WHILE': '%{BKY_CONTROLS_WHILEUNTIL_TOOLTIP_WHILE}',
+	'UNTIL': '%{BKY_CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL}',
+};
+
+export {TEXT_QUOTES_EXTENSION, APPEND_STATEMENT_INPUT_STACK, CONTROLS_IF_MUTATOR_MIXIN, CONTROLS_IF_TOOLTIP_EXTENSION, WHILE_UNTIL_TOOLTIPS};
