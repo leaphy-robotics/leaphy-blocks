@@ -1,3 +1,5 @@
+import * as Blockly from 'blockly/core';
+
 function getCodeGenerators(Arduino) {
 	/**
 	 * Code generator to create a function with a return value (X).
@@ -7,7 +9,7 @@ function getCodeGenerators(Arduino) {
 	 */
 	Arduino.forBlock['procedures_defreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
-			block.getFieldValue('NAME'), NameType.PROCEDURE);
+			block.getFieldValue('NAME'), Blockly.Names.NameType.PROCEDURE);
 		var branch = Arduino.statementToCode(block, 'STACK');
 		if (Arduino.STATEMENT_PREFIX) {
 			branch = Arduino.prefixLines(
@@ -63,7 +65,7 @@ function getCodeGenerators(Arduino) {
 	 */
 	Arduino.forBlock['procedures_callreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
-			block.getFieldValue('NAME'), NameType.PROCEDURE);
+			block.getFieldValue('NAME'), Blockly.Names.NameType.PROCEDURE);
 		var args = [];
 		for (var x = 0; x < block.arguments_.length; x++) {
 			args[x] = Arduino.valueToCode(block, 'ARG' + x,
@@ -81,7 +83,7 @@ function getCodeGenerators(Arduino) {
 	 */
 	Arduino.forBlock['procedures_callnoreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
-			block.getFieldValue('NAME'), NameType.PROCEDURE);
+			block.getFieldValue('NAME'), Blockly.Names.NameType.PROCEDURE);
 		var args = [];
 		for (var x = 0; x < block.arguments_.length; x++) {
 			args[x] = Arduino.valueToCode(block, 'ARG' + x,
@@ -118,11 +120,10 @@ function getCodeGenerators(Arduino) {
 	 * @return {string} Completed code.
 	 */
 	Arduino.forBlock['arduino_functions'] = function (block) {
-// Edited version of Blockly.Generator.prototype.statementToCode
 		function statementToCodeNoTab(block, name) {
 			var targetBlock = block.getInputTargetBlock(name);
 			var code = Arduino.blockToCode(targetBlock);
-			if (!Blockly.isString(code)) {
+			if (!code.isString()) {
 				throw 'Expecting code from statement block "' + targetBlock.type + '".';
 			}
 			return code;
