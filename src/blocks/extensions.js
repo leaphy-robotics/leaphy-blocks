@@ -85,4 +85,8 @@ const TEXT_QUOTES_EXTENSION = function() {
 	this.quoteField_('TEXT');
 };
 
-export {TEXT_QUOTES_EXTENSION};
+const APPEND_STATEMENT_INPUT_STACK = function() {
+	this.appendStatementInput('STACK');
+};
+
+export {TEXT_QUOTES_EXTENSION, APPEND_STATEMENT_INPUT_STACK};
