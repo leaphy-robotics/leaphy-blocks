@@ -111,7 +111,7 @@ const PROCEDURE_DEF_COMMON = {
       }
     }
     this.updateParams_();
-    Procedures.mutateCallers(this);
+    Blockly.Procedures.mutateCallers(this);
 
     // Show or hide the statement input.
     this.setStatements_(xmlElement.getAttribute('statements') !== 'false');
@@ -161,7 +161,7 @@ const PROCEDURE_DEF_COMMON = {
       }
     }
     this.updateParams_();
-    Procedures.mutateCallers(this);
+    Blockly.Procedures.mutateCallers(this);
     this.setStatements_(state['hasStatements'] === false ? false : true);
   },
   /**
@@ -214,7 +214,7 @@ const PROCEDURE_DEF_COMMON = {
     }
 
     // Initialize procedure's callers with blank IDs.
-    Procedures.mutateCallers(this);
+    Blockly.Procedures.mutateCallers(this);
     return containerBlock;
   },
   /**
@@ -239,7 +239,7 @@ const PROCEDURE_DEF_COMMON = {
           paramBlock.nextConnection && paramBlock.nextConnection.targetBlock();
     }
     this.updateParams_();
-    Procedures.mutateCallers(this);
+    Blockly.Procedures.mutateCallers(this);
 
     // Show/hide the statement input.
     let hasStatements = containerBlock.getFieldValue('STATEMENTS');
@@ -310,7 +310,7 @@ const PROCEDURE_DEF_COMMON = {
     }
     if (change) {
       this.displayRenamedVar_(oldName, newVar.name);
-      Procedures.mutateCallers(this);
+      Blockly.Procedures.mutateCallers(this);
     }
   },
   /**
@@ -334,7 +334,7 @@ const PROCEDURE_DEF_COMMON = {
     }
     if (change) {
       this.displayRenamedVar_(oldName, newName);
-      Procedures.mutateCallers(this);
+      Blockly.Procedures.mutateCallers(this);
     }
   },
   /**
@@ -409,8 +409,8 @@ blocks['procedures_defnoreturn'] = {
    * @this {Block}
    */
   init: function() {
-    const initName = Procedures.findLegalName('', this);
-    const nameField = new FieldTextInput(initName, Procedures.rename);
+    const initName = Blockly.Procedures.findLegalName('', this);
+    const nameField = new FieldTextInput(initName, Blockly.Procedures.rename);
     nameField.setSpellcheck(false);
     this.appendDummyInput()
         .appendField(Msg['PROCEDURES_DEFNORETURN_TITLE'])
@@ -452,8 +452,8 @@ blocks['procedures_defreturn'] = {
    * @this {Block}
    */
   init: function() {
-    const initName = Procedures.findLegalName('', this);
-    const nameField = new FieldTextInput(initName, Procedures.rename);
+    const initName = Blockly.Procedures.findLegalName('', this);
+    const nameField = new FieldTextInput(initName, Blockly.Procedures.rename);
     nameField.setSpellcheck(false);
     this.appendDummyInput()
         .appendField(Msg['PROCEDURES_DEFRETURN_TITLE'])
@@ -515,7 +515,7 @@ blocks['procedures_mutatorarg'] = {
    * @this {Block}
    */
   init: function() {
-    const field = new FieldTextInput(Procedures.DEFAULT_ARG, this.validator_);
+    const field = new FieldTextInput(Blockly.Procedures.DEFAULT_ARG, this.validator_);
     // Hack: override showEditor to do just a little bit more work.
     // We don't have a good place to hook into the start of a text edit.
     field.oldShowEditorFn_ = field.showEditor_;
@@ -672,7 +672,7 @@ const PROCEDURE_CALL_COMMON = {
     // Note that quarkConnections_ may include IDs that no longer exist, but
     // which might reappear if a param is reattached in the mutator.
     const defBlock =
-        Procedures.getDefinition(this.getProcedureCall(), this.workspace);
+        Blockly.Procedures.getDefinition(this.getProcedureCall(), this.workspace);
     const mutatorOpen =
         defBlock && defBlock.mutator && defBlock.mutator.isVisible();
     if (!mutatorOpen) {
@@ -892,7 +892,7 @@ const PROCEDURE_CALL_COMMON = {
       // paste) and there is no matching definition.  In this case, create
       // an empty definition block with the correct signature.
       const name = this.getProcedureCall();
-      let def = Procedures.getDefinition(name, this.workspace);
+      let def = Blockly.Procedures.getDefinition(name, this.workspace);
       if (def &&
           (def.type !== this.defType_ ||
            JSON.stringify(def.getVars()) !== JSON.stringify(this.arguments_))) {
@@ -925,7 +925,7 @@ const PROCEDURE_CALL_COMMON = {
         const field = xmlUtils.createElement('field');
         field.setAttribute('name', 'NAME');
         const callName = this.getProcedureCall();
-        const newName = Procedures.findLegalName(callName, this);
+        const newName = Blockly.Procedures.findLegalName(callName, this);
         if (callName !== newName) {
           this.renameProcedure(callName, newName);
         }
@@ -940,7 +940,7 @@ const PROCEDURE_CALL_COMMON = {
       // leaving this block (a procedure call) orphaned.  In this case, delete
       // the orphan.
       const name = this.getProcedureCall();
-      const def = Procedures.getDefinition(name, this.workspace);
+      const def = Blockly.Procedures.getDefinition(name, this.workspace);
       if (!def) {
         Blockly.Events.setGroup(event.group);
         this.dispose(true);
@@ -948,7 +948,7 @@ const PROCEDURE_CALL_COMMON = {
       }
     } else if (event.type === Blockly.Events.CHANGE && event.element === 'disabled') {
       const name = this.getProcedureCall();
-      const def = Procedures.getDefinition(name, this.workspace);
+      const def = Blockly.Procedures.getDefinition(name, this.workspace);
       if (def && def.id === event.blockId) {
         // in most cases the old group should be ''
         const oldGroup = Blockly.Events.getGroup();
@@ -988,7 +988,7 @@ const PROCEDURE_CALL_COMMON = {
     const name = this.getProcedureCall();
     const workspace = this.workspace;
     option.callback = function() {
-      const def = Procedures.getDefinition(name, workspace);
+      const def = Blockly.Procedures.getDefinition(name, workspace);
       if (def) {
         workspace.centerOnBlock(def.id);
         def.select();
