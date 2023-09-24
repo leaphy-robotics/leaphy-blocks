@@ -7,8 +7,6 @@ import * as Blockly from 'blockly/core';
  */
 var Arduino = new Blockly.Generator('Arduino');
 
-import Variables from 'blockly/core/variables';
-import { Names, NameType } from "blockly/core/names";
 import {ConnectionType, Msg} from "blockly/core";
 
 /**
@@ -105,48 +103,48 @@ Arduino.DEF_FUNC_NAME = Arduino.FUNCTION_NAME_PLACEHOLDER_;
  * @param {Workspace} workspace Workspace to generate code from.
  */
 Arduino.init = function (workspace) {
-
+	
 	// Call Blockly.Generator's init.
 	Object.getPrototypeOf(this).init.call(this);
-
+	
 	if (!this.nameDB_) {
-		this.nameDB_ = new Names(this.RESERVED_WORDS_);
+		this.nameDB_ = new Blockly.Names(this.RESERVED_WORDS_);
 	} else {
 		this.nameDB_.reset();
 	}
-
+	
 	Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
-	this.nameDB_.populateVariables(workspace);
+	this.nameDB_.populateBlockly.Variables(workspace);
 	this.nameDB_.populateProcedures(workspace);
-
+	
 	const defvars = [];
-	// Add developer variables (not created or named by the user).
-	const devVarList = Variables.allDeveloperVariables(workspace);
+	// Add developer Blockly.Variables (not created or named by the user).
+	const devVarList = Blockly.Variables.allDeveloperBlockly.variables(workspace);
 	for (let i = 0; i < devVarList.length; i++) {
 		defvars.push(this.nameDB_.getName(devVarList[i],
-			NameType.DEVELOPER_VARIABLE));
+			Blockly.Names.NameType.DEVELOPER_VARIABLE));
 	}
-
-	// Add user variables, but only ones that are being used.
-	const variables = Variables.allUsedVarModels(workspace);
-	for (let i = 0; i < variables.length; i++) {
-		defvars.push(this.nameDB_.getName(variables[i].getId(),
-			NameType.VARIABLE));
+	
+	// Add user Blockly.Variables, but only ones that are being used.
+	const variables = Blockly.Variables.allUsedVarModels(workspace);
+	for (let i = 0; i < Blockly.Variables.length; i++) {
+		defvars.push(this.nameDB_.getName(Blockly.Variables[i].getId(),
+			Blockly.Names.NameType.VARIABLE));
 	}
-
-	// Declare all of the variables.
+	
+	// Declare all of the Blockly.Variables.
 	if (defvars.length) {
-		this.definitions_['variables'] =
+		this.definitions_['Blockly.Variables'] =
 			'double ' + defvars.join(' = 0, ') + ' = 0;\n';
 	}
-
+	
 	// Create a dictionary of definitions to be printed at the top of the sketch
 	this.includes_ = Object.create(null);
 	// Create a dictionary of setups to be printed in the setup() function
 	this.setups_ = Object.create(null);
 	// Create a dictionary of pins to check if their use conflicts
 	this.pins_ = Object.create(null);
-
+	
 	this.isInitialized = true;
 };
 
@@ -170,7 +168,7 @@ Arduino.finish = function (code) {
 	if (definitions.length) {
 		definitions.push('\n');
 	}
-
+	
 	// userSetupCode added at the end of the setup function without leading spaces
 	var setups = [''], userSetupCode = '';
 	if (Arduino.setups_['userSetupCode'] !== undefined) {
@@ -183,7 +181,7 @@ Arduino.finish = function (code) {
 	if (userSetupCode) {
 		setups.push(userSetupCode);
 	}
-
+	
 	// Clean up temporary data
 	delete Arduino.includes_;
 	delete Arduino.definitions_;
@@ -193,8 +191,8 @@ Arduino.finish = function (code) {
 	delete Arduino.setups_;
 	delete Arduino.pins_;
 	this.nameDB_.reset();
-
-	var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n\n');
+	
+	var allDefs = includes.join('\n') + definitions.join('\n') + Blockly.Variables.join('\n') + functions.join('\n\n');
 	var setup = 'void setup() {' + setups.join('\n  ') + '\n}\n\n';
 	var loop = 'void loop() {\n  ' + code.replace(/\n/g, '\n  ') + '\n}';
 	return allDefs + setup + loop;
@@ -235,8 +233,8 @@ Arduino.addDeclaration = function (declarationTag, code) {
  */
 Arduino.addVariable = function (varName, code, overwrite) {
 	var overwritten = false;
-	if (overwrite || (Arduino.variables_[varName] === undefined)) {
-		Arduino.variables_[varName] = code;
+	if (overwrite || (Arduino.Blockly.Variables_[varName] === undefined)) {
+		Arduino.Blockly.Variables_[varName] = code;
 		overwritten = true;
 	}
 	return overwritten;
@@ -273,7 +271,7 @@ Arduino.addSetup = function (setupTag, code, overwrite) {
 Arduino.addFunction = function (preferedName, code) {
 	if (Arduino.codeFunctions_[preferedName] === undefined) {
 		var uniqueName = this.nameDB_.getDistinctName(
-			preferedName, NameType.PROCEDURE);
+			preferedName, Blockly.Names.NameType.PROCEDURE);
 		Arduino.codeFunctions_[preferedName] =
 			code.replace(Arduino.DEF_FUNC_NAME, uniqueName);
 		Arduino.functionNames_[preferedName] = uniqueName;
@@ -402,6 +400,6 @@ loops.default(Arduino);
 math.default(Arduino);
 procedures.default(Arduino);
 text.default(Arduino);
-variables.default(Arduino);
+Blockly.Variables.default(Arduino);
 
 export default Arduino;
