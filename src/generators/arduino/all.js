@@ -400,6 +400,6 @@ loops.default(Arduino);
 math.default(Arduino);
 procedures.default(Arduino);
 text.default(Arduino);
-Blockly.Variables.default(Arduino);
+variables.default(Arduino);
 
 export default Arduino;
