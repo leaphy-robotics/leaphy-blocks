@@ -1,4 +1,5 @@
 import * as Blockly from 'blockly/core';
+const xmlUtils = Blockly.utils.xml;
 
 /**
  * @mixin

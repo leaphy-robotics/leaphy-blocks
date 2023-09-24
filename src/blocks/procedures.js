@@ -1,17 +1,5 @@
-/**
- * @license
- * Copyright 2012 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/**
- * @fileoverview Procedure blocks for Blockly.
- * @suppress {checkTypes|visibility}
- */
-'use strict';
-
 import * as Blockly from 'blockly/core';
-
+const xmlUtils = Blockly.utils.xml;
 
 
 /**
