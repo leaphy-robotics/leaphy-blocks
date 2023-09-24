@@ -114,12 +114,12 @@ Arduino.init = function (workspace) {
 	}
 	
 	Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
-	this.nameDB_.populateBlockly.variables(workspace);
+	this.nameDB_.populateVariables(workspace);
 	this.nameDB_.populateProcedures(workspace);
 	
 	const defvars = [];
 	// Add developer Blockly.Variables (not created or named by the user).
-	const devVarList = Blockly.Variables.allDeveloperBlockly.variables(workspace);
+	const devVarList = Blockly.Variables.allDeveloperVariables(workspace);
 	for (let i = 0; i < devVarList.length; i++) {
 		defvars.push(this.nameDB_.getName(devVarList[i],
 			Blockly.Names.NameType.DEVELOPER_VARIABLE));
