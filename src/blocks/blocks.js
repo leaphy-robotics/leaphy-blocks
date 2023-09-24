@@ -40,6 +40,7 @@ import * as leaphyClick from './leaphy_click';
 import * as leaphyExtra from './leaphy_extra';
 //const arduino = goog.require('Blockly.libraryBlocks.arduino');
 import * as arduino from './arduino';
+import * as procedures from "./procedures";
 
 // Add all blocks from each independent module in one list
 const block = [
@@ -58,6 +59,7 @@ const block = [
 	  ...leaphyClick.blocks,
 	  ...leaphyExtra.blocks,
 	  ...arduino.blocks,
+	  ...procedures.blocks,
 ];
 
 
