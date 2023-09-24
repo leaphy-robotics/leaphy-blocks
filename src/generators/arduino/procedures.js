@@ -123,7 +123,7 @@ function getCodeGenerators(Arduino) {
 		function statementToCodeNoTab(block, name) {
 			var targetBlock = block.getInputTargetBlock(name);
 			var code = Arduino.blockToCode(targetBlock);
-			if (!goog.isString(code)) {
+			if (!Blockly.isString(code)) {
 				throw 'Expecting code from statement block "' + targetBlock.type + '".';
 			}
 			return code;
