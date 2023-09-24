@@ -61,9 +61,7 @@ const block = [
 	  ...arduino.blocks,
 ];
 
-const blockJs = [
-	...procedures.blocks,
-];
+const blockJs = procedures.blocks;
 
 
 export const blocks = block, blocksJs = blockJs;
