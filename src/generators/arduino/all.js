@@ -114,7 +114,7 @@ Arduino.init = function (workspace) {
 	}
 	
 	Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
-	this.nameDB_.populateBlockly.Variables(workspace);
+	this.nameDB_.populateBlockly.variables(workspace);
 	this.nameDB_.populateProcedures(workspace);
 	
 	const defvars = [];
