@@ -23,10 +23,4 @@ const componentStyles = {
 	'flyoutOpacity': 1,
 };
 
-/**
- * Leaphy theme.
- *
- * @alias Blockly.Themes.Leaphy
- */
-export const Leaphy =
-	Blockly.Theme.defineTheme('leaphy', defaultBlockStyles, categoryStyles, componentStyles);
+export { defaultBlockStyles, categoryStyles, componentStyles }
