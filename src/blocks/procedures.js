@@ -410,7 +410,7 @@ blocks['procedures_defnoreturn'] = {
    */
   init: function() {
     const initName = Blockly.Procedures.findLegalName('', this);
-    const nameField = new FieldTextInput(initName, Blockly.Procedures.rename);
+    const nameField = new Blockly.FieldTextInput(initName, Blockly.Procedures.rename);
     nameField.setSpellcheck(false);
     this.appendDummyInput()
         .appendField(Msg['PROCEDURES_DEFNORETURN_TITLE'])
@@ -453,7 +453,7 @@ blocks['procedures_defreturn'] = {
    */
   init: function() {
     const initName = Blockly.Procedures.findLegalName('', this);
-    const nameField = new FieldTextInput(initName, Blockly.Procedures.rename);
+    const nameField = new Blockly.FieldTextInput(initName, Blockly.Procedures.rename);
     nameField.setSpellcheck(false);
     this.appendDummyInput()
         .appendField(Msg['PROCEDURES_DEFRETURN_TITLE'])
@@ -515,7 +515,7 @@ blocks['procedures_mutatorarg'] = {
    * @this {Block}
    */
   init: function() {
-    const field = new FieldTextInput(Blockly.Procedures.DEFAULT_ARG, this.validator_);
+    const field = new Blockly.FieldTextInput(Blockly.Procedures.DEFAULT_ARG, this.validator_);
     // Hack: override showEditor to do just a little bit more work.
     // We don't have a good place to hook into the start of a text edit.
     field.oldShowEditorFn_ = field.showEditor_;
