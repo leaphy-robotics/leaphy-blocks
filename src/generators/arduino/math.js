@@ -1,3 +1,5 @@
+import * as Blockly from 'blockly/core';
+
 function getCodeGenerators(Arduino) {
 	
 	/**
@@ -234,7 +236,7 @@ function getCodeGenerators(Arduino) {
 		var argument0 = Arduino.valueToCode(block, 'DELTA',
 			Arduino.ORDER_ADDITIVE) || '0';
 		var varName = Arduino.nameDB_.getName(
-			block.getFieldValue('VAR'), NameType.VARIABLE);
+			block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
 		return varName + ' += ' + argument0 + ';\n';
 	};
 	
