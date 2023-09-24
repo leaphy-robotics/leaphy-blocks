@@ -19,7 +19,7 @@ function getCodeGenerators(Arduino) {
 	 */
 	Arduino['variables_get'] = function (block) {
 		
-		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
+		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.NameType.VARIABLE);
 		return [varName, Arduino.ORDER_ATOMIC];
 	};
 	
@@ -33,7 +33,7 @@ function getCodeGenerators(Arduino) {
 	Arduino['variables_set'] = function (block) {
 		
 		var argument0 = Arduino.valueToCode(block, 'VALUE', Arduino.ORDER_ASSIGNMENT) || '0';
-		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
+		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.NameType.VARIABLE);
 		
 		return varName + ' = ' + argument0 + ';\n';
 	};
