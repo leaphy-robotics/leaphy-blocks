@@ -249,7 +249,7 @@ const PROCEDURE_DEF_COMMON = {
         if (hasStatements) {
           this.setStatements_(true);
           // Restore the stack, if one was saved.
-          Mutator.reconnect(this.statementConnection_, this, 'STACK');
+          this.statementConnection_.reconnect(this, 'STACK');
           this.statementConnection_ = null;
         } else {
           // Save the stack, then disconnect it.
@@ -351,7 +351,7 @@ const PROCEDURE_DEF_COMMON = {
       const blocks = this.mutator.workspace_.getAllBlocks(false);
       for (let i = 0, block; (block = blocks[i]); i++) {
         if (block.type === 'procedures_mutatorarg' &&
-            Names.equals(oldName, block.getFieldValue('NAME'))) {
+            Blockly.Names.equals(oldName, block.getFieldValue('NAME'))) {
           block.setFieldValue(newName, 'NAME');
         }
       }
@@ -558,7 +558,7 @@ blocks['procedures_mutatorarg'] = {
    */
   validator_: function(varName) {
     const sourceBlock = this.getSourceBlock();
-    const outerWs = Mutator.findParentWs(sourceBlock.workspace);
+    const outerWs = sourceBlock.workspace.getRootWorkspace();
     varName = varName.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
     if (!varName) {
       return null;
@@ -609,7 +609,7 @@ blocks['procedures_mutatorarg'] = {
    * @this {FieldTextInput}
    */
   deleteIntermediateVars_: function(newText) {
-    const outerWs = Mutator.findParentWs(this.getSourceBlock().workspace);
+    const outerWs = this.getSourceBlock().workspace.getRootWorkspace();
     if (!outerWs) {
       return;
     }
@@ -733,7 +733,7 @@ const PROCEDURE_CALL_COMMON = {
         const quarkId = this.quarkIds_[i];
         if (quarkId in this.quarkConnections_) {
           const connection = this.quarkConnections_[quarkId];
-          if (!Mutator.reconnect(connection, this, 'ARG' + i)) {
+          if (!connection.reconnect(this, 'ARG' + i)) {
             // Block no longer exists or has been attached elsewhere.
             delete this.quarkConnections_[quarkId];
           }
