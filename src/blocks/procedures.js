@@ -1147,4 +1147,4 @@ blocks['procedures_ifreturn'] = {
   FUNCTION_TYPES: ['procedures_defnoreturn', 'procedures_defreturn'],
 };
 
-export default blocks;
+export {blocks};
