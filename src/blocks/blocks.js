@@ -59,8 +59,11 @@ const block = [
 	  ...leaphyClick.blocks,
 	  ...leaphyExtra.blocks,
 	  ...arduino.blocks,
-	  ...procedures.blocks,
+];
+
+const blockJs = [
+	...procedures.blocks,
 ];
 
 
-export const blocks = block;
+export const blocks = block, blocksJs = blockJs;
