@@ -1,15 +1,3 @@
-/**
- * @license
- * Copyright 2012 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/**
- * @fileoverview Generating Arduino for Leaphy Click blocks.
- */
- 'use strict';
-
-
 function getCodeGenerators(Arduino) {
     Arduino['leaphy_click_rgb_digitalwrite'] = function (block) {
      var pin1 = block.getFieldValue('PIN1');

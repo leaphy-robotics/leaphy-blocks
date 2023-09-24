@@ -38,3 +38,5 @@ function getCodeGenerators(Arduino) {
 		return code;
 	};
 }
+
+export default getCodeGenerators;

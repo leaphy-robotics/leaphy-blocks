@@ -167,10 +167,10 @@ function getCodeGenerators(Arduino) {
 
         // Warn if the input value is out of range
         if ((stateOutput < 0) || (stateOutput > 255)) {
-         block.setWarningText('The analogue value set must be between 0 and 255',
-             'pwm_value');
+            block.setWarningText('The analogue value set must be between 0 and 255',
+                'pwm_value');
         } else {
-         block.setWarningText(null, 'pwm_value');
+            block.setWarningText(null, 'pwm_value');
         }
 
         var code = 'analogWrite(' + pin + ', ' + stateOutput + ');\n';
