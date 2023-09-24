@@ -1,6 +1,6 @@
 import * as Blockly from 'blockly/core';
 const xmlUtils = Blockly.utils.xml;
-
+const Mutator = Blockly.Mu;
 /**
  * @mixin
  * @package
@@ -315,10 +315,10 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
 	reconnectChildBlocks_: function(
 		valueConnections, statementConnections, elseStatementConnection) {
 		for (let i = 1; i <= this.elseifCount_; i++) {
-			Mutator.reconnect(valueConnections[i], this, 'IF' + i);
-			Mutator.reconnect(statementConnections[i], this, 'DO' + i);
+			valueConnections[i].reconnect(this, 'IF' + i);
+			statementConnections[i].reconnect(this, 'DO' + i);
 		}
-		Mutator.reconnect(elseStatementConnection, this, 'ELSE');
+		elseStatementConnection.reconnect(this, 'ELSE');
 	},
 };
 
