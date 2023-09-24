@@ -291,13 +291,13 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
 		// Rebuild block.
 		for (let i = 1; i <= this.elseifCount_; i++) {
 			this.appendValueInput('IF' + i).setCheck('Boolean').appendField(
-				Msg['CONTROLS_IF_MSG_ELSEIF']);
+				Blockly.Msg['CONTROLS_IF_MSG_ELSEIF']);
 			this.appendStatementInput('DO' + i).appendField(
-				Msg['CONTROLS_IF_MSG_THEN']);
+				Blockly.Msg['CONTROLS_IF_MSG_THEN']);
 		}
 		if (this.elseCount_) {
 			this.appendDummyInput('ELSELABEL')
-				.appendField(Msg['CONTROLS_IF_MSG_ELSE']);
+				.appendField(Blockly.Msg['CONTROLS_IF_MSG_ELSE']);
 			this.appendStatementInput('ELSE');
 		}
 	},
