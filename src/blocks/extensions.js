@@ -318,7 +318,9 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
 			valueConnections[i].reconnect(this, 'IF' + i);
 			statementConnections[i].reconnect(this, 'DO' + i);
 		}
-		elseStatementConnection.reconnect(this, 'ELSE');
+		if (elseStatementConnection) {
+			elseStatementConnection.reconnect(this, 'ELSE');
+		}
 	},
 };
 
