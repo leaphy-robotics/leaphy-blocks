@@ -1,5 +1,4 @@
 import * as Blockly from 'blockly/core';
-import {MutatorIcon} from "blockly/core/icons";
 const xmlUtils = Blockly.utils.xml;
 
 
@@ -103,7 +102,7 @@ blocks['lists_create_with'] = {
     this.itemCount_ = 3;
     this.updateShape_();
     this.setOutput(true, 'Array');
-    this.setMutator(new MutatorIcon(['lists_create_with_item'], this));
+    this.setMutator(new Blockly.icons.MutatorIcon(['lists_create_with_item'], this));
     this.setTooltip(Msg['LISTS_CREATE_WITH_TOOLTIP']);
   },
   /**

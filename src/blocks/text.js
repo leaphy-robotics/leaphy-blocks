@@ -1,5 +1,4 @@
 import * as Blockly from 'blockly/core';
-import {MutatorIcon} from "blockly/core/icons";
 const xmlUtils = Blockly.utils.xml;
 
 /**
@@ -745,7 +744,7 @@ const TEXT_JOIN_EXTENSION = function() {
   this.itemCount_ = 2;
   this.updateShape_();
   // Configure the mutator UI.
-  this.setMutator(new MutatorIcon(['text_create_join_item'], this));
+  this.setMutator(new Blockly.icons.MutatorIcon(['text_create_join_item'], this));
 };
 
 
