@@ -31,7 +31,7 @@ function getCodeGenerators(Arduino) {
 				'double' +
 				' ' +
 				Arduino.nameDB_.getName(block.arguments_[x],
-					NameType.VARIABLE);
+					Blockly.Names.NameType.VARIABLE);
 		}
 
 // Get return type
@@ -87,8 +87,7 @@ function getCodeGenerators(Arduino) {
 			args[x] = Arduino.valueToCode(block, 'ARG' + x,
 				Arduino.ORDER_NONE) || 'null';
 		}
-		var code = funcName + '(' + args.join(', ') + ');\n';
-		return code;
+		return funcName + '(' + args.join(', ') + ');\n';
 	};
 	
 	/**
@@ -135,9 +134,8 @@ function getCodeGenerators(Arduino) {
 			Arduino.addSetup('userSetupCode', setupBranch, true);
 		}
 		
-		var loopBranch = statementToCodeNoTab(block, 'LOOP_FUNC');
 //var loopcode = Arduino.scrub_(block, loopBranch); No comment block
-		return loopBranch;
+		return statementToCodeNoTab(block, 'LOOP_FUNC');
 	};
 }
 

@@ -1,3 +1,5 @@
+import * as Blockly from 'blockly/core';
+
 function getCodeGenerators(Arduino) {
 	/**
 	 * Generator for the repeat block (number in a drop down) using a For loop
@@ -10,12 +12,11 @@ function getCodeGenerators(Arduino) {
 		var repeats = Number(block.getFieldValue('TIMES'));
 		var branch = Arduino.statementToCode(block, 'DO');
 		branch = Arduino.addLoopTrap(branch, block.id);
-		var loopVar = Arduino.nameDB_.getDistinctName('count', NameType.VARIABLE);
-		var code = 'for (int ' + loopVar + ' = 0; ' +
+		var loopVar = Arduino.nameDB_.getDistinctName('count', Blockly.Names.NameType.VARIABLE);
+		return 'for (int ' + loopVar + ' = 0; ' +
 			loopVar + ' < ' + repeats + '; ' +
 			loopVar + '++) {\n' +
 			branch + '}\n';
-		return code;
 	};
 	
 	/**
@@ -32,11 +33,11 @@ function getCodeGenerators(Arduino) {
 		branch = Arduino.addLoopTrap(branch, block.id);
 		var code = '';
 		var loopVar = Arduino.nameDB_.getDistinctName(
-			'count', NameType.VARIABLE);
+			'count', Blockly.Names.NameType.VARIABLE);
 		var endVar = repeats;
-		if (!repeats.match(/^\w+$/) && !stringUtils.isNumber(repeats)) {
+		if (!repeats.match(/^\w+$/) && !Blockly.utils.string.isNumber(repeats)) {
 			var endVar = Arduino.nameDB_.getDistinctName(
-				'repeat_end', NameType.VARIABLE);
+				'repeat_end', Blockly.Names.NameType.VARIABLE);
 			code += 'int ' + endVar + ' = ' + repeats + ';\n';
 		}
 		code += 'for (int ' + loopVar + ' = 0; ' +
@@ -83,7 +84,7 @@ function getCodeGenerators(Arduino) {
 	 */
 	Arduino['controls_for'] = function (block) {
 		var variable0 = Arduino.nameDB_.getName(
-			block.getFieldValue('VAR'), NameType.VARIABLE);
+			block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
 		var argument0 = Arduino.valueToCode(block, 'FROM',
 			Arduino.ORDER_ASSIGNMENT) || '0';
 		var argument1 = Arduino.valueToCode(block, 'TO',
@@ -93,15 +94,15 @@ function getCodeGenerators(Arduino) {
 		var branch = Arduino.statementToCode(block, 'DO');
 		branch = Arduino.addLoopTrap(branch, block.id);
 		var code;
-		if (stringUtils.isNumber(argument0) && stringUtils.isNumber(argument1) &&
-			stringUtils.isNumber(increment)) {
+		if (Blockly.utils.string.isNumber(argument0) && Blockly.utils.string.isNumber(argument1) &&
+			Blockly.utils.string.isNumber(increment)) {
 // All arguments are simple numbers.
 			var up = parseFloat(argument0) <= parseFloat(argument1);
 			code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
 				variable0 + (up ? ' <= ' : ' >= ') + argument1 + '; ' +
 				variable0;
 			var step = Math.abs(parseFloat(increment));
-			if (step == 1) {
+			if (step === 1) {
 				code += up ? '++' : '--';
 			} else {
 				code += (up ? ' += ' : ' -= ') + step;
@@ -111,23 +112,23 @@ function getCodeGenerators(Arduino) {
 			code = '';
 // Cache non-trivial values to variables to prevent repeated look-ups.
 			var startVar = argument0;
-			if (!argument0.match(/^\w+$/) && !stringUtils.isNumber(argument0)) {
+			if (!argument0.match(/^\w+$/) && !Blockly.utils.string.isNumber(argument0)) {
 				var startVar = Arduino.nameDB_.getDistinctName(
-					variable0 + '_start', NameType.VARIABLE);
+					variable0 + '_start', Blockly.Names.NameType.VARIABLE);
 				code += 'int ' + startVar + ' = ' + argument0 + ';\n';
 			}
 			var endVar = argument1;
-			if (!argument1.match(/^\w+$/) && !stringUtils.isNumber(argument1)) {
+			if (!argument1.match(/^\w+$/) && !Blockly.utils.string.isNumber(argument1)) {
 				var endVar = Arduino.nameDB_.getDistinctName(
-					variable0 + '_end', NameType.VARIABLE);
+					variable0 + '_end', Blockly.Names.NameType.VARIABLE);
 				code += 'int ' + endVar + ' = ' + argument1 + ';\n';
 			}
 // Determine loop direction at start, in case one of the bounds
 // changes during loop execution.
 			var incVar = Arduino.nameDB_.getDistinctName(
-				variable0 + '_inc', NameType.VARIABLE);
+				variable0 + '_inc', Blockly.Names.NameType.VARIABLE);
 			code += 'int ' + incVar + ' = ';
-			if (stringUtils.isNumber(increment)) {
+			if (Blockly.utils.string.isNumber(increment)) {
 				code += Math.abs(increment) + ';\n';
 			} else {
 				code += 'abs(' + increment + ');\n';
