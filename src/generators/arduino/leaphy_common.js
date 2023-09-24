@@ -1,6 +1,6 @@
 
 function getCodeGenerators(Arduino) {
-	Arduino['leaphy_start'] = function (block) {
+	Arduino.forBlock['leaphy_start'] = function (block) {
 		// Define the Start procedure
 		var funcName = 'leaphyProgram';
 		var branch = Arduino.statementToCode(block, 'STACK');
@@ -23,14 +23,14 @@ function getCodeGenerators(Arduino) {
 		return null;
 	};
 
-	Arduino['leaphy_serial_print_line'] = function (block) {
+	Arduino.forBlock['leaphy_serial_print_line'] = function (block) {
 		Arduino.addSetup('serial', 'Serial.begin(115200);', false);
 		var value = Arduino.valueToCode(this, 'VALUE', Arduino.ORDER_ATOMIC) || '0';
 		var code = 'Serial.println(' + value + ');\n';
 		return code;
 	};
 
-	Arduino['leaphy_serial_print_value'] = function (block) {
+	Arduino.forBlock['leaphy_serial_print_value'] = function (block) {
 		Arduino.addSetup('serial', 'Serial.begin(115200);', false);
 		var name = Arduino.valueToCode(this, 'NAME', Arduino.ORDER_ATOMIC) || '0';
 		var value = Arduino.valueToCode(this, 'VALUE', Arduino.ORDER_ATOMIC) || '0';

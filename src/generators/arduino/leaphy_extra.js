@@ -17,7 +17,7 @@ function getCodeGenerators(Arduino) {
 
     var rgbColorSetupCode = 'if (tcs.begin()) {\n    Serial.println("RGB-sensor gevonden!");\n  } else {\n    Serial.println("Geen RGB-sensor gevonden... check je verbindingen...");\n  }';
 
-    Arduino['leaphy_rgb_color'] = function (block) {
+    Arduino.forBlock['leaphy_rgb_color'] = function (block) {
         Arduino.definitions_['define_leaphy_rgb'] = includeDefinition;
         Arduino.definitions_['define_leaphy_rgb_var'] = variablesDefinition;
         Arduino.definitions_['define_get_color'] = getColorDefinition;
@@ -28,7 +28,7 @@ function getCodeGenerators(Arduino) {
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_rgb_color_raw'] = function (block) {
+    Arduino.forBlock['leaphy_rgb_color_raw'] = function (block) {
         Arduino.definitions_['define_leaphy_rgb'] = includeDefinition;
         Arduino.definitions_['define_leaphy_rgb_var'] = variablesDefinition;
         Arduino.definitions_['define_get_color'] = getColorDefinition;
@@ -39,28 +39,28 @@ function getCodeGenerators(Arduino) {
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_rgb_raw_color_red'] = function (block) {
+    Arduino.forBlock['leaphy_rgb_raw_color_red'] = function (block) {
         Arduino.definitions_['define_leaphy_rgb'] = includeDefinition;
         Arduino.definitions_['define_leaphy_rgb_var'] = variablesDefinition;
         var code = 'RawColor_Red';
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_rgb_raw_color_green'] = function (block) {
+    Arduino.forBlock['leaphy_rgb_raw_color_green'] = function (block) {
         Arduino.definitions_['define_leaphy_rgb'] = includeDefinition;
         Arduino.definitions_['define_leaphy_rgb_var'] = variablesDefinition;
         var code = 'RawColor_Green';
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_rgb_raw_color_blue'] = function (block) {
+    Arduino.forBlock['leaphy_rgb_raw_color_blue'] = function (block) {
         Arduino.definitions_['define_leaphy_rgb'] = includeDefinition;
         Arduino.definitions_['define_leaphy_rgb_var'] = variablesDefinition;
         var code = 'RawColor_Blue';
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_led_set_strip'] = function (block) {
+    Arduino.forBlock['leaphy_led_set_strip'] = function (block) {
         var pin = Arduino.valueToCode(this, 'LED_SET_PIN', Arduino.ORDER_ATOMIC) || '0'
         var leds = Arduino.valueToCode(this, 'LED_SET_LEDS', Arduino.ORDER_ATOMIC) || '0'
         Arduino.definitions_['define_led_lib'] = '#include "ledstrip.h"';
@@ -69,7 +69,7 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_led_set_basic'] = function (block) {
+    Arduino.forBlock['leaphy_led_set_basic'] = function (block) {
         var led = Arduino.valueToCode(this, 'LED_BASIC_LED', Arduino.ORDER_ATOMIC) || '0'
         var red = Arduino.valueToCode(this, 'LED_BASIC_RED', Arduino.ORDER_ATOMIC) || '0'
         var green = Arduino.valueToCode(this, 'LED_BASIC_GREEN', Arduino.ORDER_ATOMIC) || '0'
@@ -78,13 +78,13 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_led_set_speed'] = function (block) {
+    Arduino.forBlock['leaphy_led_set_speed'] = function (block) {
         var speedValue = Arduino.valueToCode(this, 'LED_SET_SPEEDVALUE', Arduino.ORDER_ATOMIC) || '0'
         var code = '_snelHeid = ' + speedValue + ';\n';
         return code;
     };
 
-    Arduino['leaphy_led_strip_demo'] = function (block) {
+    Arduino.forBlock['leaphy_led_strip_demo'] = function (block) {
         var dropdownType = block.getFieldValue('DEMO_TYPE');
         var red = Arduino.valueToCode(this, 'LED_STRIP_DEMO_RED', Arduino.ORDER_ATOMIC) || '0'
         var green = Arduino.valueToCode(this, 'LED_STRIP_DEMO_GREEN', Arduino.ORDER_ATOMIC) || '0'
@@ -93,7 +93,7 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_servo_write'] = function (block) {
+    Arduino.forBlock['leaphy_servo_write'] = function (block) {
         var pinKey = block.getFieldValue('SERVO_PIN');
         var servoAngle = Arduino.valueToCode(
             block, 'SERVO_ANGLE', Arduino.ORDER_ATOMIC) || '90';
@@ -122,7 +122,7 @@ function getCodeGenerators(Arduino) {
      * @return {array} Completed code with order of operation.
      */
 
-    Arduino['leaphy_servo_read'] = function (block) {
+    Arduino.forBlock['leaphy_servo_read'] = function (block) {
         var pinKey = block.getFieldValue('SERVO_PIN');
         var servoName = 'myServo' + pinKey;
 
@@ -139,7 +139,7 @@ function getCodeGenerators(Arduino) {
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_io_digitalwrite'] = function (block) {
+    Arduino.forBlock['leaphy_io_digitalwrite'] = function (block) {
         var pin = block.getFieldValue('PIN');
         var stateOutput = Arduino.valueToCode(
             block, 'STATE', Arduino.ORDER_ATOMIC) || 'LOW';
@@ -154,7 +154,7 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_io_analogwrite'] = function (block) {
+    Arduino.forBlock['leaphy_io_analogwrite'] = function (block) {
         var pin = block.getFieldValue('PIN');
         var stateOutput = Arduino.valueToCode(
             block, 'NUM', Arduino.ORDER_ATOMIC) || '0';
@@ -177,7 +177,7 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_sonar_read'] = function (block) {
+    Arduino.forBlock['leaphy_sonar_read'] = function (block) {
         Arduino.addInclude('leaphy_extra', '#include "Leaphy_Extra.h"');
         var trigPin = block.getFieldValue('TRIG_PIN');
         var echoPin = block.getFieldValue('ECHO_PIN');
@@ -197,13 +197,13 @@ function getCodeGenerators(Arduino) {
         Arduino.addSetup('oled', displaySetup, false);
     }
 
-    Arduino['leaphy_display_clear'] = function (block) {
+    Arduino.forBlock['leaphy_display_clear'] = function (block) {
         addDisplaySetupCode();
         var code = 'display.clearDisplay();\n';
         return code;
     };
 
-    Arduino['leaphy_display_print_line'] = function (block) {
+    Arduino.forBlock['leaphy_display_print_line'] = function (block) {
         addDisplaySetupCode();
 
         var value = Arduino.valueToCode(this, 'VALUE', Arduino.ORDER_ATOMIC) || '0';
@@ -214,7 +214,7 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_display_print_value'] = function (block) {
+    Arduino.forBlock['leaphy_display_print_value'] = function (block) {
         addDisplaySetupCode();
 
         var name = Arduino.valueToCode(this, 'NAME', Arduino.ORDER_ATOMIC) || '0';
@@ -225,17 +225,17 @@ function getCodeGenerators(Arduino) {
         return code;
     };
 
-    Arduino['leaphy_display_display'] = function (block) {
+    Arduino.forBlock['leaphy_display_display'] = function (block) {
         addDisplaySetupCode();
         var code = 'display.display();\n';
         return code;
     };
 
-    Arduino['leaphy_update_lsm9ds1'] = function (block) {
+    Arduino.forBlock['leaphy_update_lsm9ds1'] = function (block) {
         return "  lsm.read();  /* ask it to read in the data */  \n \n  /* Get a new sensor event */  \n  sensors_event_t a, m, g, temp; \n \n  lsm.getEvent(&a, &m, &g, &temp);"
     }
 
-    Arduino['leaphy_use_lsm9ds1'] = function (block) {
+    Arduino.forBlock['leaphy_use_lsm9ds1'] = function (block) {
         var sensor = block.getFieldValue('SENSOR');
         var axis = block.getFieldValue('AXIS');
         Arduino.addInclude('adafruit_lsm9ds1', '#include <Adafruit_LSM9DS1.h>');

@@ -6,7 +6,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_if'] = function (block) {
+	Arduino.forBlock['controls_if'] = function (block) {
 		var n = 0;
 		var argument = Arduino.valueToCode(block, 'IF' + n,
 			Arduino.ORDER_NONE) || 'false';
@@ -31,7 +31,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['logic_compare'] = function (block) {
+	Arduino.forBlock['logic_compare'] = function (block) {
 		var OPERATORS = {
 			'EQ': '==',
 			'NEQ': '!=',
@@ -55,7 +55,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['logic_operation'] = function (block) {
+	Arduino.forBlock['logic_operation'] = function (block) {
 		var operator = (block.getFieldValue('OP') == 'AND') ? '&&' : '||';
 		var order = (operator == '&&') ? Arduino.ORDER_LOGICAL_AND :
 			Arduino.ORDER_LOGICAL_OR;
@@ -85,7 +85,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['logic_negate'] = function (block) {
+	Arduino.forBlock['logic_negate'] = function (block) {
 		var order = Arduino.ORDER_UNARY_PREFIX;
 		var argument0 = Arduino.valueToCode(block, 'BOOL', order) || 'false';
 		var code = '!' + argument0;
@@ -98,7 +98,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['logic_boolean'] = function (block) {
+	Arduino.forBlock['logic_boolean'] = function (block) {
 		var code = (block.getFieldValue('BOOL') == 'TRUE') ? 'true' : 'false';
 		return [code, Arduino.ORDER_ATOMIC];
 	};
@@ -109,7 +109,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['logic_null'] = function (block) {
+	Arduino.forBlock['logic_null'] = function (block) {
 		var code = 'NULL';
 		return [code, Arduino.ORDER_ATOMIC];
 	};
@@ -123,7 +123,7 @@ function getCodeGenerators(Arduino) {
 	 * TODO: Check types of THEN and ELSE blocks and add warning to this block if
 	 *       they are different from each other.
 	 */
-	Arduino['logic_ternary'] = function (block) {
+	Arduino.forBlock['logic_ternary'] = function (block) {
 		var valueIf = Arduino.valueToCode(block, 'IF',
 			Arduino.ORDER_CONDITIONAL) || 'false';
 		var valueThen = Arduino.valueToCode(block, 'THEN',

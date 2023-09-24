@@ -5,7 +5,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['text'] = function (block) {
+	Arduino.forBlock['text'] = function (block) {
 		var code = Arduino.quote_(block.getFieldValue('TEXT'));
 		return [code, Arduino.ORDER_ATOMIC];
 	};

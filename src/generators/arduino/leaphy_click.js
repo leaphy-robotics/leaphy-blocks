@@ -1,5 +1,5 @@
 function getCodeGenerators(Arduino) {
-    Arduino['leaphy_click_rgb_digitalwrite'] = function (block) {
+    Arduino.forBlock['leaphy_click_rgb_digitalwrite'] = function (block) {
      var pin1 = block.getFieldValue('PIN1');
      var state1Output = Arduino.valueToCode(
          block, 'STATE1', Arduino.ORDER_ATOMIC) || 'LOW';

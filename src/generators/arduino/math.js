@@ -8,7 +8,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_number'] = function (block) {
+	Arduino.forBlock['math_number'] = function (block) {
 		// Numeric value.
 		var code = parseFloat(block.getFieldValue('NUM'));
 		if (code == Infinity) {
@@ -26,7 +26,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_arithmetic'] = function (block) {
+	Arduino.forBlock['math_arithmetic'] = function (block) {
 		var OPERATORS = {
 			ADD: [' + ', Arduino.ORDER_ADDITIVE],
 			MINUS: [' - ', Arduino.ORDER_ADDITIVE],
@@ -55,7 +55,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_single'] = function (block) {
+	Arduino.forBlock['math_single'] = function (block) {
 		var operator = block.getFieldValue('OP');
 		var code;
 		var arg;
@@ -148,7 +148,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['math_constant'] = function (block) {
+	Arduino.forBlock['math_constant'] = function (block) {
 		var CONSTANTS = {
 			'PI': ['M_PI', Arduino.ORDER_UNARY_POSTFIX],
 			'E': ['M_E', Arduino.ORDER_UNARY_POSTFIX],
@@ -167,7 +167,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_number_property'] = function (block) {
+	Arduino.forBlock['math_number_property'] = function (block) {
 		var number_to_check = Arduino.valueToCode(block, 'NUMBER_TO_CHECK',
 			Arduino.ORDER_MULTIPLICATIVE) || '0';
 		var dropdown_property = block.getFieldValue('PROPERTY');
@@ -232,7 +232,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_change'] = function (block) {
+	Arduino.forBlock['math_change'] = function (block) {
 		var argument0 = Arduino.valueToCode(block, 'DELTA',
 			Arduino.ORDER_ADDITIVE) || '0';
 		var varName = Arduino.nameDB_.getName(
@@ -241,10 +241,10 @@ function getCodeGenerators(Arduino) {
 	};
 	
 	/** Rounding functions have a single operand. */
-	Arduino['math_round'] = Arduino['math_single'];
+	Arduino.forBlock['math_round'] = Arduino.forBlock['math_single'];
 	
 	/** Trigonometry functions have a single operand. */
-	Arduino['math_trig'] = Arduino['math_single'];
+	Arduino.forBlock['math_trig'] = Arduino.forBlock['math_single'];
 	
 	/**
 	 * Generator for the math function to a list.
@@ -253,7 +253,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_on_list'] = Arduino.noGeneratorCodeInline;
+	Arduino.forBlock['math_on_list'] = Arduino.noGeneratorCodeInline;
 	
 	/**
 	 * Generator for the math modulo function (calculates remainder of X/Y).
@@ -261,7 +261,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_modulo'] = function (block) {
+	Arduino.forBlock['math_modulo'] = function (block) {
 		var argument0 = Arduino.valueToCode(block, 'DIVIDEND',
 			Arduino.ORDER_MULTIPLICATIVE) || '0';
 		var argument1 = Arduino.valueToCode(block, 'DIVISOR',
@@ -276,7 +276,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_constrain'] = function (block) {
+	Arduino.forBlock['math_constrain'] = function (block) {
 		// Constrain a number between two limits.
 		var argument0 = Arduino.valueToCode(block, 'VALUE',
 			Arduino.ORDER_NONE) || '0';
@@ -297,7 +297,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['math_random_int'] = function (block) {
+	Arduino.forBlock['math_random_int'] = function (block) {
 		var argument0 = Arduino.valueToCode(block, 'FROM',
 			Arduino.ORDER_NONE) || '0';
 		var argument1 = Arduino.valueToCode(block, 'TO',
@@ -324,7 +324,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['math_random_float'] = function (block) {
+	Arduino.forBlock['math_random_float'] = function (block) {
 		return ['(rand() / RAND_MAX)', Arduino.ORDER_UNARY_POSTFIX];
 	};
 }

@@ -1,6 +1,6 @@
 
 function getCodeGenerators(Arduino) {
-    Arduino['leaphy_flitz_read_stomach_sensor'] = function (block){
+    Arduino.forBlock['leaphy_flitz_read_stomach_sensor'] = function (block){
         var sensorType = block.getFieldValue('SENSOR_TYPE');
         var code = '';
         var setup = '';
@@ -15,13 +15,13 @@ function getCodeGenerators(Arduino) {
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_flitz_read_hand_sensor'] = function (block){
+    Arduino.forBlock['leaphy_flitz_read_hand_sensor'] = function (block){
         Arduino.setups_['setup_flitz_stomach'] = 'pinMode(14, OUTPUT);\n pinMode(15, OUTPUT);\n pinMode(2, INPUT);\n digitalWrite(14, HIGH);\n digitalWrite(15, LOW);\n'
         var code = 'analogRead(2)'
         return [code, Arduino.ORDER_ATOMIC];
     };
 
-    Arduino['leaphy_flitz_led'] = function (block){
+    Arduino.forBlock['leaphy_flitz_led'] = function (block){
         Arduino.setups_['setup_flitz_led'] = ''
         var flitz_red = Arduino.valueToCode(this, 'FLITZ_LED_R', Arduino.ORDER_ATOMIC) || '0'
         var flitz_green = Arduino.valueToCode(this, 'FLITZ_LED_G', Arduino.ORDER_ATOMIC) || '0'

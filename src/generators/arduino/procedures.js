@@ -5,7 +5,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {null} There is no code added to loop.
 	 */
-	Arduino['procedures_defreturn'] = function (block) {
+	Arduino.forBlock['procedures_defreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
 			block.getFieldValue('NAME'), NameType.PROCEDURE);
 		var branch = Arduino.statementToCode(block, 'STACK');
@@ -52,8 +52,8 @@ function getCodeGenerators(Arduino) {
 	 * type.
 	 * Arduino code: void functionname { }
 	 */
-	Arduino['procedures_defnoreturn'] =
-		Arduino['procedures_defreturn'];
+	Arduino.forBlock['procedures_defnoreturn'] =
+		Arduino.forBlock['procedures_defreturn'];
 	
 	/**
 	 * Code generator to create a function call with a return value.
@@ -61,7 +61,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['procedures_callreturn'] = function (block) {
+	Arduino.forBlock['procedures_callreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
 			block.getFieldValue('NAME'), NameType.PROCEDURE);
 		var args = [];
@@ -79,7 +79,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['procedures_callnoreturn'] = function (block) {
+	Arduino.forBlock['procedures_callnoreturn'] = function (block) {
 		var funcName = Arduino.nameDB_.getName(
 			block.getFieldValue('NAME'), NameType.PROCEDURE);
 		var args = [];
@@ -96,7 +96,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['procedures_ifreturn'] = function (block) {
+	Arduino.forBlock['procedures_ifreturn'] = function (block) {
 		var condition = Arduino.valueToCode(block, 'CONDITION',
 			Arduino.ORDER_NONE) || 'false';
 		var code = 'if (' + condition + ') {\n';
@@ -117,7 +117,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['arduino_functions'] = function (block) {
+	Arduino.forBlock['arduino_functions'] = function (block) {
 // Edited version of Blockly.Generator.prototype.statementToCode
 		function statementToCodeNoTab(block, name) {
 			var targetBlock = block.getInputTargetBlock(name);

@@ -8,7 +8,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['text'] = function (block) {
+	Arduino.forBlock['text'] = function (block) {
 		var code = Arduino.quote_(block.getFieldValue('TEXT'));
 		return [code, Arduino.ORDER_ATOMIC];
 	};
@@ -19,7 +19,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {array} Completed code with order of operation.
 	 */
-	Arduino['variables_get'] = function (block) {
+	Arduino.forBlock['variables_get'] = function (block) {
 		
 		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
 		return [varName, Arduino.ORDER_ATOMIC];
@@ -32,7 +32,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['variables_set'] = function (block) {
+	Arduino.forBlock['variables_set'] = function (block) {
 		
 		var argument0 = Arduino.valueToCode(block, 'VALUE', Arduino.ORDER_ASSIGNMENT) || '0';
 		var varName = Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);

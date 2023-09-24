@@ -8,7 +8,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_repeat'] = function (block) {
+	Arduino.forBlock['controls_repeat'] = function (block) {
 		var repeats = Number(block.getFieldValue('TIMES'));
 		var branch = Arduino.statementToCode(block, 'DO');
 		branch = Arduino.addLoopTrap(branch, block.id);
@@ -26,7 +26,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_repeat_ext'] = function (block) {
+	Arduino.forBlock['controls_repeat_ext'] = function (block) {
 		var repeats = Arduino.valueToCode(block, 'TIMES',
 			Arduino.ORDER_ADDITIVE) || '0';
 		var branch = Arduino.statementToCode(block, 'DO');
@@ -47,7 +47,7 @@ function getCodeGenerators(Arduino) {
 		return code;
 	};
 	
-	Arduino['controls_repeat_forever'] = function (block) {
+	Arduino.forBlock['controls_repeat_forever'] = function (block) {
 		var branch = Arduino.statementToCode(block, 'DO');
 		branch = Arduino.addLoopTrap(branch, block.id);
 		return 'while (true) {\n' + branch + '}\n';
@@ -59,7 +59,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_whileUntil'] = function (block) {
+	Arduino.forBlock['controls_whileUntil'] = function (block) {
 // Do while/until loop.
 		var until = block.getFieldValue('MODE') == 'UNTIL';
 		var argument0 = Arduino.valueToCode(block, 'BOOL',
@@ -82,7 +82,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_for'] = function (block) {
+	Arduino.forBlock['controls_for'] = function (block) {
 		var variable0 = Arduino.nameDB_.getName(
 			block.getFieldValue('VAR'), Blockly.Names.NameType.VARIABLE);
 		var argument0 = Arduino.valueToCode(block, 'FROM',
@@ -152,7 +152,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_forEach'] = Arduino.noGeneratorCodeLine;
+	Arduino.forBlock['controls_forEach'] = Arduino.noGeneratorCodeLine;
 	
 	/**
 	 * Generator for the loop flow control statements.
@@ -160,7 +160,7 @@ function getCodeGenerators(Arduino) {
 	 * @param {!Block} block Block to generate the code from.
 	 * @return {string} Completed code.
 	 */
-	Arduino['controls_flow_statements'] = function (block) {
+	Arduino.forBlock['controls_flow_statements'] = function (block) {
 		switch (block.getFieldValue('FLOW')) {
 			case 'BREAK':
 				return 'break;\n';
