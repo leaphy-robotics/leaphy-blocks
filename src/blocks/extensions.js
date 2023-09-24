@@ -321,4 +321,19 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
 	},
 };
 
-export {TEXT_QUOTES_EXTENSION, APPEND_STATEMENT_INPUT_STACK, CONTROLS_IF_MUTATOR_MIXIN};
+const CONTROLS_IF_TOOLTIP_EXTENSION = function() {
+	this.setTooltip(function() {
+		if (!this.elseifCount_ && !this.elseCount_) {
+			return Blockly.Msg['CONTROLS_IF_TOOLTIP_1'];
+		} else if (!this.elseifCount_ && this.elseCount_) {
+			return Blockly.Msg['CONTROLS_IF_TOOLTIP_2'];
+		} else if (this.elseifCount_ && !this.elseCount_) {
+			return Blockly.Msg['CONTROLS_IF_TOOLTIP_3'];
+		} else if (this.elseifCount_ && this.elseCount_) {
+			return Blockly.Msg['CONTROLS_IF_TOOLTIP_4'];
+		}
+		return '';
+	}.bind(this));
+};
+
+export {TEXT_QUOTES_EXTENSION, APPEND_STATEMENT_INPUT_STACK, CONTROLS_IF_MUTATOR_MIXIN, CONTROLS_IF_TOOLTIP_EXTENSION};
