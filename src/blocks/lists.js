@@ -1,4 +1,5 @@
 import * as Blockly from 'blockly/core';
+import {MutatorIcon} from "blockly/core/icons";
 const xmlUtils = Blockly.utils.xml;
 
 
@@ -102,7 +103,7 @@ blocks['lists_create_with'] = {
     this.itemCount_ = 3;
     this.updateShape_();
     this.setOutput(true, 'Array');
-    this.setMutator(new Mutator(['lists_create_with_item'], this));
+    this.setMutator(new MutatorIcon(['lists_create_with_item'], this));
     this.setTooltip(Msg['LISTS_CREATE_WITH_TOOLTIP']);
   },
   /**
@@ -189,7 +190,7 @@ blocks['lists_create_with'] = {
     this.updateShape_();
     // Reconnect any child blocks.
     for (let i = 0; i < this.itemCount_; i++) {
-      Mutator.reconnect(connections[i], this, 'ADD' + i);
+      connections[i].reconnect(this, 'ADD' + i);
     }
   },
   /**

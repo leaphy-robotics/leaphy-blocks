@@ -1,4 +1,5 @@
 import * as Blockly from 'blockly/core';
+import {MutatorIcon} from "blockly/core/icons";
 const xmlUtils = Blockly.utils.xml;
 var blocks = {};
 
@@ -416,7 +417,7 @@ blocks['procedures_defnoreturn'] = {
         .appendField(Blockly.Msg['PROCEDURES_DEFNORETURN_TITLE'])
         .appendField(nameField, 'NAME')
         .appendField('', 'PARAMS');
-    this.setMutator(new Mutator(['procedures_mutatorarg'], this));
+    this.setMutator(new MutatorIcon(['procedures_mutatorarg'], this));
     if ((this.workspace.options.comments ||
          (this.workspace.options.parentWorkspace &&
           this.workspace.options.parentWorkspace.options.comments)) &&
@@ -462,7 +463,7 @@ blocks['procedures_defreturn'] = {
     this.appendValueInput('RETURN')
         .setAlign(Align.RIGHT)
         .appendField(Blockly.Msg['PROCEDURES_DEFRETURN_RETURN']);
-    this.setMutator(new Mutator(['procedures_mutatorarg'], this));
+    this.setMutator(new MutatorIcon(['procedures_mutatorarg'], this));
     if ((this.workspace.options.comments ||
          (this.workspace.options.parentWorkspace &&
           this.workspace.options.parentWorkspace.options.comments)) &&
