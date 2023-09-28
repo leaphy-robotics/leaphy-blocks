@@ -161,7 +161,6 @@ Arduino.init = function (workspace) {
  * @return {string} Completed sketch code.
  */
 Arduino.finish = function (code) {
-	console.log('Arduino.finish');
 	// Convert the includes, definitions, and functions dictionaries into lists
 	var includes = [], definitions = [], variables = [], functions = [];
 	for (var name in Arduino.includes_) {
