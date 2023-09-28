@@ -14,9 +14,20 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
-  "version": "4.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leaphy-robotics/leaphy-blocks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leaphy-robotics/leaphy-blocks/issues"
+  },
+  "files": [
+    "media",
+    "src/**"
+  ],
+  "version": "0.0.3",
   "description": "",
-  "name": "@leaphy-robotics/leaphy-blockly",
+  "name": "@leaphy-robotics/leaphy-blocks",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
