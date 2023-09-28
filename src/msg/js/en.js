@@ -1,7 +1,3 @@
-// This file was automatically generated.  Do not modify.
-
-'use strict';
-
 var Blockly = {Msg: {}};
 
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";

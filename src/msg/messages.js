@@ -1,35 +1,3 @@
-/**
- * @license
- * Copyright 2012 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/**
- * @fileoverview English strings.
- *
- * After modifying this file, run:
- *
- *     npm run generate:langfiles
- *
- * to regenerate json/{en,qqq,constants,synonyms}.json.
- *
- * To convert all of the json files to .js files, run:
- *
- *     npm run build:langfiles
- */
-'use strict';
-
-
-/**
- * Due to the frequency of long strings, the 80-column wrap rule need not apply
- * to message files.
- */
-
-/**
- * Each message is preceded with a triple-slash comment that becomes the
- * message descriptor.  The build process extracts these descriptors, adds
- * them to msg/json/qqq.json, and they show up in the translation console.
- */
 
  /** @type {string} */
 /// leaphy start block title - The text that appears in the Leaphy start block.

@@ -1,8 +1,5 @@
-// This file was automatically generated.  Do not modify.
+var Blockly = {Msg: {}};
 
-'use strict';
-
-var Blockly = Blockly || { Msg: Object.create(null) };
 
 Blockly.Msg["ADD_COMMENT"] = "Opmerking toevoegen";
 Blockly.Msg["ARD_ANALOGWRITE"] = "Zet PWM";
@@ -502,3 +499,5 @@ Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_HUE"] = "330";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
+
+export default Blockly.Msg;
