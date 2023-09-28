@@ -9,6 +9,35 @@ var Arduino = new Blockly.Generator('Arduino');
 
 import {ConnectionType, Msg} from "blockly/core";
 
+Arduino.getArduinoType_ = function(typeBlockly) {
+	switch (typeBlockly.typeId) {
+		case Blockly.Types.SHORT_NUMBER.typeId:
+			return 'byte';
+		case Blockly.Types.NUMBER.typeId:
+			return 'int';
+		case Blockly.Types.LARGE_NUMBER.typeId:
+			return 'long';
+		case Blockly.Types.DECIMAL.typeId:
+			return 'float';
+		case Blockly.Types.TEXT.typeId:
+			return 'String';
+		case Blockly.Types.CHARACTER.typeId:
+			return 'char';
+		case Blockly.Types.BOOLEAN.typeId:
+			return 'boolean';
+		case Blockly.Types.NULL.typeId:
+			return 'void';
+		case Blockly.Types.ARRAY.typeId:
+			return Blockly.Arduino.getArduinoType_(typeBlockly.arrayType);
+		case Blockly.Types.UNDEF.typeId:
+			return 'undefined';
+		case Blockly.Types.CHILD_BLOCK_MISSING.typeId:
+			return 'int';
+		default:
+			return 'Invalid Blockly Type';
+	}
+};
+
 /**
  * List of illegal variable names.
  * This is not intended to be a security feature.  Blockly is 100% client-side,
