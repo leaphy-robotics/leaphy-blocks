@@ -644,7 +644,7 @@ const PROCEDURE_CALL_COMMON = {
    * @this {Block}
    */
   renameProcedure: function(oldName, newName) {
-    if (Names.equals(oldName, this.getProcedureCall())) {
+    if (Blockly.Names.equals(oldName, this.getProcedureCall())) {
       this.setFieldValue(newName, 'NAME');
       const baseMsg = this.outputConnection ?
           Blockly.Msg['PROCEDURES_CALLRETURN_TOOLTIP'] :
