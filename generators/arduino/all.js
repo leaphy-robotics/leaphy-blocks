@@ -102,6 +102,14 @@ Arduino.DEF_FUNC_NAME = Arduino.FUNCTION_NAME_PLACEHOLDER_;
  * @param {Workspace} workspace Workspace to generate code from.
  */
 Arduino.init = function (workspace) {
+	this.pins_ = Object.create(null);
+	// Create a dictionary of functions from the code generator
+	this.codeFunctions_ = Object.create(null);
+	// Create a dictionary of functions created by the user
+	this.userFunctions_ = Object.create(null);
+	// Create a dictionary mapping desired function names in definitions_
+	// to actual function names (to avoid collisions with user functions)
+	this.functionNames_ = Object.create(null);
 	
 	// Call Blockly.Generator's init.
 	Object.getPrototypeOf(this).init.call(this);
@@ -153,6 +161,7 @@ Arduino.init = function (workspace) {
  * @return {string} Completed sketch code.
  */
 Arduino.finish = function (code) {
+	console.log('Arduino.finish');
 	// Convert the includes, definitions, and functions dictionaries into lists
 	var includes = [], definitions = [], variables = [], functions = [];
 	for (var name in Arduino.includes_) {
