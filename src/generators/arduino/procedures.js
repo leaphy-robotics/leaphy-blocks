@@ -38,7 +38,7 @@ function getCodeGenerators(Arduino) {
 
 // Get return type
 		var returnType = 'double'
-		returnType = Arduino.getArduinoType_(returnType);
+		//returnType = Arduino.getArduinoType_(returnType);
 
 // Construct code
 		var code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
