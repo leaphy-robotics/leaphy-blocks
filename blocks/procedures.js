@@ -766,7 +766,7 @@ const PROCEDURE_CALL_COMMON = {
         }
       } else {
         // Add new input.
-        const newField = new FieldLabel(this.arguments_[i]);
+        const newField = new Blockly.FieldLabel(this.arguments_[i]);
         const input = this.appendValueInput('ARG' + i)
                           .setAlign(Blockly.inputs.Align.RIGHT)
                           .appendField(newField, 'ARGNAME' + i);
