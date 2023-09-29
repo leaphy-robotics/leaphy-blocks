@@ -65,6 +65,7 @@ function getCodeGenerators(Arduino) {
         var leds = Arduino.valueToCode(this, 'LED_SET_LEDS', Arduino.ORDER_ATOMIC) || '0'
         Arduino.definitions_['define_led_lib'] = '#include "ledstrip.h"';
         Arduino.definitions_['define_leds_pins'] = 'LEDSTRIP ledstrip(' + pin + ', ' + leds + ');';
+        Arduino.reservePin(block, pin, Arduino.PinTypes.LEDSTRIP, 'Led Strip');
         var code = '';
         return code;
     };
