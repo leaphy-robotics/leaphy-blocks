@@ -1,10 +1,4 @@
 /**
- * @license
- * Copyright 2012 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/**
  * @fileoverview Blocks for the Leaphy Click robot.
  */
 'use strict';
@@ -38,8 +32,8 @@ const blocks = [
         'name': 'MOTOR_TYPE',
         'options': motorDropdown,
       },
-      {'type': 'input_dummy'},
-      {'type': 'input_value', 'name': 'MOTOR_SPEED', 'check': 'Number'},
+      { 'type': 'input_dummy' },
+      { 'type': 'input_value', 'name': 'MOTOR_SPEED', 'check': 'Number' },
     ],
     'inputsInline': true,
     'previousStatement': null,
@@ -51,14 +45,14 @@ const blocks = [
   {
     'type': 'leaphy_click_rgb_digitalwrite',
     'message0':
-        '%%{BKY_ARD_DIGITALWRITE} %1 %%{BKY_ARD_WRITE_TO} %2  %3 %%{BKY_ARD_WRITE_TO} %4  %5 %%{BKY_ARD_WRITE_TO} %6',
+      '%%{BKY_ARD_DIGITALWRITE} %1 %%{BKY_ARD_WRITE_TO} %2  %3 %%{BKY_ARD_WRITE_TO} %4  %5 %%{BKY_ARD_WRITE_TO} %6',
     'args0': [
-      {'type': 'field_dropdown', 'name': 'PIN1', 'options': digitalPinOptions},
-      {'type': 'input_value', 'name': 'State1', 'check': 'Boolean'},
-      {'type': 'field_dropdown', 'name': 'PIN2', 'options': digitalPinOptions},
-      {'type': 'input_value', 'name': 'State2', 'check': 'Boolean'},
-      {'type': 'field_dropdown', 'name': 'PIN3', 'options': digitalPinOptions},
-      {'type': 'input_value', 'name': 'State3', 'check': 'Boolean'},
+      { 'type': 'field_dropdown', 'name': 'PIN1', 'options': digitalPinOptions },
+      { 'type': 'input_value', 'name': 'STATE1', 'check': 'Boolean' },
+      { 'type': 'field_dropdown', 'name': 'PIN2', 'options': digitalPinOptions },
+      { 'type': 'input_value', 'name': 'STATE2', 'check': 'Boolean' },
+      { 'type': 'field_dropdown', 'name': 'PIN3', 'options': digitalPinOptions },
+      { 'type': 'input_value', 'name': 'STATE3', 'check': 'Boolean' },
     ],
     'inputsInline': true,
     'previousStatement': null,
