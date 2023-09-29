@@ -25,8 +25,5 @@
   ],
   "version": "1.0.4",
   "description": "Leaphy custom Blockly blocks and arduino code generator",
-  "name": "@leaphy-robotics/leaphy-blocks",
-  "scripts": {
-    "publish": "npm publish --access public"
-  }
+  "name": "@leaphy-robotics/leaphy-blocks"
 }
