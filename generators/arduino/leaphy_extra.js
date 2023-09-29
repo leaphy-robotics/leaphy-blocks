@@ -141,15 +141,19 @@ function getCodeGenerators(Arduino) {
 
     Arduino.forBlock['leaphy_io_digitalwrite'] = function (block) {
         var pin = block.getFieldValue('PIN');
-        var stateOutput = Arduino.valueToCode(
-            block, 'STATE', Arduino.ORDER_ATOMIC) || 'LOW';
-
+        var stateOutput = Arduino.valueToCode(block, 'STATE', Arduino.ORDER_ATOMIC) || 'false';
+        if (stateOutput == 'true'){
+            stateOutput = 'HIGH';
+        } else {
+            stateOutput = 'LOW';
+        }
+    
         Arduino.reservePin(
             block, pin, Arduino.PinTypes.OUTPUT, 'Digital Write');
-
+    
         var pinSetupCode = 'pinMode(' + pin + ', OUTPUT);';
         Arduino.addSetup('io_' + pin, pinSetupCode, false);
-
+    
         var code = 'digitalWrite(' + pin + ', ' + stateOutput + ');\n';
         return code;
     };
@@ -170,7 +174,7 @@ function getCodeGenerators(Arduino) {
             block.setWarningText('The analogue value set must be between 0 and 255',
                 'pwm_value');
         } else {
-            block.setWarningText(null, 'pwm_value');
+            block.setWarningText(null);
         }
 
         var code = 'analogWrite(' + pin + ', ' + stateOutput + ');\n';
