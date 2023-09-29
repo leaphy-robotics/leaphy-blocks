@@ -99,7 +99,7 @@ const PROCEDURE_DEF_COMMON = {
         const varId =
             childNode.getAttribute('varid') || childNode.getAttribute('varId');
         this.arguments_.push(varName);
-        const variable = Variables.getOrCreateVariablePackage(
+        const variable = Blockly.Variables.getOrCreateVariablePackage(
             this.workspace, varId, varName, '');
         if (variable !== null) {
           this.argumentVarModels_.push(variable);
@@ -154,7 +154,7 @@ const PROCEDURE_DEF_COMMON = {
     if (state['params']) {
       for (let i = 0; i < state['params'].length; i++) {
         const param = state['params'][i];
-        const variable = Variables.getOrCreateVariablePackage(
+        const variable = Blockly.Variables.getOrCreateVariablePackage(
             this.workspace, param['id'], param['name'], '');
         this.arguments_.push(variable.name);
         this.argumentVarModels_.push(variable);
@@ -720,7 +720,7 @@ const PROCEDURE_CALL_COMMON = {
     // And rebuild the argument model list.
     this.argumentVarModels_ = [];
     for (let i = 0; i < this.arguments_.length; i++) {
-      const variable = Variables.getOrCreateVariablePackage(
+      const variable = Blockly.Variables.getOrCreateVariablePackage(
           this.workspace, null, this.arguments_[i], '');
       this.argumentVarModels_.push(variable);
     }
