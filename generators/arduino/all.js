@@ -61,7 +61,8 @@ Arduino.PinTypes = {
 	STEPPER: 'STEPPER',
 	SERIAL: 'SERIAL',
 	I2C: 'I2C/TWI',
-	SPI: 'SPI'
+	SPI: 'SPI',
+	LEDSTRIP: 'LEDSTRIP',
 };
 Arduino.ORDER_OVERRIDES = [
 	// (foo()).bar -> foo().bar
@@ -300,11 +301,11 @@ Arduino.reservePin = function (block, pin, pinType, warningTag) {
 				.replace('%2', warningTag).replace('%3', pinType)
 				.replace('%4', Arduino.pins_[pin]), warningTag);
 		} else {
-			block.setWarningText(null, warningTag);
+			block.setWarningText(null);
 		}
 	} else {
 		Arduino.pins_[pin] = pinType;
-		block.setWarningText(null, warningTag);
+		block.setWarningText(null);
 	}
 };
 

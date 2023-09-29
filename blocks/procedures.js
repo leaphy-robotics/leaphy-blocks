@@ -205,7 +205,7 @@ const PROCEDURE_DEF_COMMON = {
       node = nextNode;
     }
 
-    const containerBlock = Xml.domToBlock(containerBlockNode, workspace);
+    const containerBlock = Blockly.Xml.domToBlock(containerBlockNode, workspace);
 
     if (this.type === 'procedures_defreturn') {
       containerBlock.setFieldValue(this.hasStatements_, 'STATEMENTS');
@@ -932,7 +932,7 @@ const PROCEDURE_CALL_COMMON = {
         field.appendChild(xmlUtils.createTextNode(callName));
         block.appendChild(field);
         xml.appendChild(block);
-        Xml.domToWorkspace(xml, this.workspace);
+        Blockly.Xml.domToWorkspace(xml, this.workspace);
         Blockly.Events.setGroup(false);
       }
     } else if (event.type === Blockly.Events.BLOCK_DELETE && event.blockId != this.id) {
