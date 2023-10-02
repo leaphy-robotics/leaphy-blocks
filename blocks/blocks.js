@@ -38,6 +38,7 @@ import * as leaphyFlitz from './leaphy_flitz';
 import * as leaphyClick from './leaphy_click';
 //const leaphyExtra = goog.require('Blockly.libraryBlocks.leaphyExtra');
 import * as leaphyExtra from './leaphy_extra';
+import * as leaphyNano from './leaphy_nano';
 //const arduino = goog.require('Blockly.libraryBlocks.arduino');
 import * as arduino from './arduino';
 import * as procedures from "./procedures";
@@ -59,6 +60,7 @@ const block = [
 	  ...leaphyClick.blocks,
 	  ...leaphyExtra.blocks,
 	  ...arduino.blocks,
+	  ...leaphyNano.blocks,
 ];
 
 const blockJs = procedures.blocks;

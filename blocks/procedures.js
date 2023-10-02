@@ -673,9 +673,7 @@ const PROCEDURE_CALL_COMMON = {
     // which might reappear if a param is reattached in the mutator.
     const defBlock =
         Blockly.Procedures.getDefinition(this.getProcedureCall(), this.workspace);
-    const mutatorOpen =
-        defBlock && defBlock.mutator && defBlock.mutator.isVisible();
-    if (!mutatorOpen) {
+    if (defBlock && defBlock.mutator && defBlock.mutator.isVisible()) {
       this.quarkConnections_ = {};
       this.quarkIds_ = null;
     } else {
