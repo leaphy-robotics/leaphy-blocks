@@ -1,5 +1,7 @@
 var Blockly = {Msg: {}};
 
+Blockly.Msg["SENSOREN_CATEGORY"] = "Sensors";
+Blockly.Msg["ACTUATOREN_CATEGORY"] = "Actuators";
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";
 Blockly.Msg["ARD_ANALOGWRITE"] = "Set PWM pin";
 Blockly.Msg["ARD_DIGITALWRITE"] = "Set digital pin";

@@ -1,6 +1,7 @@
 var Blockly = {Msg: {}};
 
-
+Blockly.Msg["SENSOREN_CATEGORY"] = "Sensoren";
+Blockly.Msg["ACTUATOREN_CATEGORY"] = "Actuatoren";
 Blockly.Msg["ADD_COMMENT"] = "Opmerking toevoegen";
 Blockly.Msg["ARD_ANALOGWRITE"] = "Zet PWM";
 Blockly.Msg["ARD_DIGITALWRITE"] = "Zet Digipin";
