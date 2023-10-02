@@ -347,8 +347,8 @@ const PROCEDURE_DEF_COMMON = {
   displayRenamedVar_: function(oldName, newName) {
     this.updateParams_();
     // Update the mutator's variables if the mutator is open.
-    if (this.mutator && this.mutator.isVisible()) {
-      const blocks = this.mutator.workspace_.getAllBlocks(false);
+    if (this.mutator && this.mutator.bubbleIsVisible()) {
+      const blocks = this.mutator.getWorkspace().getAllBlocks(false);
       for (let i = 0, block; (block = blocks[i]); i++) {
         if (block.type === 'procedures_mutatorarg' &&
             Blockly.Names.equals(oldName, block.getFieldValue('NAME'))) {
@@ -673,7 +673,9 @@ const PROCEDURE_CALL_COMMON = {
     // which might reappear if a param is reattached in the mutator.
     const defBlock =
         Blockly.Procedures.getDefinition(this.getProcedureCall(), this.workspace);
-    if (defBlock && defBlock.mutator && defBlock.mutator.isVisible()) {
+    const mutatorOpen =
+        defBlock && defBlock.mutator && defBlock.mutator.isVisible();
+    if (!mutatorOpen) {
       this.quarkConnections_ = {};
       this.quarkIds_ = null;
     } else {
