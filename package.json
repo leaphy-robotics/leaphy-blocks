@@ -23,7 +23,7 @@
     "msg",
     "theme"
   ],
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Leaphy custom Blockly blocks and arduino code generator",
   "name": "@leaphy-robotics/leaphy-blocks"
 }
