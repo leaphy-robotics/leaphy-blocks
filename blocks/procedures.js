@@ -674,7 +674,7 @@ const PROCEDURE_CALL_COMMON = {
     const defBlock =
         Blockly.Procedures.getDefinition(this.getProcedureCall(), this.workspace);
     const mutatorOpen =
-        defBlock && defBlock.mutator && defBlock.mutator.isVisible();
+        defBlock && defBlock.mutator && defBlock.mutator.bubbleIsVisible();
     if (!mutatorOpen) {
       this.quarkConnections_ = {};
       this.quarkIds_ = null;
