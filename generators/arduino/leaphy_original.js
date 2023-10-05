@@ -33,14 +33,14 @@ function getCodeGenerators(Arduino) {
 		return code;
 	}
 	
-	Arduino.forBlock['leaphy_original_digital_read'] = function (block) {
+	Arduino.forBlock['digital_read'] = function (block) {
 		var dropdown_pin = block.getFieldValue('PIN');
 		Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
 		var code = 'digitalRead(' + dropdown_pin + ')';
 		return [code, Arduino.ORDER_ATOMIC];
 	};
 	
-	Arduino.forBlock['leaphy_original_analog_read'] = function (block) {
+	Arduino.forBlock['analog_read'] = function (block) {
 		var dropdown_pin = block.getFieldValue('PIN');
 		//Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
 		var code = 'analogRead(' + dropdown_pin + ')';
