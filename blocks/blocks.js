@@ -32,19 +32,19 @@ import * as procedures from "./procedures";
 function getBlocks(boardType = 'l_uno') {
 	var digitalPinOptions = [];
 	var analogPinOptions = [];
-	
-	if (boardType === 'l_uno') {
+
+	if (boardType === 'l_uno' || boardType === "l_click" || boardType === "l_flitz" || boardType === "l_original") {
 		digitalPinOptions = [
 			['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],
 			['8', '8'], ['9', '9'], ['10', '10'], ['11', '11'], ['12', '12'],
 			['13', '13'], ['14', '14'], ['15', '15'], ['16', '16'], ['17', '17'],
 			['18', '18'], ['19', '19'],
 		];
-		const analogPinOptions = [
+		analogPinOptions = [
 			['A0', 'A0'], ['A1', 'A1'], ['A2', 'A2'], ['A3', 'A3'], ['A4', 'A4'],
 			['A5', 'A5'],
 		];
-	} else if (boardType === 'l_nano') {
+	} else if (boardType === 'l_nano'  || boardType === "l_flitz_nano" || boardType === "l_click_nano" || boardType === "l_original_nano") {
 		 digitalPinOptions = [
 			['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],
 			['8', '8'], ['9', '9'], ['10', '10'], ['11', '11'], ['12', '12'],
@@ -54,17 +54,6 @@ function getBlocks(boardType = 'l_uno') {
 		 analogPinOptions = [
 			['A0', 'A0'], ['A1', 'A1'], ['A2', 'A2'], ['A3', 'A3'], ['A4', 'A4'],
 			['A5', 'A5'], ['A6', 'A6'], ['A7', 'A7'],
-		];
-	} else if (boardType === 'l_click') {
-		 digitalPinOptions = [
-			['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],
-			['8', '8'], ['9', '9'], ['10', '10'], ['11', '11'], ['12', '12'],
-			['13', '13'], ['14', '14'], ['15', '15'], ['16', '16'], ['17', '17'],
-			['18', '18'], ['19', '19'],
-		];
-		analogPinOptions = [
-			['A0', 'A0'], ['A1', 'A1'], ['A2', 'A2'], ['A3', 'A3'], ['A4', 'A4'],
-			['A5', 'A5'],
 		];
 	}
 
