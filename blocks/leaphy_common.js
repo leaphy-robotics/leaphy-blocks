@@ -19,8 +19,30 @@ const ledstripDemoOptions = [
 
 const displayPinNumbers = [['1', '0'], ['2', '1'], ['3', '2']];
 
-function getBlocks(digitalPinOptions) {
+function getBlocks(digitalPinOptions, analogPinOptions) {
 	  const blocks = [
+	  {
+			  'type': 'digital_read',
+			  'message0': '%%{BKY_LEAPHY_DIGITAL_READ} %1',
+			  'args0': [
+				  {'type': 'field_dropdown', 'name': 'PIN', 'options': digitalPinOptions},
+			  ],
+			  'style': 'leaphy_blocks',
+			  'output': 'Number',
+			  'tooltip': '',
+			  'helpUrl': '',
+	  },
+	  {
+			  'type': 'analog_read',
+			  'message0': '%%{BKY_LEAPHY_ANALOG_READ} %1',
+			  'args0': [
+				  {'type': 'field_dropdown', 'name': 'PIN', 'options': analogPinOptions},
+			  ],
+			  'style': 'leaphy_blocks',
+			  'output': 'Number',
+			  'tooltip': '',
+			  'helpUrl': '',
+	  },
 	  {
 	      'type': 'leaphy_start',
 	      'lastDummyAlign0': 'CENTRE',

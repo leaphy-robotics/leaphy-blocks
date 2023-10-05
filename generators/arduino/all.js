@@ -396,7 +396,6 @@ import * as math from './math';
 import * as procedures from './procedures';
 import * as text from './text';
 import * as variables from './variables';
-import * as leaphy_nano from './leaphy_nano';
 
 
 arduino.default(Arduino);
@@ -410,6 +409,5 @@ math.default(Arduino);
 procedures.default(Arduino);
 text.default(Arduino);
 variables.default(Arduino);
-leaphy_nano.default(Arduino);
 
 export default Arduino;
