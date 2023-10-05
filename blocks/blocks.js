@@ -62,7 +62,7 @@ function getBlocks(boardType = 'l_uno') {
 			['13', '13'], ['14', '14'], ['15', '15'], ['16', '16'], ['17', '17'],
 			['18', '18'], ['19', '19'],
 		];
-		const analogPinOptions = [
+		analogPinOptions = [
 			['A0', 'A0'], ['A1', 'A1'], ['A2', 'A2'], ['A3', 'A3'], ['A4', 'A4'],
 			['A5', 'A5'],
 		];
