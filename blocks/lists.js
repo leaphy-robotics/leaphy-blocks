@@ -285,7 +285,7 @@ blocks['lists_indexOf'] = {
     this.appendValueInput('VALUE').setCheck('Array').appendField(
         Msg['LISTS_INDEX_OF_INPUT_IN_LIST']);
     this.appendValueInput('FIND').appendField(
-        new FieldDropdown(OPERATORS), 'END');
+        new Blockly.FieldDropdown(OPERATORS), 'END');
     this.setInputsInline(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     const thisBlock = this;
@@ -316,7 +316,7 @@ blocks['lists_getIndex'] = {
     ];
     this.setHelpUrl(Msg['LISTS_GET_INDEX_HELPURL']);
     this.setStyle('list_blocks');
-    const modeMenu = new FieldDropdown(
+    const modeMenu = new Blockly.FieldDropdown(
         MODE,
         /**
          * @param {*} value The input value.
@@ -495,7 +495,7 @@ blocks['lists_getIndex'] = {
     } else {
       this.appendDummyInput('AT');
     }
-    const menu = new FieldDropdown(
+    const menu = new Blockly.FieldDropdown(
         this.WHERE_OPTIONS,
         /**
          * @param {*} value The input value.
@@ -546,7 +546,7 @@ blocks['lists_setIndex'] = {
     this.appendValueInput('LIST').setCheck('Array').appendField(
         Msg['LISTS_SET_INDEX_INPUT_IN_LIST']);
     this.appendDummyInput()
-        .appendField(new FieldDropdown(MODE), 'MODE')
+        .appendField(new Blockly.FieldDropdown(MODE), 'MODE')
         .appendField('', 'SPACE');
     this.appendDummyInput('AT');
     this.appendValueInput('TO').appendField(Msg['LISTS_SET_INDEX_INPUT_TO']);
@@ -658,7 +658,7 @@ blocks['lists_setIndex'] = {
     } else {
       this.appendDummyInput('AT');
     }
-    const menu = new FieldDropdown(
+    const menu = new Blockly.FieldDropdown(
         this.WHERE_OPTIONS,
         /**
          * @param {*} value The input value.
@@ -786,7 +786,7 @@ blocks['lists_getSublist'] = {
     } else {
       this.appendDummyInput('AT' + n);
     }
-    const menu = new FieldDropdown(
+    const menu = new Blockly.FieldDropdown(
         this['WHERE_OPTIONS_' + n],
         /**
          * @param {*} value The input value.
@@ -868,7 +868,7 @@ blocks['lists_split'] = {
   init: function() {
     // Assign 'this' to a variable for use in the closures below.
     const thisBlock = this;
-    const dropdown = new FieldDropdown(
+    const dropdown = new Blockly.FieldDropdown(
         [
           [Msg['LISTS_SPLIT_LIST_FROM_TEXT'], 'SPLIT'],
           [Msg['LISTS_SPLIT_TEXT_FROM_LIST'], 'JOIN'],
