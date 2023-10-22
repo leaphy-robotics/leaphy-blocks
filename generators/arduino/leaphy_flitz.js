@@ -46,7 +46,9 @@ function getCodeGenerators(Arduino) {
         var flitz_red = Arduino.valueToCode(this, 'FLITZ_LED_R', Arduino.ORDER_ATOMIC) || '0'
         var flitz_green = Arduino.valueToCode(this, 'FLITZ_LED_G', Arduino.ORDER_ATOMIC) || '0'
         var flitz_blue = Arduino.valueToCode(this, 'FLITZ_LED_B', Arduino.ORDER_ATOMIC) || '0'
-        var code = 'analogWrite(9, ' + flitz_red + ');\nanalogWrite(10, ' + flitz_green + ');\nanalogWrite(11, ' + flitz_blue + ');\n';
+        // Ground is connected to pin 8 on the nano, so it needs to be pulled LOW
+        Arduino.addSetup('setup_flitz_nano_rgb', 'pinMode(8, OUTPUT);\n  digitalWrite(8, LOW);', false);
+        var code = 'analogWrite(11, ' + flitz_red + ');\nanalogWrite(10, ' + flitz_green + ');\nanalogWrite(9, ' + flitz_blue + ');\n';
         return code;
     };
 }
