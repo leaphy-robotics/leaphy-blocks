@@ -43,6 +43,25 @@ const blocks = [
     'helpUrl': '',
   },
   {
+    'type': 'leaphy_click_nano_set_motor',
+    'message0': '%%{BKY_LEAPHY_MOTOR_TYPE} %1 %2 %%{BKY_LEAPHY_MOTOR_SPEED} %3',
+    'args0': [
+      {
+        'type': 'field_dropdown',
+        'name': 'MOTOR_TYPE',
+        'options': motorDropdown,
+      },
+      { 'type': 'input_dummy' },
+      { 'type': 'input_value', 'name': 'MOTOR_SPEED', 'check': 'Number' },
+    ],
+    'inputsInline': true,
+    'previousStatement': null,
+    'nextStatement': null,
+    'style': 'leaphy_blocks',
+    'tooltip': '',
+    'helpUrl': '',
+  },
+  {
     'type': 'leaphy_click_rgb_digitalwrite',
     'message0':
       '%%{BKY_ARD_DIGITALWRITE} %1 %%{BKY_ARD_WRITE_TO} %2  %3 %%{BKY_ARD_WRITE_TO} %4  %5 %%{BKY_ARD_WRITE_TO} %6',
