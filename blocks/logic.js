@@ -8,11 +8,9 @@
  * @fileoverview Logic blocks for Blockly.
  * @suppress {checkTypes}
  */
-'use strict';
+"use strict";
 
 /* eslint-disable-next-line no-unused-vars */
-
-
 
 /**
  * A dictionary of the block definitions provided by this module.
@@ -21,235 +19,227 @@
 const blocks = [
   // Block for boolean data type: true and false.
   {
-    'type': 'logic_boolean',
-    'message0': '%1',
-    'args0': [
+    type: "logic_boolean",
+    message0: "%1",
+    args0: [
       {
-        'type': 'field_dropdown',
-        'name': 'BOOL',
-        'options': [
-          ['%{BKY_LOGIC_BOOLEAN_TRUE}', 'TRUE'],
-          ['%{BKY_LOGIC_BOOLEAN_FALSE}', 'FALSE'],
+        type: "field_dropdown",
+        name: "BOOL",
+        options: [
+          ["%{BKY_LOGIC_BOOLEAN_TRUE}", "TRUE"],
+          ["%{BKY_LOGIC_BOOLEAN_FALSE}", "FALSE"],
         ],
       },
     ],
-    'output': 'Boolean',
-    'style': 'numbers_blocks',
-    'tooltip': '%{BKY_LOGIC_BOOLEAN_TOOLTIP}',
-    'helpUrl': '%{BKY_LOGIC_BOOLEAN_HELPURL}',
+    output: "Boolean",
+    style: "numbers_blocks",
+    tooltip: "%{BKY_LOGIC_BOOLEAN_TOOLTIP}",
+    helpUrl: "%{BKY_LOGIC_BOOLEAN_HELPURL}",
   },
   // Block for if/elseif/else condition.
   {
-    'type': 'controls_multiplexer',
-    'message0': '%{BKY_CONTROLS_MULTIPLEXER_1} %1 %{BKY_CONTROLS_MULTIPLEXER_2} ',
-    'args0': [
-      {'type': 'input_value', 'name': 'IF0', 'check': 'Boolean'},
-    ],
-    'message1': '%1',
-    'args1': [
-      {'type': 'input_statement', 'name': 'DO0'},
-    ],
-    'previousStatement': null,
-    'nextStatement': null,
-    'style': 'situation_blocks',
-    'helpUrl': '%{BKY_CONTROLS_IF_HELPURL}',
-    'mutator': 'controls_if_mutator',
-    'extensions': ['controls_if_tooltip'],
+    type: "controls_multiplexer",
+    message0: "%{BKY_CONTROLS_MULTIPLEXER_1} %1 %{BKY_CONTROLS_MULTIPLEXER_2} ",
+    args0: [{ type: "input_value", name: "IF0", check: "Boolean" }],
+    message1: "%1",
+    args1: [{ type: "input_statement", name: "DO0" }],
+    previousStatement: null,
+    nextStatement: null,
+    style: "situation_blocks",
+    helpUrl: "%{BKY_CONTROLS_IF_HELPURL}",
+    mutator: "controls_if_mutator",
+    extensions: ["controls_if_tooltip"],
   },
   {
-    'type': 'controls_if',
-    'message0': '%{BKY_CONTROLS_IF_MSG_IF} %1 %{BKY_CONTROLS_IF_MSG_THEN} ',
-    'args0': [
-      {'type': 'input_value', 'name': 'IF0', 'check': 'Boolean'},
-    ],
-    'message1': '%1',
-    'args1': [
-      {'type': 'input_statement', 'name': 'DO0'},
-    ],
-    'previousStatement': null,
-    'nextStatement': null,
-    'style': 'situation_blocks',
-    'helpUrl': '%{BKY_CONTROLS_IF_HELPURL}',
-    'mutator': 'controls_if_mutator',
-    'extensions': ['controls_if_tooltip'],
+    type: "controls_if",
+    message0: "%{BKY_CONTROLS_IF_MSG_IF} %1 %{BKY_CONTROLS_IF_MSG_THEN} ",
+    args0: [{ type: "input_value", name: "IF0", check: "Boolean" }],
+    message1: "%1",
+    args1: [{ type: "input_statement", name: "DO0" }],
+    previousStatement: null,
+    nextStatement: null,
+    style: "situation_blocks",
+    helpUrl: "%{BKY_CONTROLS_IF_HELPURL}",
+    mutator: "controls_if_mutator",
+    extensions: ["controls_if_tooltip"],
   },
   // If/else block that does not use a mutator.
   {
-    'type': 'controls_ifelse',
-    'message0': '%{BKY_CONTROLS_IF_MSG_IF} %1',
-    'args0': [
+    type: "controls_ifelse",
+    message0: "%{BKY_CONTROLS_IF_MSG_IF} %1",
+    args0: [
       {
-        'type': 'input_value',
-        'name': 'IF0',
-        'check': 'Boolean',
+        type: "input_value",
+        name: "IF0",
+        check: "Boolean",
       },
     ],
-    'message1': '%{BKY_CONTROLS_IF_MSG_THEN} %1',
-    'args1': [
+    message1: "%{BKY_CONTROLS_IF_MSG_THEN} %1",
+    args1: [
       {
-        'type': 'input_statement',
-        'name': 'DO0',
+        type: "input_statement",
+        name: "DO0",
       },
     ],
-    'message2': '%{BKY_CONTROLS_IF_MSG_ELSE} %1',
-    'args2': [
+    message2: "%{BKY_CONTROLS_IF_MSG_ELSE} %1",
+    args2: [
       {
-        'type': 'input_statement',
-        'name': 'ELSE',
+        type: "input_statement",
+        name: "ELSE",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKYCONTROLS_IF_TOOLTIP_2}',
-    'helpUrl': '%{BKY_CONTROLS_IF_HELPURL}',
-    'extensions': ['controls_if_tooltip'],
+    previousStatement: null,
+    nextStatement: null,
+    style: "logic_blocks",
+    tooltip: "%{BKYCONTROLS_IF_TOOLTIP_2}",
+    helpUrl: "%{BKY_CONTROLS_IF_HELPURL}",
+    extensions: ["controls_if_tooltip"],
   },
   // Block for comparison operator.
   {
-    'type': 'logic_compare',
-    'message0': '%1 %2 %3',
-    'args0': [
+    type: "logic_compare",
+    message0: "%1 %2 %3",
+    args0: [
       {
-        'type': 'input_value',
-        'name': 'A',
+        type: "input_value",
+        name: "A",
       },
       {
-        'type': 'field_dropdown',
-        'name': 'OP',
-        'options': [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['\u200F<', 'LT'],
-          ['\u200F\u2264', 'LTE'],
-          ['\u200F>', 'GT'],
-          ['\u200F\u2265', 'GTE'],
+        type: "field_dropdown",
+        name: "OP",
+        options: [
+          ["=", "EQ"],
+          ["\u2260", "NEQ"],
+          ["\u200F<", "LT"],
+          ["\u200F\u2264", "LTE"],
+          ["\u200F>", "GT"],
+          ["\u200F\u2265", "GTE"],
         ],
       },
       {
-        'type': 'input_value',
-        'name': 'B',
+        type: "input_value",
+        name: "B",
       },
     ],
-    'inputsInline': true,
-    'output': 'Boolean',
-    'style': 'numbers_blocks',
-    'helpUrl': '%{BKY_LOGIC_COMPARE_HELPURL}',
-    'extensions': ['logic_compare', 'logic_op_tooltip'],
+    inputsInline: true,
+    output: "Boolean",
+    style: "numbers_blocks",
+    helpUrl: "%{BKY_LOGIC_COMPARE_HELPURL}",
+    extensions: ["logic_compare", "logic_op_tooltip"],
   },
   // Block for logical operations: 'and', 'or'.
   {
-    'type': 'logic_operation',
-    'message0': '%1 %2 %3',
-    'args0': [
+    type: "logic_operation",
+    message0: "%1 %2 %3",
+    args0: [
       {
-        'type': 'input_value',
-        'name': 'A',
-        'check': 'Boolean',
+        type: "input_value",
+        name: "A",
+        check: "Boolean",
       },
       {
-        'type': 'field_dropdown',
-        'name': 'OP',
-        'options': [
-          ['%{BKY_LOGIC_OPERATION_AND}', 'AND'],
-          ['%{BKY_LOGIC_OPERATION_OR}', 'OR'],
+        type: "field_dropdown",
+        name: "OP",
+        options: [
+          ["%{BKY_LOGIC_OPERATION_AND}", "AND"],
+          ["%{BKY_LOGIC_OPERATION_OR}", "OR"],
         ],
       },
       {
-        'type': 'input_value',
-        'name': 'B',
-        'check': 'Boolean',
+        type: "input_value",
+        name: "B",
+        check: "Boolean",
       },
     ],
-    'inputsInline': true,
-    'output': 'Boolean',
-    'style': 'numbers_blocks',
-    'helpUrl': '%{BKY_LOGIC_OPERATION_HELPURL}',
-    'extensions': ['logic_op_tooltip'],
+    inputsInline: true,
+    output: "Boolean",
+    style: "numbers_blocks",
+    helpUrl: "%{BKY_LOGIC_OPERATION_HELPURL}",
+    extensions: ["logic_op_tooltip"],
   },
   // Block for negation.
   {
-    'type': 'logic_negate',
-    'message0': '%{BKY_LOGIC_NEGATE_TITLE}',
-    'args0': [
+    type: "logic_negate",
+    message0: "%{BKY_LOGIC_NEGATE_TITLE}",
+    args0: [
       {
-        'type': 'input_value',
-        'name': 'BOOL',
-        'check': 'Boolean',
+        type: "input_value",
+        name: "BOOL",
+        check: "Boolean",
       },
     ],
-    'output': 'Boolean',
-    'style': 'numbers_blocks',
-    'tooltip': '%{BKY_LOGIC_NEGATE_TOOLTIP}',
-    'helpUrl': '%{BKY_LOGIC_NEGATE_HELPURL}',
+    output: "Boolean",
+    style: "numbers_blocks",
+    tooltip: "%{BKY_LOGIC_NEGATE_TOOLTIP}",
+    helpUrl: "%{BKY_LOGIC_NEGATE_HELPURL}",
   },
   // Block for null data type.
   {
-    'type': 'logic_null',
-    'message0': '%{BKY_LOGIC_NULL}',
-    'output': null,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKY_LOGIC_NULL_TOOLTIP}',
-    'helpUrl': '%{BKY_LOGIC_NULL_HELPURL}',
+    type: "logic_null",
+    message0: "%{BKY_LOGIC_NULL}",
+    output: null,
+    style: "logic_blocks",
+    tooltip: "%{BKY_LOGIC_NULL_TOOLTIP}",
+    helpUrl: "%{BKY_LOGIC_NULL_HELPURL}",
   },
   // Block for ternary operator.
   {
-    'type': 'logic_ternary',
-    'message0': '%{BKY_LOGIC_TERNARY_CONDITION} %1',
-    'args0': [
+    type: "logic_ternary",
+    message0: "%{BKY_LOGIC_TERNARY_CONDITION} %1",
+    args0: [
       {
-        'type': 'input_value',
-        'name': 'IF',
-        'check': 'Boolean',
+        type: "input_value",
+        name: "IF",
+        check: "Boolean",
       },
     ],
-    'message1': '%{BKY_LOGIC_TERNARY_IF_TRUE} %1',
-    'args1': [
+    message1: "%{BKY_LOGIC_TERNARY_IF_TRUE} %1",
+    args1: [
       {
-        'type': 'input_value',
-        'name': 'THEN',
+        type: "input_value",
+        name: "THEN",
       },
     ],
-    'message2': '%{BKY_LOGIC_TERNARY_IF_FALSE} %1',
-    'args2': [
+    message2: "%{BKY_LOGIC_TERNARY_IF_FALSE} %1",
+    args2: [
       {
-        'type': 'input_value',
-        'name': 'ELSE',
+        type: "input_value",
+        name: "ELSE",
       },
     ],
-    'output': null,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKY_LOGIC_TERNARY_TOOLTIP}',
-    'helpUrl': '%{BKY_LOGIC_TERNARY_HELPURL}',
-    'extensions': ['logic_ternary'],
+    output: null,
+    style: "logic_blocks",
+    tooltip: "%{BKY_LOGIC_TERNARY_TOOLTIP}",
+    helpUrl: "%{BKY_LOGIC_TERNARY_HELPURL}",
+    extensions: ["logic_ternary"],
   },
   // Block representing the if statement in the controls_if mutator.
   {
-    'type': 'controls_if_if',
-    'message0': '%{BKY_CONTROLS_IF_IF_TITLE_IF}',
-    'nextStatement': null,
-    'enableContextMenu': false,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKY_CONTROLS_IF_IF_TOOLTIP}',
+    type: "controls_if_if",
+    message0: "%{BKY_CONTROLS_IF_IF_TITLE_IF}",
+    nextStatement: null,
+    enableContextMenu: false,
+    style: "logic_blocks",
+    tooltip: "%{BKY_CONTROLS_IF_IF_TOOLTIP}",
   },
   // Block representing the else-if statement in the controls_if mutator.
   {
-    'type': 'controls_if_elseif',
-    'message0': '%{BKY_CONTROLS_IF_ELSEIF_TITLE_ELSEIF}',
-    'previousStatement': null,
-    'nextStatement': null,
-    'enableContextMenu': false,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKY_CONTROLS_IF_ELSEIF_TOOLTIP}',
+    type: "controls_if_elseif",
+    message0: "%{BKY_CONTROLS_IF_ELSEIF_TITLE_ELSEIF}",
+    previousStatement: null,
+    nextStatement: null,
+    enableContextMenu: false,
+    style: "logic_blocks",
+    tooltip: "%{BKY_CONTROLS_IF_ELSEIF_TOOLTIP}",
   },
   // Block representing the else statement in the controls_if mutator.
   {
-    'type': 'controls_if_else',
-    'message0': '%{BKY_CONTROLS_IF_ELSE_TITLE_ELSE}',
-    'previousStatement': null,
-    'enableContextMenu': false,
-    'style': 'logic_blocks',
-    'tooltip': '%{BKY_CONTROLS_IF_ELSE_TOOLTIP}',
+    type: "controls_if_else",
+    message0: "%{BKY_CONTROLS_IF_ELSE_TITLE_ELSE}",
+    previousStatement: null,
+    enableContextMenu: false,
+    style: "logic_blocks",
+    tooltip: "%{BKY_CONTROLS_IF_ELSE_TOOLTIP}",
   },
 ];
 
@@ -261,18 +251,17 @@ const blocks = [
  */
 const TOOLTIPS_BY_OP = {
   // logic_compare
-  'EQ': '%{BKY_LOGIC_COMPARE_TOOLTIP_EQ}',
-  'NEQ': '%{BKY_LOGIC_COMPARE_TOOLTIP_NEQ}',
-  'LT': '%{BKY_LOGIC_COMPARE_TOOLTIP_LT}',
-  'LTE': '%{BKY_LOGIC_COMPARE_TOOLTIP_LTE}',
-  'GT': '%{BKY_LOGIC_COMPARE_TOOLTIP_GT}',
-  'GTE': '%{BKY_LOGIC_COMPARE_TOOLTIP_GTE}',
+  EQ: "%{BKY_LOGIC_COMPARE_TOOLTIP_EQ}",
+  NEQ: "%{BKY_LOGIC_COMPARE_TOOLTIP_NEQ}",
+  LT: "%{BKY_LOGIC_COMPARE_TOOLTIP_LT}",
+  LTE: "%{BKY_LOGIC_COMPARE_TOOLTIP_LTE}",
+  GT: "%{BKY_LOGIC_COMPARE_TOOLTIP_GT}",
+  GTE: "%{BKY_LOGIC_COMPARE_TOOLTIP_GTE}",
 
   // logic_operation
-  'AND': '%{BKY_LOGIC_OPERATION_TOOLTIP_AND}',
-  'OR': '%{BKY_LOGIC_OPERATION_TOOLTIP_OR}',
+  AND: "%{BKY_LOGIC_OPERATION_TOOLTIP_AND}",
+  OR: "%{BKY_LOGIC_OPERATION_TOOLTIP_OR}",
 };
-
 
 /**
  * Mutator methods added to controls_if blocks.
@@ -290,16 +279,16 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @return {Element} XML storage element.
    * @this {Block}
    */
-  mutationToDom: function() {
+  mutationToDom: function () {
     if (!this.elseifCount_ && !this.elseCount_) {
       return null;
     }
-    const container = xmlUtils.createElement('mutation');
+    const container = xmlUtils.createElement("mutation");
     if (this.elseifCount_) {
-      container.setAttribute('elseif', this.elseifCount_);
+      container.setAttribute("elseif", this.elseifCount_);
     }
     if (this.elseCount_) {
-      container.setAttribute('else', 1);
+      container.setAttribute("else", 1);
     }
     return container;
   },
@@ -309,9 +298,9 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @param {!Element} xmlElement XML storage element.
    * @this {Block}
    */
-  domToMutation: function(xmlElement) {
-    this.elseifCount_ = parseInt(xmlElement.getAttribute('elseif'), 10) || 0;
-    this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10) || 0;
+  domToMutation: function (xmlElement) {
+    this.elseifCount_ = parseInt(xmlElement.getAttribute("elseif"), 10) || 0;
+    this.elseCount_ = parseInt(xmlElement.getAttribute("else"), 10) || 0;
     this.rebuildShape_();
   },
   /**
@@ -319,16 +308,16 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @return {?{elseIfCount: (number|undefined), haseElse: (boolean|undefined)}}
    *     The state of this block, ie the else if count and else state.
    */
-  saveExtraState: function() {
+  saveExtraState: function () {
     if (!this.elseifCount_ && !this.elseCount_) {
       return null;
     }
     const state = Object.create(null);
     if (this.elseifCount_) {
-      state['elseIfCount'] = this.elseifCount_;
+      state["elseIfCount"] = this.elseifCount_;
     }
     if (this.elseCount_) {
-      state['hasElse'] = true;
+      state["hasElse"] = true;
     }
     return state;
   },
@@ -337,9 +326,9 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @param {*} state The state to apply to this block, ie the else if count and
    *     else state.
    */
-  loadExtraState: function(state) {
-    this.elseifCount_ = state['elseIfCount'] || 0;
-    this.elseCount_ = state['hasElse'] ? 1 : 0;
+  loadExtraState: function (state) {
+    this.elseifCount_ = state["elseIfCount"] || 0;
+    this.elseCount_ = state["hasElse"] ? 1 : 0;
     this.updateShape_();
   },
   /**
@@ -348,18 +337,18 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @return {!Block} Root block in mutator.
    * @this {Block}
    */
-  decompose: function(workspace) {
-    const containerBlock = workspace.newBlock('controls_if_if');
+  decompose: function (workspace) {
+    const containerBlock = workspace.newBlock("controls_if_if");
     containerBlock.initSvg();
     let connection = containerBlock.nextConnection;
     for (let i = 1; i <= this.elseifCount_; i++) {
-      const elseifBlock = workspace.newBlock('controls_if_elseif');
+      const elseifBlock = workspace.newBlock("controls_if_elseif");
       elseifBlock.initSvg();
       connection.connect(elseifBlock.previousConnection);
       connection = elseifBlock.nextConnection;
     }
     if (this.elseCount_) {
-      const elseBlock = workspace.newBlock('controls_if_else');
+      const elseBlock = workspace.newBlock("controls_if_else");
       elseBlock.initSvg();
       connection.connect(elseBlock.previousConnection);
     }
@@ -370,7 +359,7 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * @param {!Block} containerBlock Root block in mutator.
    * @this {Block}
    */
-  compose: function(containerBlock) {
+  compose: function (containerBlock) {
     let clauseBlock = containerBlock.nextConnection.targetBlock();
     // Count number of inputs.
     this.elseifCount_ = 0;
@@ -384,31 +373,34 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
         continue;
       }
       switch (clauseBlock.type) {
-        case 'controls_if_elseif':
+        case "controls_if_elseif":
           this.elseifCount_++;
           valueConnections.push(clauseBlock.valueConnection_);
           statementConnections.push(clauseBlock.statementConnection_);
           break;
-        case 'controls_if_else':
+        case "controls_if_else":
           this.elseCount_++;
           elseStatementConnection = clauseBlock.statementConnection_;
           break;
         default:
-          throw TypeError('Unknown block type: ' + clauseBlock.type);
+          throw TypeError("Unknown block type: " + clauseBlock.type);
       }
       clauseBlock = clauseBlock.getNextBlock();
     }
     this.updateShape_();
     // Reconnect any child blocks.
     this.reconnectChildBlocks_(
-        valueConnections, statementConnections, elseStatementConnection);
+      valueConnections,
+      statementConnections,
+      elseStatementConnection,
+    );
   },
   /**
    * Store pointers to any connected child blocks.
    * @param {!Block} containerBlock Root block in mutator.
    * @this {Block}
    */
-  saveConnections: function(containerBlock) {
+  saveConnections: function (containerBlock) {
     let clauseBlock = containerBlock.nextConnection.targetBlock();
     let i = 1;
     while (clauseBlock) {
@@ -417,24 +409,24 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
         continue;
       }
       switch (clauseBlock.type) {
-        case 'controls_if_elseif': {
-          const inputIf = this.getInput('IF' + i);
-          const inputDo = this.getInput('DO' + i);
+        case "controls_if_elseif": {
+          const inputIf = this.getInput("IF" + i);
+          const inputDo = this.getInput("DO" + i);
           clauseBlock.valueConnection_ =
-              inputIf && inputIf.connection.targetConnection;
+            inputIf && inputIf.connection.targetConnection;
           clauseBlock.statementConnection_ =
-              inputDo && inputDo.connection.targetConnection;
+            inputDo && inputDo.connection.targetConnection;
           i++;
           break;
         }
-        case 'controls_if_else': {
-          const inputDo = this.getInput('ELSE');
+        case "controls_if_else": {
+          const inputDo = this.getInput("ELSE");
           clauseBlock.statementConnection_ =
-              inputDo && inputDo.connection.targetConnection;
+            inputDo && inputDo.connection.targetConnection;
           break;
         }
         default:
-          throw TypeError('Unknown block type: ' + clauseBlock.type);
+          throw TypeError("Unknown block type: " + clauseBlock.type);
       }
       clauseBlock = clauseBlock.getNextBlock();
     }
@@ -443,53 +435,59 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * Reconstructs the block with all child blocks attached.
    * @this {Block}
    */
-  rebuildShape_: function() {
+  rebuildShape_: function () {
     const valueConnections = [null];
     const statementConnections = [null];
     let elseStatementConnection = null;
 
-    if (this.getInput('ELSE')) {
+    if (this.getInput("ELSE")) {
       elseStatementConnection =
-          this.getInput('ELSE').connection.targetConnection;
+        this.getInput("ELSE").connection.targetConnection;
     }
-    for (let i = 1; this.getInput('IF' + i); i++) {
-      const inputIf = this.getInput('IF' + i);
-      const inputDo = this.getInput('DO' + i);
+    for (let i = 1; this.getInput("IF" + i); i++) {
+      const inputIf = this.getInput("IF" + i);
+      const inputDo = this.getInput("DO" + i);
       valueConnections.push(inputIf.connection.targetConnection);
       statementConnections.push(inputDo.connection.targetConnection);
     }
     this.updateShape_();
     this.reconnectChildBlocks_(
-        valueConnections, statementConnections, elseStatementConnection);
+      valueConnections,
+      statementConnections,
+      elseStatementConnection,
+    );
   },
   /**
    * Modify this block to have the correct number of inputs.
    * @this {Block}
    * @private
    */
-  updateShape_: function() {
+  updateShape_: function () {
     // Delete everything.
-    if (this.getInput('ELSE')) {
-      this.removeInput('ELSE');
+    if (this.getInput("ELSE")) {
+      this.removeInput("ELSE");
     }
-    if (this.getInput('ELSELABEL')) {
-      this.removeInput('ELSELABEL');
+    if (this.getInput("ELSELABEL")) {
+      this.removeInput("ELSELABEL");
     }
-    for (let i = 1; this.getInput('IF' + i); i++) {
-      this.removeInput('IF' + i);
-      this.removeInput('DO' + i);
+    for (let i = 1; this.getInput("IF" + i); i++) {
+      this.removeInput("IF" + i);
+      this.removeInput("DO" + i);
     }
     // Rebuild block.
     for (let i = 1; i <= this.elseifCount_; i++) {
-      this.appendValueInput('IF' + i).setCheck('Boolean').appendField(
-          Msg['CONTROLS_IF_MSG_ELSEIF']);
-      this.appendStatementInput('DO' + i).appendField(
-          Msg['CONTROLS_IF_MSG_THEN']);
+      this.appendValueInput("IF" + i)
+        .setCheck("Boolean")
+        .appendField(Msg["CONTROLS_IF_MSG_ELSEIF"]);
+      this.appendStatementInput("DO" + i).appendField(
+        Msg["CONTROLS_IF_MSG_THEN"],
+      );
     }
     if (this.elseCount_) {
-      this.appendDummyInput('ELSELABEL')
-          .appendField(Msg['CONTROLS_IF_MSG_ELSE']);
-      this.appendStatementInput('ELSE');
+      this.appendDummyInput("ELSELABEL").appendField(
+        Msg["CONTROLS_IF_MSG_ELSE"],
+      );
+      this.appendStatementInput("ELSE");
     }
   },
   /**
@@ -502,13 +500,16 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
    * connection for else input.
    * @this {Block}
    */
-  reconnectChildBlocks_: function(
-      valueConnections, statementConnections, elseStatementConnection) {
+  reconnectChildBlocks_: function (
+    valueConnections,
+    statementConnections,
+    elseStatementConnection,
+  ) {
     for (let i = 1; i <= this.elseifCount_; i++) {
-      valueConnections[i].reconnect(this, 'IF' + i);
-      statementConnections[i].reconnect(this, 'DO' + i);
+      valueConnections[i].reconnect(this, "IF" + i);
+      statementConnections[i].reconnect(this, "DO" + i);
     }
-    elseStatementConnection.reconnect(this, 'ELSE');
+    elseStatementConnection.reconnect(this, "ELSE");
   },
 };
 
@@ -517,21 +518,22 @@ const CONTROLS_IF_MUTATOR_MIXIN = {
  * dynamic tooltip to "controls_if" blocks.
  * @this {Block}
  */
-const CONTROLS_IF_TOOLTIP_EXTENSION = function() {
-  this.setTooltip(function() {
-    if (!this.elseifCount_ && !this.elseCount_) {
-      return Msg['CONTROLS_IF_TOOLTIP_1'];
-    } else if (!this.elseifCount_ && this.elseCount_) {
-      return Msg['CONTROLS_IF_TOOLTIP_2'];
-    } else if (this.elseifCount_ && !this.elseCount_) {
-      return Msg['CONTROLS_IF_TOOLTIP_3'];
-    } else if (this.elseifCount_ && this.elseCount_) {
-      return Msg['CONTROLS_IF_TOOLTIP_4'];
-    }
-    return '';
-  }.bind(this));
+const CONTROLS_IF_TOOLTIP_EXTENSION = function () {
+  this.setTooltip(
+    function () {
+      if (!this.elseifCount_ && !this.elseCount_) {
+        return Msg["CONTROLS_IF_TOOLTIP_1"];
+      } else if (!this.elseifCount_ && this.elseCount_) {
+        return Msg["CONTROLS_IF_TOOLTIP_2"];
+      } else if (this.elseifCount_ && !this.elseCount_) {
+        return Msg["CONTROLS_IF_TOOLTIP_3"];
+      } else if (this.elseifCount_ && this.elseCount_) {
+        return Msg["CONTROLS_IF_TOOLTIP_4"];
+      }
+      return "";
+    }.bind(this),
+  );
 };
-
 
 /**
  * Adds dynamic type validation for the left and right sides of a logic_compare
@@ -547,17 +549,22 @@ const LOGIC_COMPARE_ONCHANGE_MIXIN = {
    * @param {!AbstractEvent} e Change event.
    * @this {Block}
    */
-  onchange: function(e) {
+  onchange: function (e) {
     if (!this.prevBlocks_) {
       this.prevBlocks_ = [null, null];
     }
 
-    const blockA = this.getInputTargetBlock('A');
-    const blockB = this.getInputTargetBlock('B');
+    const blockA = this.getInputTargetBlock("A");
+    const blockB = this.getInputTargetBlock("B");
     // Disconnect blocks that existed prior to this change if they don't match.
-    if (blockA && blockB &&
-        !this.workspace.connectionChecker.doTypeChecks(
-            blockA.outputConnection, blockB.outputConnection)) {
+    if (
+      blockA &&
+      blockB &&
+      !this.workspace.connectionChecker.doTypeChecks(
+        blockA.outputConnection,
+        blockB.outputConnection,
+      )
+    ) {
       // Mismatch between two inputs.  Revert the block connections,
       // bumping away the newly connected block(s).
       Events.setGroup(e.group);
@@ -566,7 +573,7 @@ const LOGIC_COMPARE_ONCHANGE_MIXIN = {
         blockA.unplug();
         if (prevA && !prevA.isDisposed() && !prevA.isShadow()) {
           // The shadow block is automatically replaced during unplug().
-          this.getInput('A').connection.connect(prevA.outputConnection);
+          this.getInput("A").connection.connect(prevA.outputConnection);
         }
       }
       const prevB = this.prevBlocks_[1];
@@ -574,14 +581,14 @@ const LOGIC_COMPARE_ONCHANGE_MIXIN = {
         blockB.unplug();
         if (prevB && !prevB.isDisposed() && !prevB.isShadow()) {
           // The shadow block is automatically replaced during unplug().
-          this.getInput('B').connection.connect(prevB.outputConnection);
+          this.getInput("B").connection.connect(prevB.outputConnection);
         }
       }
       this.bumpNeighbours();
       Events.setGroup(false);
     }
-    this.prevBlocks_[0] = this.getInputTargetBlock('A');
-    this.prevBlocks_[1] = this.getInputTargetBlock('B');
+    this.prevBlocks_[0] = this.getInputTargetBlock("A");
+    this.prevBlocks_[1] = this.getInputTargetBlock("B");
   },
 };
 
@@ -591,11 +598,10 @@ const LOGIC_COMPARE_ONCHANGE_MIXIN = {
  * @this {Block}
  * @readonly
  */
-const LOGIC_COMPARE_EXTENSION = function() {
+const LOGIC_COMPARE_EXTENSION = function () {
   // Add onchange handler to ensure types are compatible.
   this.mixin(LOGIC_COMPARE_ONCHANGE_MIXIN);
 };
-
 
 /**
  * Adds type coordination between inputs and output.
@@ -612,17 +618,21 @@ const LOGIC_TERNARY_ONCHANGE_MIXIN = {
    * @param {!AbstractEvent} e Change event.
    * @this {Block}
    */
-  onchange: function(e) {
-    const blockA = this.getInputTargetBlock('THEN');
-    const blockB = this.getInputTargetBlock('ELSE');
+  onchange: function (e) {
+    const blockA = this.getInputTargetBlock("THEN");
+    const blockB = this.getInputTargetBlock("ELSE");
     const parentConnection = this.outputConnection.targetConnection;
     // Disconnect blocks that existed prior to this change if they don't match.
     if ((blockA || blockB) && parentConnection) {
       for (let i = 0; i < 2; i++) {
-        const block = (i === 1) ? blockA : blockB;
-        if (block &&
-            !block.workspace.connectionChecker.doTypeChecks(
-                block.outputConnection, parentConnection)) {
+        const block = i === 1 ? blockA : blockB;
+        if (
+          block &&
+          !block.workspace.connectionChecker.doTypeChecks(
+            block.outputConnection,
+            parentConnection,
+          )
+        ) {
           // Ensure that any disconnections are grouped with the causing event.
           Events.setGroup(e.group);
           if (parentConnection === this.prevParentConnection_) {
@@ -640,6 +650,4 @@ const LOGIC_TERNARY_ONCHANGE_MIXIN = {
   },
 };
 
-export {
-  blocks,
-}
+export { blocks };

@@ -1,12 +1,12 @@
-import * as Blockly from 'blockly/core';
+import * as Blockly from "blockly/core";
 
 /**
  * Arduino code generator.
  * @type {!Generator}
  */
-var Arduino = new Blockly.Generator('Arduino');
+var Arduino = new Blockly.Generator("Arduino");
 
-import {ConnectionType, Msg} from "blockly/core";
+import { ConnectionType, Msg } from "blockly/core";
 
 /**
  * List of illegal variable names.
@@ -17,77 +17,78 @@ import {ConnectionType, Msg} from "blockly/core";
  * @private
  */
 Arduino.addReservedWords(
-	'Blockly,' +  // In case JS is evaled in the current window.
-	'setup,loop,if,else,for,switch,case,while,do,break,continue,return,goto,' +
-	'define,include,HIGH,LOW,INPUT,OUTPUT,INPUT_PULLUP,true,false,integer,' +
-	'constants,floating,point,void,boolean,char,unsigned,byte,int,word,long,' +
-	'float,double,string,String,array,static,volatile,const,sizeof,pinMode,' +
-	'digitalWrite,digitalRead,analogReference,analogRead,analogWrite,tone,' +
-	'noTone,shiftOut,shitIn,pulseIn,millis,micros,delay,delayMicroseconds,' +
-	'min,max,abs,constrain,map,pow,sqrt,sin,cos,tan,randomSeed,random,' +
-	'lowByte,highByte,bitRead,bitWrite,bitSet,bitClear,bit,attachInterrupt,' +
-	'detachInterrupt,interrupts,noInterrupts');
+  "Blockly," + // In case JS is evaled in the current window.
+    "setup,loop,if,else,for,switch,case,while,do,break,continue,return,goto," +
+    "define,include,HIGH,LOW,INPUT,OUTPUT,INPUT_PULLUP,true,false,integer," +
+    "constants,floating,point,void,boolean,char,unsigned,byte,int,word,long," +
+    "float,double,string,String,array,static,volatile,const,sizeof,pinMode," +
+    "digitalWrite,digitalRead,analogReference,analogRead,analogWrite,tone," +
+    "noTone,shiftOut,shitIn,pulseIn,millis,micros,delay,delayMicroseconds," +
+    "min,max,abs,constrain,map,pow,sqrt,sin,cos,tan,randomSeed,random," +
+    "lowByte,highByte,bitRead,bitWrite,bitSet,bitClear,bit,attachInterrupt," +
+    "detachInterrupt,interrupts,noInterrupts",
+);
 
 /** Order of operation ENUMs. */
-Arduino.ORDER_ATOMIC = 0;         // 0 "" ...
-Arduino.ORDER_UNARY_POSTFIX = 1;  // expr++ expr-- () [] .
-Arduino.ORDER_UNARY_PREFIX = 2;   // -expr !expr ~expr ++expr --expr
+Arduino.ORDER_ATOMIC = 0; // 0 "" ...
+Arduino.ORDER_UNARY_POSTFIX = 1; // expr++ expr-- () [] .
+Arduino.ORDER_UNARY_PREFIX = 2; // -expr !expr ~expr ++expr --expr
 Arduino.ORDER_MULTIPLICATIVE = 3; // * / % ~/
-Arduino.ORDER_ADDITIVE = 4;       // + -
-Arduino.ORDER_SHIFT = 5;          // << >>
-Arduino.ORDER_RELATIONAL = 6;     // is is! >= > <= <
-Arduino.ORDER_EQUALITY = 7;       // == != === !==
-Arduino.ORDER_BITWISE_AND = 8;    // &
-Arduino.ORDER_BITWISE_XOR = 9;    // ^
-Arduino.ORDER_BITWISE_OR = 10;    // |
-Arduino.ORDER_LOGICAL_AND = 11;   // &&
-Arduino.ORDER_LOGICAL_OR = 12;    // ||
-Arduino.ORDER_CONDITIONAL = 13;   // expr ? expr : expr
-Arduino.ORDER_ASSIGNMENT = 14;    // = *= /= ~/= %= += -= <<= >>= &= ^= |=
-Arduino.ORDER_COMMA = 15;    // ,
+Arduino.ORDER_ADDITIVE = 4; // + -
+Arduino.ORDER_SHIFT = 5; // << >>
+Arduino.ORDER_RELATIONAL = 6; // is is! >= > <= <
+Arduino.ORDER_EQUALITY = 7; // == != === !==
+Arduino.ORDER_BITWISE_AND = 8; // &
+Arduino.ORDER_BITWISE_XOR = 9; // ^
+Arduino.ORDER_BITWISE_OR = 10; // |
+Arduino.ORDER_LOGICAL_AND = 11; // &&
+Arduino.ORDER_LOGICAL_OR = 12; // ||
+Arduino.ORDER_CONDITIONAL = 13; // expr ? expr : expr
+Arduino.ORDER_ASSIGNMENT = 14; // = *= /= ~/= %= += -= <<= >>= &= ^= |=
+Arduino.ORDER_COMMA = 15; // ,
 Arduino.ORDER_UNARY_NEGATION = 16;
 Arduino.ORDER_MEMBER = 17;
-Arduino.ORDER_NONE = 99;          // (...)
+Arduino.ORDER_NONE = 99; // (...)
 
 /**
  * A list of types tasks that the pins can be assigned. Used to track usage and
  * warn if the same pin has been assigned to more than one task.
  */
 Arduino.PinTypes = {
-	INPUT: 'INPUT',
-	OUTPUT: 'OUTPUT',
-	PWM: 'PWM',
-	SERVO: 'SERVO',
-	STEPPER: 'STEPPER',
-	SERIAL: 'SERIAL',
-	I2C: 'I2C/TWI',
-	SPI: 'SPI',
-	LEDSTRIP: 'LEDSTRIP',
+  INPUT: "INPUT",
+  OUTPUT: "OUTPUT",
+  PWM: "PWM",
+  SERVO: "SERVO",
+  STEPPER: "STEPPER",
+  SERIAL: "SERIAL",
+  I2C: "I2C/TWI",
+  SPI: "SPI",
+  LEDSTRIP: "LEDSTRIP",
 };
 Arduino.ORDER_OVERRIDES = [
-	// (foo()).bar -> foo().bar
-	// (foo())[0] -> foo()[0]
-	[Arduino.ORDER_FUNCTION_CALL, Arduino.ORDER_MEMBER],
-	// (foo())() -> foo()()
-	[Arduino.ORDER_FUNCTION_CALL, Arduino.ORDER_FUNCTION_CALL],
-	// (foo.bar).baz -> foo.bar.baz
-	// (foo.bar)[0] -> foo.bar[0]
-	// (foo[0]).bar -> foo[0].bar
-	// (foo[0])[1] -> foo[0][1]
-	[Arduino.ORDER_MEMBER, Arduino.ORDER_MEMBER],
-	// (foo.bar)() -> foo.bar()
-	// (foo[0])() -> foo[0]()
-	[Arduino.ORDER_MEMBER, Arduino.ORDER_FUNCTION_CALL],
-	// !(!foo) -> !!foo
-	[Arduino.ORDER_LOGICAL_NOT, Arduino.ORDER_LOGICAL_NOT],
-	// a * (b * c) -> a * b * c
-	[Arduino.ORDER_MULTIPLICATION, Arduino.ORDER_MULTIPLICATION],
-	// a + (b + c) -> a + b + c
-	[Arduino.ORDER_ADDITION, Arduino.ORDER_ADDITION],
-	// a && (b && c) -> a && b && c
-	[Arduino.ORDER_LOGICAL_AND, Arduino.ORDER_LOGICAL_AND],
-	// a || (b || c) -> a || b || c
-	[Arduino.ORDER_LOGICAL_OR, Arduino.ORDER_LOGICAL_OR]
+  // (foo()).bar -> foo().bar
+  // (foo())[0] -> foo()[0]
+  [Arduino.ORDER_FUNCTION_CALL, Arduino.ORDER_MEMBER],
+  // (foo())() -> foo()()
+  [Arduino.ORDER_FUNCTION_CALL, Arduino.ORDER_FUNCTION_CALL],
+  // (foo.bar).baz -> foo.bar.baz
+  // (foo.bar)[0] -> foo.bar[0]
+  // (foo[0]).bar -> foo[0].bar
+  // (foo[0])[1] -> foo[0][1]
+  [Arduino.ORDER_MEMBER, Arduino.ORDER_MEMBER],
+  // (foo.bar)() -> foo.bar()
+  // (foo[0])() -> foo[0]()
+  [Arduino.ORDER_MEMBER, Arduino.ORDER_FUNCTION_CALL],
+  // !(!foo) -> !!foo
+  [Arduino.ORDER_LOGICAL_NOT, Arduino.ORDER_LOGICAL_NOT],
+  // a * (b * c) -> a * b * c
+  [Arduino.ORDER_MULTIPLICATION, Arduino.ORDER_MULTIPLICATION],
+  // a + (b + c) -> a + b + c
+  [Arduino.ORDER_ADDITION, Arduino.ORDER_ADDITION],
+  // a && (b && c) -> a && b && c
+  [Arduino.ORDER_LOGICAL_AND, Arduino.ORDER_LOGICAL_AND],
+  // a || (b || c) -> a || b || c
+  [Arduino.ORDER_LOGICAL_OR, Arduino.ORDER_LOGICAL_OR],
 ];
 
 /**
@@ -103,57 +104,65 @@ Arduino.DEF_FUNC_NAME = Arduino.FUNCTION_NAME_PLACEHOLDER_;
  * @param {Workspace} workspace Workspace to generate code from.
  */
 Arduino.init = function (workspace) {
-	this.pins_ = Object.create(null);
-	// Create a dictionary of functions from the code generator
-	this.codeFunctions_ = Object.create(null);
-	// Create a dictionary of functions created by the user
-	this.userFunctions_ = Object.create(null);
-	// Create a dictionary mapping desired function names in definitions_
-	// to actual function names (to avoid collisions with user functions)
-	this.functionNames_ = Object.create(null);
-	
-	// Call Blockly.Generator's init.
-	Object.getPrototypeOf(this).init.call(this);
-	
-	if (!this.nameDB_) {
-		this.nameDB_ = new Blockly.Names(this.RESERVED_WORDS_);
-	} else {
-		this.nameDB_.reset();
-	}
-	
-	Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
-	this.nameDB_.populateVariables(workspace);
-	this.nameDB_.populateProcedures(workspace);
-	
-	const defvars = [];
-	// Add developer Blockly.Variables (not created or named by the user).
-	const devVarList = Blockly.Variables.allDeveloperVariables(workspace);
-	for (let i = 0; i < devVarList.length; i++) {
-		defvars.push(this.nameDB_.getName(devVarList[i],
-			Blockly.Names.NameType.DEVELOPER_VARIABLE));
-	}
-	
-	// Add user Blockly.Variables, but only ones that are being used.
-	const variables = Blockly.Variables.allUsedVarModels(workspace);
-	for (let i = 0; i < variables.length; i++) {
-		defvars.push(this.nameDB_.getName(variables[i].getId(),
-			Blockly.Names.NameType.VARIABLE));
-	}
-	
-	// Declare all of the variables.
-	if (defvars.length) {
-		this.definitions_['variables'] =
-			'double ' + defvars.join(' = 0, ') + ' = 0;\n';
-	}
-	
-	// Create a dictionary of definitions to be printed at the top of the sketch
-	this.includes_ = Object.create(null);
-	// Create a dictionary of setups to be printed in the setup() function
-	this.setups_ = Object.create(null);
-	// Create a dictionary of pins to check if their use conflicts
-	this.pins_ = Object.create(null);
-	
-	this.isInitialized = true;
+  this.pins_ = Object.create(null);
+  // Create a dictionary of functions from the code generator
+  this.codeFunctions_ = Object.create(null);
+  // Create a dictionary of functions created by the user
+  this.userFunctions_ = Object.create(null);
+  // Create a dictionary mapping desired function names in definitions_
+  // to actual function names (to avoid collisions with user functions)
+  this.functionNames_ = Object.create(null);
+
+  // Call Blockly.Generator's init.
+  Object.getPrototypeOf(this).init.call(this);
+
+  if (!this.nameDB_) {
+    this.nameDB_ = new Blockly.Names(this.RESERVED_WORDS_);
+  } else {
+    this.nameDB_.reset();
+  }
+
+  Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
+  this.nameDB_.populateVariables(workspace);
+  this.nameDB_.populateProcedures(workspace);
+
+  const defvars = [];
+  // Add developer Blockly.Variables (not created or named by the user).
+  const devVarList = Blockly.Variables.allDeveloperVariables(workspace);
+  for (let i = 0; i < devVarList.length; i++) {
+    defvars.push(
+      this.nameDB_.getName(
+        devVarList[i],
+        Blockly.Names.NameType.DEVELOPER_VARIABLE,
+      ),
+    );
+  }
+
+  // Add user Blockly.Variables, but only ones that are being used.
+  const variables = Blockly.Variables.allUsedVarModels(workspace);
+  for (let i = 0; i < variables.length; i++) {
+    defvars.push(
+      this.nameDB_.getName(
+        variables[i].getId(),
+        Blockly.Names.NameType.VARIABLE,
+      ),
+    );
+  }
+
+  // Declare all of the variables.
+  if (defvars.length) {
+    this.definitions_["variables"] =
+      "double " + defvars.join(" = 0, ") + " = 0;\n";
+  }
+
+  // Create a dictionary of definitions to be printed at the top of the sketch
+  this.includes_ = Object.create(null);
+  // Create a dictionary of setups to be printed in the setup() function
+  this.setups_ = Object.create(null);
+  // Create a dictionary of pins to check if their use conflicts
+  this.pins_ = Object.create(null);
+
+  this.isInitialized = true;
 };
 
 /**
@@ -162,48 +171,56 @@ Arduino.init = function (workspace) {
  * @return {string} Completed sketch code.
  */
 Arduino.finish = function (code) {
-	// Convert the includes, definitions, and functions dictionaries into lists
-	var includes = [], definitions = [], variables = [], functions = [];
-	for (var name in Arduino.includes_) {
-		includes.push(Arduino.includes_[name]);
-	}
-	if (includes.length) {
-		includes.push('\n');
-	}
-	for (var name in this.definitions_) {
-		definitions.push(Arduino.definitions_[name]);
-	}
-	if (definitions.length) {
-		definitions.push('\n');
-	}
-	
-	// userSetupCode added at the end of the setup function without leading spaces
-	var setups = [''], userSetupCode = '';
-	if (Arduino.setups_['userSetupCode'] !== undefined) {
-		userSetupCode = '\n  ' + Arduino.setups_['userSetupCode'];
-		delete Arduino.setups_['userSetupCode'];
-	}
-	for (var name in Arduino.setups_) {
-		setups.push(Arduino.setups_[name]);
-	}
-	if (userSetupCode) {
-		setups.push(userSetupCode);
-	}
-	
-	// Clean up temporary data
-	delete Arduino.includes_;
-	delete Arduino.definitions_;
-	delete Arduino.codeFunctions_;
-	delete Arduino.userFunctions_;
-	delete Arduino.functionNames_;
-	delete Arduino.setups_;
-	delete Arduino.pins_;
-	this.nameDB_.reset();
-	
-	var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n\n');
-	var setup = 'void setup() {' + setups.join('\n  ') + '\n}\n\n';
-	var loop = 'void loop() {\n  ' + code.replace(/\n/g, '\n  ') + '\n}';
-	return allDefs + setup + loop;
+  // Convert the includes, definitions, and functions dictionaries into lists
+  var includes = [],
+    definitions = [],
+    variables = [],
+    functions = [];
+  for (name in Arduino.includes_) {
+    includes.push(Arduino.includes_[name]);
+  }
+  if (includes.length) {
+    includes.push("\n");
+  }
+  for (name in this.definitions_) {
+    definitions.push(Arduino.definitions_[name]);
+  }
+  if (definitions.length) {
+    definitions.push("\n");
+  }
+
+  // userSetupCode added at the end of the setup function without leading spaces
+  var setups = [""],
+    userSetupCode = "";
+  if (Arduino.setups_["userSetupCode"] !== undefined) {
+    userSetupCode = "\n  " + Arduino.setups_["userSetupCode"];
+    delete Arduino.setups_["userSetupCode"];
+  }
+  for (var name in Arduino.setups_) {
+    setups.push(Arduino.setups_[name]);
+  }
+  if (userSetupCode) {
+    setups.push(userSetupCode);
+  }
+
+  // Clean up temporary data
+  delete Arduino.includes_;
+  delete Arduino.definitions_;
+  delete Arduino.codeFunctions_;
+  delete Arduino.userFunctions_;
+  delete Arduino.functionNames_;
+  delete Arduino.setups_;
+  delete Arduino.pins_;
+  this.nameDB_.reset();
+
+  var allDefs =
+    includes.join("\n") +
+    definitions.join("\n") +
+    variables.join("\n") +
+    functions.join("\n\n");
+  var setup = "void setup() {" + setups.join("\n  ") + "\n}\n\n";
+  var loop = "void loop() {\n  " + code.replace(/\n/g, "\n  ") + "\n}";
+  return allDefs + setup + loop;
 };
 
 /**
@@ -213,9 +230,9 @@ Arduino.finish = function (code) {
  * @param {!string} code Code to be included at the very top of the sketch.
  */
 Arduino.addInclude = function (includeTag, code) {
-	if (Arduino.includes_[includeTag] === undefined) {
-		Arduino.includes_[includeTag] = code;
-	}
+  if (Arduino.includes_[includeTag] === undefined) {
+    Arduino.includes_[includeTag] = code;
+  }
 };
 
 /**
@@ -225,9 +242,9 @@ Arduino.addInclude = function (includeTag, code) {
  * @param {!string} code Code to be added below the includes.
  */
 Arduino.addDeclaration = function (declarationTag, code) {
-	if (Arduino.definitions_[declarationTag] === undefined) {
-		Arduino.definitions_[declarationTag] = code;
-	}
+  if (Arduino.definitions_[declarationTag] === undefined) {
+    Arduino.definitions_[declarationTag] = code;
+  }
 };
 
 /**
@@ -240,12 +257,12 @@ Arduino.addDeclaration = function (declarationTag, code) {
  * @return {!boolean} Indicates if the declaration overwrote a previous one.
  */
 Arduino.addVariable = function (varName, code, overwrite) {
-	var overwritten = false;
-	if (overwrite || (Arduino.Blockly.Variables_[varName] === undefined)) {
-		Arduino.Blockly.Variables_[varName] = code;
-		overwritten = true;
-	}
-	return overwritten;
+  var overwritten = false;
+  if (overwrite || Arduino.Blockly.Variables_[varName] === undefined) {
+    Arduino.Blockly.Variables_[varName] = code;
+    overwritten = true;
+  }
+  return overwritten;
 };
 
 /**
@@ -259,12 +276,12 @@ Arduino.addVariable = function (varName, code, overwrite) {
  * @return {!boolean} Indicates if the new setup code overwrote a previous one.
  */
 Arduino.addSetup = function (setupTag, code, overwrite) {
-	var overwritten = false;
-	if (overwrite || (Arduino.setups_[setupTag] === undefined)) {
-		Arduino.setups_[setupTag] = code;
-		overwritten = true;
-	}
-	return overwritten;
+  var overwritten = false;
+  if (overwrite || Arduino.setups_[setupTag] === undefined) {
+    Arduino.setups_[setupTag] = code;
+    overwritten = true;
+  }
+  return overwritten;
 };
 
 /**
@@ -277,14 +294,18 @@ Arduino.addSetup = function (setupTag, code, overwrite) {
  * @return {!string} A unique function name based on input name.
  */
 Arduino.addFunction = function (preferedName, code) {
-	if (Arduino.codeFunctions_[preferedName] === undefined) {
-		var uniqueName = this.nameDB_.getDistinctName(
-			preferedName, Blockly.Names.NameType.PROCEDURE);
-		Arduino.codeFunctions_[preferedName] =
-			code.replace(Arduino.DEF_FUNC_NAME, uniqueName);
-		Arduino.functionNames_[preferedName] = uniqueName;
-	}
-	return Arduino.functionNames_[preferedName];
+  if (Arduino.codeFunctions_[preferedName] === undefined) {
+    var uniqueName = this.nameDB_.getDistinctName(
+      preferedName,
+      Blockly.Names.NameType.PROCEDURE,
+    );
+    Arduino.codeFunctions_[preferedName] = code.replace(
+      Arduino.DEF_FUNC_NAME,
+      uniqueName,
+    );
+    Arduino.functionNames_[preferedName] = uniqueName;
+  }
+  return Arduino.functionNames_[preferedName];
 };
 
 /**
@@ -295,18 +316,22 @@ Arduino.addFunction = function (preferedName, code) {
  * @param {!string} warningTag Description.
  */
 Arduino.reservePin = function (block, pin, pinType, warningTag) {
-	if (Arduino.pins_[pin] !== undefined) {
-		if (Arduino.pins_[pin] != pinType) {
-			block.setWarningText(Msg.ARD_PIN_WARN1.replace('%1', pin)
-				.replace('%2', warningTag).replace('%3', pinType)
-				.replace('%4', Arduino.pins_[pin]), warningTag);
-		} else {
-			block.setWarningText(null);
-		}
-	} else {
-		Arduino.pins_[pin] = pinType;
-		block.setWarningText(null);
-	}
+  if (Arduino.pins_[pin] !== undefined) {
+    if (Arduino.pins_[pin] != pinType) {
+      block.setWarningText(
+        Msg.ARD_PIN_WARN1.replace("%1", pin)
+          .replace("%2", warningTag)
+          .replace("%3", pinType)
+          .replace("%4", Arduino.pins_[pin]),
+        warningTag,
+      );
+    } else {
+      block.setWarningText(null);
+    }
+  } else {
+    Arduino.pins_[pin] = pinType;
+    block.setWarningText(null);
+  }
 };
 
 /**
@@ -316,7 +341,7 @@ Arduino.reservePin = function (block, pin, pinType, warningTag) {
  * @return {string} Legal line of code.
  */
 Arduino.scrubNakedValue = function (line) {
-	return line + ';\n';
+  return line + ";\n";
 };
 
 /**
@@ -326,12 +351,13 @@ Arduino.scrubNakedValue = function (line) {
  * @private
  */
 Arduino.quote_ = function (string) {
-	// TODO: This is a quick hack.  Replace with goog.string.quote
-	string = string.replace(/\\/g, '\\\\')
-		.replace(/\n/g, '\\\n')
-		.replace(/\$/g, '\\$')
-		.replace(/'/g, '\\\'');
-	return '\"' + string + '\"';
+  // TODO: This is a quick hack.  Replace with goog.string.quote
+  string = string
+    .replace(/\\/g, "\\\\")
+    .replace(/\n/g, "\\\n")
+    .replace(/\$/g, "\\$")
+    .replace(/'/g, "\\'");
+  return '"' + string + '"';
 };
 
 /**
@@ -345,59 +371,58 @@ Arduino.quote_ = function (string) {
  * @private
  */
 Arduino.scrub_ = function (block, code) {
-	if (code === null) {
-		// Block has handled code generation itself.
-		return '';
-	}
-	var commentCode = '';
-	// Only collect comments for blocks that aren't inline.
-	if (!block.outputConnection || !block.outputConnection.targetConnection) {
-		// Collect comment for this block.
-		var comment = block.getCommentText();
-		if (comment) {
-			commentCode += this.prefixLines(comment, '// ') + '\n';
-		}
-		// Collect comments for all value arguments.
-		// Don't collect comments for nested statements.
-		for (var x = 0; x < block.inputList.length; x++) {
-			if (block.inputList[x].type == ConnectionType.INPUT_VALUE) {
-				var childBlock = block.inputList[x].connection.targetBlock();
-				if (childBlock) {
-					var comment = this.allNestedComments(childBlock);
-					if (comment) {
-						commentCode += this.prefixLines(comment, '// ');
-					}
-				}
-			}
-		}
-	}
-	var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
-	var nextCode = this.blockToCode(nextBlock);
-	return commentCode + code + nextCode;
+  if (code === null) {
+    // Block has handled code generation itself.
+    return "";
+  }
+  var commentCode = "";
+  // Only collect comments for blocks that aren't inline.
+  if (!block.outputConnection || !block.outputConnection.targetConnection) {
+    // Collect comment for this block.
+    var comment = block.getCommentText();
+    if (comment) {
+      commentCode += this.prefixLines(comment, "// ") + "\n";
+    }
+    // Collect comments for all value arguments.
+    // Don't collect comments for nested statements.
+    for (var x = 0; x < block.inputList.length; x++) {
+      if (block.inputList[x].type == ConnectionType.INPUT_VALUE) {
+        var childBlock = block.inputList[x].connection.targetBlock();
+        if (childBlock) {
+          comment = this.allNestedComments(childBlock);
+          if (comment) {
+            commentCode += this.prefixLines(comment, "// ");
+          }
+        }
+      }
+    }
+  }
+  var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
+  var nextCode = this.blockToCode(nextBlock);
+  return commentCode + code + nextCode;
 };
 
 /** Used for not-yet-implemented block code generators */
 Arduino.noGeneratorCodeInline = function () {
-	return ['', Arduino.ORDER_ATOMIC];
+  return ["", Arduino.ORDER_ATOMIC];
 };
 
 Arduino.noGeneratorCodeLine = function () {
-	return '';
+  return "";
 };
 
-import * as arduino from './arduino';
-import * as leaphy_click from './leaphy_click';
-import * as leaphy_common from './leaphy_common';
-import * as leaphy_extra from './leaphy_extra';
-import * as leaphy_flitz from './leaphy_flitz';
-import * as leaphy_original from './leaphy_original';
-import * as logic from './logic';
-import * as loops from './loops';
-import * as math from './math';
-import * as procedures from './procedures';
-import * as text from './text';
-import * as variables from './variables';
-
+import * as arduino from "./arduino";
+import * as leaphy_click from "./leaphy_click";
+import * as leaphy_common from "./leaphy_common";
+import * as leaphy_extra from "./leaphy_extra";
+import * as leaphy_flitz from "./leaphy_flitz";
+import * as leaphy_original from "./leaphy_original";
+import * as logic from "./logic";
+import * as loops from "./loops";
+import * as math from "./math";
+import * as procedures from "./procedures";
+import * as text from "./text";
+import * as variables from "./variables";
 
 arduino.default(Arduino);
 leaphy_click.default(Arduino);

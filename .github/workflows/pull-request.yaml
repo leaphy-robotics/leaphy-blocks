@@ -1,0 +1,29 @@
+name: Validate a pull request
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Run ESLint
+        run: npx eslint blocks generators
+
+      - name: Run prettier
+        run: npx prettier -c blocks generators

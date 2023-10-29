@@ -8,12 +8,10 @@
  * @fileoverview Variable blocks for Blockly.
  * @suppress {checkTypes}
  */
-'use strict';
+"use strict";
 
-import * as Blockly from 'blockly/core';
-import {Block} from "blockly/core";
-
-
+import * as Blockly from "blockly/core";
+import { Block } from "blockly/core";
 
 /**
  * A dictionary of the block definitions provided by this module.
@@ -22,40 +20,42 @@ import {Block} from "blockly/core";
 const blocks = [
   // Block for variable getter.
   {
-    'type': 'variables_get_dynamic',
-    'message0': '%1',
-    'args0': [{
-      'type': 'field_variable',
-      'name': 'VAR',
-      'variable': '%{BKY_VARIABLES_DEFAULT_NAME}',
-    }],
-    'output': null,
-    'style': 'variable_dynamic_blocks',
-    'helpUrl': '%{BKY_VARIABLES_GET_HELPURL}',
-    'tooltip': '%{BKY_VARIABLES_GET_TOOLTIP}',
-    'extensions': ['contextMenu_variableDynamicSetterGetter'],
+    type: "variables_get_dynamic",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_variable",
+        name: "VAR",
+        variable: "%{BKY_VARIABLES_DEFAULT_NAME}",
+      },
+    ],
+    output: null,
+    style: "variable_dynamic_blocks",
+    helpUrl: "%{BKY_VARIABLES_GET_HELPURL}",
+    tooltip: "%{BKY_VARIABLES_GET_TOOLTIP}",
+    extensions: ["contextMenu_variableDynamicSetterGetter"],
   },
   // Block for variable setter.
   {
-    'type': 'variables_set_dynamic',
-    'message0': '%{BKY_VARIABLES_SET}',
-    'args0': [
+    type: "variables_set_dynamic",
+    message0: "%{BKY_VARIABLES_SET}",
+    args0: [
       {
-        'type': 'field_variable',
-        'name': 'VAR',
-        'variable': '%{BKY_VARIABLES_DEFAULT_NAME}',
+        type: "field_variable",
+        name: "VAR",
+        variable: "%{BKY_VARIABLES_DEFAULT_NAME}",
       },
       {
-        'type': 'input_value',
-        'name': 'VALUE',
+        type: "input_value",
+        name: "VALUE",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
-    'style': 'variable_dynamic_blocks',
-    'tooltip': '%{BKY_VARIABLES_SET_TOOLTIP}',
-    'helpUrl': '%{BKY_VARIABLES_SET_HELPURL}',
-    'extensions': ['contextMenu_variableDynamicSetterGetter'],
+    previousStatement: null,
+    nextStatement: null,
+    style: "variable_dynamic_blocks",
+    tooltip: "%{BKY_VARIABLES_SET_TOOLTIP}",
+    helpUrl: "%{BKY_VARIABLES_SET_HELPURL}",
+    extensions: ["contextMenu_variableDynamicSetterGetter"],
   },
 ];
 
@@ -73,45 +73,47 @@ const CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN = {
    * @param {!Array} options List of menu options to add to.
    * @this {Block}
    */
-  customContextMenu: function(options) {
+  customContextMenu: function (options) {
     // Getter blocks have the option to create a setter block, and vice versa.
     if (!this.isInFlyout) {
       let oppositeType;
       let contextMenuMsg;
-      const id = this.getFieldValue('VAR');
+      const id = this.getFieldValue("VAR");
       const variableModel = this.workspace.getVariableById(id);
       const varType = variableModel.type;
-      if (this.type === 'variables_get_dynamic') {
-        oppositeType = 'variables_set_dynamic';
-        contextMenuMsg = Msg['VARIABLES_GET_CREATE_SET'];
+      if (this.type === "variables_get_dynamic") {
+        oppositeType = "variables_set_dynamic";
+        contextMenuMsg = Msg["VARIABLES_GET_CREATE_SET"];
       } else {
-        oppositeType = 'variables_get_dynamic';
-        contextMenuMsg = Msg['VARIABLES_SET_CREATE_GET'];
+        oppositeType = "variables_get_dynamic";
+        contextMenuMsg = Msg["VARIABLES_SET_CREATE_GET"];
       }
 
-      const option = {enabled: this.workspace.remainingCapacity() > 0};
-      const name = this.getField('VAR').getText();
-      option.text = contextMenuMsg.replace('%1', name);
-      const xmlField = xml.createElement('field');
-      xmlField.setAttribute('name', 'VAR');
-      xmlField.setAttribute('variabletype', varType);
+      const option = { enabled: this.workspace.remainingCapacity() > 0 };
+      const name = this.getField("VAR").getText();
+      option.text = contextMenuMsg.replace("%1", name);
+      const xmlField = xml.createElement("field");
+      xmlField.setAttribute("name", "VAR");
+      xmlField.setAttribute("variabletype", varType);
       xmlField.appendChild(xml.createTextNode(name));
-      const xmlBlock = xml.createElement('block');
-      xmlBlock.setAttribute('type', oppositeType);
+      const xmlBlock = xml.createElement("block");
+      xmlBlock.setAttribute("type", oppositeType);
       xmlBlock.appendChild(xmlField);
       option.callback = ContextMenu.callbackFactory(this, xmlBlock);
       options.push(option);
     } else {
-      if (this.type === 'variables_get_dynamic' ||
-          this.type === 'variables_get_reporter_dynamic') {
+      if (
+        this.type === "variables_get_dynamic" ||
+        this.type === "variables_get_reporter_dynamic"
+      ) {
         const renameOption = {
-          text: Msg['RENAME_VARIABLE'],
+          text: Msg["RENAME_VARIABLE"],
           enabled: true,
           callback: renameOptionCallbackFactory(this),
         };
-        const name = this.getField('VAR').getText();
+        const name = this.getField("VAR").getText();
         const deleteOption = {
-          text: Msg['DELETE_VARIABLE'].replace('%1', name),
+          text: Msg["DELETE_VARIABLE"].replace("%1", name),
           enabled: true,
           callback: deleteOptionCallbackFactory(this),
         };
@@ -126,13 +128,13 @@ const CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN = {
    * @param {AbstractEvent} _e Change event.
    * @this {Block}
    */
-  onchange: function(_e) {
-    const id = this.getFieldValue('VAR');
+  onchange: function (_e) {
+    const id = this.getFieldValue("VAR");
     const variableModel = Variables.getVariable(this.workspace, id);
-    if (this.type === 'variables_get_dynamic') {
+    if (this.type === "variables_get_dynamic") {
       this.outputConnection.setCheck(variableModel.type);
     } else {
-      this.getInput('VALUE').connection.setCheck(variableModel.type);
+      this.getInput("VALUE").connection.setCheck(variableModel.type);
     }
   },
 };
@@ -143,10 +145,10 @@ const CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN = {
  * @param {!Block} block The block with the variable to rename.
  * @return {!function()} A function that renames the variable.
  */
-const renameOptionCallbackFactory = function(block) {
-  return function() {
+const renameOptionCallbackFactory = function (block) {
+  return function () {
     const workspace = block.workspace;
-    const variable = block.getField('VAR').getVariable();
+    const variable = block.getField("VAR").getVariable();
     Variables.renameVariable(workspace, variable);
   };
 };
@@ -157,16 +159,13 @@ const renameOptionCallbackFactory = function(block) {
  * @param {!Block} block The block with the variable to delete.
  * @return {!function()} A function that deletes the variable.
  */
-const deleteOptionCallbackFactory = function(block) {
-  return function() {
+const deleteOptionCallbackFactory = function (block) {
+  return function () {
     const workspace = block.workspace;
-    const variable = block.getField('VAR').getVariable();
+    const variable = block.getField("VAR").getVariable();
     workspace.deleteVariableById(variable.getId());
     workspace.refreshToolboxSelection();
   };
 };
 
-
-export {
-  blocks,
-}
+export { blocks };
