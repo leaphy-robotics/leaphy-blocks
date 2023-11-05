@@ -8,6 +8,7 @@ Blockly.Msg["ARD_DIGITALWRITE"] = "Set digital pin";
 Blockly.Msg["ARD_PIN_WARN1"] = "Pin %1 is needed for %2 as pin %3. Already in use as %4.";
 Blockly.Msg["ARD_SERVO_READ"] = "Read servo pin";
 Blockly.Msg["ARD_SERVO_WRITE"] = "Set servo pin";
+Blockly.Msg["ARD_SERVO_ARM_WRITE"] = "Set Arm servo pin";
 Blockly.Msg["ARD_SERVO_WRITE_DEG_180"] = "degrees";
 Blockly.Msg["ARD_SERVO_WRITE_TO"] = "angle to";
 Blockly.Msg["ARD_TIME_DELAY"] = "during";

@@ -13,9 +13,26 @@ import * as leaphyClick from "./leaphy_click";
 import * as arduino from "./arduino";
 import * as procedures from "./procedures";
 
+
+class Board {
+  boardType = "";
+  digitalPins = [];
+  analogPins = [];
+  servoName = ""
+
+  constructor(boardType, digiPins, anaPins, servoName) {
+    this.boardType = boardType;
+    this.digitalPins = digiPins;
+    this.analogPins = anaPins;
+    this.servoName = servoName;
+  }
+}
+
+
 function getBlocks(boardType = "l_uno") {
   var digitalPinOptions = [];
   var analogPinOptions = [];
+  var servoName = (boardType == 'l_flitz_nano') ? 'BKY_ARD_SERVO_ARM_WRITE' : 'BKY_ARD_SERVO_WRITE';
 
   if (
     boardType === "l_uno" ||
@@ -89,7 +106,7 @@ function getBlocks(boardType = "l_uno") {
     ];
   }
 
-  console.log("digitalPinOptions: " + digitalPinOptions);
+  const board = new Board(boardType, digitalPinOptions, analogPinOptions, servoName);
 
   // Add all blocks from each independent module in one list
   const block = [
@@ -98,11 +115,10 @@ function getBlocks(boardType = "l_uno") {
     ...logic.blocks,
     ...loops.blocks,
     ...math.blocks,
-    //...procedures.blocks,
     ...texts.blocks,
     ...variables.blocks,
     ...variablesDynamic.blocks,
-    ...leaphyCommon.default(digitalPinOptions, analogPinOptions),
+    ...leaphyCommon.default(board),
     ...leaphyOriginal.blocks,
     ...leaphyFlitz.blocks,
     ...leaphyClick.blocks,

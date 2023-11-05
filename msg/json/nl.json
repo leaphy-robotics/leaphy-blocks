@@ -71,6 +71,7 @@
 	"LEAPHY_DISPLAY_PRINT": "Stel display in - Rg.",
 	"LEAPHY_DISPLAY_DISPLAY": "Toon op display",
 	"ARD_SERVO_WRITE": "Servo",
+	"ARD_SERVO_ARM_WRITE": "Servo Arm",
 	"ARD_SERVO_WRITE_TO": "op",
 	"ARD_SERVO_WRITE_DEG_180": "°",
 	"ARD_SERVO_READ": "Lees servo pin",

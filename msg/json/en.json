@@ -61,6 +61,7 @@
 	"LEAPHY_LED_STRIP_RAINBOW": "Rainbow",
 	"LEAPHY_LED_STRIP_COLORGULF": "Color Gulf",
 	"ARD_SERVO_WRITE": "Set servo pin",
+	"ARD_SERVO_ARM_WRITE": "Servo Arm",
 	"ARD_SERVO_WRITE_TO": "angle to",
 	"ARD_SERVO_WRITE_DEG_180": "degrees",
 	"ARD_SERVO_READ": "Read servo pin",
