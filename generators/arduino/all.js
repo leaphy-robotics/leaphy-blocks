@@ -413,8 +413,8 @@ Arduino.noGeneratorCodeLine = function () {
 
 // Override workspaceToCode with an additional robotType parameter that can be used by code generators
 // to change bevaviour (like pins) for different robot types
-Arduino._workspaceToCode = Arduino.workspaceToCode
-Arduino.workspaceToCode = function(workspace, robotType) {
+Arduino._workspaceToCode = Arduino.workspaceToCode;
+Arduino.workspaceToCode = function (workspace, robotType) {
   Arduino.robotType = robotType;
   return Arduino._workspaceToCode(workspace);
 };
