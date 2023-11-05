@@ -24,13 +24,13 @@ const displayPinNumbers = [
   ["3", "2"],
 ];
 
-function getBlocks(digitalPinOptions, analogPinOptions) {
+function getBlocks(board) {
   const blocks = [
     {
       type: "digital_read",
       message0: "%%{BKY_LEAPHY_DIGITAL_READ} %1",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: digitalPinOptions },
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
       ],
       style: "leaphy_blocks",
       output: "Number",
@@ -41,7 +41,7 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
       type: "analog_read",
       message0: "%%{BKY_LEAPHY_ANALOG_READ} %1",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: analogPinOptions },
+        { type: "field_dropdown", name: "PIN", options: board.analogPins },
       ],
       style: "leaphy_blocks",
       output: "Number",
@@ -209,12 +209,14 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
     {
       type: "leaphy_servo_write",
       message0:
-        "%%{BKY_ARD_SERVO_WRITE} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
+        "%%{" +
+        board.servoName +
+        "} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
       args0: [
         {
           type: "field_dropdown",
           name: "SERVO_PIN",
-          options: digitalPinOptions,
+          options: board.digitalPins,
         },
         { type: "input_dummy" },
         { type: "input_value", name: "SERVO_ANGLE", check: "Number" },
@@ -234,7 +236,7 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
         {
           type: "field_dropdown",
           name: "SERVO_PIN",
-          options: digitalPinOptions,
+          options: board.digitalPins,
         },
       ],
       output: "Number",
@@ -247,7 +249,7 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
       type: "leaphy_io_digitalwrite",
       message0: "%%{BKY_ARD_DIGITALWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: digitalPinOptions },
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
         { type: "input_value", name: "STATE", check: "Boolean" },
       ],
       inputsInline: true,
@@ -261,7 +263,7 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
       type: "leaphy_io_analogwrite",
       message0: "%%{BKY_ARD_ANALOGWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: digitalPinOptions },
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
         { type: "input_value", name: "NUM", check: "Number" },
       ],
       inputsInline: true,
@@ -280,17 +282,16 @@ function getBlocks(digitalPinOptions, analogPinOptions) {
         {
           type: "field_dropdown",
           name: "TRIG_PIN",
-          options: digitalPinOptions,
+          options: board.digitalPins,
         },
         {
           type: "field_dropdown",
           name: "ECHO_PIN",
-          options: digitalPinOptions,
+          options: board.digitalPins,
         },
       ],
       output: "Number",
       style: "leaphy_blocks",
-      // "extensions": "returnAndUpdateTrig",
       tooltip: "%{BKY_LEAPHY_SONAR_READ_TIP}",
       helpUrl: "",
     },

@@ -8,6 +8,7 @@ Blockly.Msg["ARD_DIGITALWRITE"] = "Zet Digipin";
 Blockly.Msg["ARD_PIN_WARN1"] = "Pin %1 is nodig voor %2 als pin %3. Al gebruikt als %4.";
 Blockly.Msg["ARD_SERVO_READ"] = "Lees servo pin";
 Blockly.Msg["ARD_SERVO_WRITE"] = "Servo";
+Blockly.Msg["ARD_SERVO_ARM_WRITE"] = "Servo Arm";
 Blockly.Msg["ARD_SERVO_WRITE_DEG_180"] = "°";
 Blockly.Msg["ARD_SERVO_WRITE_TO"] = "op";
 Blockly.Msg["ARD_TIME_DELAY"] = "duurt";
