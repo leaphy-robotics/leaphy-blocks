@@ -64,25 +64,6 @@ const blocks = [
     helpUrl: "",
   },
   {
-    type: "leaphy_nano_set_motor",
-    message0: "%%{BKY_LEAPHY_MOTOR_TYPE} %1 %2 %%{BKY_LEAPHY_MOTOR_SPEED} %3",
-    args0: [
-      {
-        type: "field_dropdown",
-        name: "MOTOR_TYPE",
-        options: motorLeftRightDropdown,
-      },
-      { type: "input_dummy" },
-      { type: "input_value", name: "MOTOR_SPEED", check: "Number" },
-    ],
-    inputsInline: true,
-    previousStatement: null,
-    nextStatement: null,
-    style: "leaphy_blocks",
-    tooltip: "",
-    helpUrl: "",
-  },
-  {
     type: "leaphy_original_get_distance",
     message0: "%%{BKY_LEAPHY_GET_DISTANCE}",
     style: "leaphy_blocks",
@@ -92,25 +73,6 @@ const blocks = [
   },
   {
     type: "leaphy_original_move_motors",
-    message0: "%%{BKY_LEAPHY_MOTOR_DIRECTION} %1 %2  %3",
-    args0: [
-      {
-        type: "field_dropdown",
-        name: "MOTOR_DIRECTION",
-        options: motorForwardBackwardDropdown,
-      },
-      { type: "input_dummy" },
-      { type: "input_value", name: "MOTOR_SPEED", check: "Number" },
-    ],
-    inputsInline: true,
-    previousStatement: null,
-    nextStatement: null,
-    style: "leaphy_blocks",
-    tooltip: "",
-    helpUrl: "",
-  },
-  {
-    type: "leaphy_nano_move_motors",
     message0: "%%{BKY_LEAPHY_MOTOR_DIRECTION} %1 %2  %3",
     args0: [
       {
