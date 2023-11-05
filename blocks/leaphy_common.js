@@ -209,7 +209,9 @@ function getBlocks(board) {
     {
       type: "leaphy_servo_write",
       message0:
-        "%%{"+ board.servoName +"} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
+        "%%{" +
+        board.servoName +
+        "} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
       args0: [
         {
           type: "field_dropdown",
