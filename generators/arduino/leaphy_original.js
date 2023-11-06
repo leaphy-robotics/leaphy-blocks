@@ -21,27 +21,16 @@ function getCodeGenerators(Arduino) {
       "include_leaphy_original",
       '#include "Leaphyoriginal1.h"',
     );
-    var code = "setMotor(" + dropdown_Type + ", " + speed + ");\n";
-    return code;
-  };
+    // Set different motor pins for nano robots
+    if (Arduino.robotType.includes("nano"))
+      Arduino.addSetup("set_motor_pins", "setMotorPins(3, 2, 11, 4);", true);
 
-  Arduino.forBlock["leaphy_nano_set_motor"] = function (block) {
-    var dropdown_Type = block.getFieldValue("MOTOR_TYPE");
-    var speed =
-      Arduino.valueToCode(this, "MOTOR_SPEED", Arduino.ORDER_ATOMIC) || "100";
-    Arduino.addInclude(
-      "include_leaphy_original",
-      '#include "Leaphyoriginal1.h"',
-    );
-    Arduino.addSetup("set_motor_pins", "setMotorPins(3, 2, 11, 4);", true);
     var code = "setMotor(" + dropdown_Type + ", " + speed + ");\n";
     return code;
   };
 
   Arduino.forBlock["leaphy_click_set_motor"] =
     Arduino.forBlock["leaphy_original_set_motor"];
-  Arduino.forBlock["leaphy_click_nano_set_motor"] =
-    Arduino.forBlock["leaphy_nano_set_motor"];
 
   Arduino.forBlock["leaphy_original_get_distance"] = function (block) {
     Arduino.addInclude(
@@ -60,19 +49,10 @@ function getCodeGenerators(Arduino) {
       "include_leaphy_original",
       '#include "Leaphyoriginal1.h"',
     );
-    var code = "moveMotors(" + dropdown_Type + ", " + speed + ");\n";
-    return code;
-  };
+    // Set different motor pins for nano robots
+    if (Arduino.robotType.includes("nano"))
+      Arduino.addSetup("set_motor_pins", "setMotorPins(3, 2, 11, 4);", true);
 
-  Arduino.forBlock["leaphy_nano_move_motors"] = function (block) {
-    var dropdown_Type = block.getFieldValue("MOTOR_DIRECTION");
-    var speed =
-      Arduino.valueToCode(this, "MOTOR_SPEED", Arduino.ORDER_ATOMIC) || "100";
-    Arduino.addInclude(
-      "include_leaphy_original",
-      '#include "Leaphyoriginal1.h"',
-    );
-    Arduino.addSetup("set_motor_pins", "setMotorPins(3, 2, 11, 4);", true);
     var code = "moveMotors(" + dropdown_Type + ", " + speed + ");\n";
     return code;
   };
