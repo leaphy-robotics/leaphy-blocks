@@ -47,6 +47,7 @@ function getCodeGenerators(Arduino) {
     var flitz_blue =
       Arduino.valueToCode(this, "FLITZ_LED_B", Arduino.ORDER_ATOMIC) || "0";
 
+    var code;
     if (Arduino.robotType.includes("nano")) {
       // Ground is connected to pin 8 on the nano, so it needs to be pulled LOW
       Arduino.addSetup(
@@ -54,15 +55,25 @@ function getCodeGenerators(Arduino) {
         "pinMode(8, OUTPUT);\n  digitalWrite(8, LOW);",
         false,
       );
+      code =
+        "analogWrite(11, " +
+        flitz_red +
+        ");\nanalogWrite(10, " +
+        flitz_green +
+        ");\nanalogWrite(9, " +
+        flitz_blue +
+        ");\n";
+    } else {
+      code =
+        "analogWrite(3, " +
+        flitz_red +
+        ");\nanalogWrite(5, " +
+        flitz_green +
+        ");\nanalogWrite(6, " +
+        flitz_blue +
+        ");\n";
     }
-    var code =
-      "analogWrite(3, " +
-      flitz_red +
-      ");\nanalogWrite(5, " +
-      flitz_green +
-      ");\nanalogWrite(6, " +
-      flitz_blue +
-      ");\n";
+
     return code;
   };
 }
