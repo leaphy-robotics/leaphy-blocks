@@ -19,6 +19,7 @@
 			"아라"
 		]
 	},
+	"LEAPHY_COMPASS": "Lees kompas",
 	"LEAPHY_MOTOR_FORWARD": "Vooruit",
 	"LEAPHY_MOTOR_BACKWARD": "Achteruit",
 	"LEAPHY_MOTOR_LEFT": "Links",

@@ -95,6 +95,7 @@ Blockly.Msg["LEAPHY_BUZZ_BUZZ"] = "Buzz";
 Blockly.Msg["LEAPHY_BUZZ_HERTZ"] = "Hertz";
 Blockly.Msg["LEAPHY_BUZZ_MS"] = "ms";
 Blockly.Msg["LEAPHY_CLICK_CATEGORY"] = "Leaphy Click";
+Blockly.Msg["LEAPHY_COMPASS"] = "Read compass";
 Blockly.Msg["LEAPHY_DIGITAL_READ"] = "Read digipin";
 Blockly.Msg["LEAPHY_DISPLAY_CLEAR"] = "Clear display";
 Blockly.Msg["LEAPHY_DISPLAY_DISPLAY"] = "Show on display";

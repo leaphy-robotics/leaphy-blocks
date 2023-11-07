@@ -44,6 +44,18 @@ function getCodeGenerators(Arduino) {
       ");\n";
     return code;
   };
+
+  Arduino.forBlock["leaphy_compass_degrees"] = function (block) {
+    Arduino.addInclude("leaphy_compass", "#include <QMC5883LCompass.h>");
+    Arduino.addDeclaration("leaphy_compass", "QMC5883LCompass compass;");
+    Arduino.addDeclaration(
+      "leaphy_compass_read",
+      "int getCompassDegrees() {\n    compass.read();\n    int azimuth = compass.getAzimuth();\n    return compass.getBearing(azimuth) * 24;\n}\n",
+    );
+    Arduino.addSetup("leaphy_compass", "compass.init();");
+    var code = "getCompassDegrees()";
+    return [code, Arduino.ORDER_ATOMIC];
+  };
 }
 
 export default getCodeGenerators;
