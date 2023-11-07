@@ -93,6 +93,7 @@ Blockly.Msg["LEAPHY_BUZZ_BUZZ"] = "Buzz";  // untranslated
 Blockly.Msg["LEAPHY_BUZZ_HERTZ"] = "Hertz";  // untranslated
 Blockly.Msg["LEAPHY_BUZZ_MS"] = "ms";  // untranslated
 Blockly.Msg["LEAPHY_CLICK_CATEGORY"] = "Leaphy Click";  // untranslated
+Blockly.Msg["LEAPHY_COMPASS"] = "Lees kompas";
 Blockly.Msg["LEAPHY_DIGITAL_READ"] = "Lees digipin";
 Blockly.Msg["LEAPHY_DISPLAY_CLEAR"] = "Maak display leeg";
 Blockly.Msg["LEAPHY_DISPLAY_DISPLAY"] = "Toon op display";

@@ -393,6 +393,14 @@ function getBlocks(board) {
       tooltip: "",
       helpUrl: "",
     },
+    {
+      type: "leaphy_compass_degrees",
+      message0: "%%{BKY_LEAPHY_COMPASS}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
   ];
   return blocks;
 }
