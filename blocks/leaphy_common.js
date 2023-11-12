@@ -10,6 +10,13 @@ const rgbColorRaw = [
   ["%{BKY_LEAPHY_RGB_RAW_COLOR_BLUE}", "2"],
 ];
 
+const apds9960RgbColor = [
+  ["%{BKY_COLOUR_RGB_RED}", "0"],
+  ["%{BKY_COLOUR_RGB_GREEN}", "1"],
+  ["%{BKY_COLOUR_RGB_BLUE}", "2"],
+  ["%{BKY_COLOUR_RGB_AMBIENT}", "3"],
+];
+
 const ledstripDemoOptions = [
   ["%{BKY_LEAPHY_LED_STRIP_LIGHTBANK}", "0"],
   ["%{BKY_LEAPHY_LED_STRIP_BREATHE}", "1"],
@@ -130,6 +137,29 @@ function getBlocks(board) {
     {
       type: "leaphy_rgb_raw_color_blue",
       message0: "%%{BKY_LEAPHY_RGB_RAW_COLOR_BLUE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "leaphy_i2c_rgb_color",
+      message0: "%%{BKY_LEAPHY_RGB_READ_SENSOR} %1",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "COLOR_TYPE",
+          options: apds9960RgbColor,
+        },
+      ],
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "leaphy_i2c_gesture",
+      message0: "%%{BKY_LEAPHY_GET_GESTURE}",
       style: "leaphy_blocks",
       output: "Number",
       tooltip: "",
