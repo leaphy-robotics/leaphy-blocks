@@ -56,6 +56,49 @@ function getCodeGenerators(Arduino) {
     var code = "getCompassDegrees()";
     return [code, Arduino.ORDER_ATOMIC];
   };
+
+  Arduino.forBlock["leaphy_i2c_rgb_color"] = function (block) {
+    const rgb_declaration =
+      "int r = 0, g = 0, b = 0, a = 0;\n" +
+      "int getAPDS9960Color(int colorType) {\n" +
+      "    if (APDS.colorAvailable()) {\n" +
+      "        APDS.readColor(r, g, b, a);\n" +
+      "    }\n" +
+      "    switch(colorType) {\n" +
+      "      case 0:\n" +
+      "        return r;\n" +
+      "      case 1:\n" +
+      "        return g;\n" +
+      "      case 2:\n" +
+      "        return b;\n" +
+      "      case 3:\n" +
+      "        return a;\n" +
+      "    }\n" +
+      "}\n";
+    let colorType = block.getFieldValue("COLOR_TYPE");
+
+    Arduino.addInclude("apds9960", "#include <Arduino_APDS9960.h>");
+    Arduino.addSetup("apds9960", "APDS.begin();");
+    Arduino.addDeclaration("apds9960_rgb", rgb_declaration);
+    let code = "getAPDS9960Color(" + colorType + ")";
+    return [code, Arduino.ORDER_ATOMIC];
+  };
+
+  Arduino.forBlock["leaphy_i2c_gesture"] = function (block) {
+    const gesture_declaration =
+      "int gesture = GESTURE_NONE;\n" +
+      "int getAPDS9960Gesture() {\n" +
+      "    if (APDS.gestureAvailable()) {\n" +
+      "        gesture = APDS.readGesture();\n" +
+      "    }\n" +
+      "    return gesture;\n" +
+      "}\n";
+    Arduino.addInclude("apds9960", "#include <Arduino_APDS9960.h>");
+    Arduino.addSetup("apds9960", "APDS.begin();");
+    Arduino.addDeclaration("apds9960_gesture", gesture_declaration);
+    let code = "getAPDS9960Gesture()";
+    return [code, Arduino.ORDER_ATOMIC];
+  };
 }
 
 export default getCodeGenerators;
