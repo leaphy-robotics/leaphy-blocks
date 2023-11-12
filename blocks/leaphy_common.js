@@ -146,7 +146,11 @@ function getBlocks(board) {
       type: "leaphy_i2c_rgb_color",
       message0: "%%{BKY_LEAPHY_RGB_READ_SENSOR} %1",
       args0: [
-        { type: "field_dropdown", name: "COLOR_TYPE", options: apds9960RgbColor },
+        {
+          type: "field_dropdown",
+          name: "COLOR_TYPE",
+          options: apds9960RgbColor,
+        },
       ],
       style: "leaphy_blocks",
       output: "Number",
