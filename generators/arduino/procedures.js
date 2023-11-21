@@ -35,7 +35,7 @@ function getCodeGenerators(Arduino) {
     var args = [];
     for (var x = 0; x < block.arguments_.length; x++) {
       args[x] =
-        "double" +
+        "void" +
         " " +
         Arduino.nameDB_.getName(
           block.arguments_[x],
