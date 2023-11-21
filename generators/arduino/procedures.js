@@ -35,7 +35,7 @@ function getCodeGenerators(Arduino) {
     var args = [];
     for (var x = 0; x < block.arguments_.length; x++) {
       args[x] =
-        "void" +
+        "double" +
         " " +
         Arduino.nameDB_.getName(
           block.arguments_[x],
@@ -88,7 +88,7 @@ function getCodeGenerators(Arduino) {
       args[x] =
         Arduino.valueToCode(block, "ARG" + x, Arduino.ORDER_NONE) || "null";
     }
-    var code = "void" + funcName + "(" + args.join(", ") + ")";
+    var code = funcName + "(" + args.join(", ") + ")";
     return [code, Arduino.ORDER_UNARY_POSTFIX];
   };
 
