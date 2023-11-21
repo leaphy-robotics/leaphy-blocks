@@ -44,7 +44,7 @@ function getCodeGenerators(Arduino) {
     }
 
     // Get return type
-    var returnType = "double";
+    var returnType = "void";
     //returnType = Arduino.getArduinoType_(returnType);
 
     // Construct code
