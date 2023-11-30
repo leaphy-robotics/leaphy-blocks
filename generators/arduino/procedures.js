@@ -46,6 +46,7 @@ function getCodeGenerators(Arduino) {
     // Get return type
     var returnType = block.type;
     // returnType = Arduino.getArduinoType_(returnType);
+    console.log(returnType);
 
     // Construct code
     var code =
