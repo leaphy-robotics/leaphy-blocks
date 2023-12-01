@@ -44,7 +44,7 @@ function getCodeGenerators(Arduino) {
     }
     var returnType;
     // Get return type
-    if (block.type == "procedures_defreturn"){
+    if (block.type == "procedures_defreturn") {
       returnType = "double";
     } else {
       returnType = "void";
