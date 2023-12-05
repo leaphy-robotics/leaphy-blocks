@@ -42,10 +42,13 @@ function getCodeGenerators(Arduino) {
           Blockly.Names.NameType.VARIABLE,
         );
     }
-
+    var returnType;
     // Get return type
-    var returnType = "double";
-    //returnType = Arduino.getArduinoType_(returnType);
+    if (block.type == "procedures_defreturn") {
+      returnType = "double";
+    } else {
+      returnType = "void";
+    }
 
     // Construct code
     var code =
