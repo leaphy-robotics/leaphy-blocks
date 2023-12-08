@@ -50,9 +50,16 @@ function getCodeGenerators(Arduino) {
     Arduino.addDeclaration("leaphy_compass", "QMC5883LCompass compass;");
     Arduino.addDeclaration(
       "leaphy_compass_read",
-      "int getCompassDegrees() {\n    compass.read();\n    int azimuth = compass.getAzimuth();\n    return compass.getBearing(azimuth) * 24;\n}\n",
+      "int getCompassDegrees() {\n" +
+        "    compass.read();\n" +
+        "    int azimuth = compass.getAzimuth();\n" +
+        "    return round((azimuth > -0.5) ? azimuth : azimuth + 360);\n" +
+        "}\n",
     );
-    Arduino.addSetup("leaphy_compass", "compass.init();");
+    Arduino.addSetup(
+      "leaphy_compass",
+      "compass.init();\n  compass.setMagneticDeclination(2, 30);",
+    );
     var code = "getCompassDegrees()";
     return [code, Arduino.ORDER_ATOMIC];
   };
