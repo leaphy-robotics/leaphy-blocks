@@ -431,6 +431,24 @@ function getBlocks(board) {
       tooltip: "",
       helpUrl: "",
     },
+    {
+      type: "leaphy_gas_sensor",
+      message0: "%%{BKY_LEAPHY_GAS_SENSOR}",
+      "args0": [
+        {
+          "type": "field_dropdown",
+          "name": "FIELDNAME",
+          "options": [
+            [ "first item", "ITEM1" ],
+            [ "second item", "ITEM2" ]
+          ]
+        }
+      ],
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    }
   ];
   return blocks;
 }
