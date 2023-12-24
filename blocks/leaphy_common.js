@@ -433,14 +433,28 @@ function getBlocks(board) {
     },
     {
       type: "leaphy_gas_sensor",
-      message0: "%%{BKY_LEAPHY_GAS_SENSOR}",
-      "args0": [
+      message0: "Choose gas: %1",
+      args0: [
         {
-          "type": "field_dropdown",
-          "name": "FIELDNAME",
-          "options": [
-            [ "first item", "ITEM1" ],
-            [ "second item", "ITEM2" ]
+          type: "field_dropdown",
+          name: "GAS",
+          options: [
+            [
+              "TVOC",
+              "TVOC"
+            ],
+            [
+              "eCO2",
+              "eCO2"
+            ],
+            [
+              "Raw H2",
+              "Raw H2"
+            ],
+            [
+              "Raw Ethanol",
+              "RAWETHANOL"
+            ]
           ]
         }
       ],

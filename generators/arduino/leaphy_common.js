@@ -64,6 +64,33 @@ function getCodeGenerators(Arduino) {
     return [code, Arduino.ORDER_ATOMIC];
   };
 
+  Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
+    Arduino.addInclude("leaphy_gas_sensor", "#include <Adafruit_SGP30.h>");
+    Arduino.addDeclaration(
+      "leaphy_gas_sensor",
+      "Adafruit_SGP30 sgp;",
+    );
+    Arduino.addSetup("serial", "Serial.begin(115200);", false);
+    Arduino.addSetup("leaphy_gas_sensor", "if (! sgp.begin()){" +
+      "Serial.println('Sensor not found :(');" +
+      "while (1);" +
+    "}");
+
+    var gasValue = block.getFieldValue("GAS");
+    console.log(gasValue);
+    if (gasValue == "TVOC") {
+      var code = "Serial.print('TVOC '); Serial.print(sgp.TVOC); Serial.print(' ppb\t');";
+    } else if (gasValue == "eCO2") {
+      var code = "Serial.print('eCO2 '); Serial.print(sgp.eCO2); Serial.print(' ppm');";
+    } else if (gasValue == "Raw H2") {
+      var code = "Serial.print('Raw H2 '); Serial.print(sgp.rawH2); Serial.print(' \t');";
+    } else if (gasValue == "Raw Ethanol") {
+      var code = "Serial.print('Raw Ethanol '); Serial.print(sgp.rawEthanol); Serial.print('');";
+    }
+
+    return [code, Arduino.ORDER_ATOMIC];
+  }
+
   Arduino.forBlock["leaphy_i2c_rgb_color"] = function (block) {
     const rgb_declaration =
       "int r = 0, g = 0, b = 0, a = 0;\n" +
