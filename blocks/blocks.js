@@ -12,6 +12,7 @@ import * as leaphyFlitz from "./leaphy_flitz";
 import * as leaphyClick from "./leaphy_click";
 import * as arduino from "./arduino";
 import * as procedures from "./procedures";
+import * as blockly from "blockly";
 
 class Board {
   boardType = "";
@@ -118,7 +119,7 @@ function getBlocks(boardType = "l_uno") {
   const block = [
     ...colour.blocks,
     ...lists.blocks,
-    ...logic.blocks,
+    ...blockly.logic.blocks,
     ...loops.blocks,
     ...math.blocks,
     ...texts.blocks,
