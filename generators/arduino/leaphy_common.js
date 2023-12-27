@@ -79,13 +79,13 @@ function getCodeGenerators(Arduino) {
     var gasValue = block.getFieldValue("GAS");
     console.log(gasValue);
     if (gasValue == "TVOC") {
-      var code = "Serial.print('TVOC '); Serial.print(sgp.TVOC); Serial.print(' ppb\t');";
+      var code = "sgp.TVOC;";
     } else if (gasValue == "eCO2") {
-      var code = "Serial.print('eCO2 '); Serial.print(sgp.eCO2); Serial.print(' ppm');";
+      var code = "sgp.eCO2";
     } else if (gasValue == "Raw H2") {
-      var code = "Serial.print('Raw H2 '); Serial.print(sgp.rawH2); Serial.print(' \t');";
+      var code = "sgp.rawH2";
     } else if (gasValue == "Raw Ethanol") {
-      var code = "Serial.print('Raw Ethanol '); Serial.print(sgp.rawEthanol); Serial.print('');";
+      var code = "sgp.rawEthanol";
     }
 
     return [code, Arduino.ORDER_ATOMIC];
