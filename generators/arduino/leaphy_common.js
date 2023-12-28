@@ -70,10 +70,8 @@ function getCodeGenerators(Arduino) {
       "leaphy_gas_sensor",
       "Adafruit_SGP30 sgp;",
     );
-    Arduino.addSetup("serial", "Serial.begin(115200);", false);
     Arduino.addSetup("leaphy_gas_sensor", "if (! sgp.begin()){" +
-      "Serial.println('Sensor not found :(');" +
-      "while (1);" +
+      "return -1;" +
     "}");
 
     var gasValue = block.getFieldValue("GAS");
