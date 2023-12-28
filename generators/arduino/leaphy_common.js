@@ -71,12 +71,12 @@ function getCodeGenerators(Arduino) {
       "Adafruit_SGP30 sgp;",
     );
     Arduino.addSetup("leaphy_gas_sensor", "if (! sgp.begin()){\n" +
-      "return -1;\n" +
+      "\treturn -1;\n" +
     "}");
 
     var gasValue = block.getFieldValue("GAS");
     if (gasValue == "TVOC") {
-      var code = "sgp.TVOC;";
+      var code = "sgp.TVOC";
     } else if (gasValue == "eCO2") {
       var code = "sgp.eCO2";
     } else if (gasValue == "Raw H2") {
