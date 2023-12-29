@@ -66,13 +66,11 @@ function getCodeGenerators(Arduino) {
 
   Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
     Arduino.addInclude("leaphy_gas_sensor", "#include <Adafruit_SGP30.h>");
-    Arduino.addDeclaration(
+    Arduino.addDeclaration("leaphy_gas_sensor", "Adafruit_SGP30 sgp;");
+    Arduino.addSetup(
       "leaphy_gas_sensor",
-      "Adafruit_SGP30 sgp;",
+      "if (! sgp.begin()){\n" + "\treturn -1;\n" + "}",
     );
-    Arduino.addSetup("leaphy_gas_sensor", "if (! sgp.begin()){\n" +
-      "\treturn -1;\n" +
-    "}");
 
     var gasValue = block.getFieldValue("GAS");
     let code = "";
@@ -87,7 +85,7 @@ function getCodeGenerators(Arduino) {
     }
 
     return [code, Arduino.ORDER_ATOMIC];
-  }
+  };
 
   Arduino.forBlock["leaphy_i2c_rgb_color"] = function (block) {
     const rgb_declaration =
