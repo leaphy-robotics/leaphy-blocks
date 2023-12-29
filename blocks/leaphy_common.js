@@ -433,7 +433,7 @@ function getBlocks(board) {
     },
     {
       type: "leaphy_gas_sensor",
-      message0: "Choose gas: %1",
+      message0: "%%{BKY_LEAPHY_CHOOSE_GAS}: %1",
       args0: [
         {
           type: "field_dropdown",
