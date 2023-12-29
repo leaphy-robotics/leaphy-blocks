@@ -77,13 +77,13 @@ function getCodeGenerators(Arduino) {
     var gasValue = block.getFieldValue("GAS");
     let code = "";
     if (gasValue == "TVOC") {
-      let code = "sgp.TVOC";
+      code = "sgp.TVOC";
     } else if (gasValue == "eCO2") {
-      let code = "sgp.eCO2";
+      code = "sgp.eCO2";
     } else if (gasValue == "Raw H2") {
-      let code = "sgp.rawH2";
+      code = "sgp.rawH2";
     } else if (gasValue == "Raw Ethanol") {
-      let code = "sgp.rawEthanol";
+      code = "sgp.rawEthanol";
     }
 
     return [code, Arduino.ORDER_ATOMIC];
