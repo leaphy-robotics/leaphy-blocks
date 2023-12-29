@@ -14,6 +14,9 @@ import * as arduino from "./arduino";
 import * as procedures from "./procedures";
 import * as blockly from "blockly";
 
+import * as defaultColourBlocks from "blockly/blocks/default/colour";
+
+
 class Board {
   boardType = "";
   digitalPins = [];
@@ -115,8 +118,11 @@ function getBlocks(boardType = "l_uno") {
     servoName,
   );
 
+  const defaultColorBlockDefs = Object.values(defaultColourBlocks);
+
   // Add all blocks from each independent module in one list
   const block = [
+    ...defaultColorBlockDefs,	
     ...colour.blocks,
     ...lists.blocks,
     ...blockly.logic.blocks,
