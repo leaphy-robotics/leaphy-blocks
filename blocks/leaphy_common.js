@@ -439,30 +439,18 @@ function getBlocks(board) {
           type: "field_dropdown",
           name: "GAS",
           options: [
-            [
-              "TVOC",
-              "TVOC"
-            ],
-            [
-              "eCO2",
-              "eCO2"
-            ],
-            [
-              "Raw H2",
-              "Raw H2"
-            ],
-            [
-              "Raw Ethanol",
-              "RAWETHANOL"
-            ]
-          ]
-        }
+            ["TVOC", "TVOC"],
+            ["eCO2", "eCO2"],
+            ["Raw H2", "Raw H2"],
+            ["Raw Ethanol", "RAWETHANOL"],
+          ],
+        },
       ],
       style: "leaphy_blocks",
       output: "Number",
       tooltip: "",
       helpUrl: "",
-    }
+    },
   ];
   return blocks;
 }

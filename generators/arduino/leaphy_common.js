@@ -8,7 +8,7 @@ function getCodeGenerators(Arduino) {
       branch =
         Arduino.prefixLines(
           Arduino.STATEMENT_PREFIX.replace(/%1/g, "'" + id + "'"),
-          Arduino.INDENT
+          Arduino.INDENT,
         ) + branch;
     }
     if (Arduino.INFINITE_LOOP_TRAP) {
@@ -54,11 +54,11 @@ function getCodeGenerators(Arduino) {
         "    compass.read();\n" +
         "    int azimuth = compass.getAzimuth();\n" +
         "    return round((azimuth > -0.5) ? azimuth : azimuth + 360);\n" +
-        "}\n"
+        "}\n",
     );
     Arduino.addSetup(
       "leaphy_compass",
-      "compass.init();\n  compass.setMagneticDeclination(2, 30);"
+      "compass.init();\n  compass.setMagneticDeclination(2, 30);",
     );
     var code = "getCompassDegrees()";
     return [code, Arduino.ORDER_ATOMIC];
@@ -69,7 +69,7 @@ function getCodeGenerators(Arduino) {
     Arduino.addDeclaration("leaphy_gas_sensor", "Adafruit_SGP30 sgp;");
     Arduino.addSetup(
       "leaphy_gas_sensor",
-      "if (! sgp.begin()){\n" + "\treturn -1;\n" + "}"
+      "if (! sgp.begin()){\n" + "\treturn -1;\n" + "}",
     );
 
     var gasValue = block.getFieldValue("GAS");
