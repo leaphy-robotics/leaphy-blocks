@@ -1,21 +1,9 @@
-import * as colour from "./colour";
-import * as lists from "./lists";
-import * as logic from "./logic";
-import * as loops from "./loops";
-import * as math from "./math";
-import * as texts from "./text";
-import * as variables from "./variables";
-import * as variablesDynamic from "./variables_dynamic";
 import * as leaphyCommon from "./leaphy_common";
 import * as leaphyOriginal from "./leaphy_original";
 import * as leaphyFlitz from "./leaphy_flitz";
 import * as leaphyClick from "./leaphy_click";
 import * as arduino from "./arduino";
 import * as procedures from "./procedures";
-import * as blockly from "blockly";
-
-import * as defaultColourBlocks from "blockly/blocks/default/colour";
-
 
 class Board {
   boardType = "";
@@ -118,19 +106,8 @@ function getBlocks(boardType = "l_uno") {
     servoName,
   );
 
-  const defaultColorBlockDefs = Object.values(defaultColourBlocks);
-
   // Add all blocks from each independent module in one list
   const block = [
-    ...defaultColorBlockDefs,	
-    ...colour.blocks,
-    ...lists.blocks,
-    ...blockly.logic.blocks,
-    ...loops.blocks,
-    ...math.blocks,
-    ...texts.blocks,
-    ...variables.blocks,
-    ...variablesDynamic.blocks,
     ...leaphyCommon.default(board),
     ...leaphyOriginal.blocks,
     ...leaphyFlitz.blocks,
