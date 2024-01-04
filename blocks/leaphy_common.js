@@ -431,6 +431,26 @@ function getBlocks(board) {
       tooltip: "",
       helpUrl: "",
     },
+    {
+      type: "leaphy_gas_sensor",
+      message0: "%%{BKY_LEAPHY_CHOOSE_GAS}: %1",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "GAS",
+          options: [
+            ["TVOC", "TVOC"],
+            ["eCO2", "eCO2"],
+            ["Raw H2", "Raw H2"],
+            ["Raw Ethanol", "RAWETHANOL"],
+          ],
+        },
+      ],
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
   ];
   return blocks;
 }

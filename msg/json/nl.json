@@ -33,6 +33,7 @@
 	"LEAPHY_MOTOR_DIRECTION": "Richting",
 	"LEAPHY_GET_DISTANCE": "Lees afstand",
 	"LEAPHY_DIGITAL_READ": "Lees digipin",
+	"LEAPHY_CHOOSE_GAS": "Kies gas: ",
 	"LEAPHY_ANALOG_READ": "Lees anapin",
 	"LEAPHY_RGB_READ_SENSOR": "Lees RGB Sensor",
 	"LEAPHY_RGB_COLOR_RED": "R-255",
