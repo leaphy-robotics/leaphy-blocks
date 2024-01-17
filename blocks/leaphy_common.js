@@ -364,6 +364,20 @@ function getBlocks(board) {
       helpUrl: "",
     },
     {
+      type: "leaphy_display_set_text_size",
+      message0: "%%{BKY_LEAPHY_DISPLAY_SET_TEXT_SIZE} %1",
+      args0: [
+        { type: "input_value", name: "NUM", check: "Number" },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+      // "extensions": "updateDisplay",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
       type: "leaphy_display_print_value",
       message0: "%%{BKY_LEAPHY_DISPLAY_PRINT} %1 %2 %3 = %4 %5",
       args0: [
