@@ -243,6 +243,14 @@ function getCodeGenerators(Arduino) {
     return code;
   };
 
+  Arduino.forBlock["leaphy_display_set_text_size"] = function (block) {
+    addDisplaySetupCode();
+
+    const stateOutput =
+        Arduino.valueToCode(block, "NUM", Arduino.ORDER_ATOMIC) || "0";
+    return "display.setTextSize(" + stateOutput + ");\n";
+  };
+
   Arduino.forBlock["leaphy_display_print_line"] = function (block) {
     addDisplaySetupCode();
 
