@@ -31,7 +31,7 @@ function getBlocks(boardType = "l_uno") {
     boardType === "l_uno" ||
     boardType === "l_click" ||
     boardType === "l_flitz" ||
-    boardType === "l_original"
+    boardType === "l_original_uno"
   ) {
     digitalPinOptions = [
       ["2", "2"],

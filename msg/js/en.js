@@ -98,6 +98,7 @@ Blockly.Msg["LEAPHY_BUZZ_MS"] = "ms";
 Blockly.Msg["LEAPHY_CLICK_CATEGORY"] = "Leaphy Click";
 Blockly.Msg["LEAPHY_COMPASS"] = "Read compass";
 Blockly.Msg["LEAPHY_DIGITAL_READ"] = "Read digipin";
+Blockly.Msg["LEAPHY_CHOOSE_GAS"] = "Choose gas: ";
 Blockly.Msg["LEAPHY_DISPLAY_CLEAR"] = "Clear display";
 Blockly.Msg["LEAPHY_DISPLAY_DISPLAY"] = "Show on display";
 Blockly.Msg["LEAPHY_DISPLAY_PRINT"] = "Display - Set Ln.";
@@ -506,5 +507,6 @@ Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_HUE"] = "330";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
+Blockly.Msg["LEAPHY_DISPLAY_SET_TEXT_SIZE"] = "Set text size";
 
 export default Blockly.Msg;
