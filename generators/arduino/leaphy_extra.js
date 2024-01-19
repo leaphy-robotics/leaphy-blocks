@@ -247,7 +247,7 @@ function getCodeGenerators(Arduino) {
     addDisplaySetupCode();
 
     const stateOutput =
-        Arduino.valueToCode(block, "NUM", Arduino.ORDER_ATOMIC) || "0";
+      Arduino.valueToCode(block, "NUM", Arduino.ORDER_ATOMIC) || "0";
     return "display.setTextSize(" + stateOutput + ");\n";
   };
 
