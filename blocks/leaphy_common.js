@@ -37,7 +37,7 @@ function getBlocks(board) {
       type: "digital_read",
       message0: "%%{BKY_LEAPHY_DIGITAL_READ} %1",
       args0: [
-        {type: "field_dropdown", name: "PIN", options: board.digitalPins},
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
       ],
       style: "leaphy_blocks",
       output: "Number",
@@ -48,7 +48,7 @@ function getBlocks(board) {
       type: "analog_read",
       message0: "%%{BKY_LEAPHY_ANALOG_READ} %1",
       args0: [
-        {type: "field_dropdown", name: "PIN", options: board.analogPins},
+        { type: "field_dropdown", name: "PIN", options: board.analogPins },
       ],
       style: "leaphy_blocks",
       output: "Number",
@@ -68,7 +68,7 @@ function getBlocks(board) {
     {
       type: "leaphy_serial_print_line",
       message0: "%%{BKY_LEAPHY_SERIAL_PRINT} %1 %2",
-      args0: [{type: "input_dummy"}, {type: "input_value", name: "VALUE"}],
+      args0: [{ type: "input_dummy" }, { type: "input_value", name: "VALUE" }],
       inputsInline: true,
       previousStatement: null,
       nextStatement: null,
@@ -80,10 +80,10 @@ function getBlocks(board) {
       type: "leaphy_serial_print_value",
       message0: "%%{BKY_LEAPHY_SERIAL_PRINT} %1 %2 = %3 %4",
       args0: [
-        {type: "input_dummy"},
-        {type: "input_value", name: "NAME"},
-        {type: "input_dummy"},
-        {type: "input_value", name: "VALUE"},
+        { type: "input_dummy" },
+        { type: "input_value", name: "NAME" },
+        { type: "input_dummy" },
+        { type: "input_value", name: "VALUE" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -96,7 +96,7 @@ function getBlocks(board) {
       type: "leaphy_rgb_color",
       message0: "%1",
       args0: [
-        {type: "field_dropdown", name: "COLOR_TYPE", options: rgbColor},
+        { type: "field_dropdown", name: "COLOR_TYPE", options: rgbColor },
       ],
       style: "leaphy_blocks",
       output: "Number",
@@ -168,11 +168,11 @@ function getBlocks(board) {
     {
       type: "leaphy_led_set_strip",
       message0:
-          "%%{BKY_LEAPHY_LED_SET_STRIP} %1 %%{BKY_LEAPHY_LED_SET_PIN} %2 %%{BKY_LEAPHY_LED_SET_LEDS} %3",
+        "%%{BKY_LEAPHY_LED_SET_STRIP} %1 %%{BKY_LEAPHY_LED_SET_PIN} %2 %%{BKY_LEAPHY_LED_SET_LEDS} %3",
       args0: [
-        {type: "input_dummy"},
-        {type: "input_value", name: "LED_SET_PIN", check: "Number"},
-        {type: "input_value", name: "LED_SET_LEDS", check: "Number"},
+        { type: "input_dummy" },
+        { type: "input_value", name: "LED_SET_PIN", check: "Number" },
+        { type: "input_value", name: "LED_SET_LEDS", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -184,12 +184,12 @@ function getBlocks(board) {
     {
       type: "leaphy_led_set_basic",
       message0:
-          "%%{BKY_LEAPHY_LED_BASIC_LED} %1 %%{BKY_LEAPHY_LED_BASIC_RED} %2 %%{BKY_LEAPHY_LED_BASIC_GREEN} %3 %%{BKY_LEAPHY_LED_BASIC_BLUE} %4",
+        "%%{BKY_LEAPHY_LED_BASIC_LED} %1 %%{BKY_LEAPHY_LED_BASIC_RED} %2 %%{BKY_LEAPHY_LED_BASIC_GREEN} %3 %%{BKY_LEAPHY_LED_BASIC_BLUE} %4",
       args0: [
-        {type: "input_value", name: "LED_SET_LED", check: "Number"},
-        {type: "input_value", name: "LED_BASIC_RED", check: "Number"},
-        {type: "input_value", name: "LED_BASIC_GREEN", check: "Number"},
-        {type: "input_value", name: "LED_BASIC_BLUE", check: "Number"},
+        { type: "input_value", name: "LED_SET_LED", check: "Number" },
+        { type: "input_value", name: "LED_BASIC_RED", check: "Number" },
+        { type: "input_value", name: "LED_BASIC_GREEN", check: "Number" },
+        { type: "input_value", name: "LED_BASIC_BLUE", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -202,7 +202,7 @@ function getBlocks(board) {
       type: "leaphy_led_set_speed",
       message0: "%%{BKY_LEAPHY_LED_SET_SPEEDVALUE} %1",
       args0: [
-        {type: "input_value", name: "LED_SET_SPEEDVALUE", check: "Number"},
+        { type: "input_value", name: "LED_SET_SPEEDVALUE", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -220,14 +220,14 @@ function getBlocks(board) {
           name: "DEMO_TYPE",
           options: ledstripDemoOptions,
         },
-        {type: "input_dummy"},
-        {type: "input_value", name: "LED_STRIP_DEMO_RED", check: "Number"},
+        { type: "input_dummy" },
+        { type: "input_value", name: "LED_STRIP_DEMO_RED", check: "Number" },
         {
           type: "input_value",
           name: "LED_STRIP_DEMO_GREEN",
           check: "Number",
         },
-        {type: "input_value", name: "LED_STRIP_DEMO_BLUE", check: "Number"},
+        { type: "input_value", name: "LED_STRIP_DEMO_BLUE", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -239,17 +239,17 @@ function getBlocks(board) {
     {
       type: "leaphy_servo_write",
       message0:
-          "%%{" +
-          board.servoName +
-          "} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
+        "%%{" +
+        board.servoName +
+        "} %1 %2 %%{BKY_ARD_SERVO_WRITE_TO} %3 %%{BKY_ARD_SERVO_WRITE_DEG_180}",
       args0: [
         {
           type: "field_dropdown",
           name: "SERVO_PIN",
           options: board.digitalPins,
         },
-        {type: "input_dummy"},
-        {type: "input_value", name: "SERVO_ANGLE", check: "Number"},
+        { type: "input_dummy" },
+        { type: "input_value", name: "SERVO_ANGLE", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -279,8 +279,8 @@ function getBlocks(board) {
       type: "leaphy_io_digitalwrite",
       message0: "%%{BKY_ARD_DIGITALWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        {type: "field_dropdown", name: "PIN", options: board.digitalPins},
-        {type: "input_value", name: "STATE", check: "Boolean"},
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
+        { type: "input_value", name: "STATE", check: "Boolean" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -293,8 +293,8 @@ function getBlocks(board) {
       type: "leaphy_io_analogwrite",
       message0: "%%{BKY_ARD_ANALOGWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        {type: "field_dropdown", name: "PIN", options: board.digitalPins},
-        {type: "input_value", name: "NUM", check: "Number"},
+        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
+        { type: "input_value", name: "NUM", check: "Number" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -307,7 +307,7 @@ function getBlocks(board) {
     {
       type: "leaphy_sonar_read",
       message0:
-          "%%{BKY_LEAPHY_SONAR_READ_TRIG} %1 %%{BKY_LEAPHY_SONAR_READ_ECHO} %2",
+        "%%{BKY_LEAPHY_SONAR_READ_TRIG} %1 %%{BKY_LEAPHY_SONAR_READ_ECHO} %2",
       args0: [
         {
           type: "field_dropdown",
@@ -347,13 +347,13 @@ function getBlocks(board) {
       type: "leaphy_display_print_line",
       message0: "%%{BKY_LEAPHY_DISPLAY_PRINT} %1 %2 %3",
       args0: [
-        {type: "input_dummy"},
+        { type: "input_dummy" },
         {
           type: "field_dropdown",
           name: "DISPLAY_ROW",
           options: displayPinNumbers,
         },
-        {type: "input_value", name: "VALUE"},
+        { type: "input_value", name: "VALUE" },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -366,9 +366,7 @@ function getBlocks(board) {
     {
       type: "leaphy_display_set_text_size",
       message0: "%%{BKY_LEAPHY_DISPLAY_SET_TEXT_SIZE} %1",
-      args0: [
-        {type: "input_value", name: "NUM", check: "Number"},
-      ],
+      args0: [{ type: "input_value", name: "NUM", check: "Number" }],
       inputsInline: true,
       previousStatement: null,
       nextStatement: null,
@@ -381,15 +379,15 @@ function getBlocks(board) {
       type: "leaphy_display_print_value",
       message0: "%%{BKY_LEAPHY_DISPLAY_PRINT} %1 %2 %3 = %4 %5",
       args0: [
-        {type: "input_dummy"},
+        { type: "input_dummy" },
         {
           type: "field_dropdown",
           name: "DISPLAY_ROW",
           options: displayPinNumbers,
         },
-        {type: "input_value", name: "NAME"},
-        {type: "input_dummy"},
-        {type: "input_value", name: "VALUE"},
+        { type: "input_value", name: "NAME" },
+        { type: "input_dummy" },
+        { type: "input_value", name: "VALUE" },
       ],
       inputsInline: true,
       previousStatement: null,
