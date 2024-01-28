@@ -69,6 +69,8 @@
 	"LEAPHY_VARIABLES_CATEGORY": "Variabelen",
 	"LEAPHY_FUNCTIONS_CATEGORY": "Eigen blokken",
 	"LEAPHY_SERIAL_PRINT": "Toon op scherm",
+	"LEAPHY_SERIAL_AVAILABLE": "Beschikbaar op scherm",
+	"LEAPHY_SERIAL_READ_LINE": "Lees van scherm",
 	"LEAPHY_DISPLAY_CLEAR": "Maak display leeg",
 	"LEAPHY_DISPLAY_PRINT": "Stel display in - Rg.",
 	"LEAPHY_DISPLAY_DISPLAY": "Toon op display",

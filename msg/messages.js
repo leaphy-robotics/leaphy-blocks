@@ -209,6 +209,12 @@ Blockly.Msg.LEAPHY_BUZZ_MS = 'ms';
 /// Print print
 Blockly.Msg.LEAPHY_SERIAL_PRINT = 'Show on screen';
 /** @type {string} */
+/// Serial available
+Blockly.Msg.LEAPHY_SERIAL_AVAILABLE = "Available on screen";
+/** @type {string} */
+/// Serial read
+Blockly.Msg.LEAPHY_SERIAL_READ_LINE = "Read from screen";
+/** @type {string} */
 /// Clear display
 Blockly.Msg.LEAPHY_DISPLAY_CLEAR = 'Clear display';
 /** @type {string} */

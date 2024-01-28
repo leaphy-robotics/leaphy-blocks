@@ -77,6 +77,8 @@
 	"LEAPHY_BUZZ_HERTZ": "Hertz",
 	"LEAPHY_BUZZ_MS": "ms",
 	"LEAPHY_SERIAL_PRINT": "Show on screen",
+	"LEAPHY_SERIAL_AVAILABLE": "Available on screen",
+	"LEAPHY_SERIAL_READ_LINE": "Read from screen",
 	"LEAPHY_DISPLAY_CLEAR": "Clear display",
 	"LEAPHY_DISPLAY_PRINT": "Display - Set Ln.",
 	"LEAPHY_DISPLAY_DISPLAY": "Show on display",

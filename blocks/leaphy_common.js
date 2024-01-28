@@ -93,6 +93,22 @@ function getBlocks(board) {
       helpUrl: "",
     },
     {
+      type: "leaphy_serial_available",
+      message0: "%%{BKY_LEAPHY_SERIAL_AVAILABLE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "leaphy_serial_read_line",
+      message0: "%%{BKY_LEAPHY_SERIAL_READ_LINE}",
+      style: "leaphy_blocks",
+      output: "String",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
       type: "leaphy_rgb_color",
       message0: "%1",
       args0: [
