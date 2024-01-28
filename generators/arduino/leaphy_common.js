@@ -25,6 +25,18 @@ function getCodeGenerators(Arduino) {
     return null;
   };
 
+  Arduino.forBlock["leaphy_serial_available"] = function (block) {
+    Arduino.addSetup("serial", "Serial.begin(115200);", false);
+    var code = "Serial.available()";
+    return [code, Arduino.ORDER_ATOMIC];
+  }
+
+  Arduino.forBlock["leaphy_serial_read_line"] = function (block) {
+    Arduino.addSetup("serial", "Serial.begin(115200);", false);
+    var code = "Serial.readStringUntil('\\n')";
+    return [code, Arduino.ORDER_ATOMIC];
+  }
+
   Arduino.forBlock["leaphy_serial_print_line"] = function (block) {
     Arduino.addSetup("serial", "Serial.begin(115200);", false);
     var value = Arduino.valueToCode(this, "VALUE", Arduino.ORDER_ATOMIC) || "0";
