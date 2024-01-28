@@ -29,13 +29,13 @@ function getCodeGenerators(Arduino) {
     Arduino.addSetup("serial", "Serial.begin(115200);", false);
     var code = "Serial.available()";
     return [code, Arduino.ORDER_ATOMIC];
-  }
+  };
 
   Arduino.forBlock["leaphy_serial_read_line"] = function (block) {
     Arduino.addSetup("serial", "Serial.begin(115200);", false);
     var code = "Serial.readStringUntil('\\n')";
     return [code, Arduino.ORDER_ATOMIC];
-  }
+  };
 
   Arduino.forBlock["leaphy_serial_print_line"] = function (block) {
     Arduino.addSetup("serial", "Serial.begin(115200);", false);
