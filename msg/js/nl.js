@@ -508,5 +508,10 @@ Blockly.Msg["VARIABLES_HUE"] = "330";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["LEAPHY_DISPLAY_SET_TEXT_SIZE"] = "Zet tekstgrootte op";
+Blockly.Msg["EMPTY_BACKPACK"] = "Leeg rugzak";
+Blockly.Msg["REMOVE_FROM_BACKPACK"] = "Verwijder uit rugzak";
+Blockly.Msg["COPY_TO_BACKPACK"] = "Kopieer naar rugzak";
+Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Kopieer alles naar rugzak";
+Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Plak alles uit rugzak";
 
 export default Blockly.Msg;

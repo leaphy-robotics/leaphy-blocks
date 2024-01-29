@@ -510,5 +510,10 @@ Blockly.Msg["VARIABLES_HUE"] = "330";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["LEAPHY_DISPLAY_SET_TEXT_SIZE"] = "Set text size";
+Blockly.Msg["EMPTY_BACKPACK"] = "Empty";
+Blockly.Msg["REMOVE_FROM_BACKPACK"] = "Remove from backpack";
+Blockly.Msg["COPY_TO_BACKPACK"] = "Copy to backpack";
+Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Copy all blocks to backpack";
+Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Paste all blocks from backpack";
 
 export default Blockly.Msg;

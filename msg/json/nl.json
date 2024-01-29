@@ -419,5 +419,10 @@
 	"WORKSPACE_ARIA_LABEL": "Blockly werkruimte",
 	"COLLAPSED_WARNINGS_WARNING": "Samengevouwen blokken bevatten waarschuwingen.",
 	"DIALOG_OK": "OK",
-	"DIALOG_CANCEL": "Annuleren"
+	"DIALOG_CANCEL": "Annuleren",
+	"EMPTY_BACKPACK": "Leeg rugzak",
+	"REMOVE_FROM_BACKPACK": "Verwijder van rugzak",
+	"COPY_TO_BACKPACK": "Kopieer naar rugzak",
+	"COPY_ALL_TO_BACKPACK": "Kopieer alles naar rugzak",
+	"PASTE_ALL_FROM_BACKPACK": "Plak alles van rugzak"
 }
