@@ -174,7 +174,9 @@ Arduino.init = function (workspace) {
     ) {
       types.forEach(({ block }) => {
         block.setWarningText(
-          `Variable has conflicting types: ${types.map(({ type }) => type).join(", ")}`,
+          `Variable has conflicting types: ${types
+            .map(({ type }) => type)
+            .join(", ")}`,
         );
       });
     } else {
