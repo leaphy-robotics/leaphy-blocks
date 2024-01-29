@@ -68,7 +68,7 @@ const blocks = [
         type: "input_value",
         name: "ADD1",
         check: ["String", "Number", "Boolean"],
-      }
+      },
     ],
     inputsInline: true,
     output: "String",
