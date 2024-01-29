@@ -1840,3 +1840,7 @@ Blockly.Msg.COPY_ALLBLOCKS_TO_BACKPACK = 'Copy All Blocks to Backpack';
 /** @type {string} */
 /// copy all from backpack - This copies all blocks from the backpack to the workspace
 Blockly.Msg.COPY_ALL_FROM_BACKPACK = 'Copy All Blocks from Backpack';
+
+/** @type {string} */
+/// text includes - This is used to check if a string contains another string
+Blockly.Msg.TEXT_INCLUDES_TITLE = '%1 contains %2 ?';

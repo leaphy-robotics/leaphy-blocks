@@ -98,6 +98,19 @@ Arduino.ORDER_OVERRIDES = [
  */
 Arduino.DEF_FUNC_NAME = Arduino.FUNCTION_NAME_PLACEHOLDER_;
 
+const TYPES = {
+    Number: "double",
+    Boolean: "boolean",
+    String: "String",
+}
+
+const DEFAULTS = {
+    Number: "0",
+    Boolean: "false",
+    String: '""',
+}
+
+
 /**
  * Initialises the database of global definitions, the setup function, function
  * names, and variable names.
@@ -140,19 +153,51 @@ Arduino.init = function (workspace) {
 
   // Add user Blockly.Variables, but only ones that are being used.
   const variables = Blockly.Variables.allUsedVarModels(workspace);
+  const variableSetters = workspace.getBlocksByType('variables_set');
+  const variableGetters = workspace.getBlocksByType('variables_get');
   for (let i = 0; i < variables.length; i++) {
-    defvars.push(
-      this.nameDB_.getName(
+    const setters = variableSetters.filter(block => block.getFieldValue('VAR') === variables[i].getId());
+    const types = setters.map(block => {
+      const output = block.getChildren(true)[0];
+      return {
+        block,
+        type: output && output.outputConnection ? output.outputConnection.getCheck()[0] : undefined
+      };
+    });
+    // check for mismatch
+    if (types.some(({ type }) => type !== types[0].type && type !== undefined)) {
+      types.forEach(({ block }) => {
+          block.setWarningText(
+            `Variable has conflicting types: ${types.map(({ type }) => type).join(', ')}`
+          );
+      });
+    } else {
+      types.forEach(({ block }) => {
+          block.setWarningText(null);
+      });
+    }
+
+    const type = types[0].type || 'Number';
+    variableGetters.forEach(block => {
+      if (block.getFieldValue('VAR') === variables[i].getId()) {
+          block.outputConnection.setCheck(type);
+      }
+    });
+
+    const arduinoType = TYPES[type];
+    const defaultValue = DEFAULTS[type];
+    const name = this.nameDB_.getName(
         variables[i].getId(),
         Blockly.Names.NameType.VARIABLE,
-      ),
-    );
+    )
+
+    defvars.push(`${arduinoType} ${name} = ${defaultValue}`);
   }
 
   // Declare all of the variables.
   if (defvars.length) {
     this.definitions_["variables"] =
-      "double " + defvars.join(" = 0, ") + " = 0;\n";
+      defvars.join(";\n") + ";\n";
   }
 
   // Create a dictionary of definitions to be printed at the top of the sketch

@@ -18,7 +18,7 @@ const blocks = [
       },
     ],
     output: "String",
-    style: "text_blocks",
+    style: "numbers_blocks",
     helpUrl: "%{BKY_TEXT_TEXT_HELPURL}",
     tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}",
     extensions: ["text_quotes", "parent_tooltip_when_inline"],
@@ -50,44 +50,29 @@ const blocks = [
       },
     ],
     output: "String",
-    style: "text_blocks",
+    style: "numbers_blocks",
     helpUrl: "%{BKY_TEXT_TEXT_HELPURL}",
     tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}",
     extensions: ["parent_tooltip_when_inline"],
   },
   {
     type: "text_join",
-    message0: "",
-    output: "String",
-    style: "text_blocks",
-    helpUrl: "%{BKY_TEXT_JOIN_HELPURL}",
-    tooltip: "%{BKY_TEXT_JOIN_TOOLTIP}",
-    mutator: "text_join_mutator",
-  },
-  {
-    type: "text_create_join_container",
-    message0: "%{BKY_TEXT_CREATE_JOIN_TITLE_JOIN} %1 %2",
+    message0: "%{BKY_TEXT_JOIN_TITLE_CREATEWITH}",
     args0: [
       {
-        type: "input_dummy",
+        type: "input_value",
+        name: "ADD0",
+        check: ["String", "Number", "Boolean"],
       },
       {
-        type: "input_statement",
-        name: "STACK",
-      },
+        type: "input_value",
+        name: "ADD1",
+        check: ["String", "Number", "Boolean"],
+      }
     ],
-    style: "text_blocks",
-    tooltip: "%{BKY_TEXT_CREATE_JOIN_TOOLTIP}",
-    enableContextMenu: false,
-  },
-  {
-    type: "text_create_join_item",
-    message0: "%{BKY_TEXT_CREATE_JOIN_ITEM_TITLE_ITEM}",
-    previousStatement: null,
-    nextStatement: null,
-    style: "text_blocks",
-    tooltip: "%{BKY_TEXT_CREATE_JOIN_ITEM_TOOLTIP}",
-    enableContextMenu: false,
+    inputsInline: true,
+    output: "String",
+    style: "numbers_blocks",
   },
   {
     type: "text_append",
@@ -105,7 +90,7 @@ const blocks = [
     ],
     previousStatement: null,
     nextStatement: null,
-    style: "text_blocks",
+    style: "numbers_blocks",
     extensions: ["text_append_tooltip"],
   },
   {
@@ -115,11 +100,11 @@ const blocks = [
       {
         type: "input_value",
         name: "VALUE",
-        check: ["String", "Array"],
+        check: ["String"],
       },
     ],
     output: "Number",
-    style: "text_blocks",
+    style: "numbers_blocks",
     tooltip: "%{BKY_TEXT_LENGTH_TOOLTIP}",
     helpUrl: "%{BKY_TEXT_LENGTH_HELPURL}",
   },
@@ -134,9 +119,28 @@ const blocks = [
       },
     ],
     output: "Boolean",
-    style: "text_blocks",
+    style: "numbers_blocks",
     tooltip: "%{BKY_TEXT_ISEMPTY_TOOLTIP}",
     helpUrl: "%{BKY_TEXT_ISEMPTY_HELPURL}",
+  },
+  {
+    type: "text_includes",
+    message0: "%{BKY_TEXT_INCLUDES_TITLE}",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+        check: ["String"],
+      },
+      {
+        type: "input_value",
+        name: "CHECK",
+        check: ["String"],
+      },
+    ],
+    inputsInline: true,
+    output: "Boolean",
+    style: "numbers_blocks",
   },
   {
     type: "text_indexOf",
@@ -162,7 +166,7 @@ const blocks = [
       },
     ],
     output: "Number",
-    style: "text_blocks",
+    style: "numbers_blocks",
     helpUrl: "%{BKY_TEXT_INDEXOF_HELPURL}",
     inputsInline: true,
     extensions: ["text_indexOf_tooltip"],
@@ -173,26 +177,19 @@ const blocks = [
     args0: [
       {
         type: "input_value",
+        name: "AT",
+        check: "Number",
+      },
+      {
+        type: "input_value",
         name: "VALUE",
         check: "String",
       },
-      {
-        type: "field_dropdown",
-        name: "WHERE",
-        options: [
-          ["%{BKY_TEXT_CHARAT_FROM_START}", "FROM_START"],
-          ["%{BKY_TEXT_CHARAT_FROM_END}", "FROM_END"],
-          ["%{BKY_TEXT_CHARAT_FIRST}", "FIRST"],
-          ["%{BKY_TEXT_CHARAT_LAST}", "LAST"],
-          ["%{BKY_TEXT_CHARAT_RANDOM}", "RANDOM"],
-        ],
-      },
     ],
     output: "String",
-    style: "text_blocks",
+    style: "numbers_blocks",
     helpUrl: "%{BKY_TEXT_CHARAT_HELPURL}",
     inputsInline: true,
-    mutator: "text_charAt_mutator",
   },
 ];
 
@@ -577,166 +574,6 @@ blocks["text_reverse"] = {
       helpUrl: Msg["TEXT_REVERSE_HELPURL"],
     });
   },
-};
-
-/**
- * Mixin for mutator functions in the 'text_join_mutator' extension.
- * @mixin
- * @augments Block
- * @package
- */
-const TEXT_JOIN_MUTATOR_MIXIN = {
-  /**
-   * Create XML to represent number of text inputs.
-   * Backwards compatible serialization implementation.
-   * @return {!Element} XML storage element.
-   * @this {Block}
-   */
-  mutationToDom: function () {
-    const container = xmlUtils.createElement("mutation");
-    container.setAttribute("items", this.itemCount_);
-    return container;
-  },
-  /**
-   * Parse XML to restore the text inputs.
-   * Backwards compatible serialization implementation.
-   * @param {!Element} xmlElement XML storage element.
-   * @this {Block}
-   */
-  domToMutation: function (xmlElement) {
-    this.itemCount_ = parseInt(xmlElement.getAttribute("items"), 10);
-    this.updateShape_();
-  },
-  /**
-   * Returns the state of this block as a JSON serializable object.
-   * @return {{itemCount: number}} The state of this block, ie the item count.
-   */
-  saveExtraState: function () {
-    return {
-      itemCount: this.itemCount_,
-    };
-  },
-  /**
-   * Applies the given state to this block.
-   * @param {*} state The state to apply to this block, ie the item count.
-   */
-  loadExtraState: function (state) {
-    this.itemCount_ = state["itemCount"];
-    this.updateShape_();
-  },
-  /**
-   * Populate the mutator's dialog with this block's components.
-   * @param {!Workspace} workspace Mutator's workspace.
-   * @return {!Block} Root block in mutator.
-   * @this {Block}
-   */
-  decompose: function (workspace) {
-    const containerBlock = workspace.newBlock("text_create_join_container");
-    containerBlock.initSvg();
-    let connection = containerBlock.getInput("STACK").connection;
-    for (let i = 0; i < this.itemCount_; i++) {
-      const itemBlock = workspace.newBlock("text_create_join_item");
-      itemBlock.initSvg();
-      connection.connect(itemBlock.previousConnection);
-      connection = itemBlock.nextConnection;
-    }
-    return containerBlock;
-  },
-  /**
-   * Reconfigure this block based on the mutator dialog's components.
-   * @param {!Block} containerBlock Root block in mutator.
-   * @this {Block}
-   */
-  compose: function (containerBlock) {
-    let itemBlock = containerBlock.getInputTargetBlock("STACK");
-    // Count number of inputs.
-    const connections = [];
-    while (itemBlock) {
-      if (itemBlock.isInsertionMarker()) {
-        itemBlock = itemBlock.getNextBlock();
-        continue;
-      }
-      connections.push(itemBlock.valueConnection_);
-      itemBlock = itemBlock.getNextBlock();
-    }
-    // Disconnect any children that don't belong.
-    for (let i = 0; i < this.itemCount_; i++) {
-      const connection = this.getInput("ADD" + i).connection.targetConnection;
-      if (connection && connections.indexOf(connection) === -1) {
-        connection.disconnect();
-      }
-    }
-    this.itemCount_ = connections.length;
-    this.updateShape_();
-    // Reconnect any child blocks.
-    for (let i = 0; i < this.itemCount_; i++) {
-      connections[i].reconnect(this, "ADD" + i);
-    }
-  },
-  /**
-   * Store pointers to any connected child blocks.
-   * @param {!Block} containerBlock Root block in mutator.
-   * @this {Block}
-   */
-  saveConnections: function (containerBlock) {
-    let itemBlock = containerBlock.getInputTargetBlock("STACK");
-    let i = 0;
-    while (itemBlock) {
-      if (itemBlock.isInsertionMarker()) {
-        itemBlock = itemBlock.getNextBlock();
-        continue;
-      }
-      const input = this.getInput("ADD" + i);
-      itemBlock.valueConnection_ = input && input.connection.targetConnection;
-      itemBlock = itemBlock.getNextBlock();
-      i++;
-    }
-  },
-  /**
-   * Modify this block to have the correct number of inputs.
-   * @private
-   * @this {Block}
-   */
-  updateShape_: function () {
-    if (this.itemCount_ && this.getInput("EMPTY")) {
-      this.removeInput("EMPTY");
-    } else if (!this.itemCount_ && !this.getInput("EMPTY")) {
-      this.appendDummyInput("EMPTY")
-        .appendField(this.newQuote_(true))
-        .appendField(this.newQuote_(false));
-    }
-    // Add new inputs.
-    for (let i = 0; i < this.itemCount_; i++) {
-      if (!this.getInput("ADD" + i)) {
-        const input = this.appendValueInput("ADD" + i).setAlign(
-          Blockly.inputs.Align.RIGHT,
-        );
-        if (i === 0) {
-          input.appendField(Msg["TEXT_JOIN_TITLE_CREATEWITH"]);
-        }
-      }
-    }
-    // Remove deleted inputs.
-    for (let i = this.itemCount_; this.getInput("ADD" + i); i++) {
-      this.removeInput("ADD" + i);
-    }
-  },
-};
-
-/**
- * Performs final setup of a text_join block.
- * @this {Block}
- */
-const TEXT_JOIN_EXTENSION = function () {
-  // Add the quote mixin for the itemCount_ = 0 case.
-  this.mixin(QUOTE_IMAGE_MIXIN);
-  // Initialize the mutator values.
-  this.itemCount_ = 2;
-  this.updateShape_();
-  // Configure the mutator UI.
-  this.setMutator(
-    new Blockly.icons.MutatorIcon(["text_create_join_item"], this),
-  );
 };
 
 /**

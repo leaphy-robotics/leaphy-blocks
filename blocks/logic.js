@@ -125,7 +125,7 @@ const blocks = [
     output: "Boolean",
     style: "numbers_blocks",
     helpUrl: "%{BKY_LOGIC_COMPARE_HELPURL}",
-    extensions: ["logic_compare", "logic_op_tooltip"],
+    extensions: ["logic_op_tooltip"],
   },
   // Block for logical operations: 'and', 'or'.
   {
