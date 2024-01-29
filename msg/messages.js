@@ -1820,3 +1820,23 @@ Blockly.Msg.DIALOG_OK = 'OK';
 /** @type {string} */
 /// button label - Pressing this button cancels a proposed action.\n{{Identical|Cancel}}
 Blockly.Msg.DIALOG_CANCEL = 'Cancel';
+
+/** @type {string} */
+/// empty backpack - This empties the backpack
+Blockly.Msg.EMPTY_BACKPACK = 'Empty Backpack';
+
+/** @type {string} */
+/// remove from backpack - This removes the selected blocks from the backpack
+Blockly.Msg.REMOVE_FROM_BACKPACK = 'Remove from Backpack';
+
+/** @type {string} */
+/// copy to backpack - This copies the selected blocks to the backpack
+Blockly.Msg.COPY_TO_BACKPACK = 'Copy to Backpack';
+
+/** @type {string} */
+/// copy all to backpack - This copies all blocks to the backpack
+Blockly.Msg.COPY_ALLBLOCKS_TO_BACKPACK = 'Copy All Blocks to Backpack';
+
+/** @type {string} */
+/// copy all from backpack - This copies all blocks from the backpack to the workspace
+Blockly.Msg.COPY_ALL_FROM_BACKPACK = 'Copy All Blocks from Backpack';
