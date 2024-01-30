@@ -1,4 +1,5 @@
 import * as Blockly from "blockly/core";
+import {TYPES} from "./all";
 
 function getCodeGenerators(Arduino) {
   /**
@@ -45,7 +46,10 @@ function getCodeGenerators(Arduino) {
     var returnType;
     // Get return type
     if (block.type == "procedures_defreturn") {
-      returnType = "double";
+      const checks = block.getInput("RETURN").connection.targetConnection?.getCheck();
+      
+      if (checks && checks[0]) returnType = TYPES[checks[0]];
+      else returnType = "double";
     } else {
       returnType = "void";
     }
