@@ -46,7 +46,9 @@ function getCodeGenerators(Arduino) {
     var returnType;
     // Get return type
     if (block.type == "procedures_defreturn") {
-      const checks = block.getInput("RETURN").connection.targetConnection?.getCheck();
+      const checks = block
+        .getInput("RETURN")
+        .connection.targetConnection?.getCheck();
 
       if (checks && checks[0]) returnType = TYPES[checks[0]];
       else returnType = "double";
