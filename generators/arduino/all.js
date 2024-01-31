@@ -98,7 +98,7 @@ Arduino.ORDER_OVERRIDES = [
  */
 Arduino.DEF_FUNC_NAME = Arduino.FUNCTION_NAME_PLACEHOLDER_;
 
-const TYPES = {
+export const TYPES = {
   Number: "double",
   Boolean: "boolean",
   String: "String",
