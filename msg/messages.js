@@ -231,6 +231,9 @@ Blockly.Msg.LEAPHY_SITUATION_CATEGORY = 'Thinkflow';
 /// Numbers Category Title
 Blockly.Msg.LEAPHY_NUMBERS_CATEGORY = 'Numbers';
 /** @type {string} */
+/// Operators Category Title
+Blockly.Msg.LEAPHY_OPERATORS_CATEGORY = 'Operators';
+/** @type {string} */
 /// Variables Category Title
 Blockly.Msg.LEAPHY_VARIABLES_CATEGORY = 'Variables';
 /** @type {string} */
