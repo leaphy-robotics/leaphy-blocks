@@ -237,6 +237,30 @@ Blockly.Msg.LEAPHY_OPERATORS_CATEGORY = 'Operators';
 /// Variables Category Title
 Blockly.Msg.LEAPHY_VARIABLES_CATEGORY = 'Variables';
 /** @type {string} */
+/// Lists Category Title
+Blockly.Msg.LEAPHY_LISTS_CATEGORY = 'Lists';
+/** @type {string} */
+/// Add to list
+Blockly.Msg.LEAPHY_LISTS_ADD = 'add %1 to %2';
+/** @type {string} */
+/// Delete from list
+Blockly.Msg.LEAPHY_LISTS_DELETE = 'delete %1 of %2';
+/** @type {string} */
+/// Delete all from list
+Blockly.Msg.LEAPHY_LISTS_CLEAR = 'delete all from %1';
+/** @type {string} */
+/// Insert into list
+Blockly.Msg.LEAPHY_LISTS_INSERT = 'insert %1 at %2 of %3';
+/** @type {string} */
+/// Replace in list
+Blockly.Msg.LEAPHY_LISTS_REPLACE = 'replace %1 of %2 with %3';
+/** @type {string} */
+/// Get from list
+Blockly.Msg.LEAPHY_LISTS_GET = 'get %1 from %2';
+/** @type {string} */
+/// Length of list
+Blockly.Msg.LEAPHY_LISTS_LENGTH = 'length of %1';
+/** @type {string} */
 /// Functions Category Title
 Blockly.Msg.LEAPHY_FUNCTIONS_CATEGORY = 'Custom Blocks';
 

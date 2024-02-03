@@ -214,6 +214,51 @@ Arduino.init = function (workspace) {
   // Create a dictionary of pins to check if their use conflicts
   this.pins_ = Object.create(null);
 
+  // Define all user lists
+  const lists = listManager.getLists();
+  const types = Object.fromEntries(lists.map((list) => [list.id, []]));
+  const setters = [
+    ...workspace.getBlocksByType("lists_add"),
+    ...workspace.getBlocksByType("lists_insert"),
+    ...workspace.getBlocksByType("lists_replace"),
+  ]
+
+  const typedSetters = setters.map((block) => {
+    const list = block.getFieldValue("LIST");
+    const check = block.getInput("VALUE").connection.targetConnection?.getCheck();
+    const type = check ? check[0] : undefined;
+
+    if (check) types[list].push(type);
+    return [block, list, type];
+  });
+  typedSetters.forEach(([block, list, type]) => {
+    if (type === types[list][0] || !type) {
+      block.setWarningText(null);
+    } else {
+      block.setWarningText('List has conflicting types');
+    }
+  });
+
+  const getters = workspace.getBlocksByType("lists_get");
+  getters.forEach((block) => {
+    const list = block.getFieldValue("LIST");
+    const type = types[list][0] || "Number";
+
+    block.outputConnection.setCheck(type);
+  });
+
+  const defLists = [];
+  lists.forEach((list) => {
+    const type = TYPES[types[list.id][0] || "Number"];
+
+    defLists.push(`List<${type}> ${list.name}`);
+  });
+
+  if (defLists.length) {
+    this.definitions_["lists"] = defLists.join(";\n") + ";\n";
+    this.includes_["lists"] = "#include <List.hpp>";
+  }
+
   this.isInitialized = true;
 };
 
@@ -483,6 +528,8 @@ import * as math from "./math";
 import * as procedures from "./procedures";
 import * as text from "./text";
 import * as variables from "./variables";
+import * as lists from "./lists";
+import {listManager} from "../../categories/lists";
 
 arduino.default(Arduino);
 leaphy_click.default(Arduino);
@@ -496,5 +543,6 @@ math.default(Arduino);
 procedures.default(Arduino);
 text.default(Arduino);
 variables.default(Arduino);
+lists.default(Arduino);
 
 export default Arduino;
