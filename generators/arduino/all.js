@@ -221,11 +221,13 @@ Arduino.init = function (workspace) {
     ...workspace.getBlocksByType("lists_add"),
     ...workspace.getBlocksByType("lists_insert"),
     ...workspace.getBlocksByType("lists_replace"),
-  ]
+  ];
 
   const typedSetters = setters.map((block) => {
     const list = block.getFieldValue("LIST");
-    const check = block.getInput("VALUE").connection.targetConnection?.getCheck();
+    const check = block
+      .getInput("VALUE")
+      .connection.targetConnection?.getCheck();
     const type = check ? check[0] : undefined;
 
     if (check) types[list].push(type);
@@ -235,7 +237,7 @@ Arduino.init = function (workspace) {
     if (type === types[list][0] || !type) {
       block.setWarningText(null);
     } else {
-      block.setWarningText('List has conflicting types');
+      block.setWarningText("List has conflicting types");
     }
   });
 
@@ -529,7 +531,7 @@ import * as procedures from "./procedures";
 import * as text from "./text";
 import * as variables from "./variables";
 import * as lists from "./lists";
-import {listManager} from "../../categories/lists";
+import { listManager } from "../../categories/lists";
 
 arduino.default(Arduino);
 leaphy_click.default(Arduino);

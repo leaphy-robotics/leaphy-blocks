@@ -11,7 +11,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     previousStatement: null,
@@ -29,7 +29,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     previousStatement: null,
@@ -43,7 +43,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     previousStatement: null,
@@ -65,7 +65,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     previousStatement: null,
@@ -87,7 +87,7 @@ const blocks = [
       {
         type: "input_value",
         name: "VALUE",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     previousStatement: null,
@@ -105,7 +105,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     output: ["Number", "String"],
@@ -118,7 +118,7 @@ const blocks = [
       {
         type: "input_dummy",
         name: "LIST",
-      }
+      },
     ],
     extensions: ["list_select_extension"],
     output: "Number",
