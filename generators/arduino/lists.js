@@ -1,4 +1,4 @@
-import {listManager} from "../../categories/lists";
+import { listManager } from "../../categories/lists";
 
 function getCodeGenerators(Arduino) {
   Arduino.forBlock["lists_add"] = function (block) {
