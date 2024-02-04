@@ -105,6 +105,11 @@ function getBlocks(boardType = "l_uno") {
       ["A6", "A6"],
       ["A7", "A7"],
     ];
+  } else if (
+      boardType === "l_mega"
+  ) {
+    digitalPinOptions = new Array(51).fill(0).map((_, i) => [(i+2).toString(), (i+2).toString()])
+    analogPinOptions = new Array(15).fill(0).map((_, i) => [`A${i}`, `A${i}`])
   }
 
   const board = new Board(
