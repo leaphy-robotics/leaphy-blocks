@@ -262,7 +262,7 @@ function getBlocks(board) {
         {
           type: "field_dropdown",
           name: "SERVO_PIN",
-          options: board.digitalPins,
+          options: board.pwmPins,
         },
         { type: "input_dummy" },
         { type: "input_value", name: "SERVO_ANGLE", check: "Number" },
@@ -309,7 +309,7 @@ function getBlocks(board) {
       type: "leaphy_io_analogwrite",
       message0: "%%{BKY_ARD_ANALOGWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
+        { type: "field_dropdown", name: "PIN", options: board.pwmPins },
         { type: "input_value", name: "NUM", check: "Number" },
       ],
       inputsInline: true,
