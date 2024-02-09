@@ -14,6 +14,17 @@ const blocks = [
     tooltip: "%{BKY_ARD_TIME_DELAY_TIP}",
     helpUrl: "http://arduino.cc/en/Reference/Delay",
   },
+  {
+    type: "controls_repeat_forever",
+    message0: "%{BKY_CONTROLS_REPEAT_FOREVER_TITLE}",
+    message1: "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
+    args1: [{ type: "input_statement", name: "DO" }],
+    previousStatement: null,
+    nextStatement: null,
+    style: "situation_blocks",
+    tooltip: "%{BKY_CONTROLS_REPEAT_TOOLTIP}",
+    helpUrl: "%{BKY_CONTROLS_REPEAT_HELPURL}",
+  },
 ];
 
 export { blocks };
