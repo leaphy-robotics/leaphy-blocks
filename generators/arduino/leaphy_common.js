@@ -111,7 +111,8 @@ function getCodeGenerators(Arduino) {
     const rgb_declaration =
       "int r = 0, g = 0, b = 0, a = 0;\n" +
       "int getAPDS9960Color(int colorType) {\n" +
-      "    " + setup +
+      "    " +
+      setup +
       "    if (APDS.colorAvailable()) {\n" +
       "        APDS.readColor(r, g, b, a);\n" +
       "    }\n" +
@@ -139,7 +140,8 @@ function getCodeGenerators(Arduino) {
     const gesture_declaration =
       "int gesture = GESTURE_NONE;\n" +
       "int getAPDS9960Gesture() {\n" +
-      "    " + setup +
+      "    " +
+      setup +
       "    if (APDS.gestureAvailable()) {\n" +
       "        gesture = APDS.readGesture();\n" +
       "    }\n" +
