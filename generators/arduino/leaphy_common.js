@@ -1,3 +1,5 @@
+import { addI2CDeclarations } from "./i2c";
+
 function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_start"] = function (block) {
     // Define the Start procedure
@@ -60,20 +62,22 @@ function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_compass_degrees"] = function (block) {
     Arduino.addInclude("leaphy_compass", "#include <QMC5883LCompass.h>");
     Arduino.addDeclaration("leaphy_compass", "QMC5883LCompass compass;");
+    const setup = Arduino.addI2CSetup(
+      "compass",
+      "compass.init();\n    compass.setMagneticDeclination(2, 30);\n",
+    );
     Arduino.addDeclaration(
       "leaphy_compass_read",
       "int getCompassDegrees() {\n" +
+        "    " +
+        setup +
+        "\n" +
         "    compass.read();\n" +
         "    int azimuth = compass.getAzimuth();\n" +
         "    return round((azimuth > -0.5) ? azimuth : azimuth + 360);\n" +
         "}\n",
     );
-    Arduino.addSetup(
-      "leaphy_compass",
-      "compass.init();\n  compass.setMagneticDeclination(2, 30);",
-    );
-    var code = "getCompassDegrees()";
-    return [code, Arduino.ORDER_ATOMIC];
+    return ["getCompassDegrees()", Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
@@ -140,6 +144,22 @@ function getCodeGenerators(Arduino) {
     Arduino.addDeclaration("apds9960_gesture", gesture_declaration);
     let code = "getAPDS9960Gesture()";
     return [code, Arduino.ORDER_ATOMIC];
+  };
+
+  Arduino.forBlock["i2c_use_channel"] = function (block) {
+    const channel = block.getFieldValue("CHANNEL");
+    const innerCode = Arduino.statementToCode(block, "DO");
+
+    addI2CDeclarations();
+
+    const code =
+      "i2cSelectChannel(" +
+      channel +
+      ");\n" +
+      innerCode +
+      "i2cRestoreChannel();\n";
+
+    return code;
   };
 }
 

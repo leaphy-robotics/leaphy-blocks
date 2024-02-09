@@ -424,5 +424,7 @@
 	"REMOVE_FROM_BACKPACK": "Verwijder van rugzak",
 	"COPY_TO_BACKPACK": "Kopieer naar rugzak",
 	"COPY_ALL_TO_BACKPACK": "Kopieer alles naar rugzak",
-	"PASTE_ALL_FROM_BACKPACK": "Plak alles van rugzak"
+	"PASTE_ALL_FROM_BACKPACK": "Plak alles van rugzak",
+	"USE_I2C_CHANNEL": "Gebruik I2C kanaal",
+	"USE_I2C_CHANNEL_TOOLTIP": "Gebruik het geselecteerde I2C kanaal voor sensoren in dit blok"
 }

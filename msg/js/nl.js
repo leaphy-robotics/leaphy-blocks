@@ -523,5 +523,7 @@ Blockly.Msg["REMOVE_FROM_BACKPACK"] = "Verwijder uit rugzak";
 Blockly.Msg["COPY_TO_BACKPACK"] = "Kopieer naar rugzak";
 Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Kopieer alles naar rugzak";
 Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Plak alles uit rugzak";
+Blockly.Msg["USE_I2C_CHANNEL"] = "Gebruik I2C kanaal";
+Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Gebruik het geselecteerde I2C kanaal voor sensoren in dit blok";
 
 export default Blockly.Msg;

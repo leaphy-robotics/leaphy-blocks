@@ -1,4 +1,5 @@
 import * as Blockly from "blockly/core";
+import { addI2CDeclarations } from "./i2c";
 
 /**
  * Arduino code generator.
@@ -381,6 +382,38 @@ Arduino.addSetup = function (setupTag, code, overwrite) {
     overwritten = true;
   }
   return overwritten;
+};
+
+/**
+ * Generates a setup function that is called once for every device on a unique I2C channel
+ * @param {!string} sensorName Name of the sensor, will be used to generate var and function names
+ * @param {!string} setupCode Code to initialize the I2C device
+ * @returns {string} The code to call the setup function
+ */
+Arduino.addI2CSetup = function (sensorName, setupCode) {
+  addI2CDeclarations();
+
+  Arduino.addDeclaration(
+    "setup_" + sensorName,
+    "bool " +
+      sensorName +
+      "Setup[8];\n" +
+      "void setup" +
+      sensorName +
+      "() {\n" +
+      "    uint8_t channel = i2cChannelStack.get(i2cChannelStack.getSize() - 1);\n" +
+      "    if (!" +
+      sensorName +
+      "Setup[channel]) {\n" +
+      "      " +
+      setupCode +
+      "      " +
+      sensorName +
+      "Setup[channel] = true;\n" +
+      "  }\n" +
+      "}\n",
+  );
+  return "setup" + sensorName + "();\n";
 };
 
 /**

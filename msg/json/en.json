@@ -484,5 +484,7 @@
 	"REMOVE_FROM_BACKPACK": "Remove from backpack",
 	"COPY_TO_BACKPACK": "Copy to backpack",
 	"COPY_ALL_TO_BACKPACK": "Copy all blocks to backpack",
-	"PASTE_ALL_FROM_BACKPACK": "Paste all blocks from backpack"
+	"PASTE_ALL_FROM_BACKPACK": "Paste all blocks from backpack",
+	"USE_I2C_CHANNEL": "Use I2C channel",
+	"USE_I2C_CHANNEL_TOOLTIP": "Use the selected I2C channel for sensors in this block"
 }
