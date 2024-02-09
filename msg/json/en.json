@@ -31,7 +31,7 @@
 	"LEAPHY_MOTOR_DIRECTION": "Direction",
 	"LEAPHY_GET_DISTANCE": "Get distance",
 	"LEAPHY_DIGITAL_READ": "Read digipin",
-	"LEAPHY_CHOOSE_GAS": "Choose gas: ",
+	"LEAPHY_CHOOSE_GAS": "Read gas",
 	"LEAPHY_ANALOG_READ": "Read anapin",
 	"LEAPHY_RGB_READ_SENSOR": "Read RGB sensor",
 	"LEAPHY_RGB_COLOR_RED": "Color R-255",
