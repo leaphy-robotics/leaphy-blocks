@@ -1,7 +1,10 @@
 const defaultBlockStyles = {
 	'leaphy_blocks': {'colourPrimary': '#06778f', 'hat': 'cap'},
 	'situation_blocks': {'colourPrimary': '#D9B53F'},
+	'loop_blocks': {'colourPrimary': '#D9B53F'},
 	'numbers_blocks': {'colourPrimary': '#75B342'},
+	'logic_blocks': {'colourPrimary': '#75B342'},
+	'math_blocks': {'colourPrimary': '#75B342'},
 	'variable_blocks': {'colourPrimary': '#DE7C3B'},
 	'procedure_blocks': {'colourPrimary': '#4095CE'},
 };
