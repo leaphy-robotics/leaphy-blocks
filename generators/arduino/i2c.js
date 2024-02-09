@@ -17,9 +17,9 @@ const RESTORE_CHANNEL =
   "}\n";
 
 const BROADCAST_MODE =
-    "Wire.begin();\n" +
-    "  Wire.setWireTimeout();\n" +
-    "  i2cSelectChannel(0xff);";
+  "Wire.begin();\n" +
+  "  Wire.setWireTimeout();\n" +
+  "  i2cSelectChannel(0xff);";
 
 function addI2CDeclarations() {
   Arduino.addInclude("wire", "#include <Wire.h>");
