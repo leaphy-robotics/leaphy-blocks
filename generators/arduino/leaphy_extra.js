@@ -230,7 +230,6 @@ function getCodeGenerators(Arduino) {
     Arduino.addInclude("include_display", '#include "OLED_Display.h"');
     Arduino.addInclude("define_display", "OLEDDISPLAY display;");
     Arduino.addSetup("serial", "Serial.begin(115200);");
-    Arduino.addSetup("oled", displaySetup, false);
     return setup;
   };
 
