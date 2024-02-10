@@ -96,7 +96,7 @@ Blockly.Msg["LEAPHY_BUZZ_MS"] = "ms";  // untranslated
 Blockly.Msg["LEAPHY_CLICK_CATEGORY"] = "Leaphy Click";  // untranslated
 Blockly.Msg["LEAPHY_COMPASS"] = "Lees kompas";
 Blockly.Msg["LEAPHY_DIGITAL_READ"] = "Lees digipin";
-Blockly.Msg["LEAPHY_CHOOSE_GAS"] = "Kies gas: ";
+Blockly.Msg["LEAPHY_CHOOSE_GAS"] = "Lees gas";
 Blockly.Msg["LEAPHY_DISPLAY_CLEAR"] = "Maak display leeg";
 Blockly.Msg["LEAPHY_DISPLAY_DISPLAY"] = "Toon op display";
 Blockly.Msg["LEAPHY_DISPLAY_PRINT"] = "Stel display in - Rg.";
@@ -523,5 +523,7 @@ Blockly.Msg["REMOVE_FROM_BACKPACK"] = "Verwijder uit rugzak";
 Blockly.Msg["COPY_TO_BACKPACK"] = "Kopieer naar rugzak";
 Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Kopieer alles naar rugzak";
 Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Plak alles uit rugzak";
+Blockly.Msg["USE_I2C_CHANNEL"] = "Gebruik I2C kanaal";
+Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Gebruik het geselecteerde I2C kanaal voor sensoren in dit blok";
 
 export default Blockly.Msg;

@@ -98,7 +98,7 @@ Blockly.Msg["LEAPHY_BUZZ_MS"] = "ms";
 Blockly.Msg["LEAPHY_CLICK_CATEGORY"] = "Leaphy Click";
 Blockly.Msg["LEAPHY_COMPASS"] = "Read compass";
 Blockly.Msg["LEAPHY_DIGITAL_READ"] = "Read digipin";
-Blockly.Msg["LEAPHY_CHOOSE_GAS"] = "Choose gas: ";
+Blockly.Msg["LEAPHY_CHOOSE_GAS"] = "Read gas";
 Blockly.Msg["LEAPHY_DISPLAY_CLEAR"] = "Clear display";
 Blockly.Msg["LEAPHY_DISPLAY_DISPLAY"] = "Show on display";
 Blockly.Msg["LEAPHY_DISPLAY_PRINT"] = "Display - Set Ln.";
@@ -441,5 +441,7 @@ Blockly.Msg["REMOVE_FROM_BACKPACK"] = "Remove from backpack";
 Blockly.Msg["COPY_TO_BACKPACK"] = "Copy to backpack";
 Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Copy all blocks to backpack";
 Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Paste all blocks from backpack";
+Blockly.Msg["USE_I2C_CHANNEL"] = "Use I2C channel";
+Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Use the selected I2C channel for sensors in this block";
 
 export default Blockly.Msg;

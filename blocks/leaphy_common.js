@@ -461,7 +461,7 @@ function getBlocks(board) {
     },
     {
       type: "leaphy_gas_sensor",
-      message0: "%%{BKY_LEAPHY_CHOOSE_GAS}: %1",
+      message0: "%%{BKY_LEAPHY_CHOOSE_GAS} %1",
       args0: [
         {
           type: "field_dropdown",
@@ -477,6 +477,38 @@ function getBlocks(board) {
       style: "leaphy_blocks",
       output: "Number",
       tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "i2c_use_channel",
+      message0: "%{BKY_USE_I2C_CHANNEL} %1",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "CHANNEL",
+          options: [
+            ["0", "0"],
+            ["1", "1"],
+            ["2", "2"],
+            ["3", "3"],
+            ["4", "4"],
+            ["5", "5"],
+            ["6", "6"],
+            ["7", "7"],
+          ],
+        },
+      ],
+      message1: "%1",
+      args1: [
+        {
+          type: "input_statement",
+          name: "DO",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+      tooltip: "%{BKY_USE_I2C_CHANNEL_TOOLTIP}",
       helpUrl: "",
     },
   ];

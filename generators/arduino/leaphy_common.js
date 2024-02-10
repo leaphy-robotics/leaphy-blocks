@@ -1,3 +1,5 @@
+import { addI2CDeclarations } from "./i2c";
+
 function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_start"] = function (block) {
     // Define the Start procedure
@@ -60,49 +62,57 @@ function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_compass_degrees"] = function (block) {
     Arduino.addInclude("leaphy_compass", "#include <QMC5883LCompass.h>");
     Arduino.addDeclaration("leaphy_compass", "QMC5883LCompass compass;");
+    const setup = Arduino.addI2CSetup(
+      "compass",
+      "compass.init();\n    compass.setMagneticDeclination(2, 30);\n",
+    );
     Arduino.addDeclaration(
       "leaphy_compass_read",
       "int getCompassDegrees() {\n" +
+        "    " +
+        setup +
+        "\n" +
         "    compass.read();\n" +
         "    int azimuth = compass.getAzimuth();\n" +
         "    return round((azimuth > -0.5) ? azimuth : azimuth + 360);\n" +
         "}\n",
     );
-    Arduino.addSetup(
-      "leaphy_compass",
-      "compass.init();\n  compass.setMagneticDeclination(2, 30);",
-    );
-    var code = "getCompassDegrees()";
-    return [code, Arduino.ORDER_ATOMIC];
+    return ["getCompassDegrees()", Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
     Arduino.addInclude("leaphy_gas_sensor", "#include <Adafruit_SGP30.h>");
     Arduino.addDeclaration("leaphy_gas_sensor", "Adafruit_SGP30 sgp;");
-    Arduino.addSetup(
-      "leaphy_gas_sensor",
-      "if (! sgp.begin()){\n" + "\treturn -1;\n" + "}",
-    );
+    const setup = Arduino.addI2CSetup("gas", "if (! sgp.begin()) return -1;\n");
 
-    var gasValue = block.getFieldValue("GAS");
+    let gasValue = block.getFieldValue("GAS");
     let code = "";
-    if (gasValue == "TVOC") {
+    if (gasValue === "TVOC") {
       code = "sgp.TVOC";
-    } else if (gasValue == "eCO2") {
+    } else if (gasValue === "eCO2") {
       code = "sgp.eCO2";
-    } else if (gasValue == "Raw H2") {
+    } else if (gasValue === "Raw H2") {
       code = "sgp.rawH2";
-    } else if (gasValue == "Raw Ethanol") {
+    } else if (gasValue === "RAWETHANOL") {
       code = "sgp.rawEthanol";
     }
 
-    return [code, Arduino.ORDER_ATOMIC];
+    Arduino.addDeclaration(
+      "leaphy_gas_value",
+      "int getGasValue() {\n" + "    " + setup + "    return " + code + "}\n",
+    );
+
+    return ["getGasValue()", Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_i2c_rgb_color"] = function (block) {
+    const setup = Arduino.addI2CSetup("apds9960", "APDS.begin();\n");
+
     const rgb_declaration =
       "int r = 0, g = 0, b = 0, a = 0;\n" +
       "int getAPDS9960Color(int colorType) {\n" +
+      "    " +
+      setup +
       "    if (APDS.colorAvailable()) {\n" +
       "        APDS.readColor(r, g, b, a);\n" +
       "    }\n" +
@@ -120,26 +130,43 @@ function getCodeGenerators(Arduino) {
     let colorType = block.getFieldValue("COLOR_TYPE");
 
     Arduino.addInclude("apds9960", "#include <Arduino_APDS9960.h>");
-    Arduino.addSetup("apds9960", "APDS.begin();");
     Arduino.addDeclaration("apds9960_rgb", rgb_declaration);
     let code = "getAPDS9960Color(" + colorType + ")";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_i2c_gesture"] = function (block) {
+    const setup = Arduino.addI2CSetup("apds9960", "APDS.begin();\n");
     const gesture_declaration =
       "int gesture = GESTURE_NONE;\n" +
       "int getAPDS9960Gesture() {\n" +
+      "    " +
+      setup +
       "    if (APDS.gestureAvailable()) {\n" +
       "        gesture = APDS.readGesture();\n" +
       "    }\n" +
       "    return gesture;\n" +
       "}\n";
     Arduino.addInclude("apds9960", "#include <Arduino_APDS9960.h>");
-    Arduino.addSetup("apds9960", "APDS.begin();");
     Arduino.addDeclaration("apds9960_gesture", gesture_declaration);
     let code = "getAPDS9960Gesture()";
     return [code, Arduino.ORDER_ATOMIC];
+  };
+
+  Arduino.forBlock["i2c_use_channel"] = function (block) {
+    const channel = block.getFieldValue("CHANNEL");
+    const innerCode = Arduino.statementToCode(block, "DO");
+
+    addI2CDeclarations();
+
+    const code =
+      "i2cSelectChannel(" +
+      channel +
+      ");\n" +
+      innerCode +
+      "i2cRestoreChannel();\n";
+
+    return code;
   };
 }
 

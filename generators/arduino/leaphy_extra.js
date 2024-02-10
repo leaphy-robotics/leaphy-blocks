@@ -1,64 +1,62 @@
 function getCodeGenerators(Arduino) {
-  var includeDefinition = '#include "Adafruit_TCS34725.h"';
-  var variablesDefinition =
-    "Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_24MS, TCS34725_GAIN_16X);\nuint16_t RawColor_Red, RawColor_Green, RawColor_Blue, RawColor_Clear;\nbyte Color_Red, Color_Green, Color_Blue, Color_Clear;\n";
-  var getColorDefinition =
-    "double getColor(int colorCode, bool isRaw) {\n" +
-    "  tcs.getRawData(&RawColor_Red, &RawColor_Green, &RawColor_Blue, &RawColor_Clear);\n" +
-    "  Color_Red = min(RawColor_Red/5,255); Color_Green = min(RawColor_Green/5,255); Color_Blue = min(RawColor_Blue/5,255);\n" +
-    "  switch(colorCode) {\n" +
-    "    case 0:\n" +
-    "      return (isRaw) ? RawColor_Red : Color_Red;\n" +
-    "    case 1:\n" +
-    "      return (isRaw) ? RawColor_Green : Color_Green;\n" +
-    "    case 2:\n" +
-    "      return (isRaw) ? RawColor_Blue : Color_Blue;\n" +
-    "  }\n" +
-    "}\n";
-
-  var rgbColorSetupCode =
-    'if (tcs.begin()) {\n    Serial.println("RGB-sensor gevonden!");\n  } else {\n    Serial.println("Geen RGB-sensor gevonden... check je verbindingen...");\n  }';
+  function addRGBColorDefinitions() {
+    const includeDefinition = '#include "Adafruit_TCS34725.h"';
+    const variablesDefinition =
+      "Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_24MS, TCS34725_GAIN_16X);\n";
+    const rgbColorSetupCode =
+      'if (tcs.begin()) {\n    Serial.println("RGB-sensor gevonden!");\n  } else {\n    Serial.println("Geen RGB-sensor gevonden... check je verbindingen...");\n  }\n';
+    const rgbColorSetup = Arduino.addI2CSetup("rgb_color", rgbColorSetupCode);
+    const getColorDefinition =
+      "double getColor(int colorCode, bool isRaw) {\n" +
+      "  " +
+      rgbColorSetup +
+      "  uint16_t RawColor_Red, RawColor_Green, RawColor_Blue, RawColor_Clear;\n" +
+      "  byte Color_Red, Color_Green, Color_Blue, Color_Clear;\n" +
+      "  tcs.getRawData(&RawColor_Red, &RawColor_Green, &RawColor_Blue, &RawColor_Clear);\n" +
+      "  Color_Red = min(RawColor_Red/5,255); Color_Green = min(RawColor_Green/5,255); Color_Blue = min(RawColor_Blue/5,255);\n" +
+      "  switch(colorCode) {\n" +
+      "    case 0:\n" +
+      "      return (isRaw) ? RawColor_Red : Color_Red;\n" +
+      "    case 1:\n" +
+      "      return (isRaw) ? RawColor_Green : Color_Green;\n" +
+      "    case 2:\n" +
+      "      return (isRaw) ? RawColor_Blue : Color_Blue;\n" +
+      "  }\n" +
+      "}\n";
+    Arduino.addInclude("define_leaphy_rgb", includeDefinition);
+    Arduino.addInclude("define_leaphy_rgb_var", variablesDefinition);
+    Arduino.addDeclaration("define_get_color", getColorDefinition);
+  }
 
   Arduino.forBlock["leaphy_rgb_color"] = function (block) {
-    Arduino.definitions_["define_leaphy_rgb"] = includeDefinition;
-    Arduino.definitions_["define_leaphy_rgb_var"] = variablesDefinition;
-    Arduino.definitions_["define_get_color"] = getColorDefinition;
-    Arduino.addSetup("rgb_color_setup", rgbColorSetupCode, false);
-
-    var colorType = block.getFieldValue("COLOR_TYPE");
-    var code = "getColor(" + colorType + ", false)";
+    addRGBColorDefinitions();
+    const colorType = block.getFieldValue("COLOR_TYPE");
+    const code = "getColor(" + colorType + ", false)";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_rgb_color_raw"] = function (block) {
-    Arduino.definitions_["define_leaphy_rgb"] = includeDefinition;
-    Arduino.definitions_["define_leaphy_rgb_var"] = variablesDefinition;
-    Arduino.definitions_["define_get_color"] = getColorDefinition;
-    Arduino.addSetup("rgb_color_setup", rgbColorSetupCode, false);
-
-    var colorType = block.getFieldValue("COLOR_TYPE_RAW");
-    var code = "getColor(" + colorType + ", true)";
+    addRGBColorDefinitions();
+    const colorType = block.getFieldValue("COLOR_TYPE_RAW");
+    const code = "getColor(" + colorType + ", true)";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_rgb_raw_color_red"] = function (block) {
-    Arduino.definitions_["define_leaphy_rgb"] = includeDefinition;
-    Arduino.definitions_["define_leaphy_rgb_var"] = variablesDefinition;
-    var code = "RawColor_Red";
+    addRGBColorDefinitions();
+    const code = "getColor(0, true)";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_rgb_raw_color_green"] = function (block) {
-    Arduino.definitions_["define_leaphy_rgb"] = includeDefinition;
-    Arduino.definitions_["define_leaphy_rgb_var"] = variablesDefinition;
-    var code = "RawColor_Green";
+    addRGBColorDefinitions();
+    const code = "getColor(1, true)";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_rgb_raw_color_blue"] = function (block) {
-    Arduino.definitions_["define_leaphy_rgb"] = includeDefinition;
-    Arduino.definitions_["define_leaphy_rgb_var"] = variablesDefinition;
-    var code = "RawColor_Blue";
+    addRGBColorDefinitions();
+    const code = "getColor(2, true)";
     return [code, Arduino.ORDER_ATOMIC];
   };
 
@@ -224,42 +222,39 @@ function getCodeGenerators(Arduino) {
     return [code, Arduino.ORDER_ATOMIC];
   };
 
-  var displayInclude = '#include "OLED_Display.h"';
-  var displayDefinition = "OLEDDISPLAY display;";
-  var displaySetup =
-    'if(!display.begin())\n  {\n    Serial.println(F("Contact with the display failed: Check the connections"));\n  }\n';
-  var displaySerialSetup = "Serial.begin(115200);";
+  const addDisplaySetupCode = () => {
+    const displaySetup =
+      'if(!display.begin())\n  {\n    Serial.println(F("Contact with the display failed: Check the connections"));\n  }\n';
+    const setup = Arduino.addI2CSetup("oled", displaySetup);
 
-  var addDisplaySetupCode = function () {
-    Arduino.addInclude("include_display", displayInclude);
-    Arduino.definitions_["define_display"] = displayDefinition;
-    Arduino.addSetup("serial", displaySerialSetup, false);
-    Arduino.addSetup("oled", displaySetup, false);
+    Arduino.addInclude("include_display", '#include "OLED_Display.h"');
+    Arduino.addInclude("define_display", "OLEDDISPLAY display;");
+    Arduino.addSetup("serial", "Serial.begin(115200);");
+    return setup;
   };
 
   Arduino.forBlock["leaphy_display_clear"] = function (block) {
-    addDisplaySetupCode();
-    var code = "display.clearDisplay();\n";
-    return code;
+    const setup = addDisplaySetupCode();
+    return setup + "display.clearDisplay();\n";
   };
 
   Arduino.forBlock["leaphy_display_set_text_size"] = function (block) {
-    addDisplaySetupCode();
+    const setup = addDisplaySetupCode();
 
     const stateOutput =
       Arduino.valueToCode(block, "NUM", Arduino.ORDER_ATOMIC) || "0";
-    return "display.setTextSize(" + stateOutput + ");\n";
+    return setup + "display.setTextSize(" + stateOutput + ");\n";
   };
 
   Arduino.forBlock["leaphy_display_print_line"] = function (block) {
-    addDisplaySetupCode();
+    const setup = addDisplaySetupCode();
 
-    var value = Arduino.valueToCode(this, "VALUE", Arduino.ORDER_ATOMIC) || "0";
-    var row =
-      Arduino.valueToCode(this, "DISPLAY_ROW", Arduino.ORDER_ATOMIC) || "0";
-    row = block.getFieldValue("DISPLAY_ROW");
-    var cursorHeight = row * 12;
-    var code =
+    const value =
+      Arduino.valueToCode(this, "VALUE", Arduino.ORDER_ATOMIC) || "0";
+    const row = block.getFieldValue("DISPLAY_ROW");
+    const cursorHeight = row * 12;
+    const code =
+      setup +
       "display.setCursor(0," +
       cursorHeight +
       ");\ndisplay.println(" +
@@ -269,13 +264,15 @@ function getCodeGenerators(Arduino) {
   };
 
   Arduino.forBlock["leaphy_display_print_value"] = function (block) {
-    addDisplaySetupCode();
+    const setup = addDisplaySetupCode();
 
-    var name = Arduino.valueToCode(this, "NAME", Arduino.ORDER_ATOMIC) || "0";
-    var value = Arduino.valueToCode(this, "VALUE", Arduino.ORDER_ATOMIC) || "0";
-    var row = block.getFieldValue("DISPLAY_ROW");
-    var cursorHeight = row * 12;
-    var code =
+    const name = Arduino.valueToCode(this, "NAME", Arduino.ORDER_ATOMIC) || "0";
+    const value =
+      Arduino.valueToCode(this, "VALUE", Arduino.ORDER_ATOMIC) || "0";
+    const row = block.getFieldValue("DISPLAY_ROW");
+    const cursorHeight = row * 12;
+    const code =
+      setup +
       "display.setCursor(0," +
       cursorHeight +
       ");\ndisplay.print(" +
@@ -287,9 +284,8 @@ function getCodeGenerators(Arduino) {
   };
 
   Arduino.forBlock["leaphy_display_display"] = function (block) {
-    addDisplaySetupCode();
-    var code = "display.display();\n";
-    return code;
+    const setup = addDisplaySetupCode();
+    return setup + "display.display();\n";
   };
 
   Arduino.forBlock["leaphy_update_lsm9ds1"] = function (block) {
