@@ -99,7 +99,12 @@ function getCodeGenerators(Arduino) {
 
     Arduino.addDeclaration(
       "leaphy_gas_value",
-      "int getGasValue() {\n" + "    " + setup + "    return " + code + "}\n",
+      "int getGasValue() {\n" +
+        "    " +
+        setup +
+        "    return " +
+        code +
+        ";\n}\n",
     );
 
     return ["getGasValue()", Arduino.ORDER_ATOMIC];
