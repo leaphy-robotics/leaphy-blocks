@@ -87,27 +87,44 @@ function getCodeGenerators(Arduino) {
 
     let gasValue = block.getFieldValue("GAS");
     let code = "";
+    let type = true;
     if (gasValue === "TVOC") {
       code = "sgp.TVOC";
+      refresh = true;
     } else if (gasValue === "eCO2") {
       code = "sgp.eCO2";
+      refresh = true;
     } else if (gasValue === "Raw H2") {
       code = "sgp.rawH2";
+      refresh = false;
     } else if (gasValue === "RAWETHANOL") {
       code = "sgp.rawEthanol";
+      refresh = false;
     }
 
-    Arduino.addDeclaration(
-      "leaphy_gas_value",
-      "int getGasValue() {\n" +
-        "    " +
-        setup +
-        "    sgp.IAQmeasure();\n" +
-        "    return " +
-        code +
-        ";\n}\n",
-    );
-
+    if (refresh) {
+      Arduino.addDeclaration(
+        "leaphy_gas_value",
+        "int getGasValue() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasure();\n" +
+          "    return " +
+          code +
+          ";\n}\n",
+      );
+    } else {
+      Arduino.addDeclaration(
+        "leaphy_gas_value_raw",
+        "int getGasValue() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasureRaw();\n" +
+          "    return " +
+          code +
+          ";\n}\n",
+      );
+    }
     return ["getGasValue()", Arduino.ORDER_ATOMIC];
   };
 
