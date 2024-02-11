@@ -102,6 +102,7 @@ function getCodeGenerators(Arduino) {
       "int getGasValue() {\n" +
         "    " +
         setup +
+        "    sgp.IAQmeasure();\n" +
         "    return " +
         code +
         ";\n}\n",
