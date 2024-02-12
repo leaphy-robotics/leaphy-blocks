@@ -88,26 +88,55 @@ function getCodeGenerators(Arduino) {
     let gasValue = block.getFieldValue("GAS");
     let code = "";
     if (gasValue === "TVOC") {
-      code = "sgp.TVOC";
+      code = "getGasValueTVOC()";
+      Arduino.addDeclaration(
+        "leaphy_gas_valueTVOC",
+        "int getGasValueTVOC() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasure();\n" +
+          "    return " +
+          "sgp.TVOC" +
+          ";\n}\n",
+      );
     } else if (gasValue === "eCO2") {
-      code = "sgp.eCO2";
+      code = "getGasValueCOTWO()";
+      Arduino.addDeclaration(
+        "leaphy_gas_valueCOTWO",
+        "int getGasValueCOTWO() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasure();\n" +
+          "    return " +
+          "sgp.eCO2" +
+          ";\n}\n",
+      );
     } else if (gasValue === "Raw H2") {
-      code = "sgp.rawH2";
+      code = "getGasValueHTWO()";
+      Arduino.addDeclaration(
+        "leaphy_gas_valueHTWO",
+        "int getGasValueHTWO() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasureRaw();\n" +
+          "    return " +
+          "sgp.rawH2" +
+          ";\n}\n",
+      );
     } else if (gasValue === "RAWETHANOL") {
-      code = "sgp.rawEthanol";
+      code = "getGasValueETHANOL()";
+      Arduino.addDeclaration(
+        "leaphy_gas_valueETHANOL",
+        "int getGasValueETHANOL() {\n" +
+          "    " +
+          setup +
+          "    sgp.IAQmeasureRaw();\n" +
+          "    return " +
+          "sgp.rawEthanol" +
+          ";\n}\n",
+      );
     }
-
-    Arduino.addDeclaration(
-      "leaphy_gas_value",
-      "int getGasValue() {\n" +
-        "    " +
-        setup +
-        "    return " +
-        code +
-        ";\n}\n",
-    );
-
-    return ["getGasValue()", Arduino.ORDER_ATOMIC];
+    return [code, Arduino.ORDER_ATOMIC];
   };
 
   Arduino.forBlock["leaphy_i2c_rgb_color"] = function (block) {
