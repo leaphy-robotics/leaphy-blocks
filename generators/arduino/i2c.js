@@ -16,6 +16,15 @@ const RESTORE_CHANNEL =
   "    i2cSelectChannel(channel, false);\n" +
   "}\n";
 
+// Function to get the current channel in sensor code.
+// Returns 0 in broadcast mode so single sensors work without using the 'select i2c' block
+const GET_CHANNEL =
+  "uint8_t i2cGetChannel() {\n" +
+  "    uint8_t channel = i2cChannelStack.get(i2cChannelStack.getSize() - 1);\n" +
+  "    if (channel > 7) channel = 0;\n" +
+  "    return channel;\n" +
+  "}\n";
+
 const BROADCAST_MODE =
   "Wire.begin();\n" +
   "  Wire.setWireTimeout();\n" +
@@ -29,6 +38,7 @@ function addI2CDeclarations() {
 
   Arduino.addDeclaration("i2c_select_channel", SELECT_CHANNEL);
   Arduino.addDeclaration("i2c_restore_channel", RESTORE_CHANNEL);
+  Arduino.addDeclaration("i2c_get_channel", GET_CHANNEL);
 
   Arduino.addSetup("i2c_broadcast_mode", BROADCAST_MODE);
 }
