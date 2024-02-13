@@ -518,7 +518,7 @@ function getBlocks(board) {
       output: "Number",
       tooltip: "",
       helpUrl: "",
-    }
+    },
   ];
 }
 

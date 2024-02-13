@@ -83,21 +83,18 @@ function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_tof_get_distance"] = function (block) {
     Arduino.addInclude("leaphy_tof", "#include <Adafruit_VL53L0X.h>");
     Arduino.addDeclaration("leaphy_tof", "Adafruit_VL53L0X i2c_distance;");
-    const setup = Arduino.addI2CSetup(
-        "tof",
-        "lox.begin();\n"
-    )
+    const setup = Arduino.addI2CSetup("tof", "lox.begin();\n");
     Arduino.addDeclaration(
-        "leaphy_tof_read",
-        "int getTOF() {\n" +
+      "leaphy_tof_read",
+      "int getTOF() {\n" +
         `    ${setup}\n` +
         "    VL53L0X_RangingMeasurementData_t measure;\n" +
         "    lox.rangingTest(&measure, false);\n" +
         "    return measure.RangeMilliMeter;\n" +
-        "}"
-    )
-    return ["getTOF()", Arduino.ORDER_ATOMIC]
-  }
+        "}",
+    );
+    return ["getTOF()", Arduino.ORDER_ATOMIC];
+  };
 
   Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
     Arduino.addInclude("leaphy_gas_sensor", "#include <Adafruit_SGP30.h>");
