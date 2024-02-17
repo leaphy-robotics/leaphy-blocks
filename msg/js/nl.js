@@ -108,6 +108,7 @@ Blockly.Msg["LEAPHY_FLITZ_LED_G"] = "Groen";
 Blockly.Msg["LEAPHY_FLITZ_LED_R"] = "Rood";
 Blockly.Msg["LEAPHY_FUNCTIONS_CATEGORY"] = "Eigen blokken";
 Blockly.Msg["LEAPHY_GET_DISTANCE"] = "Lees afstand";
+Blockly.Msg["LEAPHY_TOF_GET_DISTANCE"] = "Lees afstand I2C";
 Blockly.Msg["LEAPHY_GET_GESTURE"] = "Lees gebaar";
 Blockly.Msg["LEAPHY_LED"] = "Led";
 Blockly.Msg["LEAPHY_LED_BASIC_BLUE"] = "B";

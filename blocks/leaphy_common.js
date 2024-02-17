@@ -511,6 +511,14 @@ function getBlocks(board) {
       tooltip: "%{BKY_USE_I2C_CHANNEL_TOOLTIP}",
       helpUrl: "",
     },
+    {
+      type: "leaphy_tof_get_distance",
+      message0: "%%{BKY_LEAPHY_TOF_GET_DISTANCE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
   ];
 }
 
