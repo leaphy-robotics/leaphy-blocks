@@ -101,6 +101,28 @@ function getCodeGenerators(Arduino) {
     return ["getTOF()", Arduino.ORDER_ATOMIC];
   };
 
+  Arduino.forBlock["leaphy_get_air_pressure"] = function (block) {
+    Arduino.addInclude("bmp280", "#include <Adafruit_BMP280.h>");
+    Arduino.addDeclaration("bmp280", "Adafruit_BMP280 bmp280;");
+    const setup = Arduino.addI2CSetup(
+      "bmp280",
+      "bmp280.begin(BMP280_ADDRESS_ALT);\n" +
+        "      bmp280.setSampling(Adafruit_BMP280::MODE_NORMAL,\n" +
+        "                      Adafruit_BMP280::SAMPLING_X2,\n" +
+        "                      Adafruit_BMP280::SAMPLING_X16,\n" +
+        "                      Adafruit_BMP280::FILTER_X16,\n" +
+        "                      Adafruit_BMP280::STANDBY_MS_500);\n",
+    );
+    Arduino.addDeclaration(
+      "bmp280_get_air_pressure",
+      "double getAirPressure() {\n" +
+        `    ${setup}\n` +
+        "    return bmp280.readPressure() / 100;\n" +
+        "}",
+    );
+    return ["getAirPressure()", Arduino.ORDER_ATOMIC];
+  };
+
   Arduino.forBlock["leaphy_gas_sensor"] = function (block) {
     Arduino.addInclude("leaphy_gas_sensor", "#include <Adafruit_SGP30.h>");
     Arduino.addDeclaration("leaphy_gas_sensor", "Adafruit_SGP30 sgp;");

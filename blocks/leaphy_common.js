@@ -519,6 +519,14 @@ function getBlocks(board) {
       tooltip: "",
       helpUrl: "",
     },
+    {
+      type: "leaphy_get_air_pressure",
+      message0: "%%{BKY_LEAPHY_GET_AIR_PRESSURE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
   ];
 }
 
