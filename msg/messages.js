@@ -74,6 +74,9 @@ Blockly.Msg.LEAPHY_GET_DISTANCE = 'Get distance';
 /// Leaphy Get Distance Time of Flight.
 Blockly.Msg.LEAPHY_TOF_GET_DISTANCE = 'Get ToF';
 /** @type {string} */
+/// Leaphy get air pressure
+Blockly.Msg.LEAPHY_GET_AIR_PRESSURE = 'Get air pressure';
+/** @type {string} */
 /// leaphy Read Digital Pin.
 Blockly.Msg.LEAPHY_DIGITAL_READ = 'Read digipin';
 /** @type {string} */
