@@ -83,13 +83,18 @@ function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_tof_get_distance"] = function (block) {
     Arduino.addInclude("leaphy_tof", "#include <Adafruit_VL53L0X.h>");
     Arduino.addDeclaration("leaphy_tof", "Adafruit_VL53L0X i2c_distance;");
-    const setup = Arduino.addI2CSetup("tof", "i2c_distance.begin();\n");
+    const setup = Arduino.addI2CSetup(
+      "tof",
+      "i2c_distance.begin();\n" +
+        "      i2c_distance.setMeasurementTimingBudgetMicroSeconds(20000);\n",
+    );
     Arduino.addDeclaration(
       "leaphy_tof_read",
       "int getTOF() {\n" +
         `    ${setup}\n` +
         "    VL53L0X_RangingMeasurementData_t measure;\n" +
         "    i2c_distance.rangingTest(&measure, false);\n" +
+        "    if (measure.RangeStatus == 4) return -1;\n" +
         "    return measure.RangeMilliMeter;\n" +
         "}",
     );

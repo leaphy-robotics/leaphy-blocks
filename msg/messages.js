@@ -72,7 +72,7 @@ Blockly.Msg.LEAPHY_MOTOR_DIRECTION = 'Direction';
 Blockly.Msg.LEAPHY_GET_DISTANCE = 'Get distance';
 /** @type {string} */
 /// Leaphy Get Distance Time of Flight.
-Blockly.Msg.LEAPHY_TOF_GET_DISTANCE = 'Get distance I2C';
+Blockly.Msg.LEAPHY_TOF_GET_DISTANCE = 'Get ToF';
 /** @type {string} */
 /// leaphy Read Digital Pin.
 Blockly.Msg.LEAPHY_DIGITAL_READ = 'Read digipin';
