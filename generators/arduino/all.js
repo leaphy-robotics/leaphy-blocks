@@ -186,7 +186,7 @@ Arduino.init = function (workspace) {
       });
     }
 
-    const type = types[0].type || "Number";
+    const type = types[0]?.type || "Number";
     variableGetters.forEach((block) => {
       if (block.getFieldValue("VAR") === variables[i].getId()) {
         block.outputConnection.setCheck(type);
@@ -207,6 +207,27 @@ Arduino.init = function (workspace) {
   if (defvars.length) {
     this.definitions_["variables"] = defvars.join(";\n") + ";\n";
   }
+
+  // Type inference for procedures
+  const definitions = workspace.getBlocksByType("procedures_defreturn");
+  const usages = workspace.getBlocksByType("procedures_callreturn");
+  const returns = workspace.getBlocksByType("procedures_ifreturn");
+  definitions.forEach((definition) => {
+    const check = definition
+      .getInput("RETURN")
+      .connection.targetConnection?.getCheck();
+    const type = (check ? check[0] : "Number") || "Number";
+
+    usages.forEach((block) => {
+      block.outputConnection.setCheck(type);
+    });
+
+    returns.forEach((block) => {
+      if (block.getRootBlock().id !== definition.id) return;
+
+      block.getInput("VALUE").setCheck(type);
+    });
+  });
 
   // Create a dictionary of definitions to be printed at the top of the sketch
   this.includes_ = Object.create(null);
