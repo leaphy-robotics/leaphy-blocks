@@ -247,6 +247,13 @@ function getCodeGenerators(Arduino) {
 
     return code;
   };
+
+  Arduino.forBlock["i2c_list_devices"] = function (block) {
+    Arduino.addSetup("serial", "Serial.begin(115200);", false);
+    addI2CDeclarations(true);
+
+    return "i2cListDevices();\n";
+  }
 }
 
 export default getCodeGenerators;

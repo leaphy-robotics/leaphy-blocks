@@ -445,5 +445,6 @@ Blockly.Msg["COPY_ALL_TO_BACKPACK"] = "Copy all blocks to backpack";
 Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Paste all blocks from backpack";
 Blockly.Msg["USE_I2C_CHANNEL"] = "Use I2C channel";
 Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Use the selected I2C channel for sensors in this block";
+Blockly.Msg["I2C_LIST_DEVICES"] = "List connected I2C devices";
 
 export default Blockly.Msg;
