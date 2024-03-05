@@ -37,6 +37,10 @@ function getCodeGenerators(Arduino) {
       "include_leaphy_original",
       '#include "Leaphyoriginal1.h"',
     );
+    if (Arduino.robotType === "l_original_nano") {
+      Arduino.addSetup("set_us_pins", "setUSPins(16, 17);", true);
+    }
+
     var code = "getDistance()";
     return [code, Arduino.ORDER_ATOMIC];
   };
