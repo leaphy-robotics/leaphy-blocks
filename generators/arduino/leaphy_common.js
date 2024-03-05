@@ -1,4 +1,5 @@
 import { addI2CDeclarations } from "./i2c";
+import Arduino from "./all";
 
 function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_start"] = function (block) {
@@ -249,8 +250,54 @@ function getCodeGenerators(Arduino) {
   };
 
   Arduino.forBlock["i2c_list_devices"] = function (block) {
+    const LIST_DEVICES =
+      "void i2cListDevices() {\n" +
+      "    for (int channel = 0; channel < 8; channel++) {\n" +
+      '        Serial.print("Scanning channel ");\n' +
+      "        Serial.print(channel);\n" +
+      '        Serial.println(":");\n' +
+      "        \n" +
+      "        i2cSelectChannel(channel);\n" +
+      "        \n" +
+      "        for (DeviceAddress address : deviceMap) {\n" +
+      "            Wire.beginTransmission(address.address);\n" +
+      "            int error = Wire.endTransmission();\n" +
+      "            \n" +
+      "            if (error == 0) {\n" +
+      '                Serial.print("Found: ");\n' +
+      "                Serial.print(address.device);\n" +
+      '                Serial.print(" at address 0x");\n' +
+      "                \n" +
+      "                if (address.address < 16) {\n" +
+      '                    Serial.print("0");\n' +
+      "                }\n" +
+      "                Serial.println(address.address, HEX);\n" +
+      "            }\n" +
+      "        }\n" +
+      "        \n" +
+      "        i2cRestoreChannel();\n" +
+      "    }\n" +
+      "}\n";
+
+    const DEVICE_CHANNEL_MAP =
+      "struct DeviceAddress { \n" +
+      "  uint8_t address;\n" +
+      "  char* device;\n" +
+      "};\n" +
+      "\n" +
+      "DeviceAddress deviceMap[] = {\n" +
+      '    {0x0D, "Compass"},\n' +
+      '    {0x29, "Color Sensor / ToF Sensor"},\n' +
+      '    {0x39, "RGB + Gesture Sensor"},\n' +
+      '    {0x3C, "Screen"},\n' +
+      '    {0x58, "Gas Sensor"},\n' +
+      '    {0x76, "Air Pressure Sensor"}\n' +
+      "};\n";
+
     Arduino.addSetup("serial", "Serial.begin(115200);", false);
-    addI2CDeclarations(true);
+    addI2CDeclarations();
+    Arduino.addInclude("i2c_device_map", DEVICE_CHANNEL_MAP);
+    Arduino.addDeclaration("i2c_list_devices", LIST_DEVICES);
 
     return "i2cListDevices();\n";
   };
