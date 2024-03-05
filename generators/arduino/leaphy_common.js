@@ -253,7 +253,7 @@ function getCodeGenerators(Arduino) {
     addI2CDeclarations(true);
 
     return "i2cListDevices();\n";
-  }
+  };
 }
 
 export default getCodeGenerators;
