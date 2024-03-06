@@ -1,5 +1,4 @@
 import { addI2CDeclarations } from "./i2c";
-import Arduino from "./all";
 
 function getCodeGenerators(Arduino) {
   Arduino.forBlock["leaphy_start"] = function (block) {
