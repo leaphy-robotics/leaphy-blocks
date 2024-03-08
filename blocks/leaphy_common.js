@@ -512,6 +512,13 @@ function getBlocks(board) {
       helpUrl: "",
     },
     {
+      type: "i2c_list_devices",
+      message0: "%{BKY_I2C_LIST_DEVICES}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
       type: "leaphy_tof_get_distance",
       message0: "%%{BKY_LEAPHY_TOF_GET_DISTANCE}",
       style: "leaphy_blocks",
