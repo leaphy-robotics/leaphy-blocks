@@ -329,7 +329,7 @@ function getCodeGenerators(Arduino) {
     const brightness =
       Arduino.valueToCode(this, "BRIGHTNESS", Arduino.ORDER_ATOMIC) || "0";
 
-    return `segment_display.setBrightness(${brightness});\n`;
+    return `segment_display.setBrightness(${brightness}/100*255);\n`;
   };
 
   Arduino.forBlock["leaphy_matrix_init"] = function (block) {
@@ -364,7 +364,7 @@ function getCodeGenerators(Arduino) {
     const brightness =
       Arduino.valueToCode(this, "BRIGHTNESS", Arduino.ORDER_ATOMIC) || "0";
 
-    return `matrix.setIntensity(0, ${brightness}/100*8);\n`;
+    return `matrix.setIntensity(0, ${brightness}/100*16);\n`;
   };
 
   Arduino.forBlock["leaphy_matrix_clear"] = function () {
