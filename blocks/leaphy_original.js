@@ -105,6 +105,54 @@ const blocks = [
     tooltip: "",
     helpUrl: "",
   },
+  {
+    type: "leaphy_original_servo_set",
+    message0: "%{BKY_LEAPHY_SERVO_SET}",
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "MOTOR",
+        options: [
+          ["%{BKY_LEAPHY_MOTOR_LEFT_DROPDOWN}", "left"],
+          ["%{BKY_LEAPHY_MOTOR_RIGHT_DROPDOWN}", "right"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "SPEED",
+        check: "Number",
+      },
+    ],
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    style: "leaphy_blocks",
+  },
+  {
+    type: "leaphy_original_servo_move",
+    message0: "%{BKY_LEAPHY_SERVO_MOVE}",
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "DIRECTION",
+        options: [
+          ["%{BKY_LEAPHY_MOTOR_FORWARD}", "forward"],
+          ["%{BKY_LEAPHY_MOTOR_BACKWARD}", "backward"],
+          ["%{BKY_LEAPHY_MOTOR_LEFT}", "left"],
+          ["%{BKY_LEAPHY_MOTOR_RIGHT}", "right"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "SPEED",
+        check: "Number",
+      },
+    ],
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    style: "leaphy_blocks",
+  },
 ];
 
 export { blocks };

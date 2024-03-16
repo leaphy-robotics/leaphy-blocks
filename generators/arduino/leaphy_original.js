@@ -85,6 +85,45 @@ function getCodeGenerators(Arduino) {
     var code = "tone(4, " + frequency + ", " + duration + ");\n";
     return code;
   };
+
+  Arduino.forBlock["leaphy_original_servo_set"] = function (block) {
+    Arduino.addInclude("servo", "#include <Servo.h>");
+    Arduino.addDeclaration("servo_left", "Servo servo_left;");
+    Arduino.addDeclaration("servo_right", "Servo servo_right;");
+    Arduino.addSetup("servo_left", "servo_left.attach(12);", false);
+    Arduino.addSetup("servo_right", "servo_right.attach(13);", false);
+
+    const motor = block.getFieldValue("MOTOR");
+    const speed =
+      Arduino.valueToCode(this, "SPEED", Arduino.ORDER_ATOMIC) || "100";
+
+    return `servo_${motor}.write(90 + 90*${speed}/100)`;
+  };
+
+  Arduino.forBlock["leaphy_original_servo_move"] = function (block) {
+    Arduino.addInclude("servo", "#include <Servo.h>");
+    Arduino.addDeclaration("servo_left", "Servo servo_left;");
+    Arduino.addDeclaration("servo_right", "Servo servo_right;");
+    Arduino.addSetup("servo_left", "servo_left.attach(12);", false);
+    Arduino.addSetup("servo_right", "servo_right.attach(13);", false);
+
+    const MOTOR_SPEEDS = {
+      forward: [1, -1],
+      backward: [-1, 1],
+      left: [-1, -1],
+      right: [1, 1],
+    };
+    const direction = block.getFieldValue("DIRECTION");
+    const speed =
+      Arduino.valueToCode(this, "SPEED", Arduino.ORDER_ATOMIC) || "100";
+    const motor_left = MOTOR_SPEEDS[direction][0];
+    const motor_right = MOTOR_SPEEDS[direction][1];
+
+    return (
+      `servo_left.write(90 + 90*${speed}/100*${motor_left});\n` +
+      `servo_right.write(90 + 90*${speed}/100*${motor_right});\n`
+    );
+  };
 }
 
 export default getCodeGenerators;
