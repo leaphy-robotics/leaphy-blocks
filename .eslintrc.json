@@ -11,7 +11,7 @@
     "rules": {
         "no-unused-vars": [
             "error", {
-                "argsIgnorePattern": "block"
+                "argsIgnorePattern": "block|_.*"
             }
         ]
     },
