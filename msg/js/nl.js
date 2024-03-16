@@ -530,5 +530,14 @@ Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Plak alles uit rugzak";
 Blockly.Msg["USE_I2C_CHANNEL"] = "Gebruik I2C kanaal";
 Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Gebruik het geselecteerde I2C kanaal voor sensoren in dit blok";
 Blockly.Msg["I2C_LIST_DEVICES"] = "Zoek naar verbonden I2C apparaten";
+Blockly.Msg["LEAPHY_SEGMENT_INIT"] = "Stel segment scherm in op CLK %1 DIO %2"
+Blockly.Msg["LEAPHY_SEGMENT_SET"] = "Zet segment scherm op %1"
+Blockly.Msg["LEAPHY_SEGMENT_CLEAR"] = "Leeg segment scherm"
+Blockly.Msg["LEAPHY_SEGMENT_SET_BRIGHTNESS"] = "Zet helderheid van segment scherm op %1"
+Blockly.Msg["LEAPHY_MATRIX_INIT"] = "Stel matrix scherm in op DIN %1 CLK %2 CS %3"
+Blockly.Msg["LEAPHY_MATRIX_SET"] = "Zet matrix scherm led op x %1 y %2 naar %3"
+Blockly.Msg["LEAPHY_MATRIX_SET_BRIGHTNESS"] = "Zet helderheid van matrix scherm op %1"
+Blockly.Msg["LEAPHY_MATRIX_CLEAR"] = "Leeg matrix scherm"
+Blockly.Msg["LEAPHY_MATRIX_FILL"] = "Toon op matrix scherm %1 %2"
 
 export default Blockly.Msg;

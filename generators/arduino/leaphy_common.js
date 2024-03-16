@@ -300,6 +300,91 @@ function getCodeGenerators(Arduino) {
 
     return "i2cListDevices();\n";
   };
+
+  Arduino.forBlock["leaphy_segment_init"] = function (block) {
+    const clk = block.getFieldValue("CLK");
+    const dio = block.getFieldValue("DIO");
+
+    Arduino.addInclude("tm1637", "#include <TM1637Display.h>");
+    Arduino.addDeclaration(
+      "segment",
+      `TM1637Display segment_display(${clk}, ${dio});`,
+    );
+    Arduino.addSetup("segment", "segment_display.setBrightness(255);\n", false);
+
+    return "";
+  };
+
+  Arduino.forBlock["leaphy_segment_set"] = function () {
+    const num = Arduino.valueToCode(this, "NUM", Arduino.ORDER_ATOMIC) || "0";
+
+    return `segment_display.showNumberDec(${num});\n`;
+  };
+
+  Arduino.forBlock["leaphy_segment_clear"] = function () {
+    return "segment_display.clear();\n";
+  };
+
+  Arduino.forBlock["leaphy_segment_set_brightness"] = function () {
+    const brightness =
+      Arduino.valueToCode(this, "BRIGHTNESS", Arduino.ORDER_ATOMIC) || "0";
+
+    return `segment_display.setBrightness(${brightness}/100*255);\n`;
+  };
+
+  Arduino.forBlock["leaphy_matrix_init"] = function (block) {
+    const din = block.getFieldValue("DIN");
+    const clk = block.getFieldValue("CLK");
+    const cs = block.getFieldValue("CS");
+
+    Arduino.addInclude("matrix", "#include <LedControl.h>");
+    Arduino.addDeclaration(
+      "matrix",
+      `LedControl matrix = LedControl(${din}, ${clk}, ${cs}, 1);`,
+    );
+    Arduino.addSetup(
+      "matrix",
+      "matrix.shutdown(0, false);\n" +
+        "  matrix.setIntensity(0, 8);\n" +
+        "  matrix.clearDisplay(0);",
+    );
+
+    return "";
+  };
+
+  Arduino.forBlock["leaphy_matrix_set"] = function () {
+    const x = Arduino.valueToCode(this, "X", Arduino.ORDER_ATOMIC) || "0";
+    const y = Arduino.valueToCode(this, "Y", Arduino.ORDER_ATOMIC) || "0";
+    const on = Arduino.valueToCode(this, "ON", Arduino.ORDER_ATOMIC) || "0";
+
+    return `matrix.setLed(0, ${y}, ${x}, ${on});\n`;
+  };
+
+  Arduino.forBlock["leaphy_matrix_set_brightness"] = function () {
+    const brightness =
+      Arduino.valueToCode(this, "BRIGHTNESS", Arduino.ORDER_ATOMIC) || "0";
+
+    return `matrix.setIntensity(0, ${brightness}/100*16);\n`;
+  };
+
+  Arduino.forBlock["leaphy_matrix_clear"] = function () {
+    return `matrix.clearDisplay(0);\n`;
+  };
+
+  Arduino.forBlock["leaphy_matrix_fill"] = function (block) {
+    const matrix = block.getFieldValue("MATRIX");
+
+    return (
+      `matrix.setRow(0, 0, B${matrix[0].join("")});\n` +
+      `matrix.setRow(0, 1, B${matrix[1].join("")});\n` +
+      `matrix.setRow(0, 2, B${matrix[2].join("")});\n` +
+      `matrix.setRow(0, 3, B${matrix[3].join("")});\n` +
+      `matrix.setRow(0, 4, B${matrix[4].join("")});\n` +
+      `matrix.setRow(0, 5, B${matrix[5].join("")});\n` +
+      `matrix.setRow(0, 6, B${matrix[6].join("")});\n` +
+      `matrix.setRow(0, 7, B${matrix[7].join("")});\n`
+    );
+  };
 }
 
 export default getCodeGenerators;

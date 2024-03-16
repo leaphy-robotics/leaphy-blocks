@@ -534,6 +534,146 @@ function getBlocks(board) {
       tooltip: "",
       helpUrl: "",
     },
+    {
+      type: "leaphy_segment_init",
+      message0: "%{BKY_LEAPHY_SEGMENT_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "CLK",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "DIO",
+          options: board.digitalPins,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_set",
+      message0: `%{BKY_LEAPHY_SEGMENT_SET}`,
+      args0: [
+        {
+          type: "input_value",
+          name: "NUM",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_clear",
+      message0: "%{BKY_LEAPHY_SEGMENT_CLEAR}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_set_brightness",
+      message0: "%{BKY_LEAPHY_SEGMENT_SET_BRIGHTNESS}",
+      args0: [
+        {
+          type: "input_value",
+          name: "BRIGHTNESS",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_init",
+      message0: "%{BKY_LEAPHY_MATRIX_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "DIN",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "CLK",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "CS",
+          options: board.digitalPins,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_set",
+      message0: "%{BKY_LEAPHY_MATRIX_SET}",
+      args0: [
+        {
+          type: "input_value",
+          name: "X",
+          check: "Number",
+        },
+        {
+          type: "input_value",
+          name: "Y",
+          check: "Number",
+        },
+        {
+          type: "input_value",
+          name: "ON",
+          check: "Boolean",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_set_brightness",
+      message0: "%{BKY_LEAPHY_MATRIX_SET_BRIGHTNESS}",
+      args0: [
+        {
+          type: "input_value",
+          name: "BRIGHTNESS",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_clear",
+      message0: "%{BKY_LEAPHY_MATRIX_CLEAR}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_fill",
+      message0: "%{BKY_LEAPHY_MATRIX_FILL}",
+      args0: [
+        { type: "input_dummy" },
+        {
+          type: "field_bitmap",
+          name: "MATRIX",
+          width: 8,
+          height: 8,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
   ];
 }
 

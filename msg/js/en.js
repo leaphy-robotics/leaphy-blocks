@@ -448,5 +448,14 @@ Blockly.Msg["PASTE_ALL_FROM_BACKPACK"] = "Paste all blocks from backpack";
 Blockly.Msg["USE_I2C_CHANNEL"] = "Use I2C channel";
 Blockly.Msg["USE_I2C_CHANNEL_TOOLTIP"] = "Use the selected I2C channel for sensors in this block";
 Blockly.Msg["I2C_LIST_DEVICES"] = "List connected I2C devices";
+Blockly.Msg["LEAPHY_SEGMENT_INIT"] = "Init segment display CLK %1 DIO %2"
+Blockly.Msg["LEAPHY_SEGMENT_SET"] = "Set segment display to %1"
+Blockly.Msg["LEAPHY_SEGMENT_CLEAR"] = "Clear segment display"
+Blockly.Msg["LEAPHY_SEGMENT_SET_BRIGHTNESS"] = "Set segment display brightness to %1"
+Blockly.Msg["LEAPHY_MATRIX_INIT"] = "Init matrix display DIN %1 CLK %2 CS %3"
+Blockly.Msg["LEAPHY_MATRIX_SET"] = "Set matrix display led on x %1 y %2 to %3"
+Blockly.Msg["LEAPHY_MATRIX_SET_BRIGHTNESS"] = "Set matrix display brightness to %1"
+Blockly.Msg["LEAPHY_MATRIX_CLEAR"] = "Clear matrix display"
+Blockly.Msg["LEAPHY_MATRIX_FILL"] = "Set matrix display %1 %2"
 
 export default Blockly.Msg;
