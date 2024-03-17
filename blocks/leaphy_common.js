@@ -681,13 +681,13 @@ function getBlocks(board) {
         {
           type: "field_dropdown",
           name: "RX",
-          options: board.digitalPins
+          options: board.digitalPins,
         },
         {
           type: "field_dropdown",
           name: "TX",
-          options: board.digitalPins
-        }
+          options: board.digitalPins,
+        },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -701,8 +701,8 @@ function getBlocks(board) {
         {
           type: "input_value",
           name: "ITEM",
-          check: "Number"
-        }
+          check: "Number",
+        },
       ],
       inputsInline: true,
       previousStatement: null,
@@ -723,8 +723,8 @@ function getBlocks(board) {
         {
           type: "input_value",
           name: "VOLUME",
-          check: "Number"
-        }
+          check: "Number",
+        },
       ],
       inputsInline: true,
       previousStatement: null,
