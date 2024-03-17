@@ -147,7 +147,7 @@ function getCodeGenerators(Arduino) {
       "int getAPDS9960Color(int colorType) {\n" +
       "    " +
       setup +
-      "    uint8_t channel = i2cGetChannel();\n" +
+      "    uint8_t channel = i2cChannelStack.i2cGetChannel();\n" +
       "    if (APDS.colorAvailable()) {\n" +
       "        APDS.readColor(r[channel], g[channel], b[channel], a[channel]);\n" +
       "    }\n" +
@@ -177,7 +177,7 @@ function getCodeGenerators(Arduino) {
       "int getAPDS9960Gesture() {\n" +
       "    " +
       setup +
-      "    uint8_t channel = i2cGetChannel();\n" +
+      "    uint8_t channel = i2cChannelStack.i2cGetChannel();\n" +
       "    if (APDS.gestureAvailable()) {\n" +
       "        gesture[channel] = APDS.readGesture();\n" +
       "    }\n" +

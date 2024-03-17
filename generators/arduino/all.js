@@ -401,7 +401,7 @@ Arduino.addI2CSetup = function (sensorName, setupCode) {
       "void setup" +
       sensorName +
       "() {\n" +
-      "    uint8_t channel = i2cGetChannel();\n" +
+      "    uint8_t channel = i2cChannelStack.i2cGetChannel();\n" +
       "    if (!" +
       sensorName +
       "Setup[channel]) {\n" +
