@@ -539,5 +539,9 @@ Blockly.Msg["LEAPHY_MATRIX_SET"] = "Zet matrix scherm led op x %1 y %2 naar %3"
 Blockly.Msg["LEAPHY_MATRIX_SET_BRIGHTNESS"] = "Zet helderheid van matrix scherm op %1"
 Blockly.Msg["LEAPHY_MATRIX_CLEAR"] = "Leeg matrix scherm"
 Blockly.Msg["LEAPHY_MATRIX_FILL"] = "Toon op matrix scherm %1 %2"
+Blockly.Msg["LEAPHY_SOUND_INIT"] = "Stel speaker in op RX %1 TX %2"
+Blockly.Msg["LEAPHY_SOUND_PLAY"] = "Speel audio %1 af"
+Blockly.Msg["LEAPHY_SOUND_SET_VOLUME"] = "Stel volume in op %1"
+Blockly.Msg["LEAPHY_SOUND_STOP"] = "Stop audio"
 
 export default Blockly.Msg;

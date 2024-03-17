@@ -674,6 +674,63 @@ function getBlocks(board) {
       nextStatement: null,
       style: "leaphy_blocks",
     },
+    {
+      type: "leaphy_sound_init",
+      message0: "%{BKY_LEAPHY_SOUND_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "RX",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "TX",
+          options: board.digitalPins,
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_play",
+      message0: "%{BKY_LEAPHY_SOUND_PLAY}",
+      args0: [
+        {
+          type: "input_value",
+          name: "ITEM",
+          check: "Number",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_stop",
+      message0: "%{BKY_LEAPHY_SOUND_STOP}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_set_volume",
+      message0: "%{BKY_LEAPHY_SOUND_SET_VOLUME}",
+      args0: [
+        {
+          type: "input_value",
+          name: "VOLUME",
+          check: "Number",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
   ];
 }
 
