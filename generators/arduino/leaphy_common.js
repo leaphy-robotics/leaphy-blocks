@@ -385,6 +385,32 @@ function getCodeGenerators(Arduino) {
       `matrix.setRow(0, 7, B${matrix[7].join("")});\n`
     );
   };
+
+  Arduino.forBlock["leaphy_sound_init"] = function (block) {
+    const RX = block.getFieldValue("RX")
+    const TX = block.getFieldValue("TX")
+
+    Arduino.addInclude("sound", "#include <RedMP3.h>")
+    Arduino.addDeclaration("sound", `MP3 mp3(${RX}, ${TX});`)
+
+    return ""
+  }
+
+  Arduino.forBlock["leaphy_sound_play"] = function () {
+    const item = Arduino.valueToCode(this, "ITEM", Arduino.ORDER_ATOMIC) || "0";
+
+    return `mp3.playWithIndex(${item});\n`
+  }
+
+  Arduino.forBlock["leaphy_sound_stop"] = function () {
+    return 'mp3.stopPlay();\n'
+  }
+
+  Arduino.forBlock["leaphy_sound_set_volume"] = function () {
+    const volume = Arduino.valueToCode(this, "VOLUME", Arduino.ORDER_ATOMIC) || "0";
+
+    return `mp3.setVolume(${volume}/100.0*30.0);\n`
+  }
 }
 
 export default getCodeGenerators;
