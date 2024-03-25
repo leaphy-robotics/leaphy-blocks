@@ -82,9 +82,13 @@ function getBlocks(boardType = "l_uno") {
     ];
   } else if (
     boardType === "l_nano" ||
+    boardType === "l_nano_esp32" ||
+    boardType === "l_nano_rp2040" ||
     boardType === "l_flitz_nano" ||
     boardType === "l_click_nano" ||
-    boardType === "l_original_nano"
+    boardType === "l_original_nano" ||
+    boardType === "l_original_nano_esp32" ||
+    boardType === "l_original_nano_rp2040"
   ) {
     digitalPinOptions = [
       ["2", "2"],
