@@ -17,12 +17,14 @@ class Board {
   boardType = "";
   digitalPins = [];
   analogPins = [];
+  pwmPins = [];
   servoName = "";
 
-  constructor(boardType, digiPins, anaPins, servoName) {
+  constructor(boardType, digiPins, anaPins, pwmPins, servoName) {
     this.boardType = boardType;
     this.digitalPins = digiPins;
     this.analogPins = anaPins;
+    this.pwmPins = pwmPins;
     this.servoName = servoName;
   }
 }
@@ -30,6 +32,7 @@ class Board {
 function getBlocks(boardType = "l_uno") {
   var digitalPinOptions = [];
   var analogPinOptions = [];
+  let pwmPinOptions = [];
   var servoName =
     boardType == "l_flitz_nano"
       ? "BKY_ARD_SERVO_ARM_WRITE"
@@ -69,11 +72,23 @@ function getBlocks(boardType = "l_uno") {
       ["A4", "A4"],
       ["A5", "A5"],
     ];
+    pwmPinOptions = [
+      ["3", "3"],
+      ["5", "5"],
+      ["6", "6"],
+      ["9", "9"],
+      ["10", "10"],
+      ["11", "11"],
+    ];
   } else if (
     boardType === "l_nano" ||
+    boardType === "l_nano_esp32" ||
+    boardType === "l_nano_rp2040" ||
     boardType === "l_flitz_nano" ||
     boardType === "l_click_nano" ||
-    boardType === "l_original_nano"
+    boardType === "l_original_nano" ||
+    boardType === "l_original_nano_esp32" ||
+    boardType === "l_original_nano_rp2040"
   ) {
     digitalPinOptions = [
       ["2", "2"],
@@ -105,12 +120,40 @@ function getBlocks(boardType = "l_uno") {
       ["A6", "A6"],
       ["A7", "A7"],
     ];
+    pwmPinOptions = [
+      ["3", "3"],
+      ["5", "5"],
+      ["6", "6"],
+      ["9", "9"],
+      ["10", "10"],
+      ["11", "11"],
+    ];
+  } else if (boardType === "l_mega") {
+    digitalPinOptions = new Array(51)
+      .fill(0)
+      .map((_, i) => [(i + 2).toString(), (i + 2).toString()]);
+    analogPinOptions = new Array(15).fill(0).map((_, i) => [`A${i}`, `A${i}`]);
+    pwmPinOptions = [
+      ["2", "2"],
+      ["3", "3"],
+      ["4", "4"],
+      ["5", "5"],
+      ["6", "6"],
+      ["7", "7"],
+      ["8", "8"],
+      ["9", "9"],
+      ["10", "10"],
+      ["11", "11"],
+      ["12", "12"],
+      ["13", "13"],
+    ];
   }
 
   const board = new Board(
     boardType,
     digitalPinOptions,
     analogPinOptions,
+    pwmPinOptions,
     servoName,
   );
 

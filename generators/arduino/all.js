@@ -1,4 +1,5 @@
 import * as Blockly from "blockly/core";
+import { addI2CDeclarations } from "./i2c";
 
 /**
  * Arduino code generator.
@@ -185,7 +186,7 @@ Arduino.init = function (workspace) {
       });
     }
 
-    const type = types[0].type || "Number";
+    const type = types[0]?.type || "Number";
     variableGetters.forEach((block) => {
       if (block.getFieldValue("VAR") === variables[i].getId()) {
         block.outputConnection.setCheck(type);
@@ -207,12 +208,80 @@ Arduino.init = function (workspace) {
     this.definitions_["variables"] = defvars.join(";\n") + ";\n";
   }
 
+  // Type inference for procedures
+  const definitions = workspace.getBlocksByType("procedures_defreturn");
+  const usages = workspace.getBlocksByType("procedures_callreturn");
+  const returns = workspace.getBlocksByType("procedures_ifreturn");
+  definitions.forEach((definition) => {
+    const check = definition
+      .getInput("RETURN")
+      .connection.targetConnection?.getCheck();
+    const type = (check ? check[0] : "Number") || "Number";
+
+    usages.forEach((block) => {
+      block.outputConnection.setCheck(type);
+    });
+
+    returns.forEach((block) => {
+      if (block.getRootBlock().id !== definition.id) return;
+
+      block.getInput("VALUE").setCheck(type);
+    });
+  });
+
   // Create a dictionary of definitions to be printed at the top of the sketch
   this.includes_ = Object.create(null);
   // Create a dictionary of setups to be printed in the setup() function
   this.setups_ = Object.create(null);
   // Create a dictionary of pins to check if their use conflicts
   this.pins_ = Object.create(null);
+
+  // Define all user lists
+  const lists = listManager.getLists();
+  const types = Object.fromEntries(lists.map((list) => [list.id, []]));
+  const setters = [
+    ...workspace.getBlocksByType("lists_add"),
+    ...workspace.getBlocksByType("lists_insert"),
+    ...workspace.getBlocksByType("lists_replace"),
+  ];
+
+  const typedSetters = setters.map((block) => {
+    const list = block.getFieldValue("LIST");
+    const check = block
+      .getInput("VALUE")
+      .connection.targetConnection?.getCheck();
+    const type = check ? check[0] : undefined;
+
+    if (check) types[list].push(type);
+    return [block, list, type];
+  });
+  typedSetters.forEach(([block, list, type]) => {
+    if (type === types[list][0] || !type) {
+      block.setWarningText(null);
+    } else {
+      block.setWarningText("List has conflicting types");
+    }
+  });
+
+  const getters = workspace.getBlocksByType("lists_get");
+  getters.forEach((block) => {
+    const list = block.getFieldValue("LIST");
+    const type = types[list][0] || "Number";
+
+    block.outputConnection.setCheck(type);
+  });
+
+  const defLists = [];
+  lists.forEach((list) => {
+    const type = TYPES[types[list.id][0] || "Number"];
+
+    defLists.push(`List<${type}> ${list.name}`);
+  });
+
+  if (defLists.length) {
+    this.definitions_["lists"] = defLists.join(";\n") + ";\n";
+    this.includes_["lists"] = "#include <List.hpp>";
+  }
 
   this.isInitialized = true;
 };
@@ -334,6 +403,39 @@ Arduino.addSetup = function (setupTag, code, overwrite) {
     overwritten = true;
   }
   return overwritten;
+};
+
+/**
+ * Generates a setup function that is called once for every device on a unique I2C channel
+ * @param {!string} sensorName Name of the sensor, will be used to generate var and function names
+ * @param {!string} setupCode Code to initialize the I2C device
+ * @returns {string} The code to call the setup function
+ */
+Arduino.addI2CSetup = function (sensorName, setupCode) {
+  addI2CDeclarations();
+
+  Arduino.addDeclaration(
+    "setup_" + sensorName,
+    "bool " +
+      sensorName +
+      "Setup[8];\n" +
+      "uint8_t setup" +
+      sensorName +
+      "() {\n" +
+      "    uint8_t channel = i2cGetChannel();\n" +
+      "    if (!" +
+      sensorName +
+      "Setup[channel]) {\n" +
+      "      " +
+      setupCode +
+      "      " +
+      sensorName +
+      "Setup[channel] = true;\n" +
+      "    }\n" +
+      "    return channel;\n" +
+      "}\n",
+  );
+  return "uint8_t channel = setup" + sensorName + "();\n";
 };
 
 /**
@@ -483,6 +585,8 @@ import * as math from "./math";
 import * as procedures from "./procedures";
 import * as text from "./text";
 import * as variables from "./variables";
+import * as lists from "./lists";
+import { listManager } from "../../categories/lists";
 
 arduino.default(Arduino);
 leaphy_click.default(Arduino);
@@ -496,5 +600,6 @@ math.default(Arduino);
 procedures.default(Arduino);
 text.default(Arduino);
 variables.default(Arduino);
+lists.default(Arduino);
 
 export default Arduino;

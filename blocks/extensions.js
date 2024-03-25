@@ -1,4 +1,5 @@
 import * as Blockly from "blockly/core";
+import { listManager } from "../categories/lists";
 const xmlUtils = Blockly.utils.xml;
 /**
  * @mixin
@@ -660,6 +661,19 @@ const CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN = {
   },
 };
 
+const LIST_SELECT_EXTENSION = function () {
+  const input = this.getInput("LIST");
+
+  input.appendField(
+    new Blockly.FieldDropdown(() => {
+      return listManager.getLists().map((list) => {
+        return [list.name, list.id];
+      });
+    }),
+    "LIST",
+  );
+};
+
 export {
   CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN,
   LIST_MODES_MUTATOR_EXTENSION,
@@ -673,4 +687,5 @@ export {
   CONTROLS_IF_MUTATOR_MIXIN,
   CONTROLS_IF_TOOLTIP_EXTENSION,
   WHILE_UNTIL_TOOLTIPS,
+  LIST_SELECT_EXTENSION,
 };

@@ -262,7 +262,7 @@ function getBlocks(board) {
         {
           type: "field_dropdown",
           name: "SERVO_PIN",
-          options: board.digitalPins,
+          options: board.pwmPins,
         },
         { type: "input_dummy" },
         { type: "input_value", name: "SERVO_ANGLE", check: "Number" },
@@ -309,7 +309,7 @@ function getBlocks(board) {
       type: "leaphy_io_analogwrite",
       message0: "%%{BKY_ARD_ANALOGWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
       args0: [
-        { type: "field_dropdown", name: "PIN", options: board.digitalPins },
+        { type: "field_dropdown", name: "PIN", options: board.pwmPins },
         { type: "input_value", name: "NUM", check: "Number" },
       ],
       inputsInline: true,
@@ -461,7 +461,7 @@ function getBlocks(board) {
     },
     {
       type: "leaphy_gas_sensor",
-      message0: "%%{BKY_LEAPHY_CHOOSE_GAS}: %1",
+      message0: "%%{BKY_LEAPHY_CHOOSE_GAS} %1",
       args0: [
         {
           type: "field_dropdown",
@@ -478,6 +478,258 @@ function getBlocks(board) {
       output: "Number",
       tooltip: "",
       helpUrl: "",
+    },
+    {
+      type: "i2c_use_channel",
+      message0: "%{BKY_USE_I2C_CHANNEL} %1",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "CHANNEL",
+          options: [
+            ["0", "0"],
+            ["1", "1"],
+            ["2", "2"],
+            ["3", "3"],
+            ["4", "4"],
+            ["5", "5"],
+            ["6", "6"],
+            ["7", "7"],
+          ],
+        },
+      ],
+      message1: "%1",
+      args1: [
+        {
+          type: "input_statement",
+          name: "DO",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+      tooltip: "%{BKY_USE_I2C_CHANNEL_TOOLTIP}",
+      helpUrl: "",
+    },
+    {
+      type: "i2c_list_devices",
+      message0: "%{BKY_I2C_LIST_DEVICES}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_tof_get_distance",
+      message0: "%%{BKY_LEAPHY_TOF_GET_DISTANCE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "leaphy_get_air_pressure",
+      message0: "%%{BKY_LEAPHY_GET_AIR_PRESSURE}",
+      style: "leaphy_blocks",
+      output: "Number",
+      tooltip: "",
+      helpUrl: "",
+    },
+    {
+      type: "leaphy_segment_init",
+      message0: "%{BKY_LEAPHY_SEGMENT_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "CLK",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "DIO",
+          options: board.digitalPins,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_set",
+      message0: `%{BKY_LEAPHY_SEGMENT_SET}`,
+      args0: [
+        {
+          type: "input_value",
+          name: "NUM",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_clear",
+      message0: "%{BKY_LEAPHY_SEGMENT_CLEAR}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_segment_set_brightness",
+      message0: "%{BKY_LEAPHY_SEGMENT_SET_BRIGHTNESS}",
+      args0: [
+        {
+          type: "input_value",
+          name: "BRIGHTNESS",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_init",
+      message0: "%{BKY_LEAPHY_MATRIX_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "DIN",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "CLK",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "CS",
+          options: board.digitalPins,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_set",
+      message0: "%{BKY_LEAPHY_MATRIX_SET}",
+      args0: [
+        {
+          type: "input_value",
+          name: "X",
+          check: "Number",
+        },
+        {
+          type: "input_value",
+          name: "Y",
+          check: "Number",
+        },
+        {
+          type: "input_value",
+          name: "ON",
+          check: "Boolean",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_set_brightness",
+      message0: "%{BKY_LEAPHY_MATRIX_SET_BRIGHTNESS}",
+      args0: [
+        {
+          type: "input_value",
+          name: "BRIGHTNESS",
+          check: "Number",
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_clear",
+      message0: "%{BKY_LEAPHY_MATRIX_CLEAR}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_matrix_fill",
+      message0: "%{BKY_LEAPHY_MATRIX_FILL}",
+      args0: [
+        { type: "input_dummy" },
+        {
+          type: "field_bitmap",
+          name: "MATRIX",
+          width: 8,
+          height: 8,
+        },
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_init",
+      message0: "%{BKY_LEAPHY_SOUND_INIT}",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "RX",
+          options: board.digitalPins,
+        },
+        {
+          type: "field_dropdown",
+          name: "TX",
+          options: board.digitalPins,
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_play",
+      message0: "%{BKY_LEAPHY_SOUND_PLAY}",
+      args0: [
+        {
+          type: "input_value",
+          name: "ITEM",
+          check: "Number",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_stop",
+      message0: "%{BKY_LEAPHY_SOUND_STOP}",
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
+    },
+    {
+      type: "leaphy_sound_set_volume",
+      message0: "%{BKY_LEAPHY_SOUND_SET_VOLUME}",
+      args0: [
+        {
+          type: "input_value",
+          name: "VOLUME",
+          check: "Number",
+        },
+      ],
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      style: "leaphy_blocks",
     },
   ];
 }
