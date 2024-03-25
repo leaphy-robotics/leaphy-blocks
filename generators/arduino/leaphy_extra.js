@@ -75,7 +75,7 @@ function getCodeGenerators(Arduino) {
 
   Arduino.forBlock["leaphy_led_set_basic"] = function (block) {
     var led =
-      Arduino.valueToCode(this, "LED_BASIC_LED", Arduino.ORDER_ATOMIC) || "0";
+      Arduino.valueToCode(this, "LED_SET_LED", Arduino.ORDER_ATOMIC) || "0";
     var red =
       Arduino.valueToCode(this, "LED_BASIC_RED", Arduino.ORDER_ATOMIC) || "0";
     var green =
