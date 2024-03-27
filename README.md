@@ -4,6 +4,14 @@ Leaphy Blocks is an adaptation of the Blockly library. [Google's Blockly](https:
 
 Leaphy Blocks is primarily developed for use in the [Leaphy Easybloqs](https://github.com/leaphy-robotics/leaphy-webbased) application. It is published as an npm package.
 
+## Building
+
+You can build the blocks repo by using `npm run build`, you can also watch for changes and automatically rebuild by using `npm run watch`
+
+## Using with WebBased
+
+Link the blocks repo by using `yarn link`, use `yarn unlink` first if it says you already have a package linked. After link to the blocks repo from your local webbased by using `yarn link "@leaphy-robotics/leaphy-blocks"`
+
 ## Getting Help
 
 - Ask for help on the Leaphy Forum
