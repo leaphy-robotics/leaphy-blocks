@@ -1,6 +1,4 @@
-import * as Blockly from "blockly/core";
 import { BlockDefinition } from "blockly/core/blocks";
-const xmlUtils = Blockly.utils.xml;
 
 const blocks: BlockDefinition = [
   {
