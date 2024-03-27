@@ -1,14 +1,21 @@
 # Leaphy Blocks
 
-Leaphy Blocks is an adaptation of the Blockly library. [Google's Blockly](https://github.com/google/blockly) is a library that adds a visual code editor to web and mobile apps. The Blockly editor uses interlocking, graphical blocks to represent code concepts like variables, logical expressions, loops, and more. It allows users to apply programming principles without having to worry about syntax or the intimidation of a blinking cursor on the command line.  All code is free and open source.
+Leaphy Blocks is an adaptation of the Blockly library. [Google's Blockly](https://github.com/google/blockly) is a library that adds a visual code editor to web and mobile apps. The Blockly editor uses interlocking, graphical blocks to represent code concepts like variables, logical expressions, loops, and more. It allows users to apply programming principles without having to worry about syntax or the intimidation of a blinking cursor on the command line. All code is free and open source.
 
 Leaphy Blocks is primarily developed for use in the [Leaphy Easybloqs](https://github.com/leaphy-robotics/leaphy-webbased) application. It is published as an npm package.
 
+## Building
+
+You can build the blocks repo by using `npm run build`, you can also watch for changes and automatically rebuild by using `npm run watch`
+
+## Using with WebBased
+
+Link the blocks repo by using `yarn link`, use `yarn unlink` first if it says you already have a package linked. After link to the blocks repo from your local webbased by using `yarn link "@leaphy-robotics/leaphy-blocks"`
 
 ## Getting Help
 
-* Ask for help on the Leaphy Forum
-* Report an Issue on Github
+- Ask for help on the Leaphy Forum
+- Report an Issue on Github
 
 ## Contributing to Leaphy Blocks
 
@@ -18,13 +25,10 @@ Good documentation about creating custom blocks exists in the [Google Blockly De
 
 ### Fix a Bug
 
-
-
 ## Syncing with Google Blockly
 
 Google Blocks typically releases a new version of Blockly once a quarter (every 3 months), or when a breaking bug needs an immediate fix. The Leaphy Blocks fork will be synced with those releases when they occur.
 
 ## Release Process
-
 
 Use `yarn publish` and NOT `yarn run publish` to publish a new version of the npm package

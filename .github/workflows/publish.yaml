@@ -16,8 +16,12 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Build
+        run: |
+          npm run build
 
       - name: Publish to npm
         env:
