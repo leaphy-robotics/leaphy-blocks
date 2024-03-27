@@ -16,8 +16,8 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install packages
         run: npm ci
@@ -26,4 +26,4 @@ jobs:
         run: npx eslint blocks generators
 
       - name: Run prettier
-        run: npx prettier -c blocks generators
+        run: npx prettier -c .
