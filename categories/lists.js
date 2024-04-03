@@ -1,4 +1,5 @@
 import { Variables } from "blockly/core";
+import * as Blockly from "blockly/core"
 
 class List {
     /**
@@ -23,9 +24,10 @@ class ListManager {
      *
      * @param workspace { Blockly.Workspace }
      * @param name { string }
+     * @param id { string|undefined }
      */
-    addList(workspace, name) {
-        const id = crypto.randomUUID();
+    addList(workspace, name, id) {
+        if (!id) id = crypto.randomUUID();
         this.lists[id] = new List(id, name);
     }
 
@@ -62,9 +64,42 @@ class ListManager {
     deleteList(id) {
         delete this.lists[id];
     }
+
+    clear() {
+        this.lists = {}
+    }
 }
 
 export const listManager = new ListManager();
+
+export class ListSerializer {
+    constructor() {
+        this.priority = 90
+    }
+
+    clear(_workspace) {
+        listManager.clear()
+    }
+
+    load(state, workspace) {
+        for (const listState of state) {
+            listManager.addList(workspace, listState['name'], listState['id'])
+        }
+    }
+
+    save(_workspace) {
+        const listStates = []
+        for (const list of listManager.getLists()) {
+            listStates.push({
+                id: list.id,
+                name: list.name
+            })
+        }
+
+        return listStates.length > 0 ? listStates : null;
+    }
+}
+
 const INDEX_PREFILL = {
     INDEX: {
         block: {

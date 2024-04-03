@@ -1,5 +1,6 @@
-import LISTS from './lists.js';
+import LISTS, { ListSerializer } from './lists.js';
 
 export {
     LISTS,
+    ListSerializer
 };

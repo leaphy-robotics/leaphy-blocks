@@ -219,7 +219,7 @@ const blocks = [
     message0: "%{BKY_CONTROLS_IF_IF_TITLE_IF}",
     nextStatement: null,
     enableContextMenu: false,
-    style: "logic_blocks",
+    style: "situation_blocks",
     tooltip: "%{BKY_CONTROLS_IF_IF_TOOLTIP}",
   },
   // Block representing the else-if statement in the controls_if mutator.
@@ -229,7 +229,7 @@ const blocks = [
     previousStatement: null,
     nextStatement: null,
     enableContextMenu: false,
-    style: "logic_blocks",
+    style: "situation_blocks",
     tooltip: "%{BKY_CONTROLS_IF_ELSEIF_TOOLTIP}",
   },
   // Block representing the else statement in the controls_if mutator.
@@ -238,7 +238,7 @@ const blocks = [
     message0: "%{BKY_CONTROLS_IF_ELSE_TITLE_ELSE}",
     previousStatement: null,
     enableContextMenu: false,
-    style: "logic_blocks",
+    style: "situation_blocks",
     tooltip: "%{BKY_CONTROLS_IF_ELSE_TOOLTIP}",
   },
 ];
