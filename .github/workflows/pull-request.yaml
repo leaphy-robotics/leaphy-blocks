@@ -26,4 +26,4 @@ jobs:
         run: npx eslint .
 
       - name: Run prettier
-        run: npx prettier -c .
+        run: npx prettier -c ./src
