@@ -3,112 +3,112 @@ import { ISerializer } from "blockly/core/interfaces/i_serializer";
 import { FlyoutDefinition } from "blockly/core/utils/toolbox";
 
 export class List {
-  public type: string = "Number";
+    public type: string = "Number";
 
-  constructor(
-    public id: string,
-    public name: string,
-  ) {}
+    constructor(
+        public id: string,
+        public name: string,
+    ) {}
 }
 
 class ListManager {
-  public lists: Record<string, List> = {};
+    public lists: Record<string, List> = {};
 
-  addList(name: string, id?: string) {
-    if (!id) id = crypto.randomUUID();
-    this.lists[id] = new List(id, name);
-  }
+    addList(name: string, id?: string) {
+        if (!id) id = crypto.randomUUID();
+        this.lists[id] = new List(id, name);
+    }
 
-  getList(id: string): List | undefined {
-    return this.lists[id];
-  }
+    getList(id: string): List | undefined {
+        return this.lists[id];
+    }
 
-  getLists() {
-    return Object.values(this.lists);
-  }
+    getLists() {
+        return Object.values(this.lists);
+    }
 
-  clear() {
-    this.lists = {};
-  }
+    clear() {
+        this.lists = {};
+    }
 }
 
 export const listManager = new ListManager();
 
 interface SerialList {
-  name: string;
-  id: string;
+    name: string;
+    id: string;
 }
 export class ListSerializer implements ISerializer {
-  public priority = 90;
+    public priority = 90;
 
-  clear() {
-    listManager.clear();
-  }
-
-  load(state: SerialList[]) {
-    for (const listState of state) {
-      listManager.addList(listState["name"], listState["id"]);
-    }
-  }
-
-  save(): SerialList[] | null {
-    const listStates = [];
-    for (const list of listManager.getLists()) {
-      listStates.push({
-        id: list.id,
-        name: list.name,
-      });
+    clear() {
+        listManager.clear();
     }
 
-    return listStates.length > 0 ? listStates : null;
-  }
+    load(state: SerialList[]) {
+        for (const listState of state) {
+            listManager.addList(listState["name"], listState["id"]);
+        }
+    }
+
+    save(): SerialList[] | null {
+        const listStates = [];
+        for (const list of listManager.getLists()) {
+            listStates.push({
+                id: list.id,
+                name: list.name,
+            });
+        }
+
+        return listStates.length > 0 ? listStates : null;
+    }
 }
 
 const INDEX_PREFILL = {
-  INDEX: {
-    shadow: {
-      type: "math_number",
-      fields: {
-        NUM: 0,
-      },
+    INDEX: {
+        shadow: {
+            type: "math_number",
+            fields: {
+                NUM: 0,
+            },
+        },
     },
-  },
 };
 
 export default function (workspace: WorkspaceSvg) {
-  let blockList: FlyoutDefinition = [
-    {
-      kind: "button",
-      text: "Create List",
-      callbackkey: "create_list",
-    },
-  ];
-
-  const lists = listManager.getLists();
-  if (lists.length > 0) {
-    const dynamicBlocks = [
-      { kind: "block", type: "lists_add" },
-      { kind: "block", type: "lists_delete", inputs: INDEX_PREFILL },
-      { kind: "sep", gap: 8 },
-      { kind: "block", type: "lists_insert", inputs: INDEX_PREFILL },
-      { kind: "sep", gap: 8 },
-      { kind: "block", type: "lists_replace", inputs: INDEX_PREFILL },
-      { kind: "block", type: "lists_get", inputs: INDEX_PREFILL },
-      { kind: "sep", gap: 8 },
-      { kind: "block", type: "lists_length" },
+    let blockList: FlyoutDefinition = [
+        {
+            kind: "button",
+            text: "Create List",
+            callbackkey: "create_list",
+        },
     ];
 
-    blockList = blockList.concat(dynamicBlocks);
-  }
+    const lists = listManager.getLists();
+    if (lists.length > 0) {
+        const dynamicBlocks = [
+            { kind: "block", type: "lists_add" },
+            { kind: "block", type: "lists_delete", inputs: INDEX_PREFILL },
+            { kind: "sep", gap: 8 },
+            { kind: "block", type: "lists_insert", inputs: INDEX_PREFILL },
+            { kind: "sep", gap: 8 },
+            { kind: "block", type: "lists_replace", inputs: INDEX_PREFILL },
+            { kind: "block", type: "lists_get", inputs: INDEX_PREFILL },
+            { kind: "sep", gap: 8 },
+            { kind: "block", type: "lists_length" },
+        ];
 
-  workspace.registerButtonCallback("create_list", function () {
-    Variables.promptName("create_list", "", (name) => {
-      if (!name) return;
+        blockList = blockList.concat(dynamicBlocks);
+    }
 
-      listManager.addList(name);
-      workspace.refreshToolboxSelection();
+    workspace.registerButtonCallback("create_list", function () {
+        Variables.promptName("create_list", "", (name) => {
+            if (!name) return;
+
+            listManager.addList(name);
+            workspace.refreshToolboxSelection();
+        });
     });
-  });
 
-  return blockList;
+    return blockList;
 }

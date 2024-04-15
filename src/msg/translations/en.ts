@@ -6,7 +6,7 @@ messages["ADD_COMMENT"] = "Add Comment";
 messages["ARD_ANALOGWRITE"] = "Set PWM pin";
 messages["ARD_DIGITALWRITE"] = "Set digital pin";
 messages["ARD_PIN_WARN1"] =
-  "Pin %1 is needed for %2 as pin %3. Already in use as %4.";
+    "Pin %1 is needed for %2 as pin %3. Already in use as %4.";
 messages["ARD_SERVO_READ"] = "Read servo pin";
 messages["ARD_SERVO_WRITE"] = "Set servo pin";
 messages["ARD_SERVO_ARM_WRITE"] = "Set Arm servo pin";
@@ -17,7 +17,7 @@ messages["ARD_TIME_DELAY_TIP"] = "Wait specific time in milliseconds";
 messages["ARD_TIME_MS"] = "ms";
 messages["ARD_WRITE_TO"] = "To";
 messages["CANNOT_DELETE_VARIABLE_PROCEDURE"] =
-  "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
+    "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
 messages["CHANGE_VALUE_TITLE"] = "Change value:";
 messages["CLEAN_UP"] = "Clean up Blocks";
 messages["COLLAPSED_WARNINGS_WARNING"] = "Collapsed blocks contain warnings.";
@@ -26,11 +26,11 @@ messages["COLLAPSE_BLOCK"] = "Collapse Block";
 messages["COLOUR_BLEND_COLOUR1"] = "colour 1";
 messages["COLOUR_BLEND_COLOUR2"] = "colour 2";
 messages["COLOUR_BLEND_HELPURL"] =
-  "https://meyerweb.com/eric/tools/color-blend/#:::rgbp";
+    "https://meyerweb.com/eric/tools/color-blend/#:::rgbp";
 messages["COLOUR_BLEND_RATIO"] = "ratio";
 messages["COLOUR_BLEND_TITLE"] = "blend";
 messages["COLOUR_BLEND_TOOLTIP"] =
-  "Blends two colours together with a given ratio (0.0 - 1.0).";
+    "Blends two colours together with a given ratio (0.0 - 1.0).";
 messages["COLOUR_PICKER_HELPURL"] = "https://en.wikipedia.org/wiki/Color";
 messages["COLOUR_PICKER_TOOLTIP"] = "Choose a colour from the palette.";
 messages["COLOUR_RANDOM_HELPURL"] = "http://randomcolour.com";
@@ -39,40 +39,40 @@ messages["COLOUR_RANDOM_TOOLTIP"] = "Choose a colour at random.";
 messages["COLOUR_RGB_BLUE"] = "blue";
 messages["COLOUR_RGB_GREEN"] = "green";
 messages["COLOUR_RGB_HELPURL"] =
-  "https://www.december.com/html/spec/colorpercompact.html";
+    "https://www.december.com/html/spec/colorpercompact.html";
 messages["COLOUR_RGB_RED"] = "red";
 messages["COLOUR_RGB_AMBIENT"] = "ambient";
 messages["COLOUR_RGB_TITLE"] = "colour with";
 messages["COLOUR_RGB_TOOLTIP"] =
-  "Create a colour with the specified amount of red, green, and blue. All values must be between 0 and 100.";
+    "Create a colour with the specified amount of red, green, and blue. All values must be between 0 and 100.";
 messages["CONTROLS_FLOW_STATEMENTS_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Loops#loop-termination-blocks";
+    "https://github.com/google/blockly/wiki/Loops#loop-termination-blocks";
 messages["CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK"] = "break out of loop";
 messages["CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE"] =
-  "continue with next iteration of loop";
+    "continue with next iteration of loop";
 messages["CONTROLS_FLOW_STATEMENTS_TOOLTIP_BREAK"] =
-  "Break out of the containing loop.";
+    "Break out of the containing loop.";
 messages["CONTROLS_FLOW_STATEMENTS_TOOLTIP_CONTINUE"] =
-  "Skip the rest of this loop, and continue with the next iteration.";
+    "Skip the rest of this loop, and continue with the next iteration.";
 messages["CONTROLS_FLOW_STATEMENTS_WARNING"] =
-  "Warning: This block may only be used within a loop.";
+    "Warning: This block may only be used within a loop.";
 messages["CONTROLS_FOREACH_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Loops#for-each";
+    "https://github.com/google/blockly/wiki/Loops#for-each";
 messages["CONTROLS_FOREACH_TITLE"] = "for each item %1 in list %2";
 messages["CONTROLS_FOREACH_TOOLTIP"] =
-  "For each item in a list, set the variable '%1' to the item, and then do some statements.";
+    "For each item in a list, set the variable '%1' to the item, and then do some statements.";
 messages["CONTROLS_FOR_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Loops#count-with";
+    "https://github.com/google/blockly/wiki/Loops#count-with";
 messages["CONTROLS_FOR_TITLE"] = "count with %1 from %2 to %3 by %4";
 messages["CONTROLS_FOR_TOOLTIP"] =
-  "Have the variable '%1' take on the values from the start number to the end number, counting by the specified interval, and do the specified blocks.";
+    "Have the variable '%1' take on the values from the start number to the end number, counting by the specified interval, and do the specified blocks.";
 messages["CONTROLS_IF_ELSEIF_TOOLTIP"] = "Add a condition to the if block.";
 messages["CONTROLS_IF_ELSE_TOOLTIP"] =
-  "Add a final, catch-all condition to the if block.";
+    "Add a final, catch-all condition to the if block.";
 messages["CONTROLS_IF_HELPURL"] =
-  "https://github.com/google/blockly/wiki/IfElse";
+    "https://github.com/google/blockly/wiki/IfElse";
 messages["CONTROLS_IF_IF_TOOLTIP"] =
-  "Add, remove, or reorder sections to reconfigure this if block.";
+    "Add, remove, or reorder sections to reconfigure this if block.";
 messages["CONTROLS_IF_MSG_ELSE"] = "else";
 messages["CONTROLS_IF_MSG_ELSEIF"] = "else if";
 messages["CONTROLS_MULTIPLEXER_1"] = "Set multiplexer to";
@@ -80,31 +80,31 @@ messages["CONTROLS_MULTIPLEXER_2"] = "then do";
 messages["CONTROLS_IF_MSG_IF"] = "if";
 messages["CONTROLS_IF_MSG_THEN"] = "then";
 messages["CONTROLS_IF_TOOLTIP_1"] =
-  "If a value is true, then do some statements.";
+    "If a value is true, then do some statements.";
 messages["CONTROLS_IF_TOOLTIP_2"] =
-  "If a value is true, then do the first block of statements. Otherwise, do the second block of statements.";
+    "If a value is true, then do the first block of statements. Otherwise, do the second block of statements.";
 messages["CONTROLS_IF_TOOLTIP_3"] =
-  "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements.";
+    "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements.";
 messages["CONTROLS_IF_TOOLTIP_4"] =
-  "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements. If none of the values are true, do the last block of statements.";
+    "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements. If none of the values are true, do the last block of statements.";
 messages["CONTROLS_REPEAT_FOREVER_TITLE"] = "repeat forever";
 messages["CONTROLS_REPEAT_HELPURL"] = "https://en.wikipedia.org/wiki/For_loop";
 messages["CONTROLS_REPEAT_INPUT_DO"] = "";
 messages["CONTROLS_REPEAT_TITLE"] = "repeat %1 times";
 messages["CONTROLS_REPEAT_TOOLTIP"] = "Do some statements several times.";
 messages["CONTROLS_WHILEUNTIL_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Loops#repeat";
+    "https://github.com/google/blockly/wiki/Loops#repeat";
 messages["CONTROLS_WHILEUNTIL_OPERATOR_UNTIL"] = "repeat until";
 messages["CONTROLS_WHILEUNTIL_OPERATOR_WHILE"] = "repeat while";
 messages["CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL"] =
-  "While a value is false, then do some statements.";
+    "While a value is false, then do some statements.";
 messages["CONTROLS_WHILEUNTIL_TOOLTIP_WHILE"] =
-  "While a value is true, then do some statements.";
+    "While a value is true, then do some statements.";
 messages["DELETE_ALL_BLOCKS"] = "Delete all %1 blocks?";
 messages["DELETE_BLOCK"] = "Delete Block";
 messages["DELETE_VARIABLE"] = "Delete the '%1' variable";
 messages["DELETE_VARIABLE_CONFIRMATION"] =
-  "Delete %1 uses of the '%2' variable?";
+    "Delete %1 uses of the '%2' variable?";
 messages["DELETE_X_BLOCKS"] = "Delete %1 Blocks";
 messages["DIALOG_CANCEL"] = "Cancel";
 messages["DIALOG_OK"] = "OK";
@@ -203,74 +203,74 @@ messages["LEAPHY_LISTS_GET"] = "get %1 of %2";
 messages["LEAPHY_LISTS_LENGTH"] = "length of %1";
 messages["LOGIC_BOOLEAN_FALSE"] = "false";
 messages["LOGIC_BOOLEAN_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Logic#values";
+    "https://github.com/google/blockly/wiki/Logic#values";
 messages["LOGIC_BOOLEAN_TOOLTIP"] = "Returns either true or false.";
 messages["LOGIC_BOOLEAN_TRUE"] = "true";
 messages["LOGIC_COMPARE_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Inequality_(mathematics)";
+    "https://en.wikipedia.org/wiki/Inequality_(mathematics)";
 messages["LOGIC_COMPARE_TOOLTIP_EQ"] =
-  "Return true if both inputs equal each other.";
+    "Return true if both inputs equal each other.";
 messages["LOGIC_COMPARE_TOOLTIP_GT"] =
-  "Return true if the first input is greater than the second input.";
+    "Return true if the first input is greater than the second input.";
 messages["LOGIC_COMPARE_TOOLTIP_GTE"] =
-  "Return true if the first input is greater than or equal to the second input.";
+    "Return true if the first input is greater than or equal to the second input.";
 messages["LOGIC_COMPARE_TOOLTIP_LT"] =
-  "Return true if the first input is smaller than the second input.";
+    "Return true if the first input is smaller than the second input.";
 messages["LOGIC_COMPARE_TOOLTIP_LTE"] =
-  "Return true if the first input is smaller than or equal to the second input.";
+    "Return true if the first input is smaller than or equal to the second input.";
 messages["LOGIC_COMPARE_TOOLTIP_NEQ"] =
-  "Return true if both inputs are not equal to each other.";
+    "Return true if both inputs are not equal to each other.";
 messages["LOGIC_NEGATE_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Logic#not";
+    "https://github.com/google/blockly/wiki/Logic#not";
 messages["LOGIC_NEGATE_TITLE"] = "not %1";
 messages["LOGIC_NEGATE_TOOLTIP"] =
-  "Returns true if the input is false. Returns false if the input is true.";
+    "Returns true if the input is false. Returns false if the input is true.";
 messages["LOGIC_NULL"] = "null";
 messages["LOGIC_NULL_HELPURL"] = "https://en.wikipedia.org/wiki/Nullable_type";
 messages["LOGIC_NULL_TOOLTIP"] = "Returns null.";
 messages["LOGIC_OPERATION_AND"] = "and";
 messages["LOGIC_OPERATION_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Logic#logical-operations";
+    "https://github.com/google/blockly/wiki/Logic#logical-operations";
 messages["LOGIC_OPERATION_OR"] = "or";
 messages["LOGIC_OPERATION_TOOLTIP_AND"] =
-  "Return true if both inputs are true.";
+    "Return true if both inputs are true.";
 messages["LOGIC_OPERATION_TOOLTIP_OR"] =
-  "Return true if at least one of the inputs is true.";
+    "Return true if at least one of the inputs is true.";
 messages["LOGIC_TERNARY_CONDITION"] = "test";
 messages["LOGIC_TERNARY_HELPURL"] = "https://en.wikipedia.org/wiki/%3F:";
 messages["LOGIC_TERNARY_IF_FALSE"] = "if false";
 messages["LOGIC_TERNARY_IF_TRUE"] = "if true";
 messages["LOGIC_TERNARY_TOOLTIP"] =
-  "Check the condition in 'test'. If the condition is true, returns the 'if true' value; otherwise returns the 'if false' value.";
+    "Check the condition in 'test'. If the condition is true, returns the 'if true' value; otherwise returns the 'if false' value.";
 messages["MATH_ADDITION_SYMBOL"] = "+";
 messages["MATH_ARITHMETIC_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Arithmetic";
+    "https://en.wikipedia.org/wiki/Arithmetic";
 messages["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Return the sum of the two numbers.";
 messages["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] =
-  "Return the quotient of the two numbers.";
+    "Return the quotient of the two numbers.";
 messages["MATH_ARITHMETIC_TOOLTIP_MINUS"] =
-  "Return the difference of the two numbers.";
+    "Return the difference of the two numbers.";
 messages["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] =
-  "Return the product of the two numbers.";
+    "Return the product of the two numbers.";
 messages["MATH_ARITHMETIC_TOOLTIP_POWER"] =
-  "Return the first number raised to the power of the second number.";
+    "Return the first number raised to the power of the second number.";
 messages["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";
 messages["MATH_ATAN2_TITLE"] = "atan2 of X:%1 Y:%2";
 messages["MATH_ATAN2_TOOLTIP"] =
-  "Return the arctangent of point (X, Y) in degrees from -180 to 180.";
+    "Return the arctangent of point (X, Y) in degrees from -180 to 180.";
 messages["MATH_CHANGE_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Programming_idiom#Incrementing_a_counter";
+    "https://en.wikipedia.org/wiki/Programming_idiom#Incrementing_a_counter";
 messages["MATH_CHANGE_TITLE"] = "change %1 by %2";
 messages["MATH_CHANGE_TOOLTIP"] = "Add a number to variable '%1'.";
 messages["MATH_CONSTANT_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Mathematical_constant";
+    "https://en.wikipedia.org/wiki/Mathematical_constant";
 messages["MATH_CONSTANT_TOOLTIP"] =
-  "Return one of the common constants: π (3.141…), e (2.718…), φ (1.618…), sqrt(2) (1.414…), sqrt(½) (0.707…), or ∞ (infinity).";
+    "Return one of the common constants: π (3.141…), e (2.718…), φ (1.618…), sqrt(2) (1.414…), sqrt(½) (0.707…), or ∞ (infinity).";
 messages["MATH_CONSTRAIN_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Clamping_(graphics)";
+    "https://en.wikipedia.org/wiki/Clamping_(graphics)";
 messages["MATH_CONSTRAIN_TITLE"] = "constrain %1 low %2 high %3";
 messages["MATH_CONSTRAIN_TOOLTIP"] =
-  "Constrain a number to be between the specified limits (inclusive).";
+    "Constrain a number to be between the specified limits (inclusive).";
 messages["MATH_DIVISION_SYMBOL"] = "÷";
 messages["MATH_IS_DIVISIBLE_BY"] = "is divisible by";
 messages["MATH_IS_EVEN"] = "is even";
@@ -279,13 +279,13 @@ messages["MATH_IS_ODD"] = "is odd";
 messages["MATH_IS_POSITIVE"] = "is positive";
 messages["MATH_IS_PRIME"] = "is prime";
 messages["MATH_IS_TOOLTIP"] =
-  "Check if a number is an even, odd, prime, whole, positive, negative, or if it is divisible by certain number. Returns true or false.";
+    "Check if a number is an even, odd, prime, whole, positive, negative, or if it is divisible by certain number. Returns true or false.";
 messages["MATH_IS_WHOLE"] = "is whole";
 messages["MATH_MODULO_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Modulo_operation";
+    "https://en.wikipedia.org/wiki/Modulo_operation";
 messages["MATH_MODULO_TITLE"] = "remainder of %1 ÷ %2";
 messages["MATH_MODULO_TOOLTIP"] =
-  "Return the remainder from dividing the two numbers.";
+    "Return the remainder from dividing the two numbers.";
 messages["MATH_MULTIPLICATION_SYMBOL"] = "×";
 messages["MATH_NUMBER_HELPURL"] = "https://en.wikipedia.org/wiki/Number";
 messages["MATH_NUMBER_TOOLTIP"] = "A number.";
@@ -299,30 +299,30 @@ messages["MATH_ONLIST_OPERATOR_RANDOM"] = "random item of list";
 messages["MATH_ONLIST_OPERATOR_STD_DEV"] = "standard deviation of list";
 messages["MATH_ONLIST_OPERATOR_SUM"] = "sum of list";
 messages["MATH_ONLIST_TOOLTIP_AVERAGE"] =
-  "Return the average (arithmetic mean) of the numeric values in the list.";
+    "Return the average (arithmetic mean) of the numeric values in the list.";
 messages["MATH_ONLIST_TOOLTIP_MAX"] = "Return the largest number in the list.";
 messages["MATH_ONLIST_TOOLTIP_MEDIAN"] =
-  "Return the median number in the list.";
+    "Return the median number in the list.";
 messages["MATH_ONLIST_TOOLTIP_MIN"] = "Return the smallest number in the list.";
 messages["MATH_ONLIST_TOOLTIP_MODE"] =
-  "Return a list of the most common item(s) in the list.";
+    "Return a list of the most common item(s) in the list.";
 messages["MATH_ONLIST_TOOLTIP_RANDOM"] =
-  "Return a random element from the list.";
+    "Return a random element from the list.";
 messages["MATH_ONLIST_TOOLTIP_STD_DEV"] =
-  "Return the standard deviation of the list.";
+    "Return the standard deviation of the list.";
 messages["MATH_ONLIST_TOOLTIP_SUM"] =
-  "Return the sum of all the numbers in the list.";
+    "Return the sum of all the numbers in the list.";
 messages["MATH_POWER_SYMBOL"] = "^";
 messages["MATH_RANDOM_FLOAT_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Random_number_generation";
+    "https://en.wikipedia.org/wiki/Random_number_generation";
 messages["MATH_RANDOM_FLOAT_TITLE_RANDOM"] = "random fraction";
 messages["MATH_RANDOM_FLOAT_TOOLTIP"] =
-  "Return a random fraction between 0.0 (inclusive) and 1.0 (exclusive).";
+    "Return a random fraction between 0.0 (inclusive) and 1.0 (exclusive).";
 messages["MATH_RANDOM_INT_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Random_number_generation";
+    "https://en.wikipedia.org/wiki/Random_number_generation";
 messages["MATH_RANDOM_INT_TITLE"] = "random integer from %1 to %2";
 messages["MATH_RANDOM_INT_TOOLTIP"] =
-  "Return a random integer between the two specified limits, inclusive.";
+    "Return a random integer between the two specified limits, inclusive.";
 messages["MATH_ROUND_HELPURL"] = "https://en.wikipedia.org/wiki/Rounding";
 messages["MATH_ROUND_OPERATOR_ROUND"] = "round";
 messages["MATH_ROUND_OPERATOR_ROUNDDOWN"] = "round down";
@@ -334,9 +334,9 @@ messages["MATH_SINGLE_OP_ROOT"] = "square root";
 messages["MATH_SINGLE_TOOLTIP_ABS"] = "Return the absolute value of a number.";
 messages["MATH_SINGLE_TOOLTIP_EXP"] = "Return e to the power of a number.";
 messages["MATH_SINGLE_TOOLTIP_LN"] =
-  "Return the natural logarithm of a number.";
+    "Return the natural logarithm of a number.";
 messages["MATH_SINGLE_TOOLTIP_LOG10"] =
-  "Return the base 10 logarithm of a number.";
+    "Return the base 10 logarithm of a number.";
 messages["MATH_SINGLE_TOOLTIP_NEG"] = "Return the negation of a number.";
 messages["MATH_SINGLE_TOOLTIP_POW10"] = "Return 10 to the power of a number.";
 messages["MATH_SINGLE_TOOLTIP_ROOT"] = "Return the square root of a number.";
@@ -346,17 +346,17 @@ messages["MATH_TRIG_ASIN"] = "asin";
 messages["MATH_TRIG_ATAN"] = "atan";
 messages["MATH_TRIG_COS"] = "cos";
 messages["MATH_TRIG_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Trigonometric_functions";
+    "https://en.wikipedia.org/wiki/Trigonometric_functions";
 messages["MATH_TRIG_SIN"] = "sin";
 messages["MATH_TRIG_TAN"] = "tan";
 messages["MATH_TRIG_TOOLTIP_ACOS"] = "Return the arccosine of a number.";
 messages["MATH_TRIG_TOOLTIP_ASIN"] = "Return the arcsine of a number.";
 messages["MATH_TRIG_TOOLTIP_ATAN"] = "Return the arctangent of a number.";
 messages["MATH_TRIG_TOOLTIP_COS"] =
-  "Return the cosine of a degree (not radian).";
+    "Return the cosine of a degree (not radian).";
 messages["MATH_TRIG_TOOLTIP_SIN"] = "Return the sine of a degree (not radian).";
 messages["MATH_TRIG_TOOLTIP_TAN"] =
-  "Return the tangent of a degree (not radian).";
+    "Return the tangent of a degree (not radian).";
 messages["NEW_COLOUR_VARIABLE"] = "Create colour variable...";
 messages["NEW_NUMBER_VARIABLE"] = "Create number variable...";
 messages["NEW_STRING_VARIABLE"] = "Create string variable...";
@@ -367,165 +367,165 @@ messages["ORDINAL_NUMBER_SUFFIX"] = "";
 messages["PROCEDURES_ALLOW_STATEMENTS"] = "allow statements";
 messages["PROCEDURES_BEFORE_PARAMS"] = "with:";
 messages["PROCEDURES_CALLNORETURN_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Subroutine";
+    "https://en.wikipedia.org/wiki/Subroutine";
 messages["PROCEDURES_CALLNORETURN_TOOLTIP"] =
-  "Run the user-defined function '%1'.";
+    "Run the user-defined function '%1'.";
 messages["PROCEDURES_CALLRETURN_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Subroutine";
+    "https://en.wikipedia.org/wiki/Subroutine";
 messages["PROCEDURES_CALLRETURN_TOOLTIP"] =
-  "Run the user-defined function '%1' and use its output.";
+    "Run the user-defined function '%1' and use its output.";
 messages["PROCEDURES_CALL_BEFORE_PARAMS"] = "with:";
 messages["PROCEDURES_CREATE_DO"] = "Create '%1'";
 messages["PROCEDURES_DEFNORETURN_COMMENT"] = "Describe this function...";
 messages["PROCEDURES_DEFNORETURN_DO"] = "";
 messages["PROCEDURES_DEFNORETURN_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Subroutine";
+    "https://en.wikipedia.org/wiki/Subroutine";
 messages["PROCEDURES_DEFNORETURN_PROCEDURE"] = "name";
 messages["PROCEDURES_DEFNORETURN_TITLE"] = "Subprogram";
 messages["PROCEDURES_DEFNORETURN_TOOLTIP"] =
-  "Creates a function with no output.";
+    "Creates a function with no output.";
 messages["PROCEDURES_DEFRETURN_HELPURL"] =
-  "https://en.wikipedia.org/wiki/Subroutine";
+    "https://en.wikipedia.org/wiki/Subroutine";
 messages["PROCEDURES_DEFRETURN_RETURN"] = "return";
 messages["PROCEDURES_DEFRETURN_TOOLTIP"] = "Creates a function with an output.";
 messages["PROCEDURES_DEF_DUPLICATE_WARNING"] =
-  "Warning: This function has duplicate parameters.";
+    "Warning: This function has duplicate parameters.";
 messages["PROCEDURES_HIGHLIGHT_DEF"] = "Highlight function definition";
 messages["PROCEDURES_IFRETURN_HELPURL"] = "http://c2.com/cgi/wiki?GuardClause";
 messages["PROCEDURES_IFRETURN_TOOLTIP"] =
-  "If a value is true, then return a second value.";
+    "If a value is true, then return a second value.";
 messages["PROCEDURES_IFRETURN_WARNING"] =
-  "Warning: This block may be used only within a function definition.";
+    "Warning: This block may be used only within a function definition.";
 messages["PROCEDURES_MUTATORARG_TITLE"] = "input name:";
 messages["PROCEDURES_MUTATORARG_TOOLTIP"] = "Add an input to the function.";
 messages["PROCEDURES_MUTATORCONTAINER_TITLE"] = "inputs";
 messages["PROCEDURES_MUTATORCONTAINER_TOOLTIP"] =
-  "Add, remove, or reorder inputs to this function.";
+    "Add, remove, or reorder inputs to this function.";
 messages["REDO"] = "Redo";
 messages["REMOVE_COMMENT"] = "Remove Comment";
 messages["RENAME_VARIABLE"] = "Rename variable...";
 messages["RENAME_VARIABLE_TITLE"] = "Rename all '%1' variables to:";
 messages["TEXT_APPEND_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#text-modification";
+    "https://github.com/google/blockly/wiki/Text#text-modification";
 messages["TEXT_APPEND_TITLE"] = "to %1 append text %2";
 messages["TEXT_APPEND_TOOLTIP"] = "Append some text to variable '%1'.";
 messages["TEXT_CHANGECASE_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#adjusting-text-case";
+    "https://github.com/google/blockly/wiki/Text#adjusting-text-case";
 messages["TEXT_CHANGECASE_OPERATOR_LOWERCASE"] = "to lower case";
 messages["TEXT_CHANGECASE_OPERATOR_TITLECASE"] = "to Title Case";
 messages["TEXT_CHANGECASE_OPERATOR_UPPERCASE"] = "to UPPER CASE";
 messages["TEXT_CHANGECASE_TOOLTIP"] =
-  "Return a copy of the text in a different case.";
+    "Return a copy of the text in a different case.";
 messages["TEXT_CHARAT_FIRST"] = "get first letter";
 messages["TEXT_CHARAT_FROM_END"] = "get letter # from end";
 messages["TEXT_CHARAT_FROM_START"] = "get letter #";
 messages["TEXT_CHARAT_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#extracting-text";
+    "https://github.com/google/blockly/wiki/Text#extracting-text";
 messages["TEXT_CHARAT_LAST"] = "get last letter";
 messages["TEXT_CHARAT_RANDOM"] = "get random letter";
 messages["TEXT_CHARAT_TAIL"] = "";
 messages["TEXT_CHARAT_TITLE"] = "letter %1 of %2";
 messages["TEXT_CHARAT_TOOLTIP"] =
-  "Returns the letter at the specified position.";
+    "Returns the letter at the specified position.";
 messages["TEXT_COUNT_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#counting-substrings";
+    "https://github.com/google/blockly/wiki/Text#counting-substrings";
 messages["TEXT_COUNT_MESSAGE0"] = "count %1 in %2";
 messages["TEXT_COUNT_TOOLTIP"] =
-  "Count how many times some text occurs within some other text.";
+    "Count how many times some text occurs within some other text.";
 messages["TEXT_CREATE_JOIN_ITEM_TOOLTIP"] = "Add an item to the text.";
 messages["TEXT_CREATE_JOIN_TITLE_JOIN"] = "join";
 messages["TEXT_CREATE_JOIN_TOOLTIP"] =
-  "Add, remove, or reorder sections to reconfigure this text block.";
+    "Add, remove, or reorder sections to reconfigure this text block.";
 messages["TEXT_GET_SUBSTRING_END_FROM_END"] = "to letter # from end";
 messages["TEXT_GET_SUBSTRING_END_FROM_START"] = "to letter #";
 messages["TEXT_GET_SUBSTRING_END_LAST"] = "to last letter";
 messages["TEXT_GET_SUBSTRING_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text";
+    "https://github.com/google/blockly/wiki/Text#extracting-a-region-of-text";
 messages["TEXT_GET_SUBSTRING_INPUT_IN_TEXT"] = "in text";
 messages["TEXT_GET_SUBSTRING_START_FIRST"] = "get substring from first letter";
 messages["TEXT_GET_SUBSTRING_START_FROM_END"] =
-  "get substring from letter # from end";
+    "get substring from letter # from end";
 messages["TEXT_GET_SUBSTRING_START_FROM_START"] = "get substring from letter #";
 messages["TEXT_GET_SUBSTRING_TAIL"] = "";
 messages["TEXT_GET_SUBSTRING_TOOLTIP"] =
-  "Returns a specified portion of the text.";
+    "Returns a specified portion of the text.";
 messages["TEXT_INDEXOF_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#finding-text";
+    "https://github.com/google/blockly/wiki/Text#finding-text";
 messages["TEXT_INDEXOF_OPERATOR_FIRST"] = "find first occurrence of text";
 messages["TEXT_INDEXOF_OPERATOR_LAST"] = "find last occurrence of text";
 messages["TEXT_INDEXOF_TITLE"] = "in text %1 %2 %3";
 messages["TEXT_INDEXOF_TOOLTIP"] =
-  "Returns the index of the first/last occurrence of the first text in the second text. Returns %1 if text is not found.";
+    "Returns the index of the first/last occurrence of the first text in the second text. Returns %1 if text is not found.";
 messages["TEXT_ISEMPTY_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#checking-for-empty-text";
+    "https://github.com/google/blockly/wiki/Text#checking-for-empty-text";
 messages["TEXT_ISEMPTY_TITLE"] = "%1 is empty";
 messages["TEXT_ISEMPTY_TOOLTIP"] =
-  "Returns true if the provided text is empty.";
+    "Returns true if the provided text is empty.";
 messages["TEXT_JOIN_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#text-creation";
+    "https://github.com/google/blockly/wiki/Text#text-creation";
 messages["TEXT_JOIN_TITLE_CREATEWITH"] = "join %1 %2";
 messages["TEXT_JOIN_TOOLTIP"] =
-  "Create a piece of text by joining together any number of items.";
+    "Create a piece of text by joining together any number of items.";
 messages["TEXT_LENGTH_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#text-modification";
+    "https://github.com/google/blockly/wiki/Text#text-modification";
 messages["TEXT_LENGTH_TITLE"] = "length of %1";
 messages["TEXT_LENGTH_TOOLTIP"] =
-  "Returns the number of letters (including spaces) in the provided text.";
+    "Returns the number of letters (including spaces) in the provided text.";
 messages["TEXT_INCLUDES_TITLE"] = "%1 contains %2 ?";
 messages["TEXT_PRINT_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#printing-text";
+    "https://github.com/google/blockly/wiki/Text#printing-text";
 messages["TEXT_PRINT_TITLE"] = "print %1";
 messages["TEXT_PRINT_TOOLTIP"] =
-  "Print the specified text, number or other value.";
+    "Print the specified text, number or other value.";
 messages["TEXT_PROMPT_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#getting-input-from-the-user";
+    "https://github.com/google/blockly/wiki/Text#getting-input-from-the-user";
 messages["TEXT_PROMPT_TOOLTIP_NUMBER"] = "Prompt for user for a number.";
 messages["TEXT_PROMPT_TOOLTIP_TEXT"] = "Prompt for user for some text.";
 messages["TEXT_PROMPT_TYPE_NUMBER"] = "prompt for number with message";
 messages["TEXT_PROMPT_TYPE_TEXT"] = "prompt for text with message";
 messages["TEXT_REPLACE_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#replacing-substrings";
+    "https://github.com/google/blockly/wiki/Text#replacing-substrings";
 messages["TEXT_REPLACE_MESSAGE0"] = "replace %1 with %2 in %3";
 messages["TEXT_REPLACE_TOOLTIP"] =
-  "Replace all occurances of some text within some other text.";
+    "Replace all occurances of some text within some other text.";
 messages["TEXT_REVERSE_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#reversing-text";
+    "https://github.com/google/blockly/wiki/Text#reversing-text";
 messages["TEXT_REVERSE_MESSAGE0"] = "reverse %1";
 messages["TEXT_REVERSE_TOOLTIP"] =
-  "Reverses the order of the characters in the text.";
+    "Reverses the order of the characters in the text.";
 messages["TEXT_TEXT_HELPURL"] =
-  "https://en.wikipedia.org/wiki/String_(computer_science)";
+    "https://en.wikipedia.org/wiki/String_(computer_science)";
 messages["TEXT_TEXT_TOOLTIP"] = "A letter, word, or line of text.";
 messages["TEXT_TRIM_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Text#trimming-removing-spaces";
+    "https://github.com/google/blockly/wiki/Text#trimming-removing-spaces";
 messages["TEXT_TRIM_OPERATOR_BOTH"] = "trim spaces from both sides of";
 messages["TEXT_TRIM_OPERATOR_LEFT"] = "trim spaces from left side of";
 messages["TEXT_TRIM_OPERATOR_RIGHT"] = "trim spaces from right side of";
 messages["TEXT_TRIM_TOOLTIP"] =
-  "Return a copy of the text with spaces removed from one or both ends.";
+    "Return a copy of the text with spaces removed from one or both ends.";
 messages["TODAY"] = "Today";
 messages["UNDO"] = "Undo";
 messages["UNNAMED_KEY"] = "unnamed";
 messages["VARIABLES_DEFAULT_NAME"] = "item";
 messages["VARIABLES_GET_CREATE_SET"] = "Create 'set %1'";
 messages["VARIABLES_GET_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Variables#get";
+    "https://github.com/google/blockly/wiki/Variables#get";
 messages["VARIABLES_GET_TOOLTIP"] = "Returns the value of this variable.";
 messages["VARIABLES_SET"] = "set %1 to %2";
 messages["VARIABLES_SET_CREATE_GET"] = "Create 'get %1'";
 messages["VARIABLES_SET_HELPURL"] =
-  "https://github.com/google/blockly/wiki/Variables#set";
+    "https://github.com/google/blockly/wiki/Variables#set";
 messages["VARIABLES_SET_TOOLTIP"] =
-  "Sets this variable to be equal to the input.";
+    "Sets this variable to be equal to the input.";
 messages["VARIABLE_ALREADY_EXISTS"] = "A variable named '%1' already exists.";
 messages["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] =
-  "A variable named '%1' already exists for another type: '%2'.";
+    "A variable named '%1' already exists for another type: '%2'.";
 messages["WORKSPACE_ARIA_LABEL"] = "Blockly Workspace";
 messages["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Say something...";
 messages["CONTROLS_FOREACH_INPUT_DO"] = messages["CONTROLS_REPEAT_INPUT_DO"];
 messages["CONTROLS_FOR_INPUT_DO"] = messages["CONTROLS_REPEAT_INPUT_DO"];
 messages["CONTROLS_IF_ELSEIF_TITLE_ELSEIF"] =
-  messages["CONTROLS_IF_MSG_ELSEIF"];
+    messages["CONTROLS_IF_MSG_ELSEIF"];
 messages["CONTROLS_IF_ELSE_TITLE_ELSE"] = messages["CONTROLS_IF_MSG_ELSE"];
 messages["CONTROLS_IF_IF_TITLE_IF"] = messages["CONTROLS_IF_MSG_IF"];
 messages["CONTROLS_WHILEUNTIL_INPUT_DO"] = messages["CONTROLS_REPEAT_INPUT_DO"];
@@ -537,15 +537,15 @@ messages["LISTS_INDEX_OF_INPUT_IN_LIST"] = messages["LISTS_INLIST"];
 messages["LISTS_SET_INDEX_INPUT_IN_LIST"] = messages["LISTS_INLIST"];
 messages["MATH_CHANGE_TITLE_ITEM"] = messages["VARIABLES_DEFAULT_NAME"];
 messages["PROCEDURES_DEFRETURN_COMMENT"] =
-  messages["PROCEDURES_DEFNORETURN_COMMENT"];
+    messages["PROCEDURES_DEFNORETURN_COMMENT"];
 messages["PROCEDURES_DEFRETURN_DO"] = messages["PROCEDURES_DEFNORETURN_DO"];
 messages["PROCEDURES_DEFRETURN_PROCEDURE"] =
-  messages["PROCEDURES_DEFNORETURN_PROCEDURE"];
+    messages["PROCEDURES_DEFNORETURN_PROCEDURE"];
 messages["PROCEDURES_DEFRETURN_TITLE"] =
-  messages["PROCEDURES_DEFNORETURN_TITLE"];
+    messages["PROCEDURES_DEFNORETURN_TITLE"];
 messages["TEXT_APPEND_VARIABLE"] = messages["VARIABLES_DEFAULT_NAME"];
 messages["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] =
-  messages["VARIABLES_DEFAULT_NAME"];
+    messages["VARIABLES_DEFAULT_NAME"];
 
 messages["LEAPHY_HUE"] = "188";
 messages["LOGIC_HUE"] = "210";
@@ -565,17 +565,17 @@ messages["COPY_ALL_TO_BACKPACK"] = "Copy all blocks to backpack";
 messages["PASTE_ALL_FROM_BACKPACK"] = "Paste all blocks from backpack";
 messages["USE_I2C_CHANNEL"] = "Use I2C channel";
 messages["USE_I2C_CHANNEL_TOOLTIP"] =
-  "Use the selected I2C channel for sensors in this block";
+    "Use the selected I2C channel for sensors in this block";
 messages["I2C_LIST_DEVICES"] = "List connected I2C devices";
 messages["LEAPHY_SEGMENT_INIT"] = "Init segment display CLK %1 DIO %2";
 messages["LEAPHY_SEGMENT_SET"] = "Set segment display to %1";
 messages["LEAPHY_SEGMENT_CLEAR"] = "Clear segment display";
 messages["LEAPHY_SEGMENT_SET_BRIGHTNESS"] =
-  "Set segment display brightness to %1";
+    "Set segment display brightness to %1";
 messages["LEAPHY_MATRIX_INIT"] = "Init matrix display DIN %1 CLK %2 CS %3";
 messages["LEAPHY_MATRIX_SET"] = "Set matrix display led on x %1 y %2 to %3";
 messages["LEAPHY_MATRIX_SET_BRIGHTNESS"] =
-  "Set matrix display brightness to %1";
+    "Set matrix display brightness to %1";
 messages["LEAPHY_MATRIX_CLEAR"] = "Clear matrix display";
 messages["LEAPHY_MATRIX_FILL"] = "Set matrix display %1 %2";
 messages["LEAPHY_SOUND_INIT"] = "Init speaker RX %1 TX %2";
