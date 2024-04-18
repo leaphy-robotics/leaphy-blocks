@@ -299,7 +299,7 @@ export class Arduino extends Blockly.Generator {
 
         this.addDeclaration(
             `setup_${sensorName}`,
-            `bool ${sensorName}Setup[8]\n` +
+            `bool ${sensorName}Setup[8];\n` +
                 `uint8_t setup${sensorName}() {\n` +
                 "    uint8_t channel = i2cGetChannel();\n" +
                 `    if (!${sensorName}Setup[channel]) {\n` +
