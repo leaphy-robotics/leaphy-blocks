@@ -90,7 +90,6 @@ function getBlocks(board: Board): BlockDefinition {
             tooltip: "",
             helpUrl: "",
         },
-
         {
             type: "leaphy_serial_print_without_line",
             message0: "%%{BKY_LEAPHY_SERIAL_PRINT_WITHOUT_LINE} %1 %2",
@@ -105,7 +104,6 @@ function getBlocks(board: Board): BlockDefinition {
             tooltip: "",
             helpUrl: "",
         },
-
         {
             type: "leaphy_serial_print_value",
             message0: "%%{BKY_LEAPHY_SERIAL_PRINT} %1 %2 = %3 %4",

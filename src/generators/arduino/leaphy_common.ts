@@ -53,7 +53,7 @@ function getCodeGenerators(arduino: Arduino) {
         arduino.addSetup("serial", "Serial.begin(115200);", false);
         const value =
             arduino.valueToCode(block, "VALUE", arduino.ORDER_ATOMIC) || "0";
-        return "Serial.print(" + value + ");\n";
+        return "Serial.println(" + value + ");\n";
     };
 
     arduino.forBlock["leaphy_serial_print_value"] = function (block) {
