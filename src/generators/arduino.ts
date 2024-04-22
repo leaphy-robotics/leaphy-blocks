@@ -396,7 +396,7 @@ const generator = new Arduino();
 
 import * as arduino from "./arduino/arduino";
 import * as leaphy_click from "./arduino/leaphy_click";
-import * as leaphy_common from "./arduino/leaphy_common";
+import * as leaphy_common from "./arduino/variable_blocks";
 import * as leaphy_extra from "./arduino/leaphy_extra";
 import * as leaphy_flitz from "./arduino/leaphy_flitz";
 import * as leaphy_original from "./arduino/leaphy_original";

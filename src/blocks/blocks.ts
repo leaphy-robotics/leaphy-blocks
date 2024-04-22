@@ -1,6 +1,6 @@
 import * as lists from "./lists";
 import * as texts from "./text";
-import * as leaphyCommon from "./leaphy_common";
+import * as leaphyCommon from "./variable_blocks";
 import * as leaphyOriginal from "./leaphy_original";
 import * as leaphyFlitz from "./leaphy_flitz";
 import * as leaphyClick from "./leaphy_click";
@@ -149,18 +149,18 @@ function getBlocks(boardType = "l_uno") {
     );
 
     // Add all blocks from each independent module in one list
-    const block = [
-        ...lists.blocks,
-        ...texts.blocks,
-        ...leaphyCommon.default(board),
-        ...leaphyOriginal.blocks,
-        ...leaphyFlitz.blocks,
-        ...leaphyClick.blocks,
-        ...arduino.blocks,
-        ...loops.blocks,
-    ];
-
+    const block = leaphyCommon.default(board);
     return { block };
 }
 
-export default getBlocks;
+const constantBlocks = [
+    ...lists.blocks,
+    ...texts.blocks,
+    ...leaphyOriginal.blocks,
+    ...leaphyFlitz.blocks,
+    ...leaphyClick.blocks,
+    ...arduino.blocks,
+    ...loops.blocks,
+];
+
+export { getBlocks, constantBlocks };
