@@ -1,8 +1,6 @@
 import { Arduino } from "../arduino";
 
 function getCodeGenerators(arduino: Arduino) {
-
-    
     arduino.forBlock["leaphy_segment_init"] = function (block) {
         const clk = block.getFieldValue("CLK");
         const dio = block.getFieldValue("DIO");

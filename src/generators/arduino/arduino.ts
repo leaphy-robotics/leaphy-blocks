@@ -389,6 +389,5 @@ function getCodeGenerators(arduino: Arduino) {
 
         return `mp3.setVolume(${volume}/100.0*30.0);\n`;
     };
-
 }
 export default getCodeGenerators;
