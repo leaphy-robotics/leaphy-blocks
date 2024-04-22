@@ -187,6 +187,7 @@ messages["LEAPHY_RGB_RAW_COLOR_GREEN"] = "G-bron";
 messages["LEAPHY_RGB_RAW_COLOR_RED"] = "R-bron";
 messages["LEAPHY_RGB_READ_SENSOR"] = "Lees RGB Sensor";
 messages["LEAPHY_SERIAL_PRINT"] = "Toon op scherm";
+messages["LEAPHY_SERIAL_PRINT_WITHOUT_LINE"] = "Toon op scherm zonder nieuwe regel";
 messages["LEAPHY_SERIAL_AVAILABLE"] = "Beschikbaar op scherm";
 messages["LEAPHY_SERIAL_READ_LINE"] = "Lees van scherm";
 messages["LEAPHY_SITUATION_CATEGORY"] = "Denk stappen";
