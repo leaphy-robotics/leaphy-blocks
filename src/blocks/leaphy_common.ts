@@ -167,7 +167,7 @@ function getBlocks(board: Board): BlockDefinition {
             tooltip: "%{BKY_LEAPHY_SONAR_READ_TIP}",
             helpUrl: "",
         },
- 
+
         {
             type: "leaphy_segment_init",
             message0: "%{BKY_LEAPHY_SEGMENT_INIT}",
@@ -231,7 +231,6 @@ function getBlocks(board: Board): BlockDefinition {
             nextStatement: null,
             style: "leaphy_blocks",
         },
-       
     ];
 }
 

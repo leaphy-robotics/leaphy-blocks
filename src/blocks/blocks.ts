@@ -149,7 +149,7 @@ function getBlocks(boardType = "l_uno") {
     );
 
     // Add all blocks from each independent module in one list
-    const block = leaphyCommon.default(board)
+    const block = leaphyCommon.default(board);
     return { block };
 }
 
@@ -160,8 +160,7 @@ const constantBlocks = [
     ...leaphyFlitz.blocks,
     ...leaphyClick.blocks,
     ...arduino.blocks,
-    ...loops.blocks
-]
-
+    ...loops.blocks,
+];
 
 export { getBlocks, constantBlocks };
