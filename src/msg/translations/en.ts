@@ -183,6 +183,7 @@ messages["LEAPHY_RGB_RAW_COLOR_GREEN"] = "RawColor Green";
 messages["LEAPHY_RGB_RAW_COLOR_RED"] = "RawColor Red";
 messages["LEAPHY_RGB_READ_SENSOR"] = "Read RGB sensor";
 messages["LEAPHY_SERIAL_PRINT"] = "Show on screen";
+messages["LEAPHY_SERIAL_PRINT_WITHOUT_LINE"] = "Show on screen same line";
 messages["LEAPHY_SERIAL_AVAILABLE"] = "Available on screen";
 messages["LEAPHY_SERIAL_READ_LINE"] = "Read from screen";
 messages["LEAPHY_SITUATION_CATEGORY"] = "Thinkflow";

@@ -48,6 +48,12 @@ function getCodeGenerators(arduino: Arduino) {
             arduino.valueToCode(block, "VALUE", arduino.ORDER_ATOMIC) || "0";
         return "Serial.println(" + value + ");\n";
     };
+    arduino.forBlock["leaphy_serial_print_without_line"] = function (block) {
+        arduino.addSetup("serial", "Serial.begin(115200);", false);
+        const value =
+            arduino.valueToCode(block, "VALUE", arduino.ORDER_ATOMIC) || "0";
+        return "Serial.print(" + value + ");\n";
+    };
 
     arduino.forBlock["leaphy_serial_print_value"] = function (block) {
         arduino.addSetup("serial", "Serial.begin(115200);", false);
