@@ -25,6 +25,14 @@ const apds9960RgbColor = [
     ["%{BKY_COLOUR_RGB_AMBIENT}", "3"],
 ];
 
+const ledstripDemoOptions = [
+    ["%{BKY_LEAPHY_LED_STRIP_LIGHTBANK}", "0"],
+    ["%{BKY_LEAPHY_LED_STRIP_BREATHE}", "1"],
+    ["%{BKY_LEAPHY_LED_STRIP_GULF}", "3"],
+    ["%{BKY_LEAPHY_LED_STRIP_RAINBOW}", "4"],
+    ["%{BKY_LEAPHY_LED_STRIP_COLORGULF}", "5"],
+];
+
 const blocks: BlockDefinition = [
     {
         type: "time_delay",
@@ -556,6 +564,39 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
+    },
+    {
+        type: "leaphy_led_strip_demo",
+        message0: "%%{BKY_LEAPHY_LED_STRIP_DEMO} %1 %2 %3 %4 %5",
+        args0: [
+            {
+                type: "field_dropdown",
+                name: "DEMO_TYPE",
+                options: ledstripDemoOptions,
+            },
+            { type: "input_dummy" },
+            {
+                type: "input_value",
+                name: "LED_STRIP_DEMO_RED",
+                check: "Number",
+            },
+            {
+                type: "input_value",
+                name: "LED_STRIP_DEMO_GREEN",
+                check: "Number",
+            },
+            {
+                type: "input_value",
+                name: "LED_STRIP_DEMO_BLUE",
+                check: "Number",
+            },
+        ],
+        inputsInline: true,
+        previousStatement: null,
+        nextStatement: null,
+        style: "leaphy_blocks",
+        tooltip: "",
+        helpUrl: "",
     },
 ];
 

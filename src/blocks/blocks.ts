@@ -1,6 +1,6 @@
 import * as lists from "./lists";
 import * as texts from "./text";
-import * as leaphyCommon from "./leaphy_common";
+import * as leaphyCommon from "./variable_blocks";
 import * as leaphyOriginal from "./leaphy_original";
 import * as leaphyFlitz from "./leaphy_flitz";
 import * as leaphyClick from "./leaphy_click";
