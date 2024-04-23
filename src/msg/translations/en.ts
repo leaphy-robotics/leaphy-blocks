@@ -8,8 +8,9 @@ messages["ARD_DIGITALWRITE"] = "Set digital pin";
 messages["ARD_PIN_WARN1"] =
     "Pin %1 is needed for %2 as pin %3. Already in use as %4.";
 messages["ARD_SERVO_READ"] = "Read servo pin";
-messages["ARD_SERVO_WRITE"] = "Set servo pin";
+messages["ARD_SERVO_REGULAR_WRITE"] = "Set servo pin";
 messages["ARD_SERVO_ARM_WRITE"] = "Set Arm servo pin";
+messages["ARD_SERVO_WRITE"] = "Set Servo Pin";
 messages["ARD_SERVO_WRITE_DEG_180"] = "degrees";
 messages["ARD_SERVO_WRITE_TO"] = "angle to";
 messages["ARD_TIME_DELAY"] = "during";

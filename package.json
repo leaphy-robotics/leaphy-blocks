@@ -4,7 +4,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "watch": "tsup --watch"
+    "watch": "tsup --watch --ignore-watch tmp"
   },
   "dependencies": {
     "blockly": "^10.4.3"
@@ -31,7 +31,7 @@
     "dist",
     "media"
   ],
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Leaphy custom Blockly blocks and arduino code generator",
   "name": "@leaphy-robotics/leaphy-blocks"
 }

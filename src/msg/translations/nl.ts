@@ -8,8 +8,9 @@ messages["ARD_DIGITALWRITE"] = "Zet Digipin";
 messages["ARD_PIN_WARN1"] =
     "Pin %1 is nodig voor %2 als pin %3. Al gebruikt als %4.";
 messages["ARD_SERVO_READ"] = "Lees servo pin";
-messages["ARD_SERVO_WRITE"] = "Servo";
+messages["ARD_SERVO_REGULAR_WRITE"] = "Servo";
 messages["ARD_SERVO_ARM_WRITE"] = "Servo Arm";
+messages["ARD_SERVO_WRITE"] = "Servo";
 messages["ARD_SERVO_WRITE_DEG_180"] = "°";
 messages["ARD_SERVO_WRITE_TO"] = "op";
 messages["ARD_TIME_DELAY"] = "duurt";
