@@ -306,10 +306,9 @@ export class Arduino extends Blockly.Generator {
                 `      ${setupCode}` +
                 `      ${sensorName}Setup[channel] = true;\n` +
                 "    }\n" +
-                "    return channel;\n" +
                 "}\n",
         );
-        return "uint8_t channel = setup" + sensorName + "();\n";
+        return "setup" + sensorName + "();\n";
     }
 
     public reservePin(
