@@ -4,7 +4,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "watch": "tsup --watch"
+    "watch": "tsup --watch --ignore-watch tmp"
   },
   "dependencies": {
     "blockly": "^10.4.3"
