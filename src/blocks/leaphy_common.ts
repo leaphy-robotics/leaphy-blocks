@@ -51,6 +51,7 @@ function getBlocks(board: Board): BlockDefinition {
             tooltip: "",
             helpUrl: "",
         },
+  
         {
             type: "analog_read",
             message0: "%%{BKY_LEAPHY_ANALOG_READ} %1",
@@ -73,6 +74,20 @@ function getBlocks(board: Board): BlockDefinition {
             style: "leaphy_blocks",
             extensions: ["appendStatementInputStack"],
             isDeletable: false,
+            tooltip: "",
+            helpUrl: "",
+        },
+        {
+            type: "leaphy_digital_twin_test",
+            message0: "%%{BKY_LEAPHY_DIGITAL_TWIN_TEST} %1 %2",
+            args0: [
+                { type: "input_dummy" },
+                { type: "input_value", name: "VALUE" },
+            ],
+            inputsInline: true,
+            previousStatement: null,
+            nextStatement: null,
+            style: "leaphy_blocks",
             tooltip: "",
             helpUrl: "",
         },
@@ -515,6 +530,15 @@ function getBlocks(board: Board): BlockDefinition {
             tooltip: "",
             helpUrl: "",
         },
+        {
+            type: "bleutooth_setup",
+            message0: "%%{BKY_BLEUTOOTH_SETUP}",
+            style: "leaphy_blocks",
+            output: "Number",
+            previousStatement: null,
+            nextStatement: null,
+        },
+        
         {
             type: "leaphy_gas_sensor",
             message0: "%%{BKY_LEAPHY_CHOOSE_GAS} %1",

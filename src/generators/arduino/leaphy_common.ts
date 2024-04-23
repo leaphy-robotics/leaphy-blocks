@@ -36,6 +36,11 @@ function getCodeGenerators(arduino: Arduino) {
         return [code, arduino.ORDER_ATOMIC];
     };
 
+    arduino.forBlock["leaphy_digital_twin_test"] = function () {
+       
+        return [code, arduino.ORDER_ATOMIC];
+    };
+
     arduino.forBlock["leaphy_serial_read_line"] = function () {
         arduino.addSetup("serial", "Serial.begin(115200);", false);
         const code = "Serial.readStringUntil('\\n')";
@@ -66,6 +71,67 @@ function getCodeGenerators(arduino: Arduino) {
             `Serial.print(" = ");\n` +
             `Serial.println(${value});\n`
         );
+    };
+
+    arduino.forBlock["bleutooth_setup"] = function () {
+        // Include BLE library
+        arduino.addInclude("BLE", "#include <ArduinoBLE.h>");
+
+        // Declare variables and BLE service/characteristics
+        arduino.addDeclaration("mbuttonPin", "\nint buttonPin = 2;");
+        arduino.addDeclaration("ledSwitch", "boolean ledSwitch;\n");
+        arduino.addDeclaration("LEDService", 'BLEService LEDService("19B10000-E8F2-537E-4F6C-D104768A1214");');
+        arduino.addDeclaration("LEDCharacteristic", 'BLEByteCharacteristic LEDCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLENotify | BLEWrite);\n');
+        
+        arduino.addSetup("bleutoothsetup", "bleutoothsetup();\n");
+
+        arduino.addDeclaration("bleutoothsetup",
+            "void bleutoothsetup() {\n" +
+            "  Serial.begin(9600);\n" +
+            "  pinMode(buttonPin, INPUT_PULLUP);\n" +
+            "  // begin initialization\n" +
+            "  if (!BLE.begin()) {\n" +
+            '    Serial.println("Starting Bluetooth® Low Energy failed!");\n' +
+            "  }\n" +
+            "  // set advertised local name and service UUID:\n" +
+            '  BLE.setLocalName("Button Device");\n' +
+            '  BLE.setAdvertisedService(LEDService);\n' +
+            "  // add the characteristic to the service\n" +
+            "  LEDService.addCharacteristic(LEDCharacteristic);\n" +
+            "  // add service\n" +
+            "  BLE.addService(LEDService);\n" +
+            "  // start advertising\n" +
+            "  BLE.advertise();\n" +
+            '  Serial.println("BLE LED Peripheral, waiting for connections....");\n' +
+            "}"
+        );
+
+        arduino.addDeclaration("bluetoothloop",
+            "void bluetoothloop() {\n" +
+            "  BLEDevice central = BLE.central();\n" +
+            "  if (central) {\n" +
+            '    Serial.print("Connected to central: ");\n' +
+            '    Serial.println(central.address());\n' +
+            '    while (central.connected()) {\n' +
+            "      int buttonState = digitalRead(buttonPin);\n" +
+            "      if (buttonState == LOW) {\n" +
+            "        ledSwitch = !ledSwitch;\n" +
+            "        delay(100);\n" +
+            "      }\n" +
+            "      if (buttonState == HIGH) {\n" +
+            '        Serial.println("ON");\n' +
+            "      }\n" +
+            "      else {\n" +
+            '        Serial.println("OFF");\n' +
+            "        LEDCHARACTERISTIC.writeValue((byte)0x01);\n" +
+            "      }\n" +
+            "    }\n" +
+            '    Serial.print("Disconnected from central: ");\n' +
+            '    Serial.println(central.address());\n' +
+            "  }\n" +
+            "}"
+        );
+        return ["bluetoothloop()", arduino.ORDER_ATOMIC];
     };
 
     arduino.forBlock["leaphy_compass_degrees"] = function () {

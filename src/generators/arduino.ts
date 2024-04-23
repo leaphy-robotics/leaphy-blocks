@@ -217,7 +217,6 @@ export class Arduino extends Blockly.Generator {
                 block.setWarningText("List has conflicting types");
             }
         });
-
         const getters = workspace.getBlocksByType("lists_get");
         getters.forEach((block) => {
             const list = block.getFieldValue("LIST");
