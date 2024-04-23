@@ -39,7 +39,7 @@ const blocks: BlockDefinition = [
             {
                 type: "field_pin_selector",
                 name: "SERVO_PIN",
-                mode: "pwm",
+                mode: "digital",
             },
             { type: "input_dummy" },
             { type: "input_value", name: "SERVO_ANGLE", check: "Number" },
