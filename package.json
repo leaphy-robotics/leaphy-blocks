@@ -31,7 +31,7 @@
     "dist",
     "media"
   ],
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Leaphy custom Blockly blocks and arduino code generator",
   "name": "@leaphy-robotics/leaphy-blocks"
 }
