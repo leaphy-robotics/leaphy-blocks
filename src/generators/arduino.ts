@@ -249,16 +249,15 @@ export class Arduino extends Blockly.Generator {
         if (includes.length) includes.push("\n");
         if (definitions.length) definitions.push("\n");
 
-        // userSetupCode added at the end of the setup function without leading spaces
-        if (this.setups_["userSetupCode"])
-            this.setups_["userSetupCode"] =
-                `\n  ${this.setups_["userSetupCode"]}`;
+        // userSetupCode is always added at the very end of the setup function
+        const userSetup = this.setups_["userSetupCode"] || "";
+        delete this.setups_["userSetupCode"];
         const setups = Object.values(this.setups_);
 
         this.nameDB_?.reset();
 
         const allDefs = includes.join("\n") + definitions.join("\n");
-        const setup = "void setup() {\n\t" + setups.join("\n  ") + "\n}\n\n";
+        const setup = "void setup() {\n\t" + setups.join("\n  ") + `\n  ${userSetup}\n}\n\n`;
         const loop = "void loop() {\n  " + code.replace(/\n/g, "\n  ") + "\n}";
 
         return allDefs + setup + loop;
