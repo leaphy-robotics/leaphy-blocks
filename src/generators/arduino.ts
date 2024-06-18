@@ -52,6 +52,7 @@ export class Arduino extends Blockly.Generator {
   public pins_: Record<string, string> = {};
   public includes_: Record<string, string> = {};
   public setups_: Record<string, string> = {};
+  public declarations_: Record<string, { priority: number, code: string }> = {};
 
   public robotType: string = "l_uno";
 
@@ -272,7 +273,8 @@ export class Arduino extends Blockly.Generator {
   public finish(code: string) {
     // Convert the includes, definitions, and functions dictionaries into lists
     const includes = Object.values(this.includes_),
-      definitions: string[] = Object.values(this.definitions_);
+      definitions: string[] = Object.values(this.definitions_),
+      declarations = Object.values(this.declarations_).sort((a, b) => a.priority - b.priority).map(({ code }) => code)
 
     if (includes.length) includes.push("\n");
     if (definitions.length) definitions.push("\n");
@@ -282,7 +284,7 @@ export class Arduino extends Blockly.Generator {
 
     this.nameDB_?.reset();
 
-    const allDefs = includes.join("\n") + definitions.join("\n");
+    const allDefs = includes.join("\n") + definitions.join("\n") + declarations.join("\n");
     const setup = "void setup() {\n  " + [...setups, "leaphyProgram();"].join("\n  ") + "\n}\n\n";
     const loop = "void loop() {\n  " + code.replace(/\n/g, "\n  ") + "\n}";
 
@@ -299,9 +301,12 @@ export class Arduino extends Blockly.Generator {
     declarationTag: string,
     code: string,
     overwrite = false,
+    priority = 0,
   ) {
-    if (this.definitions_[declarationTag] === undefined || overwrite) {
-      this.definitions_[declarationTag] = code;
+    if (this.declarations_[declarationTag] === undefined || overwrite) {
+      this.declarations_[declarationTag] = {
+          priority, code
+      };
     }
   }
 
