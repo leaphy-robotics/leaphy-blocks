@@ -6,7 +6,7 @@ import * as leaphyFlitz from "./leaphy_flitz";
 import * as leaphyClick from "./leaphy_click";
 import * as arduino from "./arduino";
 import * as loops from "./alternatives";
-import * as mesh from "./mesh"
+import * as mesh from "./mesh";
 
 const blocks = [
     ...lists.blocks,
