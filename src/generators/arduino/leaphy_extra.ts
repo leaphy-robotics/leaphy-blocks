@@ -179,14 +179,9 @@ function getCodeGenerators(arduino: Arduino) {
 
     arduino.forBlock["leaphy_io_digitalwrite"] = function (block) {
         const pin = block.getFieldValue("PIN");
-        let stateOutput =
+        const stateOutput =
             arduino.valueToCode(block, "STATE", arduino.ORDER_ATOMIC) ||
             "false";
-        if (stateOutput == "true") {
-            stateOutput = "HIGH";
-        } else {
-            stateOutput = "LOW";
-        }
 
         arduino.reservePin(
             block,
