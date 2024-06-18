@@ -90,6 +90,7 @@ function getCodeGenerators(arduino: Arduino) {
 
         code = arduino.scrub_(block, code);
         arduino.addDeclaration(funcName, code, true);
+        arduino.addSetup("userSetupCode", funcName + "();", false);
         return null;
     };
 
