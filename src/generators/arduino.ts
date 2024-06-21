@@ -279,7 +279,7 @@ export class Arduino extends Blockly.Generator {
         const includes = Object.values(this.includes_),
             definitions: string[] = Object.values(this.definitions_),
             declarations = Object.values(this.declarations_)
-                .sort((a, b) => a.priority - b.priority)
+                .sort((a, b) => b.priority - a.priority)
                 .map(({ code }) => code);
 
         if (includes.length) includes.push("\n");
