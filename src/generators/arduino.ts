@@ -76,6 +76,7 @@ export class Arduino extends Blockly.Generator {
     public init(workspace: WorkspaceSvg) {
         this.pins_ = Object.create(null);
         this.functionNames_ = Object.create(null);
+        this.declarations_ = Object.create(null);
 
         super.init(workspace);
 
