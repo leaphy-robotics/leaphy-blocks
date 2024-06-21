@@ -5,8 +5,8 @@ import { procedureManager } from "./procedures";
 function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["mesh_setup"] = function (block: Block) {
         arduino.addInclude("mesh", "#include <painlessMesh.h>");
-        arduino.addDeclaration("mesh", "painlessMesh mesh;");
-        arduino.addDeclaration("node_sender", "uint32_t node_sender;");
+        arduino.addDeclaration("mesh", "painlessMesh mesh;", true, 3);
+        arduino.addDeclaration("node_sender", "uint32_t node_sender;", true, 3);
         arduino.addDeclaration(
             "mesh_consume",
             "String parseArg(String &msg) {\n" +
@@ -15,7 +15,7 @@ function getCodeGenerators(arduino: Arduino) {
                 "   msg = msg.substring(index + 1);\n\n" +
                 "   return result;\n" +
                 "}",
-        );
+            true, 2);
 
         let receive_callback =
             "void receivedCallback(uint32_t from, String &msg) {\n" +
@@ -42,7 +42,7 @@ function getCodeGenerators(arduino: Arduino) {
             });
         receive_callback += "}\n";
 
-        arduino.addDeclaration("mesh_receiver", receive_callback, true);
+        arduino.addDeclaration("mesh_receiver", receive_callback, true, 1);
 
         const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
 
@@ -103,7 +103,7 @@ function getCodeGenerators(arduino: Arduino) {
 
         const code =
             `void onConnection(uint32_t node_sender) {\n` + `${branch}` + "}\n";
-        arduino.addDeclaration("mesh_connect", code, true);
+        arduino.addDeclaration("mesh_connect", code, true, 1);
 
         return null;
     };
