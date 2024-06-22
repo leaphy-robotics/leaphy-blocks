@@ -1,5 +1,47 @@
 import * as Blockly from "blockly/core";
 import { Arduino } from "../arduino";
+import { ISerializer } from "blockly/core/serialization";
+
+interface Procedure {
+    name: string;
+    funcName: string;
+    remote: boolean;
+    arguments: { id: string; name: string }[];
+}
+
+class ProcedureManager {
+    public procedures: Procedure[] = [];
+
+    setProcedures(procedures: Procedure[]) {
+        this.procedures = procedures;
+    }
+
+    hasArgument(procedure: Procedure, arg: string) {
+        return !!procedure.arguments.find(({ id }) => id === arg);
+    }
+
+    getProcedure(funcName: string) {
+        return this.procedures.find((e) => funcName === e.funcName);
+    }
+}
+
+export const procedureManager = new ProcedureManager();
+
+export class ProcedureSerializer implements ISerializer {
+    public priority = 90;
+
+    save() {
+        return procedureManager.procedures;
+    }
+
+    load(state: Procedure[]): void {
+        procedureManager.setProcedures(state);
+    }
+
+    clear(): void {
+        procedureManager.setProcedures([]);
+    }
+}
 
 function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["procedures_defreturn"] = function (block) {

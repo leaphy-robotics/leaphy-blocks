@@ -1,6 +1,7 @@
 import * as Blockly from "blockly/core";
 import { addI2CDeclarations } from "./arduino/i2c";
 import { ConnectionType, Msg, Workspace, WorkspaceSvg } from "blockly/core";
+import { procedureManager } from "./arduino/procedures";
 
 export class Arduino extends Blockly.Generator {
     public ORDER_ATOMIC = 0; // 0 "" ...
@@ -51,6 +52,8 @@ export class Arduino extends Blockly.Generator {
     public pins_: Record<string, string> = {};
     public includes_: Record<string, string> = {};
     public setups_: Record<string, string> = {};
+    public declarations_: Record<string, { priority: number; code: string }> =
+        {};
 
     public robotType: string = "l_uno";
 
@@ -73,6 +76,7 @@ export class Arduino extends Blockly.Generator {
     public init(workspace: WorkspaceSvg) {
         this.pins_ = Object.create(null);
         this.functionNames_ = Object.create(null);
+        this.declarations_ = Object.create(null);
 
         super.init(workspace);
 
@@ -179,6 +183,35 @@ export class Arduino extends Blockly.Generator {
             });
         });
 
+        // Remote procedure manager
+        const procedures = [
+            ...workspace.getBlocksByType("procedures_defreturn"),
+            ...workspace.getBlocksByType("procedures_defnoreturn"),
+        ];
+        const remotes = workspace
+            .getBlocksByType("mesh_add_procedure")
+            .map((block) => block.getFieldValue("METHOD"));
+
+        procedureManager.setProcedures(
+            procedures.map((procedure) => {
+                const name = procedure.getFieldValue("NAME");
+                const funcName = generator.nameDB_?.getName(
+                    name,
+                    Blockly.Names.NameType.PROCEDURE,
+                ) as string;
+
+                return {
+                    name,
+                    funcName,
+                    arguments: procedure.getVarModels().map((e) => ({
+                        id: e.getId(),
+                        name: e.name,
+                    })),
+                    remote: remotes.includes(funcName),
+                };
+            }),
+        );
+
         // Create a dictionary of definitions to be printed at the top of the sketch
         this.includes_ = Object.create(null);
         // Create a dictionary of setups to be printed in the setup() function
@@ -244,7 +277,10 @@ export class Arduino extends Blockly.Generator {
     public finish(code: string) {
         // Convert the includes, definitions, and functions dictionaries into lists
         const includes = Object.values(this.includes_),
-            definitions: string[] = Object.values(this.definitions_);
+            definitions: string[] = Object.values(this.definitions_),
+            declarations = Object.values(this.declarations_)
+                .sort((a, b) => b.priority - a.priority)
+                .map(({ code }) => code);
 
         if (includes.length) includes.push("\n");
         if (definitions.length) definitions.push("\n");
@@ -256,7 +292,10 @@ export class Arduino extends Blockly.Generator {
 
         this.nameDB_?.reset();
 
-        const allDefs = includes.join("\n") + definitions.join("\n");
+        const allDefs =
+            includes.join("\n") +
+            definitions.join("\n") +
+            declarations.join("\n");
         const setup =
             "void setup() {\n\t" +
             setups.join("\n  ") +
@@ -276,9 +315,13 @@ export class Arduino extends Blockly.Generator {
         declarationTag: string,
         code: string,
         overwrite = false,
+        priority = 0,
     ) {
-        if (this.definitions_[declarationTag] === undefined || overwrite) {
-            this.definitions_[declarationTag] = code;
+        if (this.declarations_[declarationTag] === undefined || overwrite) {
+            this.declarations_[declarationTag] = {
+                priority,
+                code,
+            };
         }
     }
 
@@ -408,6 +451,7 @@ import * as procedures from "./arduino/procedures";
 import * as text from "./arduino/text";
 import * as variables from "./arduino/variables";
 import * as lists from "./arduino/lists";
+import * as mesh from "./arduino/mesh";
 import { listManager } from "../categories/lists";
 
 arduino.default(generator);
@@ -423,5 +467,6 @@ procedures.default(generator);
 text.default(generator);
 variables.default(generator);
 lists.default(generator);
+mesh.default(generator);
 
 export default generator;

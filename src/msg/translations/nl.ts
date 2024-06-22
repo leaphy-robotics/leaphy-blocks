@@ -722,5 +722,12 @@ messages["LEAPHY_SOUND_INIT"] = "Stel speaker in op RX %1 TX %2";
 messages["LEAPHY_SOUND_PLAY"] = "Speel audio %1 af";
 messages["LEAPHY_SOUND_SET_VOLUME"] = "Stel volume in op %1";
 messages["LEAPHY_SOUND_STOP"] = "Stop audio";
+messages["LEAPHY_MESH_SETUP"] = "Stel mesh network in met naam %1";
+messages["LEAPHY_MESH_UPDATE"] = "Update mesh";
+messages["LEAPHY_MESH_ADD_PROCEDURE"] = "Voeg blok %1 toe aan mesh";
+messages["LEAPHY_MESH_CALL_PROCEDURE"] = "Roep mesh blok %1 aan op %2";
+messages["LEAPHY_MESH_CALL_PROCEDURE_ALL"] = "Roep mesh blok %1 aan op alle %2";
+messages["LEAPHY_MESH_ON_CONNECTION"] = "Wanneer verbinding wordt gemaakt";
+messages["LEAPHY_MESH_CLIENT"] = "Afzender";
 
 export default messages;
