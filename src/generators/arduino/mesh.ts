@@ -15,7 +15,9 @@ function getCodeGenerators(arduino: Arduino) {
                 "   msg = msg.substring(index + 1);\n\n" +
                 "   return result;\n" +
                 "}",
-            true, 2);
+            true,
+            2,
+        );
 
         let receive_callback =
             "void receivedCallback(uint32_t from, String &msg) {\n" +
