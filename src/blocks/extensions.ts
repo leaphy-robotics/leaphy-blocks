@@ -292,7 +292,7 @@ export default function registerExtensions(blockly: typeof Blockly) {
             if (!procedure) return;
 
             if (this.inputs.length === 0 && procedure.arguments.length !== 0) {
-                this.appendDummyInput("WITH").appendField("with: ");
+                this.appendDummyInput("WITH").appendField("%{BKY_PROCEDURES_BEFORE_PARAMS}");
                 this.appendEndRowInput("WITH_BRK");
             }
             if (this.inputs.length !== 0 && procedure.arguments.length === 0) {

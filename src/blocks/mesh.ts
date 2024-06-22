@@ -4,7 +4,7 @@ const blocks: BlockDefinition = [
     {
         type: "mesh_setup",
         style: "mesh_blocks",
-        message0: "setup mesh network with name %1",
+        message0: "%{BKY_LEAPHY_MESH_SETUP}",
         args0: [
             {
                 type: "input_value",
@@ -18,14 +18,14 @@ const blocks: BlockDefinition = [
     {
         type: "mesh_update",
         style: "mesh_blocks",
-        message0: "update mesh procedure calls",
+        message0: "%{BKY_LEAPHY_MESH_UPDATE}",
         previousStatement: null,
         nextStatement: null,
     },
     {
         type: "mesh_add_procedure",
         style: "mesh_blocks",
-        message0: "add mesh procedure %1",
+        message0: "%{BKY_LEAPHY_MESH_ADD_PROCEDURE}",
         args0: [
             {
                 type: "input_dummy",
@@ -40,7 +40,7 @@ const blocks: BlockDefinition = [
     {
         type: "mesh_call_procedure",
         style: "mesh_blocks",
-        message0: "call mesh procedure %1 on %2",
+        message0: "%{BKY_LEAPHY_MESH_CALL_PROCEDURE}",
         args0: [
             {
                 type: "input_dummy",
@@ -61,7 +61,7 @@ const blocks: BlockDefinition = [
     {
         type: "mesh_call_procedure_all",
         style: "mesh_blocks",
-        message0: "call mesh procedure %1 on all %2",
+        message0: "%{BKY_LEAPHY_MESH_CALL_PROCEDURE_ALL}",
         args0: [
             {
                 type: "input_dummy",
@@ -81,13 +81,13 @@ const blocks: BlockDefinition = [
     {
         type: "mesh_on_connection",
         style: "mesh_blocks",
-        message0: "on mesh connection",
+        message0: "%{BKY_LEAPHY_MESH_ON_CONNECTION}",
         extensions: ["appendStatementInputStack"],
     },
     {
         type: "mesh_client",
         style: "mesh_blocks",
-        message0: "get sender",
+        message0: "%{BKY_LEAPHY_MESH_CLIENT}",
         output: "Number",
     },
 ];

@@ -583,5 +583,12 @@ messages["LEAPHY_SOUND_INIT"] = "Init speaker RX %1 TX %2";
 messages["LEAPHY_SOUND_PLAY"] = "Play audio %1";
 messages["LEAPHY_SOUND_SET_VOLUME"] = "Set volume to %1";
 messages["LEAPHY_SOUND_STOP"] = "Stop audio";
+messages["LEAPHY_MESH_SETUP"] = "Setup mesh network with name %1";
+messages["LEAPHY_MESH_UPDATE"] = "Update mesh";
+messages["LEAPHY_MESH_ADD_PROCEDURE"] = "Add mesh block %1";
+messages["LEAPHY_MESH_CALL_PROCEDURE"] = "Call mesh block %1 on %2";
+messages["LEAPHY_MESH_CALL_PROCEDURE_ALL"] = "Call mesh block %1 on all %2";
+messages["LEAPHY_MESH_ON_CONNECTION"] = "On mesh connection";
+messages["LEAPHY_MESH_CLIENT"] = "Sender";
 
 export default messages;
