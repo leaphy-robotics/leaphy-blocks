@@ -403,10 +403,10 @@ export default function registerExtensions(blockly: typeof Blockly) {
         },
         compose(topBlock: BlockSvg) {
             const result: DateItem[] = [];
-            let block = topBlock.getChildren(true)[0];
+            let block: BlockSvg|null = topBlock.getChildren(true)[0];
             if (!block) return this.updateStructure(topBlock, []);
 
-            while (true) {
+            while (block) {
                 if (block.type === "fmt_text")
                     result.push({
                         type: "text",
@@ -419,9 +419,7 @@ export default function registerExtensions(blockly: typeof Blockly) {
                         fmt: block.getFieldValue("FMT"),
                     });
 
-                const newBlock = block.getNextBlock();
-                if (!newBlock) break;
-                block = newBlock;
+                block = block.getNextBlock();
             }
 
             this.updateStructure(topBlock, result);
