@@ -7,6 +7,7 @@ import * as leaphyClick from "./leaphy_click";
 import * as arduino from "./arduino";
 import * as loops from "./alternatives";
 import * as mesh from "./mesh";
+import * as rtc from "./rtc";
 
 const blocks = [
     ...lists.blocks,
@@ -18,6 +19,7 @@ const blocks = [
     ...loops.blocks,
     ...leaphyCommon.blocks,
     ...mesh.blocks,
+    ...rtc.blocks,
 ];
 
 export { blocks };

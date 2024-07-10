@@ -452,6 +452,7 @@ import * as text from "./arduino/text";
 import * as variables from "./arduino/variables";
 import * as lists from "./arduino/lists";
 import * as mesh from "./arduino/mesh";
+import * as rtc from "./arduino/rtc";
 import { listManager } from "../categories/lists";
 
 arduino.default(generator);
@@ -468,5 +469,6 @@ text.default(generator);
 variables.default(generator);
 lists.default(generator);
 mesh.default(generator);
+rtc.default(generator);
 
 export default generator;
