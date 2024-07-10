@@ -642,6 +642,7 @@ messages["TEXT_TRIM_OPERATOR_RIGHT"] =
     "spaties van de rechterkant verwijderen van";
 messages["TEXT_TRIM_TOOLTIP"] =
     "Geeft een kopie van de tekst met verwijderde spaties van één of beide kanten.";
+messages["TEXT_TO_NUMBER"] = "Converteer %1 naar een nummer";
 messages["TODAY"] = "Vandaag";
 messages["UNDO"] = "Ongedaan maken";
 messages["UNNAMED_KEY"] = "zonder naam";
@@ -729,5 +730,27 @@ messages["LEAPHY_MESH_CALL_PROCEDURE"] = "Roep mesh blok %1 aan op %2";
 messages["LEAPHY_MESH_CALL_PROCEDURE_ALL"] = "Roep mesh blok %1 aan op alle %2";
 messages["LEAPHY_MESH_ON_CONNECTION"] = "Wanneer verbinding wordt gemaakt";
 messages["LEAPHY_MESH_CLIENT"] = "Afzender";
+messages["LEAPHY_RTC_GET"] = "Haal %1 op van tijd";
+messages["LEAPHY_RTC_SET"] = "Stel tijd in op %1";
+messages["LEAPHY_RTC_FORMAT"] = "Formatteer tijd";
+messages["LEAPHY_FORMAT"] = "Formaat";
+messages["LEAPHY_SECOND"] = "Seconde";
+messages["LEAPHY_MINUTE"] = "Minuut";
+messages["LEAPHY_HOUR"] = "Uur";
+messages["LEAPHY_WEEKDAY"] = "Weekdag";
+messages["LEAPHY_DAY"] = "Dag van maand";
+messages["LEAPHY_MONTH"] = "Maand";
+messages["LEAPHY_YEAR"] = "Jaar";
+messages["LEAPHY_WITH_FORMAT"] = "in formaat: %1";
+messages["LEAPHY_NUMERIC"] = "Getallen";
+messages["LEAPHY_2_DIGITS"] = "2 Getallen";
+messages["LEAPHY_TEXT"] = "Tekst";
+messages["LEAPHY_FULL"] = "Volledig";
+messages["LEAPHY_TEMPLATE_FULL_NUMERIC"] = "Volledig nummers";
+messages["LEAPHY_TEMPLATE_DATE_NUMERIC"] = "Datum nummers";
+messages["LEAPHY_TEMPLATE_FULL_TEXT"] = "Volledig tekst";
+messages["LEAPHY_TEMPLATE_DATE_TEXT"] = "Datum tekst";
+messages["LEAPHY_TEMPLATE_TIME"] = "Tijd";
+messages["LEAPHY_TEMPLATE_CUSTOM"] = "Aangepast";
 
 export default messages;

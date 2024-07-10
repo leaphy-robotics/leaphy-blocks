@@ -74,6 +74,20 @@ const blocks: BlockDefinition = [
         helpUrl: "%{BKY_TEXT_CHARAT_HELPURL}",
         inputsInline: true,
     },
+    {
+        type: "text_to_double",
+        message0: "%{BKY_TEXT_TO_NUMBER}",
+        args0: [
+            {
+                type: "input_value",
+                name: "VALUE",
+                check: "String",
+            },
+        ],
+        output: "Number",
+        style: "text_blocks",
+        inputsInline: true,
+    },
 ];
 
 export { blocks };
