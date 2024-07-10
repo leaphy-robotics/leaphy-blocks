@@ -403,7 +403,7 @@ export default function registerExtensions(blockly: typeof Blockly) {
         },
         compose(topBlock: BlockSvg) {
             const result: DateItem[] = [];
-            let block: BlockSvg|null = topBlock.getChildren(true)[0];
+            let block: BlockSvg | null = topBlock.getChildren(true)[0];
             if (!block) return this.updateStructure(topBlock, []);
 
             while (block) {
