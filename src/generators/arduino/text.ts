@@ -29,6 +29,12 @@ function getCodeGenerators(arduino: Arduino) {
 
         return [code, arduino.ORDER_ATOMIC];
     };
+
+    arduino.forBlock["text_to_double"] = function (block) {
+        const value = arduino.valueToCode(block, "VALUE", arduino.ORDER_NONE);
+
+        return [`${value}.toDouble()`, arduino.ORDER_ATOMIC];
+    };
 }
 
 export default getCodeGenerators;
