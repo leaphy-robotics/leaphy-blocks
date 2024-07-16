@@ -385,7 +385,7 @@ export class Arduino extends Blockly.Generator {
             .replace(/\\/g, "\\\\")
             .replace(/\n/g, "\\\n")
             .replace(/\$/g, "\\$")
-            .replace(/\"/g, "\\\"")
+            .replace(/"/g, "\\\"")
             .replace(/'/g, "\\'");
         return '"' + string + '"';
     }
