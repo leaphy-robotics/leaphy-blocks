@@ -297,7 +297,7 @@ export class Arduino extends Blockly.Generator {
             definitions.join("\n") +
             declarations.join("\n");
         const setup =
-            "void setup() {\n\t" +
+            "\n\nvoid setup() {\n\t" +
             setups.join("\n  ") +
             `\n  ${userSetup}\n}\n\n`;
         const loop = "void loop() {\n  " + code.replace(/\n/g, "\n  ") + "\n}";

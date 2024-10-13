@@ -107,8 +107,9 @@ function getCodeGenerators(arduino: Arduino) {
         const motor = block.getFieldValue("MOTOR");
         const speed =
             arduino.valueToCode(block, "SPEED", arduino.ORDER_ATOMIC) || "100";
+        const direction = motor == "left" ? 1 : -1;
 
-        return `servo_${motor}.write(90 + 90*${speed}/100);\n`;
+        return `servo_${motor}.write(90 + 90*${speed}/100*${direction});\n`;
     };
 
     arduino.forBlock["leaphy_original_servo_move"] = function (block) {
