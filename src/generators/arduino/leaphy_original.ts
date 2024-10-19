@@ -9,11 +9,29 @@ function getCodeGenerators(arduino: Arduino) {
             "0";
         const blue =
             arduino.valueToCode(block, "LED_BLUE", arduino.ORDER_ATOMIC) || "0";
-        arduino.addInclude(
-            "include_leaphy_original",
-            '#include "Leaphyoriginal1.h"',
-        );
-        return `setLed(${red}, ${green}, ${blue});\n`;
+
+        let pin_red, pin_blue, pin_green;
+        if (arduino.robotType.includes("nano")) {
+            pin_red = 11;
+            pin_green = 10;
+            pin_blue = 9;
+            arduino.addSetup(
+                "setup_nano_rgb",
+                "pinMode(8, OUTPUT);\n  digitalWrite(8, LOW);",
+                false,
+            );
+        } else {
+            pin_red = 3;
+            pin_green = 5;
+            pin_blue = 6;
+        }
+        // Ground is connected to pin 8 on the nano, so it needs to be pulled LOW
+        const code =
+            `analogWrite(${pin_red}, ${red});\n` +
+            `analogWrite(${pin_green}, ${green});\n` +
+            `analogWrite(${pin_blue}, ${blue});\n`;
+
+        return code;
     };
 
     arduino.forBlock["leaphy_original_set_motor"] = function (block) {
