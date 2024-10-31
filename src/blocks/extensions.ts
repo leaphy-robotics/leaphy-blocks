@@ -1,5 +1,5 @@
 import * as Blockly from "blockly/core";
-import { listManager } from "../categories/lists";
+import { List, listManager } from "../categories/lists";
 import {
     Block,
     BlockSvg,
@@ -21,7 +21,7 @@ export default function registerExtensions(blockly: typeof Blockly) {
 
         input.appendField(
             new blockly.FieldDropdown(() => {
-                return listManager.getLists().map((list) => {
+                return listManager.getLists().map((list: List) => {
                     return [list.name, list.id];
                 });
             }) as Blockly.Field,

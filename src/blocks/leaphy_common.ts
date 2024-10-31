@@ -13,7 +13,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -28,7 +27,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -49,7 +47,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "refreshServoPinFields",
-        tooltip: "%{BKY_ARD_SERVO_WRITE_TIP}",
         helpUrl: "http://arduino.cc/en/Reference/ServoWrite",
     },
     {
@@ -65,7 +62,6 @@ const blocks: BlockDefinition = [
         output: "Number",
         style: "leaphy_blocks",
         // "extensions": "returnAndUpdateServoRead",
-        tooltip: "%{BKY_ARD_SERVO_READ_TIP}",
         helpUrl: "http://arduino.cc/en/Reference/ServoRead",
     },
     {
@@ -83,7 +79,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "%{BKY_ARD_DIGITALWRITE_TIP}",
         helpUrl: "http://arduino.cc/en/Reference/DigitalWrite",
     },
     {
@@ -98,7 +93,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "inputAndUpdateAnalog",
-        tooltip: "%{BKY_ARD_ANALOGWRITE_TIP}",
         helpUrl: "http://arduino.cc/en/Reference/AnalogWrite",
     },
     {
@@ -119,7 +113,6 @@ const blocks: BlockDefinition = [
         ],
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "%{BKY_LEAPHY_SONAR_READ_TIP}",
         helpUrl: "",
     },
 
