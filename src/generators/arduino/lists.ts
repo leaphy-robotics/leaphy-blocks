@@ -7,8 +7,8 @@ function getCodeGenerators(arduino: Arduino) {
         const value =
             arduino.valueToCode(block, "VALUE", arduino.ORDER_ATOMIC) || "0";
 
-        list.name = list.name.replace(" ", "_");
-        return `${list.name}.add(${value});\n`;
+        const name = list.name.replace(" ", "_");
+        return `${name}.add(${value});\n`;
     };
 
     arduino.forBlock["lists_delete"] = function (block) {
@@ -16,15 +16,15 @@ function getCodeGenerators(arduino: Arduino) {
         const index =
             arduino.valueToCode(block, "INDEX", arduino.ORDER_ATOMIC) || "0";
 
-        list.name = list.name.replace(" ", "_");
-        return `${list.name}.remove(${index});\n`;
+        const name = list.name.replace(" ", "_");
+        return `${name}.remove(${index});\n`;
     };
 
     arduino.forBlock["lists_clear"] = function (block) {
         const list = listManager.getList(block.getFieldValue("LIST")) as List;
 
-        list.name = list.name.replace(" ", "_");
-        return `${list.name}.clear();\n`;
+        const name = list.name.replace(" ", "_");
+        return `${name}.clear();\n`;
     };
 
     arduino.forBlock["lists_insert"] = function (block) {
@@ -34,8 +34,8 @@ function getCodeGenerators(arduino: Arduino) {
         const index =
             arduino.valueToCode(block, "INDEX", arduino.ORDER_ATOMIC) || "0";
 
-        list.name = list.name.replace(" ", "_");
-        return `${list.name}.addAtIndex(${index}, ${value});\n`;
+        const name = list.name.replace(" ", "_");
+        return `${name}.addAtIndex(${index}, ${value});\n`;
     };
 
     arduino.forBlock["lists_get"] = function (block) {
@@ -43,8 +43,8 @@ function getCodeGenerators(arduino: Arduino) {
         const index =
             arduino.valueToCode(block, "INDEX", arduino.ORDER_ATOMIC) || "0";
 
-        list.name = list.name.replace(" ", "_");
-        return [`${list.name}.get(${index})`, arduino.ORDER_ATOMIC];
+        const name = list.name.replace(" ", "_");
+        return [`${name}.get(${index})`, arduino.ORDER_ATOMIC];
     };
 
     arduino.forBlock["lists_replace"] = function (block) {
@@ -61,8 +61,8 @@ function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["lists_length"] = function (block) {
         const list = listManager.getList(block.getFieldValue("LIST")) as List;
 
-        list.name = list.name.replace(" ", "_");
-        return [`${list.name}.getSize()`, arduino.ORDER_ATOMIC];
+        const name = list.name.replace(" ", "_");
+        return [`${name}.getSize()`, arduino.ORDER_ATOMIC];
     };
 }
 
