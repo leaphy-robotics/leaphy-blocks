@@ -26,8 +26,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_original_set_motor",
@@ -46,16 +44,12 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_original_get_distance",
         message0: "%%{BKY_LEAPHY_GET_DISTANCE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_original_move_motors",
@@ -73,8 +67,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_original_buzz",
@@ -88,8 +80,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_original_servo_set",

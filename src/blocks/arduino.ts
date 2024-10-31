@@ -54,7 +54,6 @@ const blocks: BlockDefinition = [
         style: "leaphy_blocks",
         extensions: ["appendStatementInputStack"],
         isDeletable: false,
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -68,7 +67,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -84,7 +82,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -92,7 +89,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_SERIAL_AVAILABLE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -100,7 +96,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_SERIAL_READ_LINE}",
         style: "leaphy_blocks",
         output: "String",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -115,7 +110,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -130,7 +124,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -138,7 +131,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_RGB_RAW_COLOR_RED}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -146,7 +138,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_RGB_RAW_COLOR_GREEN}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -154,7 +145,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_RGB_RAW_COLOR_BLUE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -169,7 +159,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -177,7 +166,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_GET_GESTURE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -193,7 +181,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -218,7 +205,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -235,7 +221,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -244,7 +229,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -253,7 +237,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -273,7 +256,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "updateDisplay",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -285,7 +267,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "updateDisplay",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -307,7 +288,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "updateDisplay",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -336,7 +316,6 @@ const blocks: BlockDefinition = [
         inputsInline: true,
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -345,7 +324,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -353,7 +331,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_COMPASS}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -373,7 +350,6 @@ const blocks: BlockDefinition = [
         ],
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -420,7 +396,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_TOF_GET_DISTANCE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -428,7 +403,6 @@ const blocks: BlockDefinition = [
         message0: "%%{BKY_LEAPHY_GET_AIR_PRESSURE}",
         style: "leaphy_blocks",
         output: "Number",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -595,7 +569,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
 ];
