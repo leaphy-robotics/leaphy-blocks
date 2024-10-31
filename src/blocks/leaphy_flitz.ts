@@ -18,32 +18,24 @@ const blocks: BlockDefinition = [
         ],
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_flitz_nano_read_stomach_sensor",
         message0: "%%{BKY_LEAPHY_READ_STOMACH}",
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_flitz_read_hand_sensor",
         message0: "%%{BKY_LEAPHY_READ_HAND}",
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_flitz_nano_read_hand_sensor",
         message0: "%%{BKY_LEAPHY_READ_HAND}",
         output: "Number",
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
     {
         type: "leaphy_flitz_led",
@@ -59,8 +51,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
-        helpUrl: "",
     },
 ];
 
