@@ -1,5 +1,5 @@
 import * as Blockly from "blockly/core";
-import {List, listManager} from "../categories/lists";
+import { List, listManager } from "../categories/lists";
 import {
     Block,
     BlockSvg,
