@@ -43,7 +43,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        tooltip: "",
         helpUrl: "",
     },
     {
@@ -75,7 +74,6 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "refreshPinFields",
-        tooltip: "%{BKY_ARD_DIGITALWRITE_TIP}",
         helpUrl: "",
     },
 ];
