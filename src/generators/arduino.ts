@@ -263,7 +263,8 @@ export class Arduino extends Blockly.Generator {
         lists.forEach((list) => {
             const type = this.TYPES[types[list.id][0] || "Number"];
 
-            defLists.push(`List<${type}> ${list.name}`);
+            const name = list.name.replaceAll(" ", "_");
+            defLists.push(`List<${type}> ${name}`);
         });
 
         if (defLists.length) {
