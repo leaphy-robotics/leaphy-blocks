@@ -55,7 +55,7 @@ function getCodeGenerators(arduino: Arduino) {
             arduino.valueToCode(block, "INDEX", arduino.ORDER_ATOMIC) || "0";
 
         const name = list.name.replaceAll(" ", "_");
-        return `${name}.remove(${index});\n${list.name}.addAtIndex(${index}, ${value});\n`;
+        return `${name}.remove(${index});\n${name}.addAtIndex(${index}, ${value});\n`;
     };
 
     arduino.forBlock["lists_length"] = function (block) {
