@@ -79,7 +79,7 @@ export default function (workspace: WorkspaceSvg) {
     let blockList: FlyoutDefinition = [
         {
             kind: "button",
-            text: "Create List",
+            text: "%{BKY_LISTS_CREATE}",
             callbackkey: "create_list",
         },
     ];
