@@ -8,7 +8,7 @@ function getCodeGenerators(arduino: Arduino) {
         arduino.addDeclaration("bluetooth", "LeaphyBLE LeaphyBLE;\n", true, 3);
 
         const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
-        let code = `LeaphyBLE.initializeBluetooth(${name});\n`
+        let code = `LeaphyBLE.initialize(${name});\n`
 
         if (block.workspace.getBlocksByType("bluetooth_on_connect").length > 0) {
             code += "BLE.setEventHandler(BLEConnected, onBluetoothConnection);\n";
