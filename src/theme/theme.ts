@@ -8,6 +8,7 @@ const defaultBlockStyles = {
     list_blocks: { colourPrimary: "#a500cf" },
     procedure_blocks: { colourPrimary: "#4095CE" },
     mesh_blocks: { colourPrimary: "#56cb9a" },
+    micropython_blocks: { colourPrimary: "#4584b6" }, // Kleine letter 'p'
 };
 
 const categoryStyles = {
@@ -18,6 +19,7 @@ const categoryStyles = {
     lists_category: { colour: "#a500cf" },
     functions_category: { colour: "#4095CE" },
     mesh_category: { colour: "#56cb9a" },
+    micropython_category: { colour: "#4584b6" }, // Kleine letter 'p'
 };
 
 const componentStyles = {
@@ -27,6 +29,11 @@ const componentStyles = {
     flyoutBackgroundColour: "#FFFFFF",
     flyoutForegroundColour: "#ccc",
     flyoutOpacity: 1,
+    
 };
 
 export { defaultBlockStyles, categoryStyles, componentStyles };
+
+export const micropythonCategory = { // Kleine letter 'p'
+    colour: "#4584b6",
+};

@@ -2,8 +2,9 @@ import translations from "./msg/translations";
 import arduino from "./generators/arduino";
 import registerExtensions from "./blocks/extensions";
 import { blocks } from "./blocks/blocks";
+import micropython from "./generators/micropython";
 
 export * as THEME from "./theme/theme";
 export * as CATEGORIES from "./categories/all";
 export { ProcedureSerializer } from "./generators/arduino/procedures";
-export { translations, arduino, blocks, registerExtensions };
+export { translations, arduino, blocks, registerExtensions, micropython }; // Voeg micropython toe aan de exports

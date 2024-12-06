@@ -1,5 +1,5 @@
 import * as lists from "./lists";
-import * as texts from "./text";
+import * as texts from "../text";
 import * as leaphyCommon from "./leaphy_common";
 import * as leaphyOriginal from "./leaphy_original";
 import * as leaphyFlitz from "./leaphy_flitz";

@@ -476,7 +476,7 @@ export default function registerExtensions(blockly: typeof Blockly) {
         undefined,
         ["controls_if_elseif", "controls_if_else"],
     );
-    Blockly.Extensions.registerMutator(
+    blockly.Extensions.registerMutator(
         "l_format_date_mutator",
         DATE_FORMAT_MUTATOR,
         undefined,
