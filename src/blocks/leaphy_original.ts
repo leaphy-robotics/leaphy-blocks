@@ -5,10 +5,10 @@ const motorLeftRightDropdown = [
     ["%{BKY_LEAPHY_MOTOR_RIGHT_DROPDOWN}", "10"],
 ];
 const motorForwardBackwardDropdown = [
-    ["%{BKY_LEAPHY_MOTOR_FORWARD}", "1"],
-    ["%{BKY_LEAPHY_MOTOR_BACKWARD}", "2"],
-    ["%{BKY_LEAPHY_MOTOR_LEFT}", "3"],
-    ["%{BKY_LEAPHY_MOTOR_RIGHT}", "4"],
+    ["%{BKY_LEAPHY_MOTOR_FORWARD}", "2"],
+    ["%{BKY_LEAPHY_MOTOR_BACKWARD}", "1"],
+    ["%{BKY_LEAPHY_MOTOR_LEFT}", "4"],
+    ["%{BKY_LEAPHY_MOTOR_RIGHT}", "3"],
 ];
 
 const blocks: BlockDefinition = [
