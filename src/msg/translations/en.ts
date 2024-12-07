@@ -5,6 +5,7 @@ messages["ACTUATOREN_CATEGORY"] = "Actuators";
 messages["ADD_COMMENT"] = "Add Comment";
 messages["ARD_ANALOGWRITE"] = "Set PWM pin";
 messages["ARD_DIGITALWRITE"] = "Set digital pin";
+messages["ARD_SET_MULTIPLEXER"] = "Set digital multiplexer to pin";
 messages["ARD_PIN_WARN1"] =
     "Pin %1 is needed for %2 as pin %3. Already in use as %4.";
 messages["ARD_SERVO_READ"] = "Read servo pin";
