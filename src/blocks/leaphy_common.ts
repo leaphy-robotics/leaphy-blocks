@@ -97,7 +97,7 @@ const blocks: BlockDefinition = [
                     ["Y5", "5"],
                     ["Y6", "6"],
                     ["Y7", "7"],
-              ],
+                ],
             },
         ],
         inputsInline: true,

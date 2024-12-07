@@ -227,14 +227,17 @@ function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["leaphy_mutliplexer_digitalwrite"] = function (block) {
         const pin = parseInt(block.getFieldValue("PIN"));
 
-        const pinSetupCode = "pinMode(0, OUTPUT);\n" +
+        const pinSetupCode =
+            "pinMode(0, OUTPUT);\n" +
             "  pinMode(16, OUTPUT);\n" +
             "  pinMode(1, OUTPUT);\n";
         arduino.addSetup("dgmulti", pinSetupCode, false);
 
-        return `digitalWrite(0, bitRead(${pin}, 2));\n` +
-        `digitalWrite(16, bitRead(${pin}, 1));\n` +
-        `digitalWrite(1, bitRead(${pin}, 0));\n`;
+        return (
+            `digitalWrite(0, bitRead(${pin}, 2));\n` +
+            `digitalWrite(16, bitRead(${pin}, 1));\n` +
+            `digitalWrite(1, bitRead(${pin}, 0));\n`
+        );
     };
 
     arduino.forBlock["leaphy_sonar_read"] = function (block) {
