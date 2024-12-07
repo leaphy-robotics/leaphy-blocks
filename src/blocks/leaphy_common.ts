@@ -82,6 +82,30 @@ const blocks: BlockDefinition = [
         helpUrl: "http://arduino.cc/en/Reference/DigitalWrite",
     },
     {
+        type: "leaphy_multiplexer_digitalwrite",
+        message0: "%%{BKY_ARD_SET_MULTIPLEXER} %1",
+        args0: [
+            {
+                type: "field_dropdown",
+                name: "PIN",
+                options: [
+                    ["Y0", "0"],
+                    ["Y1", "1"],
+                    ["Y2", "2"],
+                    ["Y3", "3"],
+                    ["Y4", "4"],
+                    ["Y5", "5"],
+                    ["Y6", "6"],
+                    ["Y7", "7"],
+                ],
+            },
+        ],
+        inputsInline: true,
+        previousStatement: null,
+        nextStatement: null,
+        style: "leaphy_blocks",
+    },
+    {
         type: "leaphy_io_analogwrite",
         message0: "%%{BKY_ARD_ANALOGWRITE} %1 %%{BKY_ARD_WRITE_TO} %2",
         args0: [

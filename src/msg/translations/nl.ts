@@ -5,6 +5,7 @@ messages["ACTUATOREN_CATEGORY"] = "Actuatoren";
 messages["ADD_COMMENT"] = "Opmerking toevoegen";
 messages["ARD_ANALOGWRITE"] = "Zet PWM";
 messages["ARD_DIGITALWRITE"] = "Zet Digipin";
+messages["ARD_SET_MULTIPLEXER"] = "Stel digitale multiplexer in op pin";
 messages["ARD_PIN_WARN1"] =
     "Pin %1 is nodig voor %2 als pin %3. Al gebruikt als %4.";
 messages["ARD_SERVO_READ"] = "Lees servo pin";

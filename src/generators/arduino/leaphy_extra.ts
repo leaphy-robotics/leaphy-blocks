@@ -224,6 +224,22 @@ function getCodeGenerators(arduino: Arduino) {
         return `analogWrite(${pin}, ${stateOutput});\n`;
     };
 
+    arduino.forBlock["leaphy_multiplexer_digitalwrite"] = function (block) {
+        const pin = block.getFieldValue("PIN");
+
+        const pinSetupCode =
+            "pinMode(0, OUTPUT);\n" +
+            "  pinMode(16, OUTPUT);\n" +
+            "  pinMode(1, OUTPUT);\n";
+        arduino.addSetup("dgmulti", pinSetupCode, false);
+
+        return (
+            `digitalWrite(0, bitRead(${pin}, 2));\n` +
+            `digitalWrite(16, bitRead(${pin}, 1));\n` +
+            `digitalWrite(1, bitRead(${pin}, 0));\n`
+        );
+    };
+
     arduino.forBlock["leaphy_sonar_read"] = function (block) {
         arduino.addInclude("leaphy_extra", '#include "Leaphy_Extra.h"');
         const trigPin = block.getFieldValue("TRIG_PIN");
