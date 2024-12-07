@@ -82,7 +82,7 @@ const blocks: BlockDefinition = [
         helpUrl: "http://arduino.cc/en/Reference/DigitalWrite",
     },
     {
-        type: "leaphy_mutliplexer_digitalwrite",
+        type: "leaphy_multiplexer_digitalwrite",
         message0: "%%{BKY_ARD_SET_MULTIPLEXER} %1",
         args0: [
             {
