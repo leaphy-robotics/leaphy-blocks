@@ -4,11 +4,19 @@ const motorLeftRightDropdown = [
     ["%{BKY_LEAPHY_MOTOR_LEFT_DROPDOWN}", "9"],
     ["%{BKY_LEAPHY_MOTOR_RIGHT_DROPDOWN}", "10"],
 ];
+
+export enum MotorDirection {
+    FORWARD = "1",
+    BACKWARD = "2",
+    LEFT = "3",
+    RIGHT = "4",
+}
+
 const motorForwardBackwardDropdown = [
-    ["%{BKY_LEAPHY_MOTOR_FORWARD}", "2"],
-    ["%{BKY_LEAPHY_MOTOR_BACKWARD}", "1"],
-    ["%{BKY_LEAPHY_MOTOR_LEFT}", "4"],
-    ["%{BKY_LEAPHY_MOTOR_RIGHT}", "3"],
+    ["%{BKY_LEAPHY_MOTOR_FORWARD}", MotorDirection.FORWARD],
+    ["%{BKY_LEAPHY_MOTOR_BACKWARD}", MotorDirection.BACKWARD],
+    ["%{BKY_LEAPHY_MOTOR_LEFT}", MotorDirection.LEFT],
+    ["%{BKY_LEAPHY_MOTOR_RIGHT}", MotorDirection.RIGHT],
 ];
 
 const blocks: BlockDefinition = [

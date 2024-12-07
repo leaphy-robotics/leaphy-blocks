@@ -1,4 +1,5 @@
 import { Arduino } from "../arduino";
+import { MotorDirection } from "../../blocks/leaphy_original";
 
 function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["leaphy_original_set_led"] = function (block) {
@@ -71,7 +72,9 @@ function getCodeGenerators(arduino: Arduino) {
     };
 
     arduino.forBlock["leaphy_original_move_motors"] = function (block) {
-        const dropdown_Type = block.getFieldValue("MOTOR_DIRECTION");
+        let direction = block.getFieldValue(
+            "MOTOR_DIRECTION",
+        ) as MotorDirection;
         const speed =
             arduino.valueToCode(block, "MOTOR_SPEED", arduino.ORDER_ATOMIC) ||
             "100";
@@ -79,15 +82,24 @@ function getCodeGenerators(arduino: Arduino) {
             "include_leaphy_original",
             '#include "Leaphyoriginal1.h"',
         );
+
         // Set different motor pins for nano robots
-        if (arduino.robotType.includes("nano"))
+        if (arduino.robotType.includes("nano")) {
+            const directionMap: Record<MotorDirection, number> = {
+                [MotorDirection.FORWARD]: 2,
+                [MotorDirection.BACKWARD]: 1,
+                [MotorDirection.LEFT]: 4,
+                [MotorDirection.RIGHT]: 3,
+            };
+            direction = directionMap[direction];
             arduino.addSetup(
                 "set_motor_pins",
                 "setMotorPins(3, 2, 11, 4);",
                 true,
             );
+        }
 
-        return `moveMotors(${dropdown_Type}, ${speed});\n`;
+        return `moveMotors(${direction}, ${speed});\n`;
     };
 
     arduino.forBlock["digital_read"] = function (block) {
