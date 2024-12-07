@@ -225,7 +225,7 @@ function getCodeGenerators(arduino: Arduino) {
     };
 
     arduino.forBlock["leaphy_multiplexer_digitalwrite"] = function (block) {
-        const pin = parseInt(block.getFieldValue("PIN"));
+        const pin = block.getFieldValue("PIN");
 
         const pinSetupCode =
             "pinMode(0, OUTPUT);\n" +

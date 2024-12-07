@@ -104,7 +104,6 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        helpUrl: "http://arduino.cc/en/Reference/DigitalWrite",
     },
     {
         type: "leaphy_io_analogwrite",
