@@ -47,7 +47,8 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "refreshServoPinFields",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
     },
     {
         type: "leaphy_servo_read",
@@ -62,7 +63,8 @@ const blocks: BlockDefinition = [
         output: "Number",
         style: "leaphy_blocks",
         // "extensions": "returnAndUpdateServoRead",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
     },
     {
         type: "leaphy_io_digitalwrite",
@@ -137,12 +139,14 @@ const blocks: BlockDefinition = [
         ],
         output: "Number",
         style: "leaphy_blocks",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Programming-,Ultrasonic%20sensor,-Light%20sensor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Programming-,Ultrasonic%20sensor,-Light%20sensor",
     },
 
     {
         type: "leaphy_segment_init",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=%C2%A0Single%20leds-,Segment%20display%C2%A0,-Oled%20display",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=%C2%A0Single%20leds-,Segment%20display%C2%A0,-Oled%20display",
         message0: "%{BKY_LEAPHY_SEGMENT_INIT}",
         args0: [
             {
@@ -162,7 +166,8 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_matrix_init",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Multiple%20leds-,Led%20matrix%C2%A0,-Speaker%C2%A0",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Multiple%20leds-,Led%20matrix%C2%A0,-Speaker%C2%A0",
         message0: "%{BKY_LEAPHY_MATRIX_INIT}",
         args0: [
             {
@@ -187,7 +192,8 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_sound_init",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Led%20matrix-,Speaker%C2%A0,-Stichting",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Led%20matrix-,Speaker%C2%A0,-Stichting",
         message0: "%{BKY_LEAPHY_SOUND_INIT}",
         args0: [
             {

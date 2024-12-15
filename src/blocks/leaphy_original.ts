@@ -22,7 +22,8 @@ const motorForwardBackwardDropdown = [
 const blocks: BlockDefinition = [
     {
         type: "leaphy_original_set_led",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Different%20types%20of%20leds",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Different%20types%20of%20leds",
         message0:
             "%%{BKY_LEAPHY_LED} %1 %%{BKY_LEAPHY_LED_RED} %2 %%{BKY_LEAPHY_LED_GREEN} %3 %%{BKY_LEAPHY_LED_BLUE} %4",
         args0: [
@@ -38,7 +39,8 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_original_set_motor",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
         message0:
             "%%{BKY_LEAPHY_MOTOR_TYPE} %1 %2 %%{BKY_LEAPHY_MOTOR_SPEED} %3",
         args0: [
@@ -57,14 +59,16 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_original_get_distance",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Programming-,Ultrasonic%20sensor,-Light%20sensor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Programming-,Ultrasonic%20sensor,-Light%20sensor",
         message0: "%%{BKY_LEAPHY_GET_DISTANCE}",
         style: "leaphy_blocks",
         output: "Number",
     },
     {
         type: "leaphy_original_move_motors",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
         message0: "%%{BKY_LEAPHY_MOTOR_DIRECTION} %1 %2  %3",
         args0: [
             {
@@ -95,7 +99,8 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_original_servo_set",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
         message0: "%{BKY_LEAPHY_SERVO_SET}",
         args0: [
             {
@@ -119,7 +124,8 @@ const blocks: BlockDefinition = [
     },
     {
         type: "leaphy_original_servo_move",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=TT%20motors-,Servo%20motors,-Rotating%20servo%20motor",
         message0: "%{BKY_LEAPHY_SERVO_MOVE}",
         args0: [
             {

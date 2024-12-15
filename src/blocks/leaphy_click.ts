@@ -43,7 +43,8 @@ const blocks: BlockDefinition = [
         previousStatement: null,
         nextStatement: null,
         style: "leaphy_blocks",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
     },
     {
         type: "leaphy_click_rgb_digitalwrite",
@@ -74,7 +75,8 @@ const blocks: BlockDefinition = [
         nextStatement: null,
         style: "leaphy_blocks",
         // "extensions": "refreshPinFields",
-        helpUrl: "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Different%20types%20of%20leds",
+        helpUrl:
+            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Different%20types%20of%20leds",
     },
 ];
 
