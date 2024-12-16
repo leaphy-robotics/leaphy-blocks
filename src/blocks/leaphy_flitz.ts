@@ -16,6 +16,8 @@ const blocks: BlockDefinition = [
                 options: stomachSensorOptions,
             },
         ],
+        helpUrl:
+            "https://www.leaphy.nl/leaphy-flitz.html#:~:text=het%20licht%20wordt.-,Bouwfilmpjes%20Leaphy%20Flitz,-Software%20Leaphy%20Flitz",
         output: "Number",
         style: "leaphy_blocks",
     },
@@ -23,18 +25,24 @@ const blocks: BlockDefinition = [
         type: "leaphy_flitz_nano_read_stomach_sensor",
         message0: "%%{BKY_LEAPHY_READ_STOMACH}",
         output: "Number",
+        helpUrl:
+            "https://www.leaphy.nl/leaphy-flitz.html#:~:text=het%20licht%20wordt.-,Bouwfilmpjes%20Leaphy%20Flitz,-Software%20Leaphy%20Flitz",
         style: "leaphy_blocks",
     },
     {
         type: "leaphy_flitz_read_hand_sensor",
         message0: "%%{BKY_LEAPHY_READ_HAND}",
         output: "Number",
+        helpUrl:
+            "https://www.leaphy.nl/leaphy-flitz.html#:~:text=het%20licht%20wordt.-,Bouwfilmpjes%20Leaphy%20Flitz,-Software%20Leaphy%20Flitz",
         style: "leaphy_blocks",
     },
     {
         type: "leaphy_flitz_nano_read_hand_sensor",
         message0: "%%{BKY_LEAPHY_READ_HAND}",
         output: "Number",
+        helpUrl:
+            "https://www.leaphy.nl/leaphy-flitz.html#:~:text=het%20licht%20wordt.-,Bouwfilmpjes%20Leaphy%20Flitz,-Software%20Leaphy%20Flitz",
         style: "leaphy_blocks",
     },
     {
@@ -50,6 +58,8 @@ const blocks: BlockDefinition = [
         inputsInline: true,
         previousStatement: null,
         nextStatement: null,
+        helpUrl:
+            "https://www.leaphy.nl/leaphy-flitz.html#:~:text=het%20licht%20wordt.-,Bouwfilmpjes%20Leaphy%20Flitz,-Software%20Leaphy%20Flitz",
         style: "leaphy_blocks",
     },
 ];
