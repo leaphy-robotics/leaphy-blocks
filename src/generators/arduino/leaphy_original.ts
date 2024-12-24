@@ -37,9 +37,13 @@ function getCodeGenerators(arduino: Arduino) {
 
     arduino.forBlock["leaphy_original_set_motor"] = function (block) {
         const dropdown_Type = block.getFieldValue("MOTOR_TYPE");
-        const speed =
+        let speed =
             arduino.valueToCode(block, "MOTOR_SPEED", arduino.ORDER_ATOMIC) ||
             "100";
+        // Map the speed to a range of 150 - 255 to compensate for low PWM signal voltage
+        if (parseInt(speed) > 0) {
+            speed = `map(${speed}, 0, 255, 150, 255)`;
+        }
         arduino.addInclude(
             "include_leaphy_original",
             '#include "Leaphyoriginal1.h"',
@@ -75,7 +79,7 @@ function getCodeGenerators(arduino: Arduino) {
         let direction = block.getFieldValue(
             "MOTOR_DIRECTION",
         ) as MotorDirection;
-        const speed =
+        let speed =
             arduino.valueToCode(block, "MOTOR_SPEED", arduino.ORDER_ATOMIC) ||
             "100";
         arduino.addInclude(
@@ -85,6 +89,10 @@ function getCodeGenerators(arduino: Arduino) {
 
         // Set different motor pins for nano robots
         if (arduino.robotType.includes("nano")) {
+            // Map the speed to a range of 150 - 255 to compensate for low PWM signal voltage
+            if (parseInt(speed) > 0) {
+                speed = `map(${speed}, 0, 255, 150, 255)`;
+            }
             const directionMap: Record<MotorDirection, number> = {
                 [MotorDirection.FORWARD]: 2,
                 [MotorDirection.BACKWARD]: 1,
