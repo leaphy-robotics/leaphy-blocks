@@ -46,12 +46,17 @@ function getCodeGenerators(arduino: Arduino) {
             '#include "Leaphyoriginal1.h"',
         );
         // Set different motor pins for nano robots
-        if (arduino.robotType.includes("nano"))
+        if (arduino.robotType.includes("nano")) {
             if (parseInt(speed) > 0) {
                 // Map the speed to a range of 150 - 255 to compensate for low PWM signal voltage
                 speed = `map(${speed}, 0, 255, 150, 255)`;
             }
-        arduino.addSetup("set_motor_pins", "setMotorPins(3, 2, 11, 4);", true);
+            arduino.addSetup(
+                "set_motor_pins",
+                "setMotorPins(3, 2, 11, 4);",
+                true,
+            );
+        }
 
         return `setMotor(${dropdown_Type}, ${speed});\n`;
     };
