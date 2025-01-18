@@ -18,6 +18,12 @@ function getCodeGenerators(arduino: Arduino) {
             code += "BLE.setEventHandler(BLEDisconnected, onBluetoothDisconnection);\n";
         }
 
+        block.workspace.getBlocksByType("create_binary_characteristic").forEach(add_binary_characteristic => {
+            const initialValue = arduino.valueToCode(add_binary_characteristic, "INITIAL_VALUE", arduino.ORDER_NONE) === "true";
+            const name = arduino.valueToCode(add_binary_characteristic, "NAME", arduino.ORDER_NONE);
+            code += `LeaphyBLE.addBinaryCharacteristic(${name}, ${initialValue});\n`;
+        });
+
         block.workspace.getBlocksByType("bluetooth_on_characteristic_updated").forEach(ble_update_block => {
             const name = arduino.valueToCode(ble_update_block, "NAME", arduino.ORDER_NONE);
             code += `LeaphyBLE.getCharacteristicByName(${name})->setEventHandler(BLEWritten, [](BLEDevice central, BLECharacteristic characteristic) {\n`;
@@ -32,9 +38,7 @@ function getCodeGenerators(arduino: Arduino) {
     };
 
     arduino.forBlock["create_binary_characteristic"] = function (block: Block) {
-        const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
-        const initialValue = arduino.valueToCode(block, "INITIAL_VALUE", arduino.ORDER_NONE) === "true";
-        return `LeaphyBLE.addBinaryCharacteristic(${name}, ${initialValue});\n`;
+        return ``;
     };
 
     arduino.forBlock["bluetooth_on_connect"] = function (block: Block) {
