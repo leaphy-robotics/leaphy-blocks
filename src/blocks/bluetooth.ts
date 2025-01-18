@@ -59,7 +59,35 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "bluetooth_characteristic_read",
+        type: "create_string_characteristic",
+        style: "bluetooth_blocks",
+        message0: "%{BKY_LEAPHY_BLUETOOTH_CREATE_STRING_CHARACTERISTIC}",
+        args0: [
+            {
+                type: "input_value",
+                name: "NAME",
+                check: ["String"],
+            },
+            { type: "input_value", name: "INITIAL_VALUE", check: "String" },
+        ],
+        previousStatement: null,
+        nextStatement: null,
+    },
+    {
+        type: "bluetooth_string_characteristic_read",
+        style: "bluetooth_blocks",
+        message0: "%{BKY_LEAPHY_READ_STRING_CHARACTERISTIC_VALUE}",
+        args0: [
+            {
+                type: "input_value",
+                name: "NAME",
+                check: ["String"],
+            },
+        ],
+        output: "String",
+    },
+    {
+        type: "bluetooth_bool_characteristic_read",
         style: "bluetooth_blocks",
         message0: "%{BKY_LEAPHY_READ_BINARY_CHARACTERISTIC_VALUE}",
         args0: [
