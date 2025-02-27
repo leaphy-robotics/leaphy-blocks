@@ -2,6 +2,10 @@ import {Block, Workspace} from "blockly/core";
 import {PythonGenerator} from 'blockly/python';
 import {pythonGenerator} from 'blockly/python';
 
+import * as micropython from "./micropython/micropython";
+import * as leaphy_original from "../generators/micropython/leaphy_original";
+import * as leaphy_extra from "../generators/micropython/leaphy_extra";
+
 export class MicroPython extends PythonGenerator {
     public ORDER_ATOMIC = 0;
     public includes_: Record<string, string> = {};
@@ -15,8 +19,11 @@ export class MicroPython extends PythonGenerator {
         this.includes_ = Object.create(null);
         this.setups_ = Object.create(null);
         this.declarations_ = Object.create(null);
+        //super("MicroPython");
+        this.INDENT = "    "; // Stel de indentatie in op 4 spaties ipv 2
+
         
-        // Voeg de noodzakelijke import toe
+        
         this.addInclude("pins", "from leaphymicropython.utils.pins import set_pwm\n");
         
         Object.assign(this.forBlock, pythonGenerator.forBlock);
@@ -44,19 +51,18 @@ export class MicroPython extends PythonGenerator {
     }
 
     public finish(code: string) {
-        // Converteer de includes en definities naar lijsten
         const includes = Object.values(this.includes_),
             definitions: string[] = Object.values(this.definitions_),
             declarations = Object.values(this.declarations_)
                 .sort((a, b) => b.priority - a.priority)
                 .map(({ code }) => code);
 
-        // Voeg de includes en definities bovenaan de code toe
+   
         const allDefs = includes.join("\n") + "\n" + definitions.join("\n") + "\n" + declarations.join("\n");
 
         
 
-        // Return alleen de definities en de gegenereerde code
+
         return allDefs + "\n" + code;
     }
 
@@ -74,26 +80,20 @@ export class MicroPython extends PythonGenerator {
     }
 }
 
-// Maak een instantie van de generator
 const generator = new MicroPython();
 
-// Voeg de workspaceToCode methode toe aan de pythonGenerator
 pythonGenerator.oldworkspaceToCode = pythonGenerator.workspaceToCode;
 pythonGenerator.workspaceToCode = function(workspace: Workspace, robotType?: string): string {
     if (robotType) this.robotType = robotType;
     return pythonGenerator.oldworkspaceToCode(workspace);
 }
 
-// Importeer alle blokdefinities
-import * as micropython from "./micropython/micropython";
-import * as leaphy_original from "../generators/micropython/leaphy_original";
-import * as leaphy_extra from "../generators/micropython/leaphy_extra";
-// ... andere imports ...
 
-// Initialiseer alle blokdefinities
+
+
 micropython.default(generator);
 leaphy_original.default(generator);
 leaphy_extra.default(generator);
-// ... andere initialisaties ...
+
 
 export default generator;

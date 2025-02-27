@@ -9,14 +9,39 @@ function getCodeGenerators(micropython: MicroPython) {
     };
 
     micropython.forBlock["leaphy_serial_print_line"] = function (block) {
-        micropython.addInclude("machine", "from machine import UART\n");
-        
-        micropython.addSetup("uart", "uart = UART(0, baudrate=115200)", false);
-        
         const value = micropython.valueToCode(block, "VALUE", micropython.ORDER_ATOMIC) || "''";
         
+        return `print(${value})\n`;
+    };
+
+    micropython.forBlock["controls_repeat_forever"] = function (block) {
+        // Genereer een commentaarregel in plaats van uitvoerbare code
+        const code = `# herhaal_voor_altijd_niet_beschikbaar\n`;
+        return code;
+    };
+
+    micropython.forBlock["leaphy_start"] = function (block) {
+        console.log("Start block generator");
+        
       
-        return `uart.write(str(${value}) + '\\n')\n`;
+        let code = micropython.statementToCode(block, "STACK");
+        
+        if (code) {
+            const lines = code.split('\n');
+          
+            const firstNonEmptyLine = lines.find(line => line.trim() !== '');
+            
+            if (firstNonEmptyLine) {
+                
+                const indentationMatch = firstNonEmptyLine.match(/^\s*/);
+                const indentation = indentationMatch ? indentationMatch[0] : '';
+                const adjustedLines = lines.map(line => line.startsWith(indentation) ? line.slice(indentation.length) : line);
+                code = adjustedLines.join('\n');
+            }
+        }
+        
+        console.log("Final code:", code);
+        return code;
     };
 
 }
