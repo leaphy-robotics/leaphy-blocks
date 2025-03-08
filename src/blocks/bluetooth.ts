@@ -23,7 +23,7 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "bluetooth_on_characteristic_updated",
+        type: "bluetooth_on_characteristic_update",
         style: "bluetooth_blocks",
         message0: "%{BKY_LEAPHY_BLUETOOTH_CHARACTERISTIC_ON_UPDATE}",
         args0: [
@@ -44,7 +44,7 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "create_binary_characteristic",
+        type: "bluetooth_create_binary_characteristic",
         style: "bluetooth_blocks",
         message0: "%{BKY_LEAPHY_BLUETOOTH_CREATE_BINARY_CHARACTERISTIC}",
         args0: [
@@ -59,7 +59,7 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "create_string_characteristic",
+        type: "bluetooth_create_string_characteristic",
         style: "bluetooth_blocks",
         message0: "%{BKY_LEAPHY_BLUETOOTH_CREATE_STRING_CHARACTERISTIC}",
         args0: [
@@ -74,9 +74,9 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "bluetooth_string_characteristic_read",
+        type: "bluetooth_read_string_characteristic",
         style: "bluetooth_blocks",
-        message0: "%{BKY_LEAPHY_READ_STRING_CHARACTERISTIC_VALUE}",
+        message0: "%{BKY_LEAPHY_READ_STRING_CHARACTERISTIC}",
         args0: [
             {
                 type: "input_value",
@@ -87,9 +87,9 @@ const blocks: BlockDefinition = [
         output: "String",
     },
     {
-        type: "bluetooth_bool_characteristic_read",
+        type: "bluetooth_read_bool_characteristic",
         style: "bluetooth_blocks",
-        message0: "%{BKY_LEAPHY_READ_BINARY_CHARACTERISTIC_VALUE}",
+        message0: "%{BKY_LEAPHY_READ_BINARY_CHARACTERISTIC}",
         args0: [
             {
                 type: "input_value",

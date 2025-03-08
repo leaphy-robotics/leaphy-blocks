@@ -18,13 +18,13 @@ function getCodeGenerators(arduino: Arduino) {
             code += "BLE.setEventHandler(BLEDisconnected, onBluetoothDisconnection);\n";
         }
 
-        block.workspace.getBlocksByType("create_binary_characteristic").forEach(add_binary_characteristic => {
+        block.workspace.getBlocksByType("bluetooth_create_binary_characteristic").forEach(add_binary_characteristic => {
             const initialValue = arduino.valueToCode(add_binary_characteristic, "INITIAL_VALUE", arduino.ORDER_NONE) === "true";
             const name = arduino.valueToCode(add_binary_characteristic, "NAME", arduino.ORDER_NONE);
             code += `LeaphyBLE.addBinaryCharacteristic(${name}, ${initialValue});\n`;
         });
 
-        block.workspace.getBlocksByType("create_string_characteristic").forEach(add_binary_characteristic => {
+        block.workspace.getBlocksByType("bluetooth_create_string_characteristic").forEach(add_binary_characteristic => {
             const initialValue = arduino.valueToCode(add_binary_characteristic, "INITIAL_VALUE", arduino.ORDER_NONE);
             const name = arduino.valueToCode(add_binary_characteristic, "NAME", arduino.ORDER_NONE);
             code += `LeaphyBLE.addStringCharacteristic(${name}, ${initialValue});\n`;
@@ -43,11 +43,11 @@ function getCodeGenerators(arduino: Arduino) {
         return code;
     };
 
-    arduino.forBlock["create_binary_characteristic"] = function (block: Block) {
+    arduino.forBlock["bluetooth_create_binary_characteristic"] = function (block: Block) {
         return ``;
     };
 
-    arduino.forBlock["create_string_characteristic"] = function (block: Block) {
+    arduino.forBlock["bluetooth_create_string_characteristic"] = function (block: Block) {
         return ``;
     };
 
@@ -57,7 +57,6 @@ function getCodeGenerators(arduino: Arduino) {
             `void onBluetoothConnection(BLEDevice device) {\n` + branch + "}\n";
         arduino.addDeclaration("bluetooth_on_connect", code, true, 2);
         return "BLE.poll();";
-
     };
 
     arduino.forBlock["bluetooth_on_disconnect"] = function (block: Block) {
@@ -69,16 +68,16 @@ function getCodeGenerators(arduino: Arduino) {
         return "BLE.poll();";
     };
 
-    arduino.forBlock["bluetooth_on_characteristic_updated"] = function (block: Block) {
+    arduino.forBlock["bluetooth_on_characteristic_update"] = function (block: Block) {
         return "BLE.poll();";
     }
 
-    arduino.forBlock["bluetooth_string_characteristic_read"] = function (block: Block) {
+    arduino.forBlock["bluetooth_read_string_characteristic"] = function (block: Block) {
         const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
         return [`(char *)LeaphyBLE.getCharacteristicByName(${name})->value()`, arduino.ORDER_ATOMIC];
     };
 
-    arduino.forBlock["bluetooth_bool_characteristic_read"] = function (block: Block) {
+    arduino.forBlock["bluetooth_read_bool_characteristic"] = function (block: Block) {
         const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
         return [`*LeaphyBLE.getCharacteristicByName(${name})->value() == 1`, arduino.ORDER_ATOMIC];
     };
