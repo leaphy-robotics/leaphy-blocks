@@ -30,7 +30,7 @@ function getCodeGenerators(arduino: Arduino) {
             code += `LeaphyBLE.addStringCharacteristic(${name}, ${initialValue});\n`;
         });
 
-        block.workspace.getBlocksByType("bluetooth_on_characteristic_updated").forEach(ble_update_block => {
+        block.workspace.getBlocksByType("bluetooth_on_characteristic_update").forEach(ble_update_block => {
             const name = arduino.valueToCode(ble_update_block, "NAME", arduino.ORDER_NONE);
             code += `LeaphyBLE.getCharacteristicByName(${name})->setEventHandler(BLEWritten, [](BLEDevice central, BLECharacteristic characteristic) {\n`;
             code += arduino.statementToCode(ble_update_block, "STACK");
