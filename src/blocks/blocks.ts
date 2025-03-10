@@ -8,6 +8,7 @@ import * as arduino from "./arduino";
 import * as loops from "./alternatives";
 import * as mesh from "./mesh";
 import * as rtc from "./rtc";
+import * as bluetooth from "./bluetooth";
 
 const blocks = [
     ...lists.blocks,
@@ -20,6 +21,7 @@ const blocks = [
     ...leaphyCommon.blocks,
     ...mesh.blocks,
     ...rtc.blocks,
+    ...bluetooth.blocks,
 ];
 
 export { blocks };
