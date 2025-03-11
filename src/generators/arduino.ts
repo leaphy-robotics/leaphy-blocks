@@ -441,7 +441,6 @@ export class Arduino extends Blockly.Generator {
 const generator = new Arduino();
 
 import * as arduino from "./arduino/arduino";
-import * as leaphy_click from "./arduino/leaphy_click";
 import * as leaphy_common from "./arduino/variable_blocks";
 import * as leaphy_extra from "./arduino/leaphy_extra";
 import * as leaphy_flitz from "./arduino/leaphy_flitz";
@@ -458,7 +457,6 @@ import * as rtc from "./arduino/rtc";
 import { listManager } from "../categories/lists";
 
 arduino.default(generator);
-leaphy_click.default(generator);
 leaphy_common.default(generator);
 leaphy_extra.default(generator);
 leaphy_original.default(generator);
