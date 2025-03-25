@@ -4,7 +4,7 @@ function getCodeGenerators(micropython: MicroPython) {
     micropython.forBlock["leaphy_original_set_led"] = function (block) {
         micropython.addInclude("rgbled", "from leaphymicropython.actuators.rgbled import RGBLed\n");
         
-        micropython.addDeclaration("led_init", "led = RGBLed(5, 6, 7)\n", true, 90);
+        micropython.addDeclaration("led_init", "led = RGBLed(6, 7, 9)\n", true, 90);
         
         const red = micropython.valueToCode(block, "LED_RED", 0) || "0";
         const green = micropython.valueToCode(block, "LED_GREEN", 0) || "0";
@@ -28,6 +28,7 @@ function getCodeGenerators(micropython: MicroPython) {
         micropython.addInclude("read_analog", "from leaphymicropython.utils.pins import read_analog\n");
         const pin = block.getFieldValue("PIN");
         
+        // Arduino to GPIO pin mapping
         const pinMapping: Record<string, number> = {
             "A0": 14,
             "A1": 15,
@@ -39,9 +40,7 @@ function getCodeGenerators(micropython: MicroPython) {
             "A7": 21
         };
 
-        const gpioPin = pinMapping[pin] || pin;
-
-        
+        const gpioPin = pinMapping[pin] || pin;        
         const code = `read_analog(${gpioPin})`;
         return [code, 0];
     };
@@ -56,50 +55,20 @@ function getCodeGenerators(micropython: MicroPython) {
     micropython.forBlock["leaphy_original_servo_set"] = function (block) {
         micropython.addInclude("servo_motor", "from leaphymicropython.actuators.servomotor import set_motor\n");
         
-        const motor = block.getFieldValue("MOTOR");  // Kies motor: 'left' of 'right'
-        const speed = micropython.valueToCode(block, "SPEED", micropython.ORDER_ATOMIC) || "0";  // Snelheid
+        const motor = block.getFieldValue("MOTOR"); 
+        const speed = micropython.valueToCode(block, "SPEED", micropython.ORDER_ATOMIC) || "0";
 
-        return `set_motor('${motor}', ${speed})\n`;  // Roep de motor aan met de snelheid
+        return `set_motor('${motor}', ${speed})\n`;  
     };
 
     micropython.forBlock["leaphy_original_servo_move"] = function (block) {
         micropython.addInclude("servo_direction", "from leaphymicropython.actuators.servomotor import set_motor_direction\n");
-        const direction = block.getFieldValue("DIRECTION");  // Kies richting: 'forward', 'backward', 'left', 'right'
-        const speed = micropython.valueToCode(block, "SPEED", micropython.ORDER_ATOMIC) || "0";  // Snelheid
+        const direction = block.getFieldValue("DIRECTION");  
+        const speed = micropython.valueToCode(block, "SPEED", micropython.ORDER_ATOMIC) || "0";
 
-        return `set_motor_direction('${direction}', ${speed})\n`;  // Roep de functie aan met richting en snelheid
+        return `set_motor_direction('${direction}', ${speed})\n`;  
     };
 
-    micropython.forBlock["leaphy_original_move_motors"] = function (block) {
-        micropython.addInclude("dcmotor", "from leaphymicropython.actuators.dcmotor import DCMotor\n");
-    
-        const direction = block.getFieldValue("DIRECTION") || "Stop";  // Zorg dat direction nooit undefined is
-        const speed = micropython.valueToCode(block, "SPEED", micropython.ORDER_ATOMIC) || "0";  // Zorg dat speed nooit undefined is
-    
-        // Maak een motor-instantie
-        let code = "motor = DCMotor()\n";
-    
-        // Gebruik een veilige switch-case structuur
-        switch (direction) {
-            case "Vooruit":
-                code += `motor.forward(${speed})\n`;
-                break;
-            case "Achteruit":
-                code += `motor.backward(${speed})\n`;
-                break;
-            case "Links":
-                code += `motor.left(${speed}, 1)\n`;  // 1 voor CW
-                break;
-            case "Rechts":
-                code += `motor.right(${speed}, 1)\n`;  // 1 voor CW
-                break;
-            default:
-                code += "motor.stop()\n";  // Fallback voor onbekende waarden
-                break;
-        }
-    
-        return code;
-    };
     
     
     

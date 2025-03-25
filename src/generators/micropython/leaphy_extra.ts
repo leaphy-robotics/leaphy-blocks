@@ -1,13 +1,12 @@
 import { MicroPython } from "../micropython";
 
-function getCodeGenerators(micropython: MicroPython) {
+function getCodeGenerators(micropython: MicroPython): void {
     micropython.forBlock["leaphy_sonar_read"] = function (block) {
         micropython.addInclude("sonar", "from leaphymicropython.sensors.sonar import read_distance\n");
         
         const trigPin = block.getFieldValue("TRIG_PIN");
         const echoPin = block.getFieldValue("ECHO_PIN");
 
-        // Genereer de code voor het lezen van de afstand
         const code = `read_distance(${trigPin}, ${echoPin})`;
         return [code, micropython.ORDER_ATOMIC];
     };
@@ -21,7 +20,7 @@ function getCodeGenerators(micropython: MicroPython) {
         
         return `pin_${pin}.value(${stateOutput})\n`;
     };
-
+    
     micropython.forBlock["leaphy_io_analogwrite"] = function (block) {
         micropython.addInclude("pins", "from leaphymicropython.utils.pins import set_pwm\n");
         const pin = block.getFieldValue("PIN");

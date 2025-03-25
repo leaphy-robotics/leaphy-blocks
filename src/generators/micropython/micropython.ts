@@ -15,11 +15,11 @@ function getCodeGenerators(micropython: MicroPython) {
     };
 
     micropython.forBlock["controls_repeat_forever"] = function (block) {
-        // Genereer een commentaarregel in plaats van uitvoerbare code
         const code = `# herhaal_voor_altijd_niet_beschikbaar\n`;
         return code;
     };
 
+    //start block generator
     micropython.forBlock["leaphy_start"] = function (block) {
         console.log("Start block generator");
         
