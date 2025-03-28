@@ -13,26 +13,34 @@ function getCodeGenerators(arduino: Arduino) {
 
         let pin_red, pin_blue, pin_green;
         if (arduino.robotType.includes("nano")) {
-            pin_red = 11;
-            pin_green = 10;
-            pin_blue = 9;
+            // Use different pins for the original nano since they conflict with the motors
+            if (arduino.robotType.includes("original")) {
+                pin_red = 5;
+                pin_green = 6;
+                pin_blue = 7;
+            } else {
+                pin_red = 11;
+                pin_green = 10;
+                pin_blue = 9;
+            }
+
+            // Ground is connected to pin 8 on the nano, so it needs to be pulled LOW
             arduino.addSetup(
                 "setup_nano_rgb",
                 "pinMode(8, OUTPUT);\n  digitalWrite(8, LOW);",
                 false,
             );
         } else {
-            pin_red = 3;
+            pin_red = 6;
             pin_green = 5;
-            pin_blue = 6;
+            pin_blue = 3;
         }
-        // Ground is connected to pin 8 on the nano, so it needs to be pulled LOW
-        const code =
+
+        return (
             `analogWrite(${pin_red}, ${red});\n` +
             `analogWrite(${pin_green}, ${green});\n` +
-            `analogWrite(${pin_blue}, ${blue});\n`;
-
-        return code;
+            `analogWrite(${pin_blue}, ${blue});\n`
+        );
     };
 
     arduino.forBlock["leaphy_original_set_motor"] = function (block) {
@@ -95,13 +103,13 @@ function getCodeGenerators(arduino: Arduino) {
             if (parseInt(speed) > 0) {
                 speed = `map(${speed}, 0, 255, 150, 255)`;
             }
-            const directionMap: Record<MotorDirection, number> = {
-                [MotorDirection.FORWARD]: 2,
-                [MotorDirection.BACKWARD]: 1,
-                [MotorDirection.LEFT]: 4,
-                [MotorDirection.RIGHT]: 3,
+            const directionMap: Record<MotorDirection, string> = {
+                [MotorDirection.FORWARD]: "2",
+                [MotorDirection.BACKWARD]: "1",
+                [MotorDirection.LEFT]: "4",
+                [MotorDirection.RIGHT]: "3",
             };
-            direction = directionMap[direction];
+            direction = directionMap[direction] as MotorDirection;
             arduino.addSetup(
                 "set_motor_pins",
                 "setMotorPins(3, 2, 11, 4);",
