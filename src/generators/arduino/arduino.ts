@@ -389,5 +389,65 @@ function getCodeGenerators(arduino: Arduino) {
 
         return `mp3.setVolume(${volume}/100.0*30.0);\n`;
     };
+
+    arduino.forBlock["leaphy_read_accelerometer"] = function (block) {
+        arduino.addInclude("GyroAccel","#include <Adafruit_LSM6DS3TRC.h>");
+        const setup = arduino.addI2CSetup("GyroAccel",
+            "if !lsm6ds3trc.begin_I2C() {\n" +
+            "\t\t\t\treturn -1;\n" +
+            "\t\t\t}\n\n" +
+            "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
+            "\t\t\tlsm6ds3trc.configInt2(false, true, false);\n");
+        arduino.addDeclaration("GyroAccel",
+            "Adafruit_LSM6DS3TRC lsm6ds3trc;\n" +
+            "float buffer_x = 0.0, buffer_y = 0.0, buffer_z = 0.0;\n\n",false,3);
+        arduino.addDeclaration("Accelerometer",
+            "double readAccelerometer(int channel) {\n" +
+            "\t" + setup +
+            "\tlsm6ds3trc.readAccelerometer(&buffer_x, &buffer_y, &buffer_z);\n\n" +
+            "\tswitch(channel) {\n" +
+            "\t\tcase 0:\n" +
+            "\t\t\treturn (double) buffer_x;\n" +
+            "\t\tcase 1:\n" +
+            "\t\t\treturn (double) buffer_y;\n" +
+            "\t\tcase 2:\n" +
+            "\t\t\treturn (double) buffer_z;\n" +
+            "\t}\n" +
+            "}", false, 2);
+        
+        const channel = block.getFieldValue("ACCELEROMETER_AXIS");
+        
+        return [`read_accelerometer(${channel})`, arduino.ORDER_ATOMIC];
+    };
+
+    arduino.forBlock["leaphy_read_gyroscope"] = function (block) {
+        arduino.addInclude("GyroAccel","#include <Adafruit_LSM6DS3TRC.h>");
+        const setup = arduino.addI2CSetup("GyroAccel",
+            "if !lsm6ds3trc.begin_I2C() {\n" +
+            "\t\t\t\treturn -1;\n" +
+            "\t\t\t}\n\n" +
+            "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
+            "\t\t\tlsm6ds3trc.configInt2(false, true, false);\n");
+        arduino.addDeclaration("GyroAccel",
+            "Adafruit_LSM6DS3TRC lsm6ds3trc;\n" +
+            "float buffer_x = 0.0, buffer_y = 0.0, buffer_z = 0.0;\n\n",false,3);
+        arduino.addDeclaration("Gyroscope",
+            "double readGyroscope(int channel) {\n" +
+            "\t" + setup +
+            "\tlsm6ds3trc.readGyroscope(&buffer_x, &buffer_y, &buffer_z);\n\n" +
+            "\tswitch(channel) {\n" +
+            "\t\tcase 0:\n" +
+            "\t\t\treturn (double) buffer_x;\n" +
+            "\t\tcase 1:\n" +
+            "\t\t\treturn (double) buffer_y;\n" +
+            "\t\tcase 2:\n" +
+            "\t\t\treturn (double) buffer_z;\n" +
+            "\t}\n" +
+            "}", false, 2);
+
+        const channel = block.getFieldValue("GYROSCOPE_AXIS");
+    
+        return [`readGyroscope(${channel})`, arduino.ORDER_ATOMIC];
+    }
 }
 export default getCodeGenerators;
