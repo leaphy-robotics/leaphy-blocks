@@ -34,17 +34,16 @@ const ledstripDemoOptions = [
 ];
 
 const accelerometer_axis = [
-    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_X}","0"],
-    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Y}","1"],
-    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Z}","2"],
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_X}", "0"],
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Y}", "1"],
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Z}", "2"],
 ];
 
 const gyroscope_axis = [
-    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_X}","0"],
-    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Y}","1"],
-    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Z}","2"],
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_X}", "0"],
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Y}", "1"],
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Z}", "2"],
 ];
-
 
 const blocks: BlockDefinition = [
     {
@@ -138,7 +137,8 @@ const blocks: BlockDefinition = [
         style: "leaphy_blocks",
         output: "Number",
         helpUrl: "",
-    },    {
+    },
+    {
         type: "leaphy_read_accelerometer",
         helpUrl: "",
         message0: "%{BKY_LEAPHY_READ_ACCELEROMETER}",
@@ -146,11 +146,11 @@ const blocks: BlockDefinition = [
             {
                 type: "field_dropdown",
                 name: "ACCELEROMETER_AXIS",
-                options: accelerometer_axis
+                options: accelerometer_axis,
             },
         ],
         style: "leaphy_blocks",
-        output: "Number"
+        output: "Number",
     },
     {
         type: "leaphy_read_gyroscope",
@@ -160,11 +160,11 @@ const blocks: BlockDefinition = [
             {
                 type: "field_dropdown",
                 name: "GYROSCOPE_AXIS",
-                options: gyroscope_axis
+                options: gyroscope_axis,
             },
         ],
         style: "leaphy_blocks",
-        output: "Number" 
+        output: "Number",
     },
     {
         type: "leaphy_rgb_raw_color_red",
