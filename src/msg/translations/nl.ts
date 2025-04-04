@@ -754,5 +754,13 @@ messages["LEAPHY_TEMPLATE_FULL_TEXT"] = "Volledig tekst";
 messages["LEAPHY_TEMPLATE_DATE_TEXT"] = "Datum tekst";
 messages["LEAPHY_TEMPLATE_TIME"] = "Tijd";
 messages["LEAPHY_TEMPLATE_CUSTOM"] = "Aangepast";
+messages["LEAPHY_READ_ACCELEROMETER"] = "Accelerometer-as %1";
+messages["LEAPHY_ACCELEROMETER_AXIS_X"] = "X";
+messages["LEAPHY_ACCELEROMETER_AXIS_Y"] = "Y";
+messages["LEAPHY_ACCELEROMETER_AXIS_Z"] = "Z";
+messages["LEAPHY_READ_GYROSCOPE"] = "Gyroscoop-as %1";
+messages["LEAPHY_GYROSCOPE_AXIS_X"] = "X";
+messages["LEAPHY_GYROSCOPE_AXIS_Y"] = "Y";
+messages["LEAPHY_GYROSCOPE_AXIS_Z"] = "Z";
 
 export default messages;
