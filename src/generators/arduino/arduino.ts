@@ -394,7 +394,7 @@ function getCodeGenerators(arduino: Arduino) {
         arduino.addInclude("GyroAccel", "#include <Adafruit_LSM6DS3TRC.h>");
         const setup = arduino.addI2CSetup(
             "GyroAccel",
-            "if !lsm6ds3trc.begin_I2C() {\n" +
+            "if (!lsm6ds3trc.begin_I2C()) {\n" +
                 "\t\t\t\treturn -1;\n" +
                 "\t\t\t}\n\n" +
                 "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
@@ -412,7 +412,7 @@ function getCodeGenerators(arduino: Arduino) {
             "double readAccelerometer(int channel) {\n" +
                 "\t" +
                 setup +
-                "\tlsm6ds3trc.readAccelerometer(&buffer_x, &buffer_y, &buffer_z);\n\n" +
+                "\tlsm6ds3trc.readAcceleration(buffer_x, buffer_y, buffer_z);\n\n" +
                 "\tswitch(channel) {\n" +
                 "\t\tcase 0:\n" +
                 "\t\t\treturn (double) buffer_x;\n" +
@@ -428,14 +428,14 @@ function getCodeGenerators(arduino: Arduino) {
 
         const channel = block.getFieldValue("ACCELEROMETER_AXIS");
 
-        return [`read_accelerometer(${channel})`, arduino.ORDER_ATOMIC];
+        return [`readAccelerometer(${channel})`, arduino.ORDER_ATOMIC];
     };
 
     arduino.forBlock["leaphy_read_gyroscope"] = function (block) {
         arduino.addInclude("GyroAccel", "#include <Adafruit_LSM6DS3TRC.h>");
         const setup = arduino.addI2CSetup(
             "GyroAccel",
-            "if !lsm6ds3trc.begin_I2C() {\n" +
+            "if (!lsm6ds3trc.begin_I2C()) {\n" +
                 "\t\t\t\treturn -1;\n" +
                 "\t\t\t}\n\n" +
                 "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
@@ -453,7 +453,7 @@ function getCodeGenerators(arduino: Arduino) {
             "double readGyroscope(int channel) {\n" +
                 "\t" +
                 setup +
-                "\tlsm6ds3trc.readGyroscope(&buffer_x, &buffer_y, &buffer_z);\n\n" +
+                "\tlsm6ds3trc.readGyroscope(buffer_x, buffer_y, buffer_z);\n\n" +
                 "\tswitch(channel) {\n" +
                 "\t\tcase 0:\n" +
                 "\t\t\treturn (double) buffer_x;\n" +
