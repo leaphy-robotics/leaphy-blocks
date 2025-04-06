@@ -18,6 +18,11 @@ function getCodeGenerators(arduino: Arduino) {
             code += "BLE.setEventHandler(BLEDisconnected, onBluetoothDisconnection);\n";
         }
 
+        if (block.workspace.getBlocksByType("bluetooth_on_discover").length > 0) {
+            code += "BLE.setEventHandler(BLEDiscovered, onDeviceDiscovered);\n";
+        }
+
+
         block.workspace.getBlocksByType("bluetooth_create_binary_characteristic").forEach(add_binary_characteristic => {
             const initialValue = arduino.valueToCode(add_binary_characteristic, "INITIAL_VALUE", arduino.ORDER_NONE) === "true";
             const name = arduino.valueToCode(add_binary_characteristic, "NAME", arduino.ORDER_NONE);
@@ -37,7 +42,12 @@ function getCodeGenerators(arduino: Arduino) {
             code += "});\n";
         });
 
-        code += `LeaphyBLE.initialize(${name});\n`;
+        code += `while (!LeaphyBLE.initialize(${name})) {}\n`;
+
+        // if (block.workspace.getBlocksByType("bluetooth_start_scan").length > 0) {
+        //     code += `LeaphyBLE.scanForLeaphyDevices();\n`;
+        // }
+
 
         arduino.addLoopTrap("bluetooth_setup", block);
         return code;
@@ -70,6 +80,22 @@ function getCodeGenerators(arduino: Arduino) {
 
     arduino.forBlock["bluetooth_on_characteristic_update"] = function (block: Block) {
         return "BLE.poll();";
+    }
+
+    arduino.forBlock["bluetooth_on_discover"] = function (block: Block) {
+        const branch = arduino.statementToCode(block, "STACK");
+        const code =
+            `void onDeviceDiscovered(BLEDevice device) {\n` + branch + "}\n";
+        arduino.addDeclaration("bluetooth_on_discover", code, true, 2);
+        return "BLE.poll();";
+    };
+
+    arduino.forBlock["bluetooth_start_filtered_scan"] = function (block: Block) {
+        return `LeaphyBLE.scanForLeaphyDevices();\n`;
+    }
+
+    arduino.forBlock["bluetooth_stop_scan"] = function (block: Block) {
+        return `LeaphyBLE.stopScanning();\n`;
     }
 
     arduino.forBlock["bluetooth_read_string_characteristic"] = function (block: Block) {
