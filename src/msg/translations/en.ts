@@ -615,5 +615,13 @@ messages["LEAPHY_TEMPLATE_FULL_TEXT"] = "Full text";
 messages["LEAPHY_TEMPLATE_DATE_TEXT"] = "Date text";
 messages["LEAPHY_TEMPLATE_TIME"] = "Time";
 messages["LEAPHY_TEMPLATE_CUSTOM"] = "Custom";
+messages["LEAPHY_READ_ACCELEROMETER"] = "Read accelerometer axis %1";
+messages["LEAPHY_ACCELEROMETER_AXIS_X"] = "X";
+messages["LEAPHY_ACCELEROMETER_AXIS_Y"] = "Y";
+messages["LEAPHY_ACCELEROMETER_AXIS_Z"] = "Z";
+messages["LEAPHY_READ_GYROSCOPE"] = "Read gyroscope axis %1";
+messages["LEAPHY_GYROSCOPE_AXIS_X"] = "X";
+messages["LEAPHY_GYROSCOPE_AXIS_Y"] = "Y";
+messages["LEAPHY_GYROSCOPE_AXIS_Z"] = "Z";
 
 export default messages;
