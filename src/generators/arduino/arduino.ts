@@ -395,10 +395,10 @@ function getCodeGenerators(arduino: Arduino) {
         const setup = arduino.addI2CSetup(
             "GyroAccel",
             "if (!lsm6ds3trc.begin_I2C()) {\n" +
-                "\t\t\t\treturn -1;\n" +
-                "\t\t\t}\n\n" +
-                "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
-                "\t\t\tlsm6ds3trc.configInt2(false, true, false);\n",
+                "        return -1;\n" +
+                "      }\n\n" +
+                "      lsm6ds3trc.configInt1(false, false, true);\n" +
+                "      lsm6ds3trc.configInt2(false, true, false);\n",
         );
         arduino.addDeclaration(
             "GyroAccel",
@@ -410,17 +410,17 @@ function getCodeGenerators(arduino: Arduino) {
         arduino.addDeclaration(
             "Accelerometer",
             "double readAccelerometer(int channel) {\n" +
-                "\t" +
+                "  " +
                 setup +
-                "\tlsm6ds3trc.readAcceleration(buffer_x, buffer_y, buffer_z);\n\n" +
-                "\tswitch(channel) {\n" +
-                "\t\tcase 0:\n" +
-                "\t\t\treturn (double) buffer_x;\n" +
-                "\t\tcase 1:\n" +
-                "\t\t\treturn (double) buffer_y;\n" +
-                "\t\tcase 2:\n" +
-                "\t\t\treturn (double) buffer_z;\n" +
-                "\t}\n" +
+                "  lsm6ds3trc.readAcceleration(buffer_x, buffer_y, buffer_z);\n\n" +
+                "  switch(channel) {\n" +
+                "    case 0:\n" +
+                "      return (double) buffer_x;\n" +
+                "    case 1:\n" +
+                "      return (double) buffer_y;\n" +
+                "    case 2:\n" +
+                "      return (double) buffer_z;\n" +
+                "  }\n" +
                 "}",
             false,
             2,
@@ -436,10 +436,10 @@ function getCodeGenerators(arduino: Arduino) {
         const setup = arduino.addI2CSetup(
             "GyroAccel",
             "if (!lsm6ds3trc.begin_I2C()) {\n" +
-                "\t\t\t\treturn -1;\n" +
-                "\t\t\t}\n\n" +
-                "\t\t\tlsm6ds3trc.configInt1(false, false, true);\n" +
-                "\t\t\tlsm6ds3trc.configInt2(false, true, false);\n",
+                "        return -1;\n" +
+                "      }\n\n" +
+                "      lsm6ds3trc.configInt1(false, false, true);\n" +
+                "      lsm6ds3trc.configInt2(false, true, false);\n",
         );
         arduino.addDeclaration(
             "GyroAccel",
@@ -451,17 +451,17 @@ function getCodeGenerators(arduino: Arduino) {
         arduino.addDeclaration(
             "Gyroscope",
             "double readGyroscope(int channel) {\n" +
-                "\t" +
+                "  " +
                 setup +
-                "\tlsm6ds3trc.readGyroscope(buffer_x, buffer_y, buffer_z);\n\n" +
-                "\tswitch(channel) {\n" +
-                "\t\tcase 0:\n" +
-                "\t\t\treturn (double) buffer_x;\n" +
-                "\t\tcase 1:\n" +
-                "\t\t\treturn (double) buffer_y;\n" +
-                "\t\tcase 2:\n" +
-                "\t\t\treturn (double) buffer_z;\n" +
-                "\t}\n" +
+                "  lsm6ds3trc.readGyroscope(buffer_x, buffer_y, buffer_z);\n\n" +
+                "  switch(channel) {\n" +
+                "    case 0:\n" +
+                "      return (double) buffer_x;\n" +
+                "    case 1:\n" +
+                "      return (double) buffer_y;\n" +
+                "    case 2:\n" +
+                "      return (double) buffer_z;\n" +
+                "  }\n" +
                 "}",
             false,
             2,
