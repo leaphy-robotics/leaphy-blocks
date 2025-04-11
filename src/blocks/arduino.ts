@@ -33,6 +33,18 @@ const ledstripDemoOptions = [
     ["%{BKY_LEAPHY_LED_STRIP_COLORGULF}", "5"],
 ];
 
+const accelerometer_axis = [
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_X}", "0"],
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Y}", "1"],
+    ["%{BKY_LEAPHY_ACCELEROMETER_AXIS_Z}", "2"],
+];
+
+const gyroscope_axis = [
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_X}", "0"],
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Y}", "1"],
+    ["%{BKY_LEAPHY_GYROSCOPE_AXIS_Z}", "2"],
+];
+
 const blocks: BlockDefinition = [
     {
         type: "time_delay",
@@ -125,6 +137,34 @@ const blocks: BlockDefinition = [
         style: "leaphy_blocks",
         output: "Number",
         helpUrl: "",
+    },
+    {
+        type: "leaphy_read_accelerometer",
+        helpUrl: "",
+        message0: "%{BKY_LEAPHY_READ_ACCELEROMETER}",
+        args0: [
+            {
+                type: "field_dropdown",
+                name: "ACCELEROMETER_AXIS",
+                options: accelerometer_axis,
+            },
+        ],
+        style: "leaphy_blocks",
+        output: "Number",
+    },
+    {
+        type: "leaphy_read_gyroscope",
+        helpUrl: "",
+        message0: "%{BKY_LEAPHY_READ_GYROSCOPE}",
+        args0: [
+            {
+                type: "field_dropdown",
+                name: "GYROSCOPE_AXIS",
+                options: gyroscope_axis,
+            },
+        ],
+        style: "leaphy_blocks",
+        output: "Number",
     },
     {
         type: "leaphy_rgb_raw_color_red",
