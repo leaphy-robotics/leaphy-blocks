@@ -152,7 +152,7 @@ function getCodeGenerators(arduino: Arduino) {
             "Servo Write",
         );
 
-        arduino.addInclude("servo", "#include <Servo.h>");
+        arduino.includeServoHeader();
         arduino.addDeclaration("servo_" + pinKey, "Servo " + servoName + ";");
 
         const setupCode = servoName + ".attach(" + pinKey + ");";
@@ -167,7 +167,7 @@ function getCodeGenerators(arduino: Arduino) {
 
         arduino.reservePin(block, pinKey, arduino.PinTypes.SERVO, "Servo Read");
 
-        arduino.addInclude("servo", "#include <Servo.h>");
+        arduino.includeServoHeader();
         arduino.addDeclaration("servo_" + pinKey, "Servo " + servoName + ";");
 
         const setupCode = servoName + ".attach(" + pinKey + ");";

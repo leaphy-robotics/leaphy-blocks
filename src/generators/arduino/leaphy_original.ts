@@ -146,11 +146,13 @@ function getCodeGenerators(arduino: Arduino) {
     };
 
     arduino.forBlock["leaphy_original_servo_set"] = function (block) {
-        arduino.addInclude("servo", "#include <Servo.h>");
+        arduino.includeServoHeader();
         arduino.addDeclaration("servo_left", "Servo servo_left;");
         arduino.addDeclaration("servo_right", "Servo servo_right;");
         arduino.addSetup("servo_left", "servo_left.attach(12);", false);
         arduino.addSetup("servo_right", "servo_right.attach(13);", false);
+        arduino.reservePin(block, "12", arduino.PinTypes.SERVO, "Servo Set");
+        arduino.reservePin(block, "13", arduino.PinTypes.SERVO, "Servo Set");
 
         const motor = block.getFieldValue("MOTOR");
         const speed =
@@ -161,11 +163,13 @@ function getCodeGenerators(arduino: Arduino) {
     };
 
     arduino.forBlock["leaphy_original_servo_move"] = function (block) {
-        arduino.addInclude("servo", "#include <Servo.h>");
+        arduino.includeServoHeader();
         arduino.addDeclaration("servo_left", "Servo servo_left;");
         arduino.addDeclaration("servo_right", "Servo servo_right;");
         arduino.addSetup("servo_left", "servo_left.attach(12);", false);
         arduino.addSetup("servo_right", "servo_right.attach(13);", false);
+        arduino.reservePin(block, "12", arduino.PinTypes.SERVO, "Servo Set");
+        arduino.reservePin(block, "13", arduino.PinTypes.SERVO, "Servo Set");
 
         const MOTOR_SPEEDS: Record<string, [number, number]> = {
             forward: [1, -1],
