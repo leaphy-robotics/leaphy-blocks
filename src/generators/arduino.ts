@@ -312,6 +312,18 @@ export class Arduino extends Blockly.Generator {
         }
     }
 
+    /*
+       Includes the right header file for Servo functions
+       for the current robotType
+     */
+    public includeServoHeader() {
+        if (this.robotType.includes("esp32")) {
+            this.addInclude("servo", "#include <ESP32Servo.h>");
+        } else {
+            this.addInclude("servo", "#include <Servo.h>");
+        }
+    }
+
     public addDeclaration(
         declarationTag: string,
         code: string,
