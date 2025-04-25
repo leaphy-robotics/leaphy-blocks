@@ -72,19 +72,6 @@ function getCodeGenerators(arduino: Arduino) {
     arduino.forBlock["leaphy_click_set_motor"] =
         arduino.forBlock["leaphy_original_set_motor"];
 
-    arduino.forBlock["leaphy_original_get_distance"] = function () {
-        arduino.addInclude(
-            "include_leaphy_original",
-            '#include "Leaphyoriginal1.h"',
-        );
-        if (arduino.robotType === "l_original_nano") {
-            arduino.addSetup("set_us_pins", "setUSPins(16, 17);", true);
-        }
-
-        const code = "getDistance()";
-        return [code, arduino.ORDER_ATOMIC];
-    };
-
     arduino.forBlock["leaphy_original_move_motors"] = function (block) {
         let direction = block.getFieldValue(
             "MOTOR_DIRECTION",

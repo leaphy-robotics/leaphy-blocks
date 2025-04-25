@@ -58,14 +58,6 @@ const blocks: BlockDefinition = [
         style: "leaphy_blocks",
     },
     {
-        type: "leaphy_original_get_distance",
-        helpUrl:
-            "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=Programming-,Ultrasonic%20sensor,-Light%20sensor",
-        message0: "%%{BKY_LEAPHY_GET_DISTANCE}",
-        style: "leaphy_blocks",
-        output: "Number",
-    },
-    {
         type: "leaphy_original_move_motors",
         helpUrl:
             "https://www.leaphyfoundation.com/tutorials-leaphy-electronics.html#:~:text=types%20of%20leds-,TT%20motors,-Servo%20motors",
