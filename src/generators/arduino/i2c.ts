@@ -30,6 +30,11 @@ const BROADCAST_MODE =
     "  Wire.setWireTimeout();\n" +
     "  i2cSelectChannel(0xff);";
 
+const BROADCAST_MODE_ESP32 =
+    "Wire.begin();\n" +
+    "  Wire.setTimeout(50);\n" +
+    "  i2cSelectChannel(0xff);";
+
 function addI2CDeclarations() {
     Arduino.addInclude("wire", "#include <Wire.h>");
     Arduino.addInclude("lists", "#include <List.hpp>");
@@ -40,7 +45,11 @@ function addI2CDeclarations() {
     Arduino.addDeclaration("i2c_restore_channel", RESTORE_CHANNEL);
     Arduino.addDeclaration("i2c_get_channel", GET_CHANNEL);
 
-    Arduino.addSetup("i2c_broadcast_mode", BROADCAST_MODE);
+    if (Arduino.robotType.includes("esp32")) {
+        Arduino.addSetup("i2c_broadcast_mode", BROADCAST_MODE_ESP32);
+    } else {
+        Arduino.addSetup("i2c_broadcast_mode", BROADCAST_MODE);
+    }
 }
 
 export { addI2CDeclarations };
