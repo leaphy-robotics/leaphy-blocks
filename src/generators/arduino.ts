@@ -467,6 +467,7 @@ import * as lists from "./arduino/lists";
 import * as mesh from "./arduino/mesh";
 import * as rtc from "./arduino/rtc";
 import { listManager } from "../categories/lists";
+import * as bluetooth from "./arduino/bluetooth";
 
 arduino.default(generator);
 leaphy_common.default(generator);
@@ -482,5 +483,6 @@ variables.default(generator);
 lists.default(generator);
 mesh.default(generator);
 rtc.default(generator);
+bluetooth.default(generator);
 
 export default generator;
