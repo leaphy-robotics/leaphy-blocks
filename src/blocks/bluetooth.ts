@@ -16,9 +16,23 @@ const blocks: BlockDefinition = [
         nextStatement: null,
     },
     {
-        type: "bluetooth_start_filtered_scan",
+        type: "bluetooth_start_leaphy_filtered_scan",
         style: "bluetooth_blocks",
-        message0: "%{BKY_LEAPHY_BLUETOOTH_START_FILTERED_SCAN}",
+        message0: "%{BKY_LEAPHY_BLUETOOTH_START_LEAPHY_FILTERED_SCAN}",
+        previousStatement: null,
+        nextStatement: null,
+    },
+    {
+        type: "bluetooth_start_name_filtered_scan",
+        style: "bluetooth_blocks",
+        message0: "%{BKY_LEAPHY_BLUETOOTH_START_NAME_FILTERED_SCAN}",
+        args0: [
+            {
+                type: "input_value",
+                name: "NAME",
+                check: ["String"],
+            },
+        ],
         previousStatement: null,
         nextStatement: null,
     },

@@ -90,8 +90,13 @@ function getCodeGenerators(arduino: Arduino) {
         return "BLE.poll();";
     };
 
-    arduino.forBlock["bluetooth_start_filtered_scan"] = function (block: Block) {
+    arduino.forBlock["bluetooth_start_leaphy_filtered_scan"] = function (block: Block) {
         return `LeaphyBLE.scanForLeaphyDevices();\n`;
+    }
+
+    arduino.forBlock["bluetooth_start_name_filtered_scan"] = function (block: Block) {
+        const name = arduino.valueToCode(block, "NAME", arduino.ORDER_NONE);
+        return`BLE.scanForName(${name});\n`;
     }
 
     arduino.forBlock["bluetooth_stop_scan"] = function (block: Block) {
